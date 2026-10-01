@@ -1,0 +1,218 @@
+/* WADAH UTAMA FOOTER */
+.pixel-footer-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #FE5000;
+  color: #121212;
+  overflow: hidden;
+  padding: 180px 4% 40px 4%; 
+}
+
+/* OVERLAY PIXEL HITAM */
+.pixel-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.black-pixel {
+  width: 102%;
+  height: 102%;
+  background-color: #121212;
+}
+
+/* KONTEN FOOTER (Garis, Teks, Grid) */
+.footer-content {
+  position: relative;
+  z-index: 10;
+  border: 1px solid #121212;
+}
+
+.footer-top-border {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #121212;
+}
+
+.corner-square {
+  position: absolute;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+  background-color: #121212;
+}
+.corner-square.left { left: -8px; }
+.corner-square.right { right: -8px; }
+
+.footer-grid {
+  display: flex;
+}
+
+.footer-col {
+  padding: 40px 30px;
+}
+
+.left-col {
+  flex: 2.2;
+  border-right: 1px solid #121212;
+}
+
+/* AREA KANAN MENYATU (TANPA GARIS PEMISAH TENGAH) */
+.right-merged-col {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.merged-links-contact-grid {
+  display: flex;
+  gap: 60px;
+}
+
+.sub-group {
+  flex: 1;
+}
+
+/* TIPOGRAFI */
+.footer-heading {
+  font-size: 5vw;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+.footer-sub {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+.col-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li { margin-bottom: 15px; }
+
+.footer-links a {
+  color: #121212;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover { opacity: 0.5; }
+
+.active-link {
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.black-square-inline {
+  width: 12px;
+  height: 12px;
+  background-color: #121212;
+  display: inline-block;
+}
+
+.merged-bottom-section {
+  margin-top: 40px;
+}
+
+.lang-section { 
+  margin-bottom: 30px; 
+}
+
+.lang-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.lang-btn {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border: 1px solid #121212;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  background-color: #121212;
+  color: #FE5000;
+}
+
+.email-send {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #121212;
+  padding-bottom: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  color: #121212;
+}
+
+.email-send:hover { opacity: 0.7; }
+
+/* BARIS KECIL BAWAH ALA NOCODE */
+.footer-bottom-bar {
+  border-top: 1px solid #121212;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.scroll-top-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #121212;
+  color: #FE5000;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+  .footer-grid { flex-direction: column; }
+  .left-col { border-right: none; border-bottom: 1px solid #121212; }
+  .merged-links-contact-grid { flex-direction: column; gap: 30px; }
+  .footer-heading { font-size: 40px; }
+  .pixel-footer-wrapper { padding-top: 100px; }
+}

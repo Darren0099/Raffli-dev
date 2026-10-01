@@ -1,0 +1,185 @@
+.bridge-scroll-container {
+  position: relative;
+  width: 100vw;
+  height: 250vh;
+  background-color: #050505;
+}
+
+.bridge-sticky-viewport {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #050505;
+}
+
+.bridge-slide-horizontal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  will-change: transform;
+}
+
+.bridge-slide-content {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: #050505;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 70px 60px;
+  box-sizing: border-box;
+}
+
+.bridge-text-box {
+  max-width: 620px;
+  z-index: 10;
+}
+
+.bridge-heading-statement {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* 3D Canvas Layer */
+.bridge-3d-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Titik Merah Kursor */
+.hud-red-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  margin-top: -3.5px;
+  margin-left: -3.5px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Layer Kuas Pelukis & Trigonometry Fill $ */
+.hud-brush-splash-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.brush-splash-char {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: bold;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.1s linear;
+}
+
+.trig-shape-char {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(254, 80, 0, 0.45);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Badge Floating "Scroll" */
+.hud-scroll-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fe5000;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Multi-Node Boxes */
+.hud-3d-object-nodes-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.hud-node-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2px 6px;
+  border-radius: 3px;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease, transform 0.1s ease-out;
+}
+
+.hud-node-box.node-cursor {
+  border-color: rgba(254, 80, 0, 0.4);
+}
+
+.hud-node-box.node-midpoint {
+  color: #fe5000;
+  border-color: #fe5000;
+  background: rgba(254, 80, 0, 0.15);
+}
+
+.hud-svg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Branding Footer */
+.bridge-brand-bottom {
+  z-index: 10;
+  font-size: 7.5vw;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.brand-name-orange,
+.brand-code-orange {
+  color: #fe5000;
+}

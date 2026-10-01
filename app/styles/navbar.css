@@ -1,0 +1,134 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background-color: #F7F2EB;
+}
+
+.logo h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #050505;
+}
+
+.nav-wrapper {
+  background-color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(45, 74, 62, 0.08);
+  padding: 6px 10px;
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #050505;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-item .dot {
+  width: 6px;
+  height: 6px;
+  background-color: #F15A24;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.nav-item.active .dot,
+.nav-item:hover .dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-toggle {
+  width: 72px;
+  height: 34px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-pill {
+  position: absolute;
+  width: 32px;
+  height: 26px;
+  background-color: #050505;
+  border-radius: 16px;
+  top: 3px;
+  left: 36px;
+  transition: left 0.3s ease;
+}
+
+.lang-toggle.en .toggle-pill {
+  left: 4px;
+}
+
+.lang-opt {
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 2;
+  width: 30px;
+  text-align: center;
+  color: #050505;
+  transition: color 0.3s;
+}
+
+.lang-toggle.en .opt-en,
+.lang-toggle:not(.en) .opt-id {
+  color: #ffffff;
+}
+
+.phone-btn {
+  width: 36px;
+  height: 36px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #050505;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.2s;
+}
+
+.phone-btn:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

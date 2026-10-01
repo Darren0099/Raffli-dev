@@ -1,0 +1,364 @@
+
+.exp-scroll-container {
+  height: 400vh;
+  position: relative;
+  background-color: #F15A24;
+  padding-bottom: 100px;
+}
+
+.exp-sticky-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-huge-bg-text {
+  position: absolute;
+  top: 25%; 
+  left: 5%;
+  font-size: 18vw;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.443);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -5px;
+  font-family: serif;
+}
+
+.exp-fixed-header {
+  position: absolute;
+  top: 60px;
+  left: 8%;
+  z-index: 10;
+}
+
+.exp-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #121212;
+  margin-bottom: 5px;
+  letter-spacing: -1px;
+}
+
+.exp-subtitle {
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+}
+
+/* TRACK KARTU HORIZONTAL */
+.exp-horizontal-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  align-items: center; 
+  position: relative;
+  z-index: 5;
+}
+
+
+.exp-track-spacer {
+  width: calc(50vw - 210px); 
+  flex-shrink: 0;
+}
+
+/* WRAPPER KARTU */
+.exp-card-wrapper {
+  width: 420px;
+  margin: 0 30px; /* Jarak kiri-kanan merata */
+  flex-shrink: 0;
+  will-change: transform, opacity; /* Optimalisasi animasi GPU */
+}
+
+/* DESAIN KARTU PENGALAMAN */
+.exp-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.exp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.exp-year {
+  font-size: 14px;
+  font-weight: 700;
+  color: #F15A24;
+}
+
+.exp-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.badge-akademik { background: rgba(18, 18, 18, 0.08); color: #121212; }
+.badge-graphic { background: rgba(242, 118, 94, 0.15); color: #F15A24; }
+.badge-web { background: rgba(46, 56, 242, 0.1); color: #2E38F2; }
+.badge-branding { background: rgba(229, 152, 25, 0.15); color: #b87405; }
+.badge-data { background: rgba(18, 18, 18, 0.8); color: #ffffff; }
+
+.exp-role {
+  font-size: 24px;
+  font-weight: 800;
+  color: #121212;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.exp-company {
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.exp-desc {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.exp-card-number {
+  position: absolute;
+  bottom: 25px;
+  right: 30px;
+  font-size: 54px;
+  font-weight: 800;
+  color: rgba(18, 18, 18, 0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* RESPONSIVE KHUSUS MOBILE */
+@media (max-width: 768px) {
+  .exp-fixed-header { left: 5%; top: 40px; }
+  .exp-title { font-size: 26px; }
+  .exp-card-wrapper { width: 85vw; margin: 0 15px; }
+  .exp-track-spacer { width: calc(50vw - 42.5vw); } /* Sesuaikan setengah layar dikurangi setengah kartu HP */
+}
+
+/* SLIDE TERAKHIR HITAM INTERAKTIF THREE.JS DENGAN BALOK 3D */
+.exp-bridge-slide-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0d0d0d;
+  flex-shrink: 0;
+  margin-left: 40px;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: crosshair;
+}
+
+.bridge-slide-content {
+  width: 100%;
+  height: 100%;
+  padding: 80px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.bridge-text-box {
+  max-width: 650px;
+  z-index: 5;
+}
+
+.bridge-heading-statement {
+  font-size: 2.2vw;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* THREE.JS CANVAS CONTAINER */
+.three-scene-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 350px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.three-canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* HUD OVERLAY TRACKER */
+.hud-interactive-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.hud-svg-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hud-box {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+  transition: transform 0.08s ease-out;
+}
+
+.hud-mini-matrix {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.55rem;
+  opacity: 0.5;
+  line-height: 1;
+}
+
+/* BRANDING TEKS RAFFLI (.79) */
+.bridge-brand-bottom {
+  font-size: 10vw;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -4px;
+  z-index: 5;
+  user-select: none;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.brand-name-orange, .brand-code-orange {
+  color: #FE5000;
+}
+
+.bridge-scroll-indicator {
+  position: absolute;
+  top: 42%;
+  right: 8%;
+  background-color: #FE5000;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+  .bridge-heading-statement { font-size: 1.5rem; }
+  .bridge-brand-bottom { font-size: 15vw; }
+  .three-scene-wrapper { width: 300px; height: 250px; left: 65%; }
+}.three-bridge-full-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Titik Merah Kursor */
+.hud-red-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  margin-top: -4px;
+  margin-left: -4px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Base Style HUD Box */
+.hud-box-ref {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: monospace;
+  font-size: 11px;
+  color: #ffffff;
+  pointer-events: none;
+  z-index: 10;
+  letter-spacing: 1px;
+}
+
+.hud-coord-ref {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hud-matrix-ref {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 10px;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hud-matrix-chars {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Floating Badge "Scroll" Mengikuti Cursor */
+.hud-scroll-floating-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fe5000;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hud-svg-full-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
