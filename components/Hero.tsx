@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const roles = ["Full Stack Developer", "Data Analyst", "Graphic Designer", "Human Resource"];
+const roles = ["Full Stack Developer.", "Data Analyst.", "Graphic Designer.", "Human Resource."];
 
 export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -44,7 +44,6 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
     <section className="modern-hero-section" id="about">
       <div className="hero-content-wrapper">
         
-        {/* KOLOM KIRI: HEADLINE & TYPEWRITER */}
         <div className="hero-left-box">
           <span className="about-me-tag">(About me)</span>
           
@@ -71,11 +70,9 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
           </motion.div>
         </div>
 
-        {/* KOLOM KANAN: SHAPE TERBALIK, COAKAN DI KANAN, & DAPAT DIISI FOTO */}
         <div className="hero-right-box">
           <div className="erwin-hero-container">
             
-            {/* SVG SHAPE ORANGE BELAKANG (DIBALIK KE BAWAH & MIRROR KANAN) */}
             <div className="cta-shape-bg">
               <svg viewBox="0 0 610 547" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(610, 547) scale(-1, -1)">

@@ -10,7 +10,7 @@ const skillsData = [
     title: "Web Developer",
     desc: "Membangun arsitektur web yang kokoh, cepat, dan terukur.",
     cursorText: "Code the Future",
-    skills: ["PHP", "Laravel", "MySQL", "Git", "REST API"]
+    skills: ["PHP", "MySQL", "Git", "REST API"]
   },
   {
     id: "02",

@@ -108,6 +108,7 @@
   position: absolute;
   top: 45px;
   right: 15px;
+  margin-top: 17px;
   z-index: 2;
   text-align: left;
 }
@@ -176,8 +177,8 @@
 .tag-hr {
   top: -15px;
   left: 90px;
-  background-color: #FE5000;
-  border-color: #FE5000;
+  background-color: #000000;
+  border-color: #7b7b7b;
 }
 
 .tag-data {

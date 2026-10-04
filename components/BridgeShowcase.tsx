@@ -212,7 +212,6 @@ function Dynamic3DShowcase() {
         });
       }
 
-      // D. Pengisian Karakter `$` Dalam Segitiga Trigonometri & Kuas Pelukis (Brush Splash)
       if (brushSplashOverlayRef.current) {
         let splashHTML = '';
 
@@ -233,7 +232,6 @@ function Dynamic3DShowcase() {
           }
         }
 
-        // 2. Render $ Mengisi Shape Segitiga Trigonometri saat Jarak Jauh
         if (distance > 180 && frameCount % 2 === 0) {
           const step = 30;
           const minX = Math.min(center2DX, currentPos.x, midPointX);
@@ -327,19 +325,14 @@ function Dynamic3DShowcase() {
 
   return (
     <div ref={mountRef} className="bridge-3d-canvas-container">
-      {/* 1. Titik Merah Kursor */}
       <div ref={redDotRef} className="hud-red-dot" />
 
-      {/* 2. Layer Kuas Pelukis Splash Trails $ & Trigonometry Shape Fill */}
       <div ref={brushSplashOverlayRef} className="hud-brush-splash-layer" />
 
-      {/* 3. Badge "Scroll" Floating */}
       <div ref={hudBadgeRef} className="hud-scroll-badge">Scroll</div>
 
-      {/* 4. Layer SVG Lines (Shape Triangulasi) */}
       <svg ref={svgCanvasRef} className="hud-svg-canvas" />
 
-      {/* 5. Layer Multi-Node HUD Boxes */}
       <div ref={nodesOverlayRef} className="hud-3d-object-nodes-layer" />
     </div>
   );

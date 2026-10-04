@@ -127,7 +127,6 @@ export default function Experience() {
     offset: ["start start", "end end"]
   });
 
-  // Kunci pergeseran hingga kartu ke-14 pas di pinggir kanan layar
   const xTransform = useTransform(scrollYProgress, [0, 1], ["0%", "-78%"]);
   const bgTextX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 

@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+@import './styles/navbar.css';
+@import './styles/hero.css';
+@import './styles/highlight.css';
+@import './styles/ticker.css';
+@import './styles/skills.css';
+@import './styles/experience.css';
+@import './styles/projects.css';
+@import './styles/certificates.css';
+@import './styles/footer.css';
+@import './styles/Bridge.css';
+@import './styles/preloader.css';
 
 :root {
   --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -20,20 +32,6 @@ body {
   overflow-x: hidden;
 }
 
-/* MODULAR IMPORTS */
-@import './styles/navbar.css';
-@import './styles/hero.css';
-@import './styles/highlight.css';
-@import './styles/ticker.css';
-@import './styles/skills.css';
-@import './styles/experience.css';
-@import './styles/projects.css';
-@import './styles/certificates.css';
-@import './styles/footer.css';
-@import './styles/Bridge.css';
-@import './styles/preloader.css';
-
-/* BACK TO TOP BUTTON */
 .scroll-to-top-btn {
   position: fixed;
   bottom: 30px;
