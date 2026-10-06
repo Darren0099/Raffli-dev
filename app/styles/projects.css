@@ -407,3 +407,12 @@
   position: relative;
   z-index: 20;
 }
+
+.project-card .card-body a,
+.project-card .card-title,
+.project-card .action-btn {
+  text-decoration: none !important;
+}.project-card .card-body a:hover,
+.project-card .action-btn:hover {
+  text-decoration: none !important;
+}
