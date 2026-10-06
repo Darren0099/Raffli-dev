@@ -16,7 +16,6 @@ export default function SectionTransition({ fromColor = '#121212', toColor = '#F
     offset: ['start end', 'end start'],
   });
 
-  // Animasi 5 kolom tangga grafik dari atas ke bawah
   const col1 = useTransform(scrollYProgress, [0.1, 0.5], ['0%', '100%']);
   const col2 = useTransform(scrollYProgress, [0.2, 0.6], ['0%', '100%']);
   const col3 = useTransform(scrollYProgress, [0.3, 0.7], ['0%', '100%']);

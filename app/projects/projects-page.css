@@ -1,14 +1,9 @@
-/* ==========================================================================
-   ALL PROJECTS PAGE - STYLES WITH BENTO CORNER PATH & HORIZONTAL CAROUSEL
-   ========================================================================== */
-
 .all-projects-container {
   background-color: #111111;
   min-height: 100vh;
   color: #ffffff;
 }
 
-/* Wrapper dengan Padding Samping yang Optimal */
 .all-projects-wrapper {
   max-width: 1360px;
   margin: 0 auto;
@@ -30,7 +25,6 @@
   }
 }
 
-/* --- Grid System (3 Kartu per Baris) --- */
 .projects-main-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -45,11 +39,10 @@
 
 @media (min-width: 1024px) {
   .projects-main-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 Kolom */
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
   }
 }
 
-/* --- Project Card Item --- */
 .project-card-item {
   display: flex;
   flex-direction: column;
@@ -77,7 +70,6 @@
   transform: scale(1.05);
 }
 
-/* --- Card Corner Path Category Badge ("Case" Tag) --- */
 .card-category-tag {
   z-index: 3;
   background-color: #111111;
@@ -103,7 +95,6 @@
   margin-right: 4px;
 }
 
-/* Lengkungan Corner Path SVG */
 .category-corner {
   position: absolute;
   width: 18px;
@@ -125,7 +116,6 @@
   height: 100%;
 }
 
-/* --- Hover Layer Glass Overlay --- */
 .project-hover-glass {
   position: absolute;
   left: 0.75rem;
@@ -219,7 +209,6 @@
   background-color: #333333;
 }
 
-/* --- Info Text Card --- */
 .project-info-box {
   display: flex;
   flex-direction: column;
@@ -249,7 +238,6 @@
   margin-top: auto;
 }
 
-/* --- More Projects Horizontal Carousel Section --- */
 .more-projects-section {
   margin-top: 7rem;
   padding-top: 3.5rem;
@@ -299,7 +287,6 @@
   cursor: not-allowed;
 }
 
-/* Wrapper & Track Carousel Horizontal */
 .more-projects-carousel-wrapper {
   width: 100%;
   overflow: hidden;

@@ -1,7 +1,6 @@
-/* WADAH SECTION */
 .awwwards-skills-section {
   padding: 120px 0;
-  background-color: #F7F2EB; /* Warna krem elegan */
+  background-color: #F7F2EB; 
   color: #121212;
   position: relative;
   overflow: hidden;
@@ -14,7 +13,6 @@
   padding: 0 5%;
 }
 
-/* HEADER SECTION */
 .skills-section-header {
   margin-bottom: 80px;
 }
@@ -34,9 +32,6 @@
   letter-spacing: -1px;
 }
 
-/* =========================================
-   LIST BARIS (THE AWWWARDS ROWS)
-========================================= */
 .awwwards-list-wrapper {
   display: flex;
   flex-direction: column;
@@ -45,10 +40,9 @@
 .awwwards-row {
   position: relative;
   padding: 40px 0;
-  cursor: none; /* Sembunyikan kursor asli karena diganti tombol floating */
+  cursor: none; 
 }
 
-/* Garis Tipis Pemisah */
 .row-border-top {
   position: absolute;
   top: 0;
@@ -73,17 +67,16 @@
 }
 
 .row-title {
-  font-size: 7vw; /* Ukuran Super Besar Responsif */
+  font-size: 7vw; 
   font-weight: 700;
   letter-spacing: -3px;
   line-height: 1;
   margin: 0;
 }
 
-/* KONTEN MUNCUL (SKILLS) */
 .row-content {
   overflow: hidden;
-  padding-left: 55px; /* Sejajar dengan teks setelah bergeser */
+  padding-left: 55px; 
   margin-top: 20px;
 }
 
@@ -116,9 +109,6 @@
   background-color: rgba(242, 118, 94, 0.05);
 }
 
-/* =========================================
-   CUSTOM KURSOR TOMBOL (ALLER ->)
-========================================= */
 .custom-floating-cursor {
   position: fixed;
   top: 0;
@@ -132,12 +122,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  pointer-events: none; /* Sangat krusial agar tidak memblokir klik/scroll */
+  pointer-events: none; 
   z-index: 9999;
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  /* Supaya kursor berada tepat di tengah tombolnya */
   transform: translate(-50%, -50%);
   transform-origin: center center;
   white-space: nowrap;
@@ -148,5 +137,5 @@
   .row-title { font-size: 42px; letter-spacing: -1.5px; }
   .row-header { gap: 15px; }
   .row-content { padding-left: 35px; }
-  .custom-floating-cursor { display: none; } /* Kursor custom tidak cocok di HP/Touchscreen */
+  .custom-floating-cursor { display: none; } 
 }

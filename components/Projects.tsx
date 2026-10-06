@@ -10,8 +10,6 @@ export default function RelatedProjects() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-
-  // Mencegah Hydration Error
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
@@ -67,8 +65,6 @@ export default function RelatedProjects() {
   return (
     <section className="portfolio-section">
       <div className="portfolio-container">
-        
-        {/* Tab Subheading */}
         <div className="portfolio-tab">
           <div className="portfolio-tab-corner tab-corner-left"></div>
           <div className="portfolio-tab-body">
@@ -78,7 +74,6 @@ export default function RelatedProjects() {
           <div className="portfolio-tab-corner tab-corner-right"></div>
         </div>
 
-        {/* Carousel Container */}
         <div className="portfolio-box">
           <div
             className={`portfolio-carousel-wrapper ${isDragging ? "is-grabbing" : ""}`}
@@ -97,12 +92,8 @@ export default function RelatedProjects() {
               {projectsData.map((project) => (
                 <div className="project-item" key={project.id}>
                   <article className="project-card">
-                    
-                    {/* Media Gambar */}
                     <div className="card-media-wrapper">
                       <div className="card-media-inner">
-                        
-                        {/* Hover Overlay Layer */}
                         <div className="card-hover-layer">
                           <div className="hover-info-top">
                             <span className="info-label">Used Tech / Tools</span>
@@ -122,7 +113,6 @@ export default function RelatedProjects() {
                             </div>
                             
                             <div className="hover-action-wrap">
-                              {/* 1. TOMBOL VIEW PROJECT -> Mengarah ke /projects/[slug] */}
                               <Link
                                 href={`/projects/${project.slug}`}
                                 className="action-btn orange-btn"
@@ -139,7 +129,6 @@ export default function RelatedProjects() {
                           </div>
                         </div>
 
-                        {/* 2. KLIK GAMBAR -> Mengarah ke Live Site Eksternal */}
                         <a
                           href={project.link}
                           target={project.isExternalLink ? "_blank" : "_self"}
@@ -177,8 +166,6 @@ export default function RelatedProjects() {
             </div>
           </div>
         </div>
-
-        {/* 3. SHOW ALL PROJECTS BUTTON -> Mengarah ke /projects */}
         <div className="portfolio-footer-tab">
           <div className="footer-tab-corner footer-corner-left"></div>
           <div className="portfolio-controls-content">

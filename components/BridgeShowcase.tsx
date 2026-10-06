@@ -35,7 +35,6 @@ function Dynamic3DShowcase() {
     let width = currentMount.clientWidth;
     let height = currentMount.clientHeight;
 
-    // 1. Scene, Camera, Renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
     camera.position.set(0, 0, 8.5);
@@ -45,7 +44,6 @@ function Dynamic3DShowcase() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     currentMount.appendChild(renderer.domElement);
 
-    // 2. Mesh Balok Lego 3D
     const legoGroup = new THREE.Group();
     const bodyGeo = new THREE.BoxGeometry(2.4, 0.8, 0.9);
     const bodyMat = new THREE.MeshStandardMaterial({ color: 0xe0e0e0, roughness: 0.2, metalness: 0.1 });
@@ -67,7 +65,6 @@ function Dynamic3DShowcase() {
     legoGroup.position.set(-0.3, 0, 0);
     scene.add(legoGroup);
 
-    // Lighting
     scene.add(new THREE.AmbientLight(0xffffff, 1.6));
     const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.8);
     dirLight1.position.set(5, 8, 5);
@@ -81,7 +78,6 @@ function Dynamic3DShowcase() {
       new THREE.Vector3(0, 0.52, 0),
     ];
 
-    // Tracking Mouse & Particles
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     const currentPos = { x: width / 2, y: height / 2 };
     const trailParticles: TrailParticle[] = [];
@@ -97,7 +93,6 @@ function Dynamic3DShowcase() {
       currentPos.x = x;
       currentPos.y = y;
 
-      // Efek Kuas Pelukis (Brush Splash): Tambahkan partikel $ saat kursor bergerak
       for (let i = 0; i < 2; i++) {
         const offsetX = (Math.random() - 0.5) * 30;
         const offsetY = (Math.random() - 0.5) * 30;
@@ -113,7 +108,6 @@ function Dynamic3DShowcase() {
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Fungsi Pembantu: Cek apakah titik berada di dalam segitiga
     const isPointInTriangle = (
       px: number, py: number,
       ax: number, ay: number,
@@ -127,7 +121,6 @@ function Dynamic3DShowcase() {
       return Math.abs(area1 + area2 + area3 - areaOrig) < 1.0;
     };
 
-    // Render Animation Loop
     let reqId: number;
     let frameCount = 0;
 
@@ -141,29 +134,24 @@ function Dynamic3DShowcase() {
       legoGroup.rotation.y = mouse.x * 1.1;
       legoGroup.rotation.x = -mouse.y * 0.7;
 
-      // A. Titik Merah Kursor
+  
       if (redDotRef.current) {
         redDotRef.current.style.transform = `translate3d(${currentPos.x}px, ${currentPos.y}px, 0)`;
       }
 
-      // B. Badge Floating "Scroll"
+
       if (hudBadgeRef.current) {
         hudBadgeRef.current.style.transform = `translate3d(${currentPos.x + 90}px, ${currentPos.y - 20}px, 0)`;
       }
 
-      // C. Posisi Center 3D ke 2D Layar
+  
       const center3D = new THREE.Vector3();
       legoGroup.getWorldPosition(center3D);
       center3D.project(camera);
       const center2DX = (center3D.x * 0.5 + 0.5) * width;
       const center2DY = (-(center3D.y * 0.5) + 0.5) * height;
-
       const distance = Math.hypot(currentPos.x - center2DX, currentPos.y - center2DY);
-
-      // Node Dynamic List
       const allNodes: HudNodePoint[] = [];
-
-      // Node Kursor
       const cursorNodeCount = (Math.floor(frameCount / 30) % 2) + 1;
       for (let c = 0; c < cursorNodeCount; c++) {
         const angle = (frameCount * 0.03) + (c * Math.PI);
@@ -177,7 +165,7 @@ function Dynamic3DShowcase() {
         });
       }
 
-      // Node Objek 3D
+
       const vertexIndex = Math.floor(frameCount / 25) % legoVertices.length;
       const vertex = legoVertices[vertexIndex].clone();
       vertex.applyMatrix4(legoGroup.matrixWorld);
@@ -194,7 +182,7 @@ function Dynamic3DShowcase() {
         source: 'object'
       });
 
-      // Simpul Trigonometri
+  
       let midPointX = (center2DX + currentPos.x) / 2;
       let midPointY = (center2DY + currentPos.y) / 2;
 
@@ -215,7 +203,7 @@ function Dynamic3DShowcase() {
       if (brushSplashOverlayRef.current) {
         let splashHTML = '';
 
-        // 1. Render Partikel Kuas Kursor (Trail Splash)
+    
         for (let p = trailParticles.length - 1; p >= 0; p--) {
           const pt = trailParticles[p];
           pt.life -= 0.025;
@@ -256,8 +244,6 @@ function Dynamic3DShowcase() {
 
         brushSplashOverlayRef.current.innerHTML = splashHTML;
       }
-
-      // E. Render Kotak-Kotak HUD
       if (nodesOverlayRef.current) {
         let nodesHTML = '';
         allNodes.forEach((nd) => {
@@ -270,7 +256,7 @@ function Dynamic3DShowcase() {
         nodesOverlayRef.current.innerHTML = nodesHTML;
       }
 
-      // F. Render Garis Hubung SVG Trigonometri
+      
       if (svgCanvasRef.current) {
         let linesHTML = '';
         
@@ -362,10 +348,7 @@ export default function BridgeShowcase() {
               </h2>
             </div>
 
-            {/* THREE.JS & HUD INTERFACE */}
             <Dynamic3DShowcase />
-
-            {/* BRANDING FOOTER */}
             <div className="bridge-brand-bottom">
               <span className="brand-name-orange">Raffli</span>
               <span className="brand-code-orange"> (.79)</span>

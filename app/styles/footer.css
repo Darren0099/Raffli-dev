@@ -1,4 +1,3 @@
-/* WADAH UTAMA FOOTER */
 .pixel-footer-wrapper {
   position: relative;
   width: 100%;
@@ -25,7 +24,6 @@
   background-color: #121212;
 }
 
-/* KONTEN FOOTER (Garis, Teks, Grid) */
 .footer-content {
   position: relative;
   z-index: 10;
@@ -62,7 +60,6 @@
   border-right: 1px solid #121212;
 }
 
-/* AREA KANAN MENYATU (TANPA GARIS PEMISAH TENGAH) */
 .right-merged-col {
   flex: 2;
   display: flex;
@@ -79,7 +76,6 @@
   flex: 1;
 }
 
-/* TIPOGRAFI */
 .footer-heading {
   font-size: 5vw;
   font-weight: 800;
@@ -178,7 +174,6 @@
 
 .email-send:hover { opacity: 0.7; }
 
-/* BARIS KECIL BAWAH ALA NOCODE */
 .footer-bottom-bar {
   border-top: 1px solid #121212;
   padding: 15px 30px;

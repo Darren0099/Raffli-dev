@@ -24,7 +24,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Preloader berjalan di awal */}
       {loading && <Preloader onComplete={() => setLoading(false)} />}
 
       <Navbar lang={lang} setLang={setLang} t={t} />
