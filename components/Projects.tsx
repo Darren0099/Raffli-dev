@@ -11,6 +11,7 @@ export default function RelatedProjects() {
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -56,6 +57,14 @@ export default function RelatedProjects() {
     setIsMouseDown(false);
     setIsDragging(false);
     setDragOffset(0);
+  };
+
+  // Helper untuk mencegah klik link saat slider sedang di-drag
+  const handleLinkClick = (e: React.MouseEvent) => {
+    if (isDragging) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   };
 
   if (!isMounted) return null;
@@ -109,34 +118,45 @@ export default function RelatedProjects() {
                           <div className="hover-info-bottom">
                             <div className="hover-time-wrap">
                               <span className="info-label">Category</span>
-                              <div className="time-value">{project.buildTime || "Project"}</div>
+                              <div className="time-value">
+                                {project.buildTime || "Project"}
+                              </div>
                             </div>
-                            
+
                             <div className="hover-action-wrap">
+                              {/* 1. KANAN: Action Button Orange -> Detail Project Internal (/projects/slug) */}
                               <Link
                                 href={`/projects/${project.slug}`}
                                 className="action-btn orange-btn"
-                                onClick={(e) => {
-                                  if (isDragging) e.preventDefault();
-                                }}
+                                onClick={handleLinkClick}
                               >
                                 <span>View Project</span>
-                                <svg className="action-icon" viewBox="0 0 15 15" fill="none">
-                                  <path d="M0.446016 13.2915L11.6135 2.50818L11.0001 1.87485C10.1611 2.4503 9.13533 2.71805 8.08262 2.63644L3.91788 2.41776L3.88743 0.691128L14.2601 1.23577L14.4424 11.5695L12.7135 11.4787L12.6425 7.44985C12.5647 6.35521 12.8803 5.29635 13.5319 4.46468L12.8922 3.80376L1.6991 14.5857L0.446016 13.2915Z" fill="currentColor"/>
+                                <svg
+                                  className="action-icon"
+                                  viewBox="0 0 15 15"
+                                  fill="none"
+                                >
+                                  <path
+                                    d="M0.446016 13.2915L11.6135 2.50818L11.0001 1.87485C10.1611 2.4503 9.13533 2.71805 8.08262 2.63644L3.91788 2.41776L3.88743 0.691128L14.2601 1.23577L14.4424 11.5695L12.7135 11.4787L12.6425 7.44985C12.5647 6.35521 12.8803 5.29635 13.5319 4.46468L12.8922 3.80376L1.6991 14.5857L0.446016 13.2915Z"
+                                    fill="currentColor"
+                                  />
                                 </svg>
                               </Link>
                             </div>
                           </div>
                         </div>
 
+                        {/* 2. CARD COVER IMAGE -> Mengarah ke Link Eksternal (project.link) */}
                         <a
                           href={project.link}
                           target={project.isExternalLink ? "_blank" : "_self"}
-                          rel={project.isExternalLink ? "noopener noreferrer" : ""}
+                          rel={
+                            project.isExternalLink
+                              ? "noopener noreferrer"
+                              : ""
+                          }
                           className="card-media-anchor"
-                          onClick={(e) => {
-                            if (isDragging) e.preventDefault();
-                          }}
+                          onClick={handleLinkClick}
                         >
                           <img
                             src={project.image}
@@ -149,15 +169,25 @@ export default function RelatedProjects() {
 
                       {project.category && (
                         <div className="card-category-tag">
-                          <span className="category-badge">{project.category}</span>
+                          <span className="category-badge">
+                            {project.category}
+                          </span>
                         </div>
                       )}
                     </div>
 
                     <div className="card-body">
-                      <Link href={`/projects/${project.slug}`}>
+                      {/* 3. TITLE H3 -> Sekarang juga mengarah ke Link Project Eksternal (project.link) */}
+                      <a
+                        href={project.link}
+                        target={project.isExternalLink ? "_blank" : "_self"}
+                        rel={
+                          project.isExternalLink ? "noopener noreferrer" : ""
+                        }
+                        onClick={handleLinkClick}
+                      >
                         <h3 className="card-title">{project.title}</h3>
-                      </Link>
+                      </a>
                       <div className="card-client-name">{project.client}</div>
                     </div>
                   </article>
@@ -166,6 +196,7 @@ export default function RelatedProjects() {
             </div>
           </div>
         </div>
+
         <div className="portfolio-footer-tab">
           <div className="footer-tab-corner footer-corner-left"></div>
           <div className="portfolio-controls-content">
@@ -173,7 +204,10 @@ export default function RelatedProjects() {
               <div className="btn-inner orange-bg">
                 <div className="btn-icon-box">
                   <svg viewBox="0 0 24 23" fill="none">
-                    <path d="M15.7196 11.9163C13.8735 11.9163 12.3279 13.3863 12.3279 15.2342V22.5H11.641V15.2342C11.641 13.3863 10.0954 11.9163 8.20639 11.9163H0.822021V11.2443H8.20639C10.0954 11.2023 11.641 9.73237 11.5981 7.88442V0.660645H12.3279V7.88442C12.3279 9.73237 13.8735 11.2023 15.7196 11.2023H23.1469V11.9163H15.7196Z" fill="currentColor"/>
+                    <path
+                      d="M15.7196 11.9163C13.8735 11.9163 12.3279 13.3863 12.3279 15.2342V22.5H11.641V15.2342C11.641 13.3863 10.0954 11.9163 8.20639 11.9163H0.822021V11.2443H8.20639C10.0954 11.2023 11.641 9.73237 11.5981 7.88442V0.660645H12.3279V7.88442C12.3279 9.73237 13.8735 11.2023 15.7196 11.2023H23.1469V11.9163H15.7196Z"
+                      fill="currentColor"
+                    />
                   </svg>
                 </div>
                 <div className="btn-text-box">
@@ -202,7 +236,6 @@ export default function RelatedProjects() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

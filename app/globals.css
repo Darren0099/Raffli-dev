@@ -11,7 +11,6 @@
 @import './styles/Bridge.css';
 @import './styles/preloader.css';
 
-
 :root {
   --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
@@ -76,5 +75,17 @@ body {
     width: 42px;
     height: 42px;
     font-size: 16px;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }

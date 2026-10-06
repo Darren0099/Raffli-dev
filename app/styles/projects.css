@@ -396,3 +396,14 @@
     width: 260px;
   }
 }
+.card-hover-layer {
+  pointer-events: none;
+}
+
+.card-hover-layer a,
+.card-hover-layer button,
+.action-btn {
+  pointer-events: auto;
+  position: relative;
+  z-index: 20;
+}
