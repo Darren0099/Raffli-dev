@@ -44,7 +44,6 @@ const skillsData = [
 
 const SkillRow = ({ data, setCursorData }: { data: any, setCursorData: any }) => {
   const rowRef = useRef(null);
-  
   const isInView = useInView(rowRef, { margin: "-30% 0px -30% 0px" });
 
   return (
@@ -101,7 +100,9 @@ export default function Skills({ t }: { t: any }) {
   }, []);
 
   return (
-    <section className="awwwards-skills-section" id="skills">
+    <section className="awwwards-skills-section" style={{ position: 'relative' }}>
+      <div id="skills" style={{ position: 'absolute', top: 0, left: 0 }} />
+
       <motion.div 
         className="custom-floating-cursor"
         animate={{

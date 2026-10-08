@@ -122,8 +122,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  pointer-events: none; 
-  z-index: 9999;
+  pointer-events: none !important; 
+  z-index: 99;
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -132,10 +132,9 @@
   white-space: nowrap;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .row-title { font-size: 42px; letter-spacing: -1.5px; }
   .row-header { gap: 15px; }
   .row-content { padding-left: 35px; }
-  .custom-floating-cursor { display: none; } 
+  .custom-floating-cursor { display: none !important; } 
 }

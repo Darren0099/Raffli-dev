@@ -72,7 +72,7 @@ export default function RelatedProjects() {
   const translateX = -(currentIndex * CARD_STEP) + dragOffset;
 
   return (
-    <section className="portfolio-section">
+    <section className="portfolio-section" id="projects">
       <div className="portfolio-container">
         <div className="portfolio-tab">
           <div className="portfolio-tab-corner tab-corner-left"></div>

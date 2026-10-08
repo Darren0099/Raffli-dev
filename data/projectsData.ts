@@ -40,7 +40,7 @@ export const projectsData: Project[] = [
   {
     id: 1,
     slug: "yri-sumsel",
-    title: "Very Youthfull Profile Organization Website for Youth Ranger Indonesia Sumsel",
+    title: "Youthfull Profile Organization Website for Youth Ranger Indonesia Sumsel",
     client: "Youth Ranger Indonesia Sumsel",
     category: "Youth Organization",
     image: "/img/ca3.png",
@@ -52,22 +52,22 @@ export const projectsData: Project[] = [
       pills: ["Design", "Development", "Branding"],
       list: ["UI/UX Design", "React Frontend", "Responsive Layout", "Community Portal"]
     },
-    heroImage: "/img/ca3.png",
+    heroImage: "/img/ya (1).png",
     summaryQuote: "Empowering South Sumatra youth through an engaging digital presence and unified platform.",
     descriptionParagraphs: [
       "In today's fast-moving youth community landscape, having an accessible and inspiring platform is crucial. Youth Ranger Indonesia Sumsel needed a home that reflects their energetic identity.",
       "We created a vibrant, modern profile website that streamlines event announcements, volunteer registrations, and showcases ongoing social programs effectively."
     ],
-    galleryImages: ["/img/ca3.png", "/img/ca1.png"],
+    galleryImages: ["/img/yaa (1).png", "/img/yaa (5).png"],
     section1Title: "Showcasing youth empowerment in an engaging way",
     section1Text1: "The website incorporates lively UI elements, intuitive navigation, and optimized media assets to keep young visitors engaged.",
     section1Text2: "Every section was crafted to highlight community impact, event schedules, and active volunteer achievements.",
-    largeBannerImage: "/img/ca3.png",
+    largeBannerImage: "/img/ya (2).png",
     section2Title: "Collaboration fueled by community spirit",
     section2Text1: "We worked closely with regional leads to translate organizational needs into a seamless digital journey.",
     section2Text2: "The platform reduces administrative overhead and makes joining initiatives easier than ever.",
-    gridThumbnails: ["/img/ca3.png", "/img/ca2.png", "/img/ca4.png", "/img/ca1.png"],
-    bottomGalleryImages: ["/img/ca3.png", "/img/ca1.png", "/img/ca2.png", "/img/ca4.png"],
+    gridThumbnails: ["/img/yaa (1).png", "/img/yaa (2).png", "/img/yaa (3).png", "/img/yaa(4).png"],
+    bottomGalleryImages: ["/img/yaa (1).png", "/img/yaa (2).png", "/img/yaa (4).png", "/img/yaa (3).png"],
     outcomeTitle: "The Outcome",
     outcomeText: "A high-performance web platform that increased volunteer sign-ups and project visibility across South Sumatra.",
     outcomeStats: [
