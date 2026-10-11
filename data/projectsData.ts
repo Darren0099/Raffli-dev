@@ -115,45 +115,47 @@ export const projectsData: Project[] = [
     ],
     outcomeGallery: ["/img/ca2.png", "/img/ca3.png"]
   },
-  {
-    id: 3,
-    slug: "global-retailer-analytics",
-    title: "RFM segmentation & profitability insights across 11k+ customers",
-    client: "Global Retailer Analytics",
-    category: "Data Analytics",
-    image: "/img/ca5.png",
-    link: "https://github.com/Darren0099/global-electronics-retailer-analysis",
-    tools: ["Python", "Pandas", "RFM Analysis"],
-    buildTime: "Repository",
-    isExternalLink: true,
-    services: {
-      pills: ["Analysis", "Automation", "Visualization"],
-      list: ["Data Cleaning Pipeline", "RFM Segmentation", "Profitability Modeling"]
-    },
-    heroImage: "/img/ca5.png",
-    summaryQuote: "Transforming raw transactional records into actionable customer intelligence.",
-    descriptionParagraphs: [
-      "Retail businesses often struggle to identify high-value customer segments amidst thousands of raw order entries.",
-      "Using Pandas and Seaborn, this project analyzes sales distributions, currency conversion factors, and RFM customer scoring."
-    ],
-    galleryImages: ["/img/ca5.png", "/img/ca4.png"],
-    section1Title: "Data-driven customer segmentation",
-    section1Text1: "RFM metrics classify buyers into distinct loyalty tiers, allowing targeted marketing strategies.",
-    section1Text2: "Profit margins were cross-evaluated across product lines, countries, and fulfillment channels.",
-    largeBannerImage: "/img/ca5.png",
-    section2Title: "Clear visual storytelling",
-    section2Text1: "Custom visual charts illuminate sales seasonality and profit contribution per category.",
-    section2Text2: "Extensive notebooks provide reproducible analytics pipelines for real-world retail datasets.",
-    gridThumbnails: ["/img/ca5.png", "/img/ca2.png", "/img/ca3.png", "/img/ca1.png"],
-    bottomGalleryImages: ["/img/ca5.png", "/img/ca4.png", "/img/ca2.png", "/img/ca3.png"],
-    outcomeTitle: "The Outcome",
-    outcomeText: "Delivered actionable retention strategies and identified key revenue-generating customer cohorts.",
-    outcomeStats: [
-      { label: "Records Analyzed", value: "11,000+" },
-      { label: "RFM Segments", value: "8 Tiers" }
-    ],
-    outcomeGallery: ["/img/ca5.png", "/img/ca4.png"]
+ {
+  id: 3,
+  slug: "global-retailer-analytics",
+  title: "Segmentasi RFM & wawasan profitabilitas dari 11 ribu+ pelanggan",
+  client: "Global Retailer Analytics",
+  category: "Data Analytics",
+  image: "/img/ca5.png",
+  link: "https://github.com/Darren0099/global-electronics-retailer-analysis",
+  tools: ["Python", "Pandas", "Matplotlib", "RFM Analysis"],
+  buildTime: "Repository",
+  isExternalLink: true,
+  services: {
+    pills: ["Analisis", "Otomatisasi", "Visualisasi"],
+    list: ["Pipeline Konversi Multi-Mata Uang", "Segmentasi Pelanggan RFM", "Analisis Profitabilitas & Toko"]
   },
+  heroImage: "/img/ga (3).png",
+  summaryQuote: "Mengubah 62.000+ transaksi mentah menjadi wawasan pelanggan dan laba yang jelas.",
+  descriptionParagraphs: [
+    "Sebuah retailer elektronik global menjual dalam lima mata uang di 66 toko fisik dan satu toko online, tetapi data pesanan mentahnya menyulitkan untuk melihat pelanggan dan lini produk mana yang benar-benar menghasilkan laba.",
+    "Proyek Python end-to-end ini menggabungkan lima tabel (penjualan, produk, pelanggan, toko, dan kurs harian), menyeragamkan setiap pesanan ke USD, lalu menganalisis profit margin, segmen pelanggan RFM, dan efisiensi toko, semuanya dapat dijalankan dengan satu perintah."
+  ],
+  galleryImages: ["/img/ga (4).png", "/img/ga (1).png"],
+  section1Title: "Segmentasi pelanggan berbasis data",
+  section1Text1: "Skor RFM membagi 11.887 pelanggan ke dalam enam segmen. Champions dan Loyal Customers hanya 27% dari pembeli, tetapi menyumbang 47,8% revenue, sedangkan segmen Need Attention rata-rata bernilai $7.209 per pelanggan dan sudah sekitar 795 hari tidak membeli.",
+  section1Text2: "Laba kotor $32,7 juta (margin 58,6%) dievaluasi per kategori, brand, mata uang, dan toko. Computers memimpin dengan revenue $19,3 juta, sementara Cell phones terjual dalam volume besar tetapi bermargin di bawah rata-rata (56,6%).",
+  largeBannerImage: "/img/ga (2).png",
+  section2Title: "Visualisasi yang bercerita",
+  section2Text1: "Grafik menampilkan revenue dan laba per tahun, margin per kategori, dan kontribusi revenue tiap segmen pelanggan. Penjualan memuncak di $18,3 juta pada 2019, dan toko online sendiri menyumbang 20,5% revenue.",
+  section2Text2: "Pipeline yang modular dan dapat direproduksi (data loader, currency converter, modul metrik) membangun ulang seluruh laporan dan grafik dari file CSV mentah, sekaligus memperbaiki dua kesalahan hitung pada versi pertama: arah kurs dan skor frekuensi.",
+  gridThumbnails: ["/img/ca5.png", "/img/ca2.png", "/img/ca3.png", "/img/ca1.png"],
+  bottomGalleryImages: ["/img/ga (1).png", "/img/ga (2).png", "/img/ga (3).png", "/img/ga (4).png"],
+  outcomeTitle: "Hasil Akhir",
+  outcomeText: "Berhasil mengidentifikasi pelanggan yang menopang bisnis dan pelanggan bernilai tinggi yang berisiko berhenti membeli, disertai langkah yang jelas: pertahankan Champions, aktifkan kembali pembeli Need Attention, dan tinjau harga pada kategori bermargin rendah.",
+  outcomeStats: [
+    { label: "Transaksi Dianalisis", value: "62.884" },
+    { label: "Pelanggan Tersegmentasi", value: "11.887" },
+    { label: "Segmen RFM", value: "6 Tingkat" },
+    { label: "Profit Margin", value: "58,6%" }
+  ],
+  outcomeGallery: ["/img/ca5.png", "/img/ca4.png"]
+},
   {
     id: 4,
     slug: "pln-iconnet-portal",
@@ -231,5 +233,55 @@ export const projectsData: Project[] = [
       { label: "Social Impressions", value: "10K+" }
     ],
     outcomeGallery: ["/img/ca1.png", "/img/ca3.png"]
-  }
+  },{
+  id: 6,
+  slug: "tokopedia-sentiment-analysis",
+  title: "Analisis sentimen & performa kategori dari 6 juta+ item terjual di Tokopedia",
+  client: "Tokopedia Marketplace Analytics",
+  category: "Data Analytics",
+  image: "/img/ca (5).png",
+  link: "https://github.com/Darren0099/tokopedia-sentiment-analysis",
+  tools: ["Python", "Pandas", "Seaborn", "Exploratory Data Analysis"],
+  buildTime: "Repository",
+  isExternalLink: true,
+  services: {
+    pills: ["Analisis", "Pembersihan Data", "Visualisasi"],
+    list: ["Pipeline Pembersihan Data", "Klasifikasi Sentimen Berbasis Rating", "Analisis Performa Kategori"]
+  },
+  heroImage: "/img/ta (2).png",
+  summaryQuote: "Membaca jutaan transaksi marketplace untuk melihat kategori mana yang laris dan mana yang berisiko.",
+  descriptionParagraphs: [
+    "Manajemen dan penjual di marketplace perlu tahu kategori produk mana yang mendominasi transaksi, dan seberapa besar ulasan negatif mengancam penjualan.",
+    "Proyek ini menganalisis 3.664 produk dari 158 toko di lima kategori (Elektronik, Fashion, Handphone, Olahraga, Pertukangan) dengan Python, Pandas, dan Seaborn: membersihkan data, mengklasifikasikan sentimen berdasarkan rating, lalu membandingkan performa tiap kategori."
+  ],
+  galleryImages: ["/img/ta (4).png", "/img/ta (3).png"],
+  section1Title: "Performa penjualan per kategori",
+  section1Text1: "Dari total 6.173.830 item terjual dengan rata-rata rating 4,64 dari 5, kategori Olahraga paling laris dengan 1.719.090 item pada produk ber-rating tinggi, disusul Elektronik (1.506.329) dan Fashion (1.359.710).",
+  section1Text2: "Produk dengan rating 4 ke atas menyumbang 93,6% dari seluruh item terjual, sehingga kepuasan pelanggan terlihat kuat di hampir semua kategori.",
+  largeBannerImage: "/img/ta (2).png",
+  section2Title: "Sentimen dan area risiko",
+  section2Text1: "Sentimen diklasifikasikan dari rating: Positive (4 ke atas), Neutral (3), dan Negative (2 ke bawah). Kategori Handphone memiliki item ber-sentimen negatif terbanyak, yaitu 47.457 item dengan rata-rata rating 1,38, atau sekitar 5,2% dari penjualan kategorinya.",
+  section2Text2: "Angka itu jauh di atas kategori lain (sekitar 0,9% sampai 1,6%) dan mengindikasikan isu kualitas produk atau layanan pascabeli yang perlu ditinjau.",
+  gridThumbnails: [
+    "/img/ta (1).png",
+    "/img/tokopedia-sentiment-distribution.png",
+    "/img/tokopedia-rating-vs-sold.png",
+    "/img/tokopedia-sales-by-category.png"
+  ],
+  bottomGalleryImages: [
+    "/img/ta (1).png",
+    "/img/ta (2).png",
+    "/img/ta (3).png",
+    "/img/ta (4).png"
+  ],
+  outcomeTitle: "Hasil Akhir",
+  outcomeText: "Menghasilkan rekomendasi bisnis yang jelas: alokasikan anggaran promosi dan stok lebih besar ke Olahraga, Elektronik, dan Fashion, serta lakukan evaluasi quality control khusus pada seller dan produk Handphone.",
+  outcomeStats: [
+    { label: "Item Terjual Dianalisis", value: "6,17 Juta" },
+    { label: "Produk dari 158 Toko", value: "3.664" },
+    { label: "Kategori", value: "5" },
+    { label: "Rata-rata Rating", value: "4,64" }
+  ],
+  outcomeGallery: ["/img/tokopedia-sales-by-category.png", "/img/tokopedia-sentiment-distribution.png"]
+}
 ];

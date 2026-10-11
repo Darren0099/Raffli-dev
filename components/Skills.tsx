@@ -17,7 +17,7 @@ const skillsData = [
     title: "FrontEnd Dev",
     desc: "Menciptakan antarmuka yang interaktif dan mulus.",
     cursorText: "Pixel Perfect",
-    skills: ["React JS", "Next.js", "JavaScript", "HTML5", "CSS3"]
+    skills: ["React JS", "Next.js", "JavaScript", "HTML", "CSS"]
   },
   {
     id: "03",
@@ -31,7 +31,7 @@ const skillsData = [
     title: "Graphic Design",
     desc: "Bercerita melalui visual, branding, dan desain UI/UX.",
     cursorText: "Lets Create Magic",
-    skills: ["Figma", "Canva", "Photoshop", "Colorhunt", "Branding"]
+    skills: ["Figma", "Canva", "Colorhunt", "Branding"]
   },
   {
     id: "05",
