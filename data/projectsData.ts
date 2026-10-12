@@ -77,7 +77,7 @@ export const projectsData: Project[] = [
     outcomeGallery: ["/img/ca3.png", "/img/ca1.png"]
   },
   {
-    id: 2,
+    id: 7,
     slug: "asakita-protection",
     title: "Next-gen e-Government platform for digital child & women protection",
     client: "AsaKita Protection",
@@ -239,7 +239,7 @@ export const projectsData: Project[] = [
   title: "Analisis sentimen & performa kategori dari 6 juta+ item terjual di Tokopedia",
   client: "Tokopedia Marketplace Analytics",
   category: "Data Analytics",
-  image: "/img/ca (5).png",
+  image: "/img/ca6.png",
   link: "https://github.com/Darren0099/tokopedia-sentiment-analysis",
   tools: ["Python", "Pandas", "Seaborn", "Exploratory Data Analysis"],
   buildTime: "Repository",
@@ -283,5 +283,55 @@ export const projectsData: Project[] = [
     { label: "Rata-rata Rating", value: "4,64" }
   ],
   outcomeGallery: ["/img/tokopedia-sales-by-category.png", "/img/tokopedia-sentiment-distribution.png"]
+},{
+  id: 2,
+  slug: "palembang-go-vacation",
+  title: "Palembang Go Vacation: portal informasi wisata Kota Palembang untuk KMIPN VI 2024",
+  client: "KMIPN VI 2024 - Politeknik Negeri Sriwijaya",
+  category: "Web Development",
+  image: "/img/pa (1).png",
+  link: "palembang-go-vacation.vercel.app",
+  tools: ["HTML", "CSS", "JavaScript", "Vercel"],
+  buildTime: "Repository",
+  isExternalLink: true,
+  services: {
+    pills: ["Web Development", "UI Design", "E-Government"],
+    list: ["Portal Informasi Destinasi Wisata", "Halaman Detail Tiap Destinasi", "Navigasi Berdasarkan Kategori Wisata"]
+  },
+  heroImage: "/img/pa (1).png",
+  summaryQuote: "Satu portal untuk menjelajahi sejarah, budaya, alam, dan kuliner Palembang sebelum berangkat.",
+  descriptionParagraphs: [
+    "Wisatawan sering kesulitan mencari informasi destinasi Palembang yang lengkap dan terpercaya, karena datanya tersebar di banyak sumber. Pemerintah daerah juga membutuhkan kanal digital untuk mempromosikan potensi wisata kotanya.",
+    "Proyek ini adalah website portal wisata yang dibangun untuk KMIPN VI 2024 oleh tim Politeknik Negeri Sriwijaya dengan HTML, CSS, dan JavaScript. Situs ini memuat katalog destinasi dan halaman detail untuk tiap ikon wisata Palembang."
+  ],
+  galleryImages: ["/img/pa (2).png", "/img/pa (3).png"],
+  section1Title: "Katalog destinasi wisata",
+  section1Text1: "Portal ini mengelompokkan 96 destinasi ke dalam empat kategori: 43 wisata budaya dan tempat bersejarah, 29 wisata buatan, 4 wisata alam, dan 20 wisata kuliner.",
+  section1Text2: "Ikon-ikon kota seperti Jembatan Ampera, Benteng Kuto Besak, Al-Qur'an Al-Akbar, Kampung Kapitan, Jakabaring Sport City, dan Kampung Pempek masing-masing punya halaman sendiri.",
+  largeBannerImage: "/img/pa (1).png",
+  section2Title: "Pengalaman pengguna",
+  section2Text1: "Beranda menampilkan sorotan destinasi unggulan seperti Jembatan Ampera, Punti Kayu, Rumah Limas, dan Benteng Kuto Besak. Ada juga menu navigasi bertingkat per kategori, galeri foto, dan peta lokasi Dinas Pariwisata Kota Palembang.",
+  section2Text2: "Tampilan dirancang agar wisatawan bisa berpindah dari ringkasan destinasi ke halaman detail dengan cepat, sehingga lebih mudah menyusun rencana liburan.",
+  gridThumbnails: [
+    "/img/pa (1).png",
+    "/img/pa (2).png",
+    "/img/pa (3).png",
+    "/img/pa (4).png"
+  ],
+  bottomGalleryImages: [
+    "/img/pa (1).png",
+    "/img/pa (2).png",
+    "/img/pa (3).png",
+    "/img/pa (4).png"
+  ],
+  outcomeTitle: "Hasil Akhir",
+  outcomeText: "Website portal wisata yang sudah live dan menjadi karya untuk KMIPN VI 2024, dengan katalog destinasi yang terstruktur dan mudah dijelajahi wisatawan.",
+  outcomeStats: [
+    { label: "Destinasi Terdata", value: "96" },
+    { label: "Wisata Budaya & Sejarah", value: "43" },
+    { label: "Wisata Buatan", value: "29" },
+    { label: "Wisata Kuliner", value: "20" }
+  ],
+  outcomeGallery: ["/img/pa (2).png", "/img/pa (3).png"]
 }
 ];

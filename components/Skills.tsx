@@ -24,7 +24,7 @@ const skillsData = [
     title: "Data Analysis",
     desc: "Mengubah data mentah menjadi wawasan bisnis yang tajam.",
     cursorText: "Clean your data",
-    skills: ["Python", "Bahasa R", "Pandas", "Looker Studio", "Excel"]
+    skills: ["Python", "Kaggle", "Pandas", "Looker Studio", "Excel"]
   },
   {
     id: "04",
