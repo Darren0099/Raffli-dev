@@ -83,7 +83,7 @@ export const projectsData: Project[] = [
     client: "AsaKita Protection",
     category: "e-Government",
     image: "/img/ca2.png",
-    link: "https://km-7.vercel.app/",
+    link: "https://asa-kita.vercel.app/",
     tools: ["React JS", "Responsive UI", "Tailwind CSS", "e-Government"],
     buildTime: "KMIPN VII",
     isExternalLink: true,
