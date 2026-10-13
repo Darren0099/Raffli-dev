@@ -91,22 +91,22 @@ export const projectsData: Project[] = [
       pills: ["Design", "Build", "Security"],
       list: ["Encrypted Reporting Forms", "Emergency Assistance UI", "Legal Guides Portal"]
     },
-    heroImage: "/img/ca2.png",
+    heroImage: "/img/as (1).png",
     summaryQuote: "A safe, accessible digital space providing legal education and rapid incident reporting.",
     descriptionParagraphs: [
       "AsaKita was developed to tackle public welfare challenges by providing accessible legal counseling and emergency assistance.",
       "Designed specifically for KMIPN VII, the system ensures victim privacy, rapid reporting mechanisms, and public educational resources."
     ],
-    galleryImages: ["/img/ca2.png", "/img/ca3.png"],
+    galleryImages: ["/img/as (4).png", "/img/as (5).png"],
     section1Title: "Accessible reporting with privacy first",
     section1Text1: "Building user trust was paramount. The UI provides quick-exit safety options and encrypted reporting forms.",
     section1Text2: "Clear visual hierarchies allow users in distress to find immediate contact numbers and emergency help.",
-    largeBannerImage: "/img/ca2.png",
+    largeBannerImage: "/img/as (6).png",
     section2Title: "Empowering communities through education",
     section2Text1: "Beyond incident reporting, AsaKita offers structured legal guides and victim support channels.",
     section2Text2: "Interactive modules guide users through legal procedures in plain, empathetic language.",
     gridThumbnails: ["/img/ca2.png", "/img/ca4.png", "/img/ca5.png", "/img/ca1.png"],
-    bottomGalleryImages: ["/img/ca2.png", "/img/ca3.png", "/img/ca4.png", "/img/ca5.png"],
+    bottomGalleryImages: ["/img/as (7).png", "/img/as (2).png", "/img/as (3).png", "/img/as (4).png"],
     outcomeTitle: "The Outcome",
     outcomeText: "Recognized at national polytechnic competitions for its real-world social impact and robust architecture.",
     outcomeStats: [
