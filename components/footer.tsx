@@ -122,7 +122,7 @@ export default function Footer() {
   const totalPixels = cols * rows;
 
   return (
-    <footer ref={containerRef} className="pixel-footer-wrapper">
+    <footer id="contact" ref={containerRef} className="pixel-footer-wrapper">
       
       <div className="pixel-overlay">
         {Array.from({ length: totalPixels }).map((_, i) => (
@@ -161,9 +161,9 @@ export default function Footer() {
               <div className="sub-group">
                 <h4 className="col-title">Links</h4>
                 <ul className="footer-links">
-                  <li><a href="#about">ABOUT</a></li>
-                  <li><a href="#skills">TOOLS</a></li>
-                  <li><a href="#projects">WORK</a></li>
+                  <li><a href="/#about">ABOUT</a></li>
+                  <li><a href="/#skills">TOOLS</a></li>
+                  <li><a href="/projects">WORK</a></li>
                   <li className="active-link">
                     LET&apos;S CREATE <span className="black-square-inline"></span>
                   </li>
