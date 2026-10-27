@@ -1,185 +1,224 @@
+/* The Bridge is the final viewport-wide panel of the Experience horizontal rail. */
 .bridge-scroll-container {
   position: relative;
+  flex: 0 0 100vw;
   width: 100vw;
-  height: 250vh;
-  background-color: #050505;
-}
-
-.bridge-sticky-viewport {
-  position: sticky;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
-  background-color: #050505;
-}
-
-.bridge-slide-horizontal-wrapper {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  will-change: transform;
+  background: #090909;
+  color: #fff;
 }
 
 .bridge-slide-content {
-  width: 100vw;
-  height: 100vh;
   position: relative;
-  background-color: #050505;
+  height: 100%;
+  width: 100%;
+  padding: clamp(32px, 6vh, 75px) clamp(24px, 5vw, 92px);
+  background: #090909;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 70px 60px;
-  box-sizing: border-box;
+  isolation: isolate;
 }
 
 .bridge-text-box {
-  max-width: 620px;
-  z-index: 10;
+  max-width: min(600px, 55vw);
+  position: relative;
+  z-index: 12;
+  pointer-events: none;
 }
 
 .bridge-heading-statement {
-  font-size: 1.75rem;
-  font-weight: 500;
-  color: #ffffff;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: clamp(20px, 2.1vw, 34px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -.04em;
+  color: #fff;
 }
 
-/* 3D Canvas Layer */
 .bridge-3d-canvas-container {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
   overflow: hidden;
+  z-index: 5;
+  touch-action: pan-y;
 }
 
-/* Titik Merah Kursor */
+.bridge-drag-zone {
+  position: absolute;
+  top: 31%;
+  left: 31%;
+  width: 38%;
+  height: 41%;
+  z-index: 19;
+  cursor: grab;
+  touch-action: none;
+  border-radius: 15%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bridge-drag-zone.is-dragging { cursor: grabbing; }
+
 .hud-red-dot {
   position: absolute;
   top: 0;
   left: 0;
   width: 7px;
   height: 7px;
-  background-color: #ff3b30;
+  background: #ff4e24;
   border-radius: 50%;
-  margin-top: -3.5px;
-  margin-left: -3.5px;
+  margin: -3.5px 0 0 -3.5px;
   pointer-events: none;
-  z-index: 20;
+  z-index: 22;
+  opacity: 0;
+  transition: opacity .2s ease;
 }
 
-/* Layer Kuas Pelukis & Trigonometry Fill $ */
-.hud-brush-splash-layer {
+.hud-brush-splash-layer,
+.hud-3d-object-nodes-layer,
+.hud-svg-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 8;
 }
 
-.brush-splash-char {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: monospace;
-  font-size: 11px;
-  font-weight: bold;
-  pointer-events: none;
-  user-select: none;
-  transition: opacity 0.1s linear;
-}
+.hud-svg-canvas { z-index: 7; }
+.hud-brush-splash-layer { z-index: 8; }
+.hud-3d-object-nodes-layer { z-index: 14; }
 
+.brush-splash-char,
 .trig-shape-char {
   position: absolute;
   top: 0;
   left: 0;
-  font-family: monospace;
-  font-size: 10px;
-  color: rgba(254, 80, 0, 0.45);
-  pointer-events: none;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
   user-select: none;
 }
 
-/* Badge Floating "Scroll" */
+.trig-shape-char { color: rgba(254,80,0,.42); font-size: 10px; }
+
 .hud-scroll-badge {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 4px 7px;
   background: #fe5000;
-  color: #ffffff;
-  font-size: 9px;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
+  color: #fff;
+  font: 800 10px ui-monospace, monospace;
+  letter-spacing: .08em;
+  border-radius: 2px;
   pointer-events: none;
-  z-index: 15;
-}
-
-/* Multi-Node Boxes */
-.hud-3d-object-nodes-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 15;
+  z-index: 22;
+  opacity: 0;
+  transition: opacity .2s ease;
 }
 
 .hud-node-box {
   position: absolute;
   top: 0;
   left: 0;
-  font-family: monospace;
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 2px 6px;
-  border-radius: 3px;
+  padding: 3px 6px;
+  color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  font: 10px ui-monospace, monospace;
+  letter-spacing: .04em;
   pointer-events: none;
-  letter-spacing: 0.5px;
-  transition: opacity 0.2s ease, transform 0.1s ease-out;
 }
 
-.hud-node-box.node-cursor {
-  border-color: rgba(254, 80, 0, 0.4);
-}
+.hud-node-box.node-cursor { border-color: rgba(254,80,0,.5); }
+.hud-node-box.node-midpoint { color: #fe5000; border-color: #fe5000; background: rgba(254,80,0,.15); }
 
-.hud-node-box.node-midpoint {
-  color: #fe5000;
-  border-color: #fe5000;
-  background: rgba(254, 80, 0, 0.15);
-}
-
-.hud-svg-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 5;
-}
-
-/* Branding Footer */
 .bridge-brand-bottom {
-  z-index: 10;
-  font-size: 7.5vw;
+  position: relative;
+  z-index: 12;
+  margin-top: auto;
+  pointer-events: none;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  font-size: clamp(88px, 11.4vw, 215px);
+  line-height: .82;
+  letter-spacing: -.085em;
+  white-space: nowrap;
+  user-select: none;
 }
 
 .brand-name-orange,
-.brand-code-orange {
-  color: #fe5000;
+.brand-code-orange { color: #fe5000; }
+
+.bridge-interaction-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 32%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,.48);
+  font: 700 10px ui-monospace, monospace;
+  white-space: nowrap;
+  letter-spacing: .1em;
+  pointer-events: none;
+  z-index: 16;
+}
+
+.bridge-interaction-hint span { color: #fe5000; padding: 0 8px; }
+
+.bridge-interaction-controls {
+  position: absolute;
+  right: clamp(22px, 5vw, 90px);
+  top: 47%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  z-index: 30;
+}
+
+.bridge-interaction-controls button {
+  min-width: 75px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.36);
+  border-radius: 0;
+  background: rgba(12,12,12,.7);
+  color: #fff;
+  cursor: pointer;
+  font: 800 11px ui-monospace, monospace;
+  letter-spacing: .08em;
+  transition: background .2s, border-color .2s, color .2s;
+}
+
+.bridge-interaction-controls button:hover,
+.bridge-interaction-controls button:focus-visible {
+  background: #fe5000;
+  border-color: #fe5000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .bridge-slide-content { padding: 38px 24px 55px; }
+  .bridge-text-box { max-width: 93%; }
+  .bridge-heading-statement { font-size: clamp(20px, 5vw, 29px); }
+  .bridge-drag-zone { top: 36%; left: 17%; width: 68%; height: 31%; }
+  .bridge-interaction-hint { bottom: 29%; font-size: 9px; }
+  .bridge-interaction-controls {
+    top: auto;
+    bottom: 15%;
+    right: 24px;
+    flex-direction: row;
+  }
+  .bridge-interaction-controls button { min-width: 66px; padding: 8px 10px; }
+  .bridge-brand-bottom { font-size: clamp(65px, 13.6vw, 100px); letter-spacing: -.08em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bridge-interaction-controls button,
+  .hud-red-dot,
+  .hud-scroll-badge { transition: none; }
 }

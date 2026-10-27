@@ -1,7 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import '../app/styles/experience.css';
 import { useLanguage } from './LanguageProvider';
 import { useLocalizedStrings } from '@/hooks/useLocalizedProjects';
@@ -124,30 +122,20 @@ const experienceData = [
 export default function Experience() {
   const { lang } = useLanguage();
   const localized = useLocalizedStrings(experienceData.flatMap((item) => [item.year, item.category, item.title, item.desc]));
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const xTransform = useTransform(scrollYProgress, [0, 1], ["0%", "-78%"]);
-  const bgTextX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-
   return (
-    <section ref={containerRef} className="exp-scroll-container" id="experience" style={{ height: '300vh' }}>
+    <section className="exp-scroll-container" aria-label={lang === "id" ? "Kartu pengalaman" : "Experience cards"}>
       <div className="exp-sticky-viewport">
         
-        <motion.div className="exp-huge-bg-text" style={{ x: bgTextX }}>
+        <div className="exp-huge-bg-text">
           VOIR, PARCOURS & EXPERIENCES.
-        </motion.div>
+        </div>
 
         <div className="exp-fixed-header">
           <h2 className="exp-title">{lang === "id" ? "Perjalanan & Pengalaman" : "Journey & Experience"}</h2>
           <p className="exp-subtitle">{lang === "id" ? "Eksplorasi langkah demi langkah dari awal hingga sekarang." : "A step-by-step journey from the beginning to today."}</p>
         </div>
 
-        <motion.div className="exp-horizontal-track" style={{ x: xTransform }}>
+        <div className="exp-horizontal-track">
           <div className="exp-track-spacer"></div>
 
           {experienceData.map((item, i) => (
@@ -170,7 +158,7 @@ export default function Experience() {
           ))}
 
           <div className="exp-track-spacer"></div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

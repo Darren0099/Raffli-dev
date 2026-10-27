@@ -8,7 +8,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Ticker from '@/components/Ticker';
 import Skills from '@/components/Skills';
-import Experience from '@/components/Experience';
+import ExperienceBridgeScroll from '@/components/ExperienceBridgeScroll';
 import Projects from '@/components/Projects';
 import Certificates from '@/components/Certificates';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -16,7 +16,6 @@ import SectionWrapper from '@/components/SectionWrapper';
 import HighlightSection from '@/components/HighlightSection';
 import Footer from '@/components/footer';
 import Preloader from '@/components/Preloader'; 
-import BridgeShowcase from '@/components/BridgeShowcase';
 
 export default function Home() {
   const { lang, setLang } = useLanguage();
@@ -32,10 +31,7 @@ export default function Home() {
       <Ticker />
       <Skills t={t} />
       
-      <SectionWrapper bgColor="#F15A24">
-        <Experience />
-      </SectionWrapper>
-      <BridgeShowcase />
+      <ExperienceBridgeScroll />
         <Projects />
       <Certificates />
       
