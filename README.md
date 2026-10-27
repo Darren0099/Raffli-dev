@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raffli — Personal Portfolio & Project Case Studies
 
-## Getting Started
+Portofolio digital **Al-man Raffli Saputra**, lulusan D3 Teknik Komputer Politeknik Negeri Sriwijaya, untuk memperkenalkan karya web development, data analytics, desain, serta pengalaman organisasi dan profesional.
 
-First, run the development server:
+Bukan hanya kumpulan tangkapan layar: setiap proyek disajikan sebagai **case study** yang menjelaskan masalah yang ditangani, pendekatan teknis, teknologi yang dipakai, serta hasil yang dapat ditelusuri melalui demo maupun repository.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Pengalaman di website
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Landing interaktif**: profil, keahlian, pengalaman, karya, sertifikat, dan kontak.
+- **Project showcase**: carousel karya dengan informasi teknologi pada setiap kartu dan halaman `/projects` untuk seluruh proyek.
+- **Halaman detail dinamis**: `/projects/[slug]` menyajikan cerita proyek, implementasi, hasil, galeri dan tautan kode sumber.
+- **Galeri lightbox**: gambar dapat diperbesar dan ditelusuri menggunakan tombol navigasi atau keyboard.
+- **Bahasa Indonesia & Inggris**: pilihan bahasa tersimpan di browser; konten proyek yang ditulis dalam Bahasa Indonesia dapat diterjemahkan saat diperlukan.
+- **Interaksi visual**: Three.js, Framer Motion, Lottie, dan komponen carousel.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Teknologi yang digunakan
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Lapisan | Teknologi |
+| --- | --- |
+| Framework | Next.js 16 (App Router), React 19 |
+| Bahasa | TypeScript, JavaScript |
+| Tampilan | CSS, Tailwind CSS 4 |
+| Animasi / 3D | Framer Motion, Three.js, Lottie |
+| Konten proyek | `data/projectsData.ts` |
+| Bahasa | React context, `/api/translate` dan API penerjemah opsional |
+| Deployment | Vercel |
 
-## Learn More
+## Konsep dan hasil
 
-To learn more about Next.js, take a look at the following resources:
+Portofolio ini dirancang agar pembaca bisa mengevaluasi **apa yang dibangun, mengapa teknologi tersebut dipilih, dan bukti hasil pengerjaannya**. Artikel proyek menggunakan narasi berbasis kode sumber dan dokumentasi; klaim statistik yang tidak terverifikasi dihindari.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Konten studi kasus berpusat pada `data/projectsData.ts`. Untuk menambahkan karya, cukup membuat satu entri berbahasa Indonesia, menyertakan galeri, dan mencantumkan demo atau sumbernya. Dokumentasi pengelolaan konten dan penerjemahan: [PROJECT_CONTENT_AND_TRANSLATION.md](docs/PROJECT_CONTENT_AND_TRANSLATION.md).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Jelajahi
 
-## Deploy on Vercel
+- [Seluruh proyek](https://github.com/Darren0099/Raffli-dev/tree/main/data)
+- [Profil GitHub](https://github.com/Darren0099)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Beberapa tampilan dan integrasi eksternal bergantung pada layanan pihak ketiga. Repository ini adalah sumber portofolio, bukan CMS multi-pengguna.
