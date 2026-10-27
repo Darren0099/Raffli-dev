@@ -1,0 +1,26 @@
+.clickable-project-image{display:block;position:relative;width:100%;height:100%;padding:0;background:transparent;border:0;cursor:zoom-in;text-align:left}
+.clickable-project-image img{display:block;width:100%;height:100%;object-fit:cover}
+.clickable-project-image:focus-visible{outline:3px solid #f15a24;outline-offset:-3px}
+.project-lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:2.25rem clamp(.75rem,3vw,3rem)}
+.lightbox-figure{min-width:0;flex:1;max-width:min(88vw,1500px);display:flex;flex-direction:column;align-items:center;gap:.75rem;margin:0}
+.lightbox-figure img{display:block;width:100%;max-height:82vh;object-fit:contain;border-radius:6px}
+.lightbox-figure figcaption{color:#fff;font-size:.85rem;text-align:center}
+.lightbox-close,.lightbox-arrow{flex-shrink:0;border:1px solid rgba(255,255,255,.4);border-radius:50%;background:rgba(25,25,25,.85);color:white;cursor:pointer;display:grid;place-items:center}
+.lightbox-close{position:absolute;right:1rem;top:1rem;width:45px;height:45px;font-size:2rem;z-index:1}
+.lightbox-arrow{width:46px;height:46px;font-size:1.5rem}
+.lightbox-arrow:hover,.lightbox-close:hover{background:#f15a24}
+@media(max-width:600px){.project-lightbox{padding:1rem .35rem;gap:.25rem}.lightbox-arrow{width:36px;height:36px;font-size:1.2rem}.lightbox-figure img{max-height:76vh}}
+
+.case-outcome-section{padding-top:3rem;border-top:1px solid rgba(0,0,0,.12)}
+.case-outcome-description{max-width:850px;line-height:1.8;color:#4a4a4a}
+.case-outcome-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin:2rem 0}
+.case-stat{display:flex;flex-direction:column;gap:.4rem;background:white;padding:1.4rem;border-radius:16px}
+.case-stat strong{font-size:clamp(1.1rem,2vw,1.8rem);line-height:1.2;color:#111}
+.case-stat span{font-size:.85rem;color:#666}
+.case-tools-heading{font-size:1.1rem;margin:2rem 0 1rem}
+.case-tools-list{display:flex;flex-wrap:wrap;gap:.6rem}
+.case-source-links{display:flex;gap:.75rem;flex-wrap:wrap;margin:2rem 0}
+.case-source-links a{background:#111;color:white;padding:.8rem 1.2rem;border-radius:40px;text-decoration:none}
+.case-source-links a:hover{background:#f15a24}
+.case-outcome-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.case-outcome-gallery .clickable-project-image{aspect-ratio:16/10;border-radius:16px;overflow:hidden}

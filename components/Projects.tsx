@@ -3,8 +3,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { projectsData } from "@/data/projectsData";
+import { useLanguage } from "./LanguageProvider";
+import { useLocalizedProjectTitles } from "@/hooks/useLocalizedProjects";
 
 export default function RelatedProjects() {
+  const { lang } = useLanguage();
+  const titleFor = useLocalizedProjectTitles(projectsData);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -78,7 +82,7 @@ export default function RelatedProjects() {
           <div className="portfolio-tab-corner tab-corner-left"></div>
           <div className="portfolio-tab-body">
             <span className="subheading-dot"></span>
-            <span className="subheading-text">Related projects</span>
+            <span className="subheading-text">{lang === 'id' ? 'Proyek pilihan' : 'Related projects'}</span>
           </div>
           <div className="portfolio-tab-corner tab-corner-right"></div>
         </div>
@@ -105,7 +109,7 @@ export default function RelatedProjects() {
                       <div className="card-media-inner">
                         <div className="card-hover-layer">
                           <div className="hover-info-top">
-                            <span className="info-label">Used Tech / Tools</span>
+                            <span className="info-label">{lang === 'id' ? 'Teknologi / Tools' : 'Tech / Tools'}</span>
                             <div className="tools-badge-list">
                               {project.tools.map((tool, idx) => (
                                 <span className="tool-badge" key={idx}>
@@ -130,7 +134,7 @@ export default function RelatedProjects() {
                                 className="action-btn orange-btn"
                                 onClick={handleLinkClick}
                               >
-                                <span>View Project</span>
+                                <span>{lang === 'id' ? 'Lihat Proyek' : 'View Project'}</span>
                                 <svg
                                   className="action-icon"
                                   viewBox="0 0 15 15"
@@ -186,7 +190,7 @@ export default function RelatedProjects() {
                         }
                         onClick={handleLinkClick}
                       >
-                        <h3 className="card-title">{project.title}</h3>
+                        <h3 className="card-title">{titleFor(project.slug, project.title)}</h3>
                       </a>
                       <div className="card-client-name">{project.client}</div>
                     </div>
@@ -211,7 +215,7 @@ export default function RelatedProjects() {
                   </svg>
                 </div>
                 <div className="btn-text-box">
-                  <span className="btn-label">Show all projects</span>
+                  <span className="btn-label">{lang === 'id' ? 'Lihat semua proyek' : 'Show all projects'}</span>
                 </div>
               </div>
             </Link>

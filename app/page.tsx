@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/components/LanguageProvider';
 import { translations } from '@/data/translations';
 
 import Navbar from '@/components/Navbar';
@@ -18,7 +19,7 @@ import Preloader from '@/components/Preloader';
 import BridgeShowcase from '@/components/BridgeShowcase';
 
 export default function Home() {
-  const [lang, setLang] = useState<'id' | 'en'>('id');
+  const { lang, setLang } = useLanguage();
   const [loading, setLoading] = useState(true);
   const t = translations[lang];
 

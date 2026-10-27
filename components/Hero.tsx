@@ -45,7 +45,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
       <div className="hero-content-wrapper">
         
         <div className="hero-left-box">
-          <span className="about-me-tag">(About me)</span>
+          <span className="about-me-tag">{lang === "id" ? "(Tentang saya)" : "(About me)"}</span>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,9 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="hero-main-title"
           >
-            Empowering digital vision and solving complex growth struggles. I help as a{" "}
+            {lang === 'id'
+              ? 'Mengembangkan solusi digital dan mengubah kebutuhan yang kompleks menjadi pengalaman yang mudah digunakan. Saya berperan sebagai '
+              : 'Empowering digital vision and solving complex growth struggles. I help as a '}
             <span className="typewriter-text">{displayText}</span>
             <span className="typewriter-cursor">|</span>
           </motion.h1>
@@ -65,7 +67,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             className="hero-cta-group"
           >
             <a href="mailto:almanraffli1@gmail.com" className="get-in-touch-btn">
-              <span>✦</span> Get in touch
+              <span>✦</span> {lang === 'id' ? 'Hubungi saya' : 'Get in touch'}
             </a>
           </motion.div>
         </div>

@@ -5,8 +5,13 @@ import Link from 'next/link';
 import { projectsData } from '@/data/projectsData';
 import Footer from '@/components/footer';
 import './projects-page.css';
+import LanguageToggle from '@/components/LanguageToggle';
+import { useLanguage } from '@/components/LanguageProvider';
+import { useLocalizedProjectTitles } from '@/hooks/useLocalizedProjects';
 
 export default function AllProjectsPage() {
+  const { lang } = useLanguage();
+  const titleFor = useLocalizedProjectTitles(projectsData);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const maxCarousel = Math.max(0, projectsData.length - 1);
 
@@ -22,14 +27,15 @@ export default function AllProjectsPage() {
     <main className="all-projects-container font-sans">
       
       <div className="all-projects-wrapper">
-        <h1 className="all-projects-title">Projects</h1>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"1rem"}}><Link href="/" style={{color:"inherit",textDecoration:"none"}}>← {lang === "id" ? "Beranda" : "Home"}</Link><LanguageToggle /></div>
+        <h1 className="all-projects-title">{lang === "id" ? "Semua Proyek" : "All Projects"}</h1>
 
         <div className="projects-main-grid">
           {projectsData.map((project) => (
             <article key={project.slug} className="project-card-item group">
               <div className="project-media-box">
                 <a href={project.link} target="_blank" rel="noreferrer" className="block w-full h-full">
-                  <img src={project.image} alt={project.title} />
+                  <img src={project.image} alt={titleFor(project.slug, project.title)} />
                 </a>
 
                 {project.category && (
@@ -51,7 +57,7 @@ export default function AllProjectsPage() {
 
                 <div className="project-hover-glass">
                   <div>
-                    <span className="glass-label">Used Tools</span>
+                    <span className="glass-label">{lang === 'id' ? 'Teknologi' : 'Used Tools'}</span>
                     <div className="glass-tools-list">
                       {project.tools?.map((tool, i) => (
                         <span key={i} className="glass-tool-item">{tool}</span>
@@ -72,7 +78,7 @@ export default function AllProjectsPage() {
 
               <div className="project-info-box">
                 <Link href={`/projects/${project.slug}`} className="project-item-title">
-                  <h3>{project.title}</h3>
+                  <h3>{titleFor(project.slug, project.title)}</h3>
                 </Link>
                 <p className="project-item-client">{project.client}</p>
               </div>
@@ -83,7 +89,7 @@ export default function AllProjectsPage() {
 
         <div className="more-projects-section">
           <div className="more-projects-header">
-            <h2>More projects</h2>
+            <h2>{lang === 'id' ? 'Proyek lainnya' : 'More projects'}</h2>
             <div className="carousel-nav-buttons">
               <button 
                 onClick={prevCarousel} 
@@ -112,12 +118,12 @@ export default function AllProjectsPage() {
               {projectsData.map((project) => (
                 <div key={project.slug} className="more-project-card">
                   <div className="more-project-media">
-                    <img src={project.image} alt={project.title} />
+                    <img src={project.image} alt={titleFor(project.slug, project.title)} />
                     <Link href={`/projects/${project.slug}`} className="more-project-overlay">
                       View Project ↗
                     </Link>
                   </div>
-                  <h4 className="more-project-title">{project.title}</h4>
+                  <h4 className="more-project-title">{titleFor(project.slug, project.title)}</h4>
                   <span className="more-project-client">{project.client}</span>
                 </div>
               ))}

@@ -11,6 +11,7 @@ export interface Project {
   category: string;
   image: string;
   link: string;
+  repoUrl?: string;
   tools: string[];
   buildTime: string;
   isExternalLink?: boolean;
@@ -38,300 +39,532 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
-    id: 1,
-    slug: "yri-sumsel",
-    title: "Youthfull Profile Organization Website for Youth Ranger Indonesia Sumsel",
-    client: "Youth Ranger Indonesia Sumsel",
-    category: "Youth Organization",
-    image: "/img/ca3.png",
-    link: "https://youthrangerindonesiasumateraselatan.vercel.app/",
-    tools: ["React JS", "Responsive UI", "Tailwind CSS", "e-Government"],
-    buildTime: "YRI SUMSEL",
-    isExternalLink: true,
-    services: {
-      pills: ["Design", "Development", "Branding"],
-      list: ["UI/UX Design", "React Frontend", "Responsive Layout", "Community Portal"]
+    "id": 1,
+    "slug": "yri-sumsel",
+    "title": "Website Profil dan CMS Berita Youth Ranger Indonesia Sumatera Selatan",
+    "client": "Youth Ranger Indonesia Sumsel",
+    "category": "Web Development",
+    "image": "/img/ca3.png",
+    "heroImage": "/img/ya (1).png",
+    "link": "https://youthrangerindonesiasumateraselatan.vercel.app/",
+    "repoUrl": "https://github.com/Darren0099/YOUTHRANGERINDONESIASUMATERASELATAN",
+    "tools": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "CSS Modules",
+      "GitHub API",
+      "Vercel"
+    ],
+    "buildTime": "Website organisasi & CMS",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Frontend",
+        "CMS",
+        "UI/UX"
+      ],
+      "list": [
+        "Website profil organisasi responsif",
+        "Halaman program, berita, dan galeri",
+        "Panel admin untuk tambah, edit, dan hapus artikel",
+        "Penyimpanan konten berbasis commit GitHub"
+      ]
     },
-    heroImage: "/img/ya (1).png",
-    summaryQuote: "Empowering South Sumatra youth through an engaging digital presence and unified platform.",
-    descriptionParagraphs: [
-      "In today's fast-moving youth community landscape, having an accessible and inspiring platform is crucial. Youth Ranger Indonesia Sumsel needed a home that reflects their energetic identity.",
-      "We created a vibrant, modern profile website that streamlines event announcements, volunteer registrations, and showcases ongoing social programs effectively."
+    "summaryQuote": "Satu platform untuk memperkenalkan program organisasi sekaligus mengelola publikasi berita tanpa mengubah kode secara manual.",
+    "descriptionParagraphs": [
+      "Organisasi pemuda membutuhkan satu tempat yang jelas untuk menampilkan identitas, kegiatan, berita, dan dokumentasi kepada publik.",
+      "Saya mengembangkan antarmuka website profil YRI Sumsel menggunakan Next.js App Router, React, TypeScript, dan CSS Modules. Kontennya dibagi menjadi halaman utama, program, berita, detail artikel, dan galeri.",
+      "Panel admin artikel terhubung ke GitHub API: penambahan, penyuntingan, penghapusan berita, dan pengelolaan gambar dicatat sebagai perubahan data repository yang kemudian digunakan dalam deployment Vercel."
     ],
-    galleryImages: ["/img/yaa (1).png", "/img/yaa (5).png"],
-    section1Title: "Showcasing youth empowerment in an engaging way",
-    section1Text1: "The website incorporates lively UI elements, intuitive navigation, and optimized media assets to keep young visitors engaged.",
-    section1Text2: "Every section was crafted to highlight community impact, event schedules, and active volunteer achievements.",
-    largeBannerImage: "/img/ya (2).png",
-    section2Title: "Collaboration fueled by community spirit",
-    section2Text1: "We worked closely with regional leads to translate organizational needs into a seamless digital journey.",
-    section2Text2: "The platform reduces administrative overhead and makes joining initiatives easier than ever.",
-    gridThumbnails: ["/img/yaa (1).png", "/img/yaa (2).png", "/img/yaa (3).png", "/img/yaa(4).png"],
-    bottomGalleryImages: ["/img/yaa (1).png", "/img/yaa (2).png", "/img/yaa (4).png", "/img/yaa (3).png"],
-    outcomeTitle: "The Outcome",
-    outcomeText: "A high-performance web platform that increased volunteer sign-ups and project visibility across South Sumatra.",
-    outcomeStats: [
-      { label: "Community Engagement", value: "+150%" },
-      { label: "Page Load Time", value: "< 1.2s" }
+    "galleryImages": [
+      "/img/yaa (1).png",
+      "/img/yaa (5).png"
     ],
-    outcomeGallery: ["/img/ca3.png", "/img/ca1.png"]
+    "section1Title": "Apa yang dibangun dan bagaimana cara kerjanya?",
+    "section1Text1": "Frontend menampilkan navigasi program, daftar berita dengan filter dan pencarian, serta halaman detail artikel yang memiliki progress membaca dan informasi kegiatan.",
+    "section1Text2": "Untuk kebutuhan redaksi, CMS menyediakan formulir artikel, upload gambar, autentikasi admin, dan penyimpanan perubahan ke repository. Cara ini memungkinkan pengelolaan konten meski aplikasi tidak memakai database SQL.",
+    "largeBannerImage": "/img/ya (2).png",
+    "section2Title": "Pelajaran teknis dari proyek ini",
+    "section2Text1": "Next.js mengatur routing dan rendering halaman, React membangun komponen interaktif, TypeScript menjaga struktur data, sedangkan CSS Modules membuat styling setiap komponen lebih terisolasi.",
+    "section2Text2": "Penyimpanan lewat GitHub memerlukan token dengan izin penulisan, validasi unggahan, dan penanganan error API. Ini merupakan kompromi teknis yang perlu diperhatikan dibandingkan CMS dengan database khusus.",
+    "gridThumbnails": [
+      "/img/yaa (1).png",
+      "/img/yaa (2).png",
+      "/img/yaa (3).png",
+      "/img/yaa (4).png"
+    ],
+    "bottomGalleryImages": [
+      "/img/yaa (1).png",
+      "/img/yaa (2).png",
+      "/img/yaa (4).png",
+      "/img/yaa (3).png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Website organisasi dengan halaman profil, program, daftar dan detail berita, galeri, serta alur pengelolaan artikel melalui admin. Fitur tersedia pada kode proyek; angka pertumbuhan trafik atau pendaftaran belum diukur secara terverifikasi.",
+    "outcomeStats": [
+      {
+        "label": "Modul utama",
+        "value": "Profil • Program • Berita • Galeri"
+      },
+      {
+        "label": "Pengelolaan artikel",
+        "value": "Tambah • Edit • Hapus"
+      }
+    ],
+    "outcomeGallery": [
+      "/img/ya (1).png",
+      "/img/ya (2).png"
+    ]
   },
   {
-    id: 7,
-    slug: "asakita-protection",
-    title: "Next-gen e-Government platform for digital child & women protection",
-    client: "AsaKita Protection",
-    category: "e-Government",
-    image: "/img/ca2.png",
-    link: "https://asa-kita.vercel.app/",
-    tools: ["React JS", "Responsive UI", "Tailwind CSS", "e-Government"],
-    buildTime: "KMIPN VII",
-    isExternalLink: true,
-    services: {
-      pills: ["Design", "Build", "Security"],
-      list: ["Encrypted Reporting Forms", "Emergency Assistance UI", "Legal Guides Portal"]
+    "id": 7,
+    "slug": "asakita-protection",
+    "title": "AsaKita — Konsep Platform Digital Perlindungan Perempuan dan Anak",
+    "client": "AsaKita Protection",
+    "category": "e-Government",
+    "image": "/img/ca2.png",
+    "heroImage": "/img/as (1).png",
+    "link": "https://asa-kita.vercel.app/",
+    "tools": [
+      "Web UI",
+      "Responsive Design",
+      "e-Government Prototype"
+    ],
+    "buildTime": "KMIPN VII",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Prototype",
+        "UI/UX",
+        "Layanan publik"
+      ],
+      "list": [
+        "Konsep pelaporan insiden",
+        "Akses informasi bantuan",
+        "Navigasi layanan perlindungan",
+        "Antarmuka edukasi publik"
+      ]
     },
-    heroImage: "/img/as (1).png",
-    summaryQuote: "A safe, accessible digital space providing legal education and rapid incident reporting.",
-    descriptionParagraphs: [
-      "AsaKita was developed to tackle public welfare challenges by providing accessible legal counseling and emergency assistance.",
-      "Designed specifically for KMIPN VII, the system ensures victim privacy, rapid reporting mechanisms, and public educational resources."
+    "summaryQuote": "Menerjemahkan kebutuhan akses informasi dan pelaporan ke rancangan layanan digital yang lebih mudah dipahami.",
+    "descriptionParagraphs": [
+      "Informasi bantuan bagi perempuan dan anak perlu disampaikan dengan struktur yang jelas agar pengguna memahami pilihan layanan dan langkah pelaporan.",
+      "AsaKita dirancang sebagai konsep layanan e-Government untuk memudahkan penelusuran informasi perlindungan, akses dukungan, dan alur pelaporan.",
+      "Materi yang tersedia di portofolio menunjukkan rancangan antarmuka. Repository sumber AsaKita belum dapat diverifikasi sehingga framework, enkripsi, dan kesiapan layanan produksi tidak diklaim."
     ],
-    galleryImages: ["/img/as (4).png", "/img/as (5).png"],
-    section1Title: "Accessible reporting with privacy first",
-    section1Text1: "Building user trust was paramount. The UI provides quick-exit safety options and encrypted reporting forms.",
-    section1Text2: "Clear visual hierarchies allow users in distress to find immediate contact numbers and emergency help.",
-    largeBannerImage: "/img/as (6).png",
-    section2Title: "Empowering communities through education",
-    section2Text1: "Beyond incident reporting, AsaKita offers structured legal guides and victim support channels.",
-    section2Text2: "Interactive modules guide users through legal procedures in plain, empathetic language.",
-    gridThumbnails: ["/img/ca2.png", "/img/ca4.png", "/img/ca5.png", "/img/ca1.png"],
-    bottomGalleryImages: ["/img/as (7).png", "/img/as (2).png", "/img/as (3).png", "/img/as (4).png"],
-    outcomeTitle: "The Outcome",
-    outcomeText: "Recognized at national polytechnic competitions for its real-world social impact and robust architecture.",
-    outcomeStats: [
-      { label: "Incident Response UI", value: "3 Clicks" },
-      { label: "Accessibility Score", value: "98/100" }
+    "galleryImages": [
+      "/img/as (4).png",
+      "/img/as (5).png"
     ],
-    outcomeGallery: ["/img/ca2.png", "/img/ca3.png"]
-  },
- {
-  id: 3,
-  slug: "global-retailer-analytics",
-  title: "Segmentasi RFM & wawasan profitabilitas dari 11 ribu+ pelanggan",
-  client: "Global Retailer Analytics",
-  category: "Data Analytics",
-  image: "/img/ca5.png",
-  link: "https://github.com/Darren0099/global-electronics-retailer-analysis",
-  tools: ["Python", "Pandas", "Matplotlib", "RFM Analysis"],
-  buildTime: "Repository",
-  isExternalLink: true,
-  services: {
-    pills: ["Analisis", "Otomatisasi", "Visualisasi"],
-    list: ["Pipeline Konversi Multi-Mata Uang", "Segmentasi Pelanggan RFM", "Analisis Profitabilitas & Toko"]
-  },
-  heroImage: "/img/ga (3).png",
-  summaryQuote: "Mengubah 62.000+ transaksi mentah menjadi wawasan pelanggan dan laba yang jelas.",
-  descriptionParagraphs: [
-    "Sebuah retailer elektronik global menjual dalam lima mata uang di 66 toko fisik dan satu toko online, tetapi data pesanan mentahnya menyulitkan untuk melihat pelanggan dan lini produk mana yang benar-benar menghasilkan laba.",
-    "Proyek Python end-to-end ini menggabungkan lima tabel (penjualan, produk, pelanggan, toko, dan kurs harian), menyeragamkan setiap pesanan ke USD, lalu menganalisis profit margin, segmen pelanggan RFM, dan efisiensi toko, semuanya dapat dijalankan dengan satu perintah."
-  ],
-  galleryImages: ["/img/ga (4).png", "/img/ga (1).png"],
-  section1Title: "Segmentasi pelanggan berbasis data",
-  section1Text1: "Skor RFM membagi 11.887 pelanggan ke dalam enam segmen. Champions dan Loyal Customers hanya 27% dari pembeli, tetapi menyumbang 47,8% revenue, sedangkan segmen Need Attention rata-rata bernilai $7.209 per pelanggan dan sudah sekitar 795 hari tidak membeli.",
-  section1Text2: "Laba kotor $32,7 juta (margin 58,6%) dievaluasi per kategori, brand, mata uang, dan toko. Computers memimpin dengan revenue $19,3 juta, sementara Cell phones terjual dalam volume besar tetapi bermargin di bawah rata-rata (56,6%).",
-  largeBannerImage: "/img/ga (2).png",
-  section2Title: "Visualisasi yang bercerita",
-  section2Text1: "Grafik menampilkan revenue dan laba per tahun, margin per kategori, dan kontribusi revenue tiap segmen pelanggan. Penjualan memuncak di $18,3 juta pada 2019, dan toko online sendiri menyumbang 20,5% revenue.",
-  section2Text2: "Pipeline yang modular dan dapat direproduksi (data loader, currency converter, modul metrik) membangun ulang seluruh laporan dan grafik dari file CSV mentah, sekaligus memperbaiki dua kesalahan hitung pada versi pertama: arah kurs dan skor frekuensi.",
-  gridThumbnails: ["/img/ca5.png", "/img/ca2.png", "/img/ca3.png", "/img/ca1.png"],
-  bottomGalleryImages: ["/img/ga (1).png", "/img/ga (2).png", "/img/ga (3).png", "/img/ga (4).png"],
-  outcomeTitle: "Hasil Akhir",
-  outcomeText: "Berhasil mengidentifikasi pelanggan yang menopang bisnis dan pelanggan bernilai tinggi yang berisiko berhenti membeli, disertai langkah yang jelas: pertahankan Champions, aktifkan kembali pembeli Need Attention, dan tinjau harga pada kategori bermargin rendah.",
-  outcomeStats: [
-    { label: "Transaksi Dianalisis", value: "62.884" },
-    { label: "Pelanggan Tersegmentasi", value: "11.887" },
-    { label: "Segmen RFM", value: "6 Tingkat" },
-    { label: "Profit Margin", value: "58,6%" }
-  ],
-  outcomeGallery: ["/img/ca5.png", "/img/ca4.png"]
-},
-  {
-    id: 4,
-    slug: "pln-iconnet-portal",
-    title: "Custom dynamic CMS portal powering state-owned enterprise news",
-    client: "PLN Iconnet Portal",
-    category: "Fullstack CMS",
-    image: "/img/ca4.png",
-    link: "https://plniconnetbangkabelitung.ct.ws/",
-    tools: ["PHP", "MySQL", "CMS Dashboard"],
-    buildTime: "Production",
-    isExternalLink: true,
-    services: {
-      pills: ["Fullstack", "CMS", "Database"],
-      list: ["Custom PHP Backend", "MySQL Database Design", "Admin Dashboard", "Article Publisher"]
-    },
-    heroImage: "/img/ca4.png",
-    summaryQuote: "A streamlined news publishing portal built for speed, security, and administrative ease.",
-    descriptionParagraphs: [
-      "PLN Iconnet Bangka Belitung required a dedicated news management portal to broadcast regional corporate announcements.",
-      "The custom PHP/MySQL backend allows non-technical administrators to draft, edit, categorize, and publish articles seamlessly."
+    "section1Title": "Mempermudah penemuan informasi penting",
+    "section1Text1": "Struktur halaman berfokus pada alur pengguna: mengenali jenis bantuan, membaca informasi yang relevan, dan menemukan jalur tindak lanjut.",
+    "section1Text2": "Penekanan visual dan bahasa yang mudah dipahami menjadi prinsip penting agar navigasi tidak membingungkan pengguna.",
+    "largeBannerImage": "/img/as (6).png",
+    "section2Title": "Ruang pengembangan berikutnya",
+    "section2Text1": "Sebelum digunakan untuk laporan nyata, platform semacam ini memerlukan audit keamanan data pribadi, autentikasi, manajemen akses, dan prosedur rujukan yang teruji.",
+    "section2Text2": "Hasil yang dapat ditunjukkan saat ini adalah konsep serta tampilan produk, bukan klaim waktu respons penanganan kasus atau skor audit keamanan.",
+    "gridThumbnails": [
+      "/img/as (1).png",
+      "/img/as (2).png",
+      "/img/as (3).png",
+      "/img/as (4).png"
     ],
-    galleryImages: ["/img/ca4.png", "/img/ca5.png"],
-    section1Title: "Intuitive editorial control",
-    section1Text1: "The admin dashboard features role-based access control, rich text editing, and image upload management.",
-    section1Text2: "Frontend readers enjoy lightweight, fast-loading article views optimized for mobile browsing.",
-    largeBannerImage: "/img/ca4.png",
-    section2Title: "Enterprise reliability",
-    section2Text1: "Configured with secure database queries and responsive layout templates tailored for corporate branding.",
-    section2Text2: "Reduces news publishing turnaround time from hours to minutes.",
-    gridThumbnails: ["/img/ca4.png", "/img/ca3.png", "/img/ca2.png", "/img/ca1.png"],
-    bottomGalleryImages: ["/img/ca4.png", "/img/ca5.png", "/img/ca3.png", "/img/ca2.png"],
-    outcomeTitle: "The Outcome",
-    outcomeText: "Successfully deployed in production, servicing internal communications and public PR updates.",
-    outcomeStats: [
-      { label: "Publishing Speed", value: "< 2 Mins" },
-      { label: "Uptime", value: "99.9%" }
+    "bottomGalleryImages": [
+      "/img/as (7).png",
+      "/img/as (2).png",
+      "/img/as (3).png",
+      "/img/as (4).png"
     ],
-    outcomeGallery: ["/img/ca4.png", "/img/ca3.png"]
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Prototipe tampilan layanan publik yang mengorganisasikan informasi edukasi dan konsep pelaporan agar dapat dipresentasikan serta dievaluasi lebih lanjut.",
+    "outcomeStats": [],
+    "outcomeGallery": [
+      "/img/as (1).png",
+      "/img/as (6).png"
+    ]
   },
   {
-    id: 5,
-    slug: "youth-visual-identity",
-    title: "Cohesive visual identity & digital branding for national youth organization",
-    client: "Youth Ranger Indonesia Sumsel",
-    category: "Organization Profile Branding",
-    image: "/img/ca1.png",
-    link: "https://www.instagram.com/youthranger.sumsel",
-    tools: ["Canva", "Brand Identity", "Social Media Feed"],
-    buildTime: "Branding",
-    isExternalLink: true,
-    services: {
-      pills: ["Branding", "Social Media", "Design"],
-      list: ["Brand Identity Systems", "Social Media Templates", "Poster Layouts"]
+    "id": 3,
+    "slug": "global-retailer-analytics",
+    "title": "Global Electronics Retailer — Analisis Profit dan Segmentasi RFM",
+    "client": "Global Electronics Retailer Dataset",
+    "category": "Data Analytics",
+    "image": "/img/ca5.png",
+    "heroImage": "/img/ga (3).png",
+    "link": "https://github.com/Darren0099/global-electronics-retailer-analysis",
+    "repoUrl": "https://github.com/Darren0099/global-electronics-retailer-analysis",
+    "tools": [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "RFM"
+    ],
+    "buildTime": "Analisis data end-to-end",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Data Cleaning",
+        "Data Analysis",
+        "Visualisasi"
+      ],
+      "list": [
+        "Penggabungan lima tabel CSV",
+        "Normalisasi transaksi lintas mata uang",
+        "Penghitungan revenue, laba, dan margin",
+        "Segmentasi pelanggan RFM dan analisis toko"
+      ]
     },
-    heroImage: "/img/ca1.png",
-    summaryQuote: "Defining bold, memorable visual guidelines across digital channels.",
-    descriptionParagraphs: [
-      "Consistent branding builds instant recognition. This project established typography, color schemes, and social media templates.",
-      "Designed for high visual impact across Instagram feeds, event posters, and promotional merchandise."
+    "summaryQuote": "Dari 62.884 baris penjualan menjadi rekomendasi tentang pelanggan bernilai tinggi, margin produk, dan performa toko.",
+    "descriptionParagraphs": [
+      "Data penjualan global tersebar dalam tabel produk, penjualan, pelanggan, toko, dan kurs. Nilai transaksi lintas mata uang harus diseragamkan sebelum perbandingan performa bisa dilakukan secara adil.",
+      "Saya membuat pipeline Python menggunakan Pandas dan NumPy untuk membersihkan serta menggabungkan data, mengonversi mata uang dengan kurs harian, dan menghitung revenue, biaya, laba kotor, serta margin.",
+      "Hasil analisis divisualisasikan menggunakan Matplotlib dan Seaborn. Segmentasi RFM mengelompokkan pelanggan berdasarkan waktu pembelian terakhir, frekuensi belanja, dan nilai pembelian."
     ],
-    galleryImages: ["/img/ca1.png", "/img/ca3.png"],
-    section1Title: "Consistent brand aesthetics",
-    section1Text1: "Unified color palettes and typography rules were applied across all digital marketing collaterals.",
-    section1Text2: "Custom templates allowed volunteer design teams to maintain quality and brand coherence.",
-    largeBannerImage: "/img/ca1.png",
-    section2Title: "Social media reach",
-    section2Text1: "Designed social carousels and story layouts that maximize reader retention and interaction.",
-    section2Text2: "Elevated organizational professionalism during major regional campaigns.",
-    gridThumbnails: ["/img/ca1.png", "/img/ca3.png", "/img/ca2.png", "/img/ca5.png"],
-    bottomGalleryImages: ["/img/ca1.png", "/img/ca3.png", "/img/ca2.png", "/img/ca5.png"],
-    outcomeTitle: "The Outcome",
-    outcomeText: "Established a unified visual identity recognized by thousands of followers across South Sumatra.",
-    outcomeStats: [
-      { label: "Templates Created", value: "30+" },
-      { label: "Social Impressions", value: "10K+" }
+    "galleryImages": [
+      "/img/ga (4).png",
+      "/img/ga (1).png"
     ],
-    outcomeGallery: ["/img/ca1.png", "/img/ca3.png"]
-  },{
-  id: 6,
-  slug: "tokopedia-sentiment-analysis",
-  title: "Analisis sentimen & performa kategori dari 6 juta+ item terjual di Tokopedia",
-  client: "Tokopedia Marketplace Analytics",
-  category: "Data Analytics",
-  image: "/img/ca6.png",
-  link: "https://github.com/Darren0099/tokopedia-sentiment-analysis",
-  tools: ["Python", "Pandas", "Seaborn", "Exploratory Data Analysis"],
-  buildTime: "Repository",
-  isExternalLink: true,
-  services: {
-    pills: ["Analisis", "Pembersihan Data", "Visualisasi"],
-    list: ["Pipeline Pembersihan Data", "Klasifikasi Sentimen Berbasis Rating", "Analisis Performa Kategori"]
+    "section1Title": "Temuan pelanggan yang layak diprioritaskan",
+    "section1Text1": "Sebanyak 11.887 pelanggan dikelompokkan menjadi enam segmen. Champions dan Loyal Customers mencakup sekitar 27% pelanggan tetapi menyumbang 47,8% revenue.",
+    "section1Text2": "Segmen Need Attention memiliki nilai rata-rata sekitar US$7.209 per pelanggan dan lama tidak membeli. Ini menjadi kandidat kampanye reaktivasi yang lebih tepat sasaran.",
+    "largeBannerImage": "/img/ga (2).png",
+    "section2Title": "Mengukur profitabilitas, bukan hanya omzet",
+    "section2Text1": "Analisis menghasilkan revenue US$55,76 juta dan laba kotor US$32,66 juta, dengan margin kotor 58,6%. Kategori Computers memberi revenue tertinggi, sedangkan margin Cell phones berada di bawah rata-rata.",
+    "section2Text2": "Laporan CSV dan grafik PNG dibuat ulang melalui run_analysis.py. Hasil berupa rekomendasi bisnis dari dataset, bukan bukti peningkatan penjualan setelah rekomendasi diterapkan.",
+    "gridThumbnails": [
+      "/img/ga (1).png",
+      "/img/ga (2).png",
+      "/img/ga (3).png",
+      "/img/ga (4).png"
+    ],
+    "bottomGalleryImages": [
+      "/img/ga (1).png",
+      "/img/ga (2).png",
+      "/img/ga (3).png",
+      "/img/ga (4).png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Pipeline analitik yang dapat diulang, laporan KPI, visualisasi, dan prioritas aksi: mempertahankan pelanggan loyal, mengaktifkan segmen berisiko churn, serta meninjau kategori bermargin rendah.",
+    "outcomeStats": [
+      {
+        "label": "Baris penjualan",
+        "value": "62.884"
+      },
+      {
+        "label": "Pelanggan RFM",
+        "value": "11.887"
+      },
+      {
+        "label": "Revenue",
+        "value": "US$55,76 juta"
+      },
+      {
+        "label": "Margin kotor",
+        "value": "58,6%"
+      }
+    ],
+    "outcomeGallery": [
+      "/img/ga (3).png",
+      "/img/ga (4).png"
+    ]
   },
-  heroImage: "/img/ta (2).png",
-  summaryQuote: "Membaca jutaan transaksi marketplace untuk melihat kategori mana yang laris dan mana yang berisiko.",
-  descriptionParagraphs: [
-    "Manajemen dan penjual di marketplace perlu tahu kategori produk mana yang mendominasi transaksi, dan seberapa besar ulasan negatif mengancam penjualan.",
-    "Proyek ini menganalisis 3.664 produk dari 158 toko di lima kategori (Elektronik, Fashion, Handphone, Olahraga, Pertukangan) dengan Python, Pandas, dan Seaborn: membersihkan data, mengklasifikasikan sentimen berdasarkan rating, lalu membandingkan performa tiap kategori."
-  ],
-  galleryImages: ["/img/ta (4).png", "/img/ta (3).png"],
-  section1Title: "Performa penjualan per kategori",
-  section1Text1: "Dari total 6.173.830 item terjual dengan rata-rata rating 4,64 dari 5, kategori Olahraga paling laris dengan 1.719.090 item pada produk ber-rating tinggi, disusul Elektronik (1.506.329) dan Fashion (1.359.710).",
-  section1Text2: "Produk dengan rating 4 ke atas menyumbang 93,6% dari seluruh item terjual, sehingga kepuasan pelanggan terlihat kuat di hampir semua kategori.",
-  largeBannerImage: "/img/ta (2).png",
-  section2Title: "Sentimen dan area risiko",
-  section2Text1: "Sentimen diklasifikasikan dari rating: Positive (4 ke atas), Neutral (3), dan Negative (2 ke bawah). Kategori Handphone memiliki item ber-sentimen negatif terbanyak, yaitu 47.457 item dengan rata-rata rating 1,38, atau sekitar 5,2% dari penjualan kategorinya.",
-  section2Text2: "Angka itu jauh di atas kategori lain (sekitar 0,9% sampai 1,6%) dan mengindikasikan isu kualitas produk atau layanan pascabeli yang perlu ditinjau.",
-  gridThumbnails: [
-    "/img/ta (1).png",
-    "/img/tokopedia-sentiment-distribution.png",
-    "/img/tokopedia-rating-vs-sold.png",
-    "/img/tokopedia-sales-by-category.png"
-  ],
-  bottomGalleryImages: [
-    "/img/ta (1).png",
-    "/img/ta (2).png",
-    "/img/ta (3).png",
-    "/img/ta (4).png"
-  ],
-  outcomeTitle: "Hasil Akhir",
-  outcomeText: "Menghasilkan rekomendasi bisnis yang jelas: alokasikan anggaran promosi dan stok lebih besar ke Olahraga, Elektronik, dan Fashion, serta lakukan evaluasi quality control khusus pada seller dan produk Handphone.",
-  outcomeStats: [
-    { label: "Item Terjual Dianalisis", value: "6,17 Juta" },
-    { label: "Produk dari 158 Toko", value: "3.664" },
-    { label: "Kategori", value: "5" },
-    { label: "Rata-rata Rating", value: "4,64" }
-  ],
-  outcomeGallery: ["/img/tokopedia-sales-by-category.png", "/img/tokopedia-sentiment-distribution.png"]
-},{
-  id: 2,
-  slug: "palembang-go-vacation",
-  title: "Palembang Go Vacation: portal informasi wisata Kota Palembang untuk KMIPN VI 2024",
-  client: "KMIPN VI 2024 - Politeknik Negeri Sriwijaya",
-  category: "Web Development",
-  image: "/img/pa (1).png",
-  link: "palembang-go-vacation.vercel.app",
-  tools: ["HTML", "CSS", "JavaScript", "Vercel"],
-  buildTime: "Repository",
-  isExternalLink: true,
-  services: {
-    pills: ["Web Development", "UI Design", "E-Government"],
-    list: ["Portal Informasi Destinasi Wisata", "Halaman Detail Tiap Destinasi", "Navigasi Berdasarkan Kategori Wisata"]
+  {
+    "id": 4,
+    "slug": "pln-iconnet-portal",
+    "title": "Portal Artikel dan CMS PLN Iconnet Bangka Belitung",
+    "client": "PLN Icon Plus Sumbagsel — Wilayah Bangka Belitung",
+    "category": "Fullstack CMS",
+    "image": "/img/ca4.png",
+    "heroImage": "/img/ca4.png",
+    "link": "https://plniconnetbangkabelitung.ct.ws/",
+    "repoUrl": "https://github.com/Darren0099/plniconnetbangkabelitung",
+    "tools": [
+      "PHP",
+      "MySQL / MariaDB",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "buildTime": "Website berita dan CMS",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Fullstack",
+        "CMS",
+        "Database"
+      ],
+      "list": [
+        "Artikel dan kategori berita",
+        "Pencarian dan filter konten",
+        "Dashboard admin artikel",
+        "Pengelolaan unggahan media"
+      ]
+    },
+    "summaryQuote": "Membangun alur publikasi berita daerah melalui portal artikel dan dashboard pengelola konten.",
+    "descriptionParagraphs": [
+      "Informasi berita, edukasi layanan, dan kegiatan wilayah perlu diperbarui tanpa mengubah file halaman setiap kali artikel baru diterbitkan.",
+      "Saya mengembangkan portal artikel berbasis PHP dengan database MySQL/MariaDB, HTML, CSS, dan JavaScript. Aplikasi menampilkan kategori serta pencarian berita dan dilengkapi panel admin untuk pengelolaan konten.",
+      "Kegiatan ini berkaitan dengan pekerjaan pengembangan website artikel selama pengalaman magang pada PLN Icon Plus Sumbagsel."
+    ],
+    "galleryImages": [
+      "/img/ca4.png",
+      "/img/ca5.png"
+    ],
+    "section1Title": "Dari input admin menjadi artikel yang dapat dibaca publik",
+    "section1Text1": "Admin dapat menambah, menyunting, dan menghapus data artikel beserta media pendukung, sementara pengunjung menjelajahi konten berdasarkan kategori atau kata kunci.",
+    "section1Text2": "PHP mengolah permintaan server dan interaksi dengan database; frontend HTML, CSS, dan JavaScript menghadirkan tampilan artikel yang mudah diakses di berbagai ukuran layar.",
+    "largeBannerImage": "/img/ca4.png",
+    "section2Title": "Apa manfaat implementasinya?",
+    "section2Text1": "Pemisahan antara panel admin dan tampilan publik membuat proses pembaruan konten lebih terstruktur dibandingkan mengedit kode setiap kali ada berita.",
+    "section2Text2": "Repository dan aplikasi menjadi contoh implementasi CRUD artikel. Belum ada pengukuran terverifikasi atas waktu publikasi, uptime, atau trafik sehingga tidak ditampilkan klaim persentase.",
+    "gridThumbnails": [
+      "/img/ca4.png"
+    ],
+    "bottomGalleryImages": [
+      "/img/ca4.png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Portal artikel responsif dengan database dan fungsi administrasi berita (buat, baca, ubah, hapus), serta penelusuran berdasarkan kategori dan pencarian.",
+    "outcomeStats": [],
+    "outcomeGallery": [
+      "/img/ca4.png"
+    ]
   },
-  heroImage: "/img/pa (1).png",
-  summaryQuote: "Satu portal untuk menjelajahi sejarah, budaya, alam, dan kuliner Palembang sebelum berangkat.",
-  descriptionParagraphs: [
-    "Wisatawan sering kesulitan mencari informasi destinasi Palembang yang lengkap dan terpercaya, karena datanya tersebar di banyak sumber. Pemerintah daerah juga membutuhkan kanal digital untuk mempromosikan potensi wisata kotanya.",
-    "Proyek ini adalah website portal wisata yang dibangun untuk KMIPN VI 2024 oleh tim Politeknik Negeri Sriwijaya dengan HTML, CSS, dan JavaScript. Situs ini memuat katalog destinasi dan halaman detail untuk tiap ikon wisata Palembang."
-  ],
-  galleryImages: ["/img/pa (2).png", "/img/pa (3).png"],
-  section1Title: "Katalog destinasi wisata",
-  section1Text1: "Portal ini mengelompokkan 96 destinasi ke dalam empat kategori: 43 wisata budaya dan tempat bersejarah, 29 wisata buatan, 4 wisata alam, dan 20 wisata kuliner.",
-  section1Text2: "Ikon-ikon kota seperti Jembatan Ampera, Benteng Kuto Besak, Al-Qur'an Al-Akbar, Kampung Kapitan, Jakabaring Sport City, dan Kampung Pempek masing-masing punya halaman sendiri.",
-  largeBannerImage: "/img/pa (1).png",
-  section2Title: "Pengalaman pengguna",
-  section2Text1: "Beranda menampilkan sorotan destinasi unggulan seperti Jembatan Ampera, Punti Kayu, Rumah Limas, dan Benteng Kuto Besak. Ada juga menu navigasi bertingkat per kategori, galeri foto, dan peta lokasi Dinas Pariwisata Kota Palembang.",
-  section2Text2: "Tampilan dirancang agar wisatawan bisa berpindah dari ringkasan destinasi ke halaman detail dengan cepat, sehingga lebih mudah menyusun rencana liburan.",
-  gridThumbnails: [
-    "/img/pa (1).png",
-    "/img/pa (2).png",
-    "/img/pa (3).png",
-    "/img/pa (4).png"
-  ],
-  bottomGalleryImages: [
-    "/img/pa (1).png",
-    "/img/pa (2).png",
-    "/img/pa (3).png",
-    "/img/pa (4).png"
-  ],
-  outcomeTitle: "Hasil Akhir",
-  outcomeText: "Website portal wisata yang sudah live dan menjadi karya untuk KMIPN VI 2024, dengan katalog destinasi yang terstruktur dan mudah dijelajahi wisatawan.",
-  outcomeStats: [
-    { label: "Destinasi Terdata", value: "96" },
-    { label: "Wisata Budaya & Sejarah", value: "43" },
-    { label: "Wisata Buatan", value: "29" },
-    { label: "Wisata Kuliner", value: "20" }
-  ],
-  outcomeGallery: ["/img/pa (2).png", "/img/pa (3).png"]
-}
+  {
+    "id": 5,
+    "slug": "youth-visual-identity",
+    "title": "Identitas Visual dan Konten Media Sosial Youth Ranger Sumsel",
+    "client": "Youth Ranger Indonesia Sumsel",
+    "category": "Graphic Design",
+    "image": "/img/ca1.png",
+    "heroImage": "/img/ca1.png",
+    "link": "https://www.instagram.com/youthranger.sumsel",
+    "tools": [
+      "Canva",
+      "Graphic Design",
+      "Branding",
+      "Social Media Design"
+    ],
+    "buildTime": "Desain komunikasi organisasi",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Branding",
+        "Social Media",
+        "Design"
+      ],
+      "list": [
+        "Template komunikasi visual",
+        "Poster kegiatan dan pengumuman",
+        "Konten feed media sosial",
+        "Konsistensi identitas organisasi"
+      ]
+    },
+    "summaryQuote": "Menyatukan tampilan informasi kegiatan agar identitas organisasi mudah dikenali di berbagai materi publikasi.",
+    "descriptionParagraphs": [
+      "Organisasi yang menjalankan banyak program membutuhkan cara menyajikan informasi yang tetap konsisten meski tema kegiatan berbeda.",
+      "Pekerjaan desain mencakup pengaturan warna, tipografi, hirarki informasi, dan format visual untuk poster serta materi media sosial YRI Sumsel.",
+      "Canva digunakan dalam perancangan materi visual. Hasil desain dipublikasikan atau didokumentasikan melalui kanal organisasi; proyek ini bukan aplikasi yang dibangun dengan framework web."
+    ],
+    "galleryImages": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "section1Title": "Sistem visual yang mudah diterapkan ulang",
+    "section1Text1": "Prinsip konsistensi diterapkan melalui pilihan warna, pasangan font, proporsi judul, dan ruang baca yang cukup agar pesan kegiatan cepat dipahami.",
+    "section1Text2": "Struktur template membantu desainer atau pengelola kanal sosial menyusun konten serupa untuk kebutuhan publikasi berikutnya.",
+    "largeBannerImage": "/img/ca1.png",
+    "section2Title": "Dampak yang dapat ditunjukkan",
+    "section2Text1": "Output utamanya adalah materi visual untuk komunikasi program organisasi: poster, feed, dan aset branding yang lebih seragam.",
+    "section2Text2": "Jumlah impresi, pertumbuhan pengikut, atau total template tidak dicantumkan sebagai hasil kuantitatif karena tidak tersedia bukti analitik yang dapat diverifikasi.",
+    "gridThumbnails": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "bottomGalleryImages": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Rangkaian materi visual organisasi dengan pendekatan branding konsisten dan format yang bisa digunakan kembali untuk publikasi acara berikutnya.",
+    "outcomeStats": [],
+    "outcomeGallery": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "tokopedia-sentiment-analysis",
+    "title": "Tokopedia — Analisis Rating dan Kinerja Kategori Produk",
+    "client": "Tokopedia Marketplace Dataset",
+    "category": "Data Analytics",
+    "image": "/img/ca6.png",
+    "heroImage": "/img/ta (2).png",
+    "link": "https://github.com/Darren0099/tokopedia-sentiment-analysis",
+    "repoUrl": "https://github.com/Darren0099/tokopedia-sentiment-analysis",
+    "tools": [
+      "Python",
+      "Pandas",
+      "Jupyter Notebook",
+      "Matplotlib",
+      "Seaborn"
+    ],
+    "buildTime": "Exploratory Data Analysis",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Data Cleaning",
+        "EDA",
+        "Visualisasi"
+      ],
+      "list": [
+        "Pembersihan dataset produk",
+        "Pengelompokan rating positif/netral/negatif",
+        "Perbandingan penjualan per kategori",
+        "Ekspor metrik KPI dan grafik"
+      ]
+    },
+    "summaryQuote": "Menganalisis 3.664 produk dan 6,17 juta item terjual untuk menemukan kekuatan kategori dan risiko rating rendah.",
+    "descriptionParagraphs": [
+      "Data produk marketplace sering menyatukan harga, rating, dan angka penjualan dalam bentuk yang perlu dibersihkan sebelum dianalisis.",
+      "Saya memakai notebook Python dengan Pandas untuk memeriksa data, menstandarkan kolom, dan menghitung kinerja lima kategori; Matplotlib dan Seaborn digunakan untuk menghasilkan grafik.",
+      "Istilah sentimen pada proyek ini berarti klasifikasi berbasis nilai bintang: rating ≥4 positif, rating 3 netral, dan rating ≤2 negatif. Analisis ini bukan pemrosesan teks ulasan dengan model NLP."
+    ],
+    "galleryImages": [
+      "/img/ta (4).png",
+      "/img/ta (3).png"
+    ],
+    "section1Title": "Kategori dengan permintaan terbesar",
+    "section1Text1": "Dataset memuat 6.173.830 item terjual dari 3.664 produk di 158 toko, dengan rata-rata rating 4,64/5.",
+    "section1Text2": "Kategori Olahraga mencatat volume terbesar pada kelompok rating positif, disusul Elektronik dan Fashion. Hasil ini memberi petunjuk awal untuk prioritas inventaris dan promosi.",
+    "largeBannerImage": "/img/ta (2).png",
+    "section2Title": "Mendeteksi area yang perlu diselidiki",
+    "section2Text1": "Kategori Handphone memiliki 47.457 item terjual pada produk ber-rating rendah. Angka ini perlu ditinjau bersama kualitas produk, ekspektasi konsumen, dan layanan penjual.",
+    "section2Text2": "Output akhir berupa notebook analisis, CSV ringkasan KPI, dan grafik; hubungan rating dengan penjualan bersifat deskriptif dan tidak membuktikan hubungan sebab-akibat.",
+    "gridThumbnails": [
+      "/img/ta (1).png",
+      "/img/ta (2).png",
+      "/img/ta (3).png",
+      "/img/ta (4).png"
+    ],
+    "bottomGalleryImages": [
+      "/img/ta (1).png",
+      "/img/ta (2).png",
+      "/img/ta (3).png",
+      "/img/ta (4).png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Rangkuman performa lima kategori dan distribusi rating yang dapat dipakai untuk meninjau alokasi stok, promosi, serta kategori yang layak diperiksa kualitas layanannya.",
+    "outcomeStats": [
+      {
+        "label": "Produk",
+        "value": "3.664"
+      },
+      {
+        "label": "Toko",
+        "value": "158"
+      },
+      {
+        "label": "Item terjual",
+        "value": "6.173.830"
+      },
+      {
+        "label": "Rata-rata rating",
+        "value": "4,64 / 5"
+      }
+    ],
+    "outcomeGallery": [
+      "/img/ta (3).png",
+      "/img/ta (4).png"
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "palembang-go-vacation",
+    "title": "Palembang Go Vacation — Katalog 94 Destinasi Wisata",
+    "client": "KMIPN VI — Politeknik Negeri Sriwijaya",
+    "category": "Web Development",
+    "image": "/img/pa (1).png",
+    "heroImage": "/img/pa (1).png",
+    "link": "https://palembang-go-vacation.vercel.app/",
+    "repoUrl": "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT",
+    "tools": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "CSS Modules",
+      "Google Maps"
+    ],
+    "buildTime": "KMIPN VI • Portal wisata",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Frontend",
+        "Content Architecture",
+        "UI/UX"
+      ],
+      "list": [
+        "Katalog dan filter destinasi per kategori",
+        "Halaman detail berbasis slug",
+        "Galeri dengan lightbox",
+        "Tautan peta dan tur virtual 360°"
+      ]
+    },
+    "summaryQuote": "Membuat satu pintu untuk mengenal wisata Palembang lewat katalog, detail destinasi, galeri, dan peta.",
+    "descriptionParagraphs": [
+      "Informasi tempat wisata Palembang tersebar di banyak sumber sehingga pengunjung memerlukan titik awal untuk mengenal destinasi, sejarah, dan lokasi.",
+      "Bersama tim, saya membangun portal wisata dengan Next.js App Router, React, TypeScript, dan CSS Modules. Informasi destinasi dikelola pada data terstruktur, bukan halaman HTML terpisah untuk masing-masing tempat.",
+      "Tampilan mencakup slider unggulan, katalog yang bisa difilter, halaman detail berdasarkan slug, galeri foto, tautan Google Maps, serta tombol tur virtual 3D/360° untuk destinasi yang mendukungnya."
+    ],
+    "galleryImages": [
+      "/img/pa (2).png",
+      "/img/pa (3).png"
+    ],
+    "section1Title": "Satu struktur data, banyak halaman destinasi",
+    "section1Text1": "Repository versi sekarang memuat 94 destinasi: 47 wisata sejarah dan budaya, 32 wisata buatan, 4 wisata alam, dan 11 wisata kuliner.",
+    "section1Text2": "Satu template Next.js menangani rute /wisata/[slug]. Pengelola menambah objek data baru tanpa perlu menulis ulang tata letak halaman, dan 14 destinasi memiliki tautan tur virtual.",
+    "largeBannerImage": "/img/pa (1).png",
+    "section2Title": "Cara teknologi mendukung pengalaman wisatawan",
+    "section2Text1": "React membangun antarmuka filter kategori, carousel, dan galeri. TypeScript menjaga tipe konten destinasi, sedangkan CSS Modules mempertahankan gaya komponen secara terpisah.",
+    "section2Text2": "Hasilnya adalah portal informasi yang mudah dijelajahi. Sebagian destinasi masih menggunakan konten fallback, dan form newsletter pada repository belum terhubung ke layanan email.",
+    "gridThumbnails": [
+      "/img/pa (1).png",
+      "/img/pa (2).png",
+      "/img/pa (3).png",
+      "/img/pa (4).png"
+    ],
+    "bottomGalleryImages": [
+      "/img/pa (1).png",
+      "/img/pa (2).png",
+      "/img/pa (3).png",
+      "/img/pa (4).png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Website katalog wisata dengan halaman dinamis, navigasi kategori, galeri, peta, dan opsi tur virtual; total 94 destinasi pada data repository.",
+    "outcomeStats": [
+      {
+        "label": "Destinasi",
+        "value": "94"
+      },
+      {
+        "label": "Halaman dengan deskripsi",
+        "value": "73"
+      },
+      {
+        "label": "Tur virtual 360°",
+        "value": "14"
+      },
+      {
+        "label": "Kategori wisata",
+        "value": "4"
+      }
+    ],
+    "outcomeGallery": [
+      "/img/pa (2).png",
+      "/img/pa (3).png"
+    ]
+  }
 ];

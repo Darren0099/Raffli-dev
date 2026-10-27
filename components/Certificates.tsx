@@ -2,8 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { initialCertificates } from '@/data/certificates';
+import { useLanguage } from './LanguageProvider';
+import { useLocalizedStrings } from '@/hooks/useLocalizedProjects';
 
 export default function Certificates() {
+  const { lang } = useLanguage();
+  const localized = useLocalizedStrings(initialCertificates.map((cert) => cert.description));
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const containerRef = useRef<HTMLDivElement>(null);
   const isHoveredRef = useRef<boolean>(false);
@@ -43,21 +47,21 @@ export default function Certificates() {
           <div className="small-badge">
             <i className="fa-solid fa-award"></i> CERTIFICATIONS &amp; CREDENTIALS
           </div>
-          <h2 className="cert-title">Lisensi &amp; Sertifikasi</h2>
+          <h2 className="cert-title">{lang === 'id' ? 'Lisensi & Sertifikasi' : 'Licenses & Certifications'}</h2>
           <p className="cert-desc">
-            Bukti kompetensi resmi dalam bidang Human Resource, Data Analyst, Web Developer, Frontend Developer, dan Graphic Design.
+            {lang === 'id' ? 'Bukti kompetensi resmi dalam bidang Human Resource, Data Analyst, Web Developer, Frontend Developer, dan Graphic Design.' : 'Verified learning and professional qualifications across HR, data analytics, web development, and design.'}
           </p>
         </div>
 
         <div className="cert-filter-wrapper">
-          <label htmlFor="certFilterSelect" className="filter-label">Kategori:</label>
+          <label htmlFor="certFilterSelect" className="filter-label">{lang === "id" ? "Kategori:" : "Category:"}</label>
           <div className="custom-select-box">
             <select 
               id="certFilterSelect" 
               value={selectedCategory} 
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="all">Semua Sertifikat</option>
+              <option value="all">{lang === "id" ? "Semua Sertifikat" : "All Certificates"}</option>
               <option value="hr">Human Resource</option>
               <option value="data">Data Analyst</option>
               <option value="webdev">Web Developer</option>
@@ -91,7 +95,7 @@ export default function Certificates() {
                 <div className="cert-content">
                   <span className="cert-category">{cert.categoryLabel}</span>
                   <h3>{cert.title}</h3>
-                  <p>{cert.description}</p>
+                  <p>{localized[initialCertificates.findIndex((item) => item.id === cert.id)]}</p>
                 </div>
                 <div className="corner-cutout">
                   <a href={cert.link} className="arrow-btn" target="_blank" rel="noopener noreferrer">
@@ -104,7 +108,7 @@ export default function Certificates() {
         ) : (
           <div className="no-cert-found">
             <i className="fa-solid fa-folder-open"></i>
-            <p>Belum ada sertifikat untuk kategori ini.</p>
+            <p>{lang === 'id' ? 'Belum ada sertifikat untuk kategori ini.' : 'No certificates in this category.'}</p>
           </div>
         )}
       </div>

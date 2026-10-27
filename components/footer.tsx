@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from './LanguageProvider';
 
 const Pixel = ({ index, cols, rows, progress }: { index: number, cols: number, rows: number, progress: any }) => {
   const row = Math.floor(index / cols);
@@ -18,13 +19,14 @@ const Pixel = ({ index, cols, rows, progress }: { index: number, cols: number, r
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#@$%&*!?";
 
 export default function Footer() {
+  const { lang } = useLanguage();
   const containerRef = useRef<HTMLElement>(null);
   const [currentTime, setCurrentTime] = useState<string>('');
   const [currentYear, setCurrentYear] = useState<number>(2026);
 
-  const originalLine1 = "Let me Run";
-  const originalLine2 = "your next";
-  const originalLine3 = "project!";
+  const originalLine1 = lang === "id" ? "Mari kita" : "Let me Run";
+  const originalLine2 = lang === "id" ? "bangun proyek" : "your next";
+  const originalLine3 = lang === "id" ? "berikutnya!" : "project!";
 
   const [text1, setText1] = useState(originalLine1);
   const [text2, setText2] = useState(originalLine2);
@@ -122,7 +124,7 @@ export default function Footer() {
   const totalPixels = cols * rows;
 
   return (
-    <footer ref={containerRef} className="pixel-footer-wrapper">
+    <footer id="contact" ref={containerRef} className="pixel-footer-wrapper">
       
       <div className="pixel-overlay">
         {Array.from({ length: totalPixels }).map((_, i) => (
@@ -145,12 +147,12 @@ export default function Footer() {
               onMouseEnter={scrambleText}
               style={{ cursor: 'pointer' }}
             >
-              {text1}<br />{text2}<br />{text3}
+              {isScrambling ? text1 : originalLine1}<br />{isScrambling ? text2 : originalLine2}<br />{isScrambling ? text3 : originalLine3}
             </h1>
             <p className="footer-sub">
-              IT&apos;S THE ONE YOU DIDN&apos;T EXPECT.<br />
-              NOT IN THE SPOTLIGHT, BUT OUT<br />
-              THERE ON THE EDGE.
+              {lang === 'id'
+                ? <>Solusi digital yang tepat sasaran.<br />Dibangun dengan kreativitas dan data.</>
+                : <>IT&apos;S THE ONE YOU DIDN&apos;T EXPECT.<br />NOT IN THE SPOTLIGHT, BUT OUT<br />THERE ON THE EDGE.</>}
             </p>
           </div>
 
@@ -161,9 +163,9 @@ export default function Footer() {
               <div className="sub-group">
                 <h4 className="col-title">Links</h4>
                 <ul className="footer-links">
-                  <li><a href="#about">ABOUT</a></li>
-                  <li><a href="#skills">TOOLS</a></li>
-                  <li><a href="#projects">WORK</a></li>
+                  <li><a href="/#about">ABOUT</a></li>
+                  <li><a href="/#skills">TOOLS</a></li>
+                  <li><a href="/projects">WORK</a></li>
                   <li className="active-link">
                     LET&apos;S CREATE <span className="black-square-inline"></span>
                   </li>

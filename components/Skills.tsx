@@ -3,12 +3,14 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import '../app/styles/skills.css';
+import { useLanguage } from './LanguageProvider';
 
 const skillsData = [
   {
     id: "01",
     title: "Web Developer",
     desc: "Membangun arsitektur web yang kokoh, cepat, dan terukur.",
+    descEn: "Building reliable, fast, and scalable web systems.",
     cursorText: "Code the Future",
     skills: ["Supabase", "MySQL", "Git", "REST API", "Brevo"]
   },
@@ -16,6 +18,7 @@ const skillsData = [
     id: "02",
     title: "FrontEnd Dev",
     desc: "Menciptakan antarmuka yang interaktif dan mulus.",
+    descEn: "Crafting smooth and interactive user interfaces.",
     cursorText: "Pixel Perfect",
     skills: ["React JS", "Next.js", "JavaScript", "HTML", "CSS"]
   },
@@ -23,6 +26,7 @@ const skillsData = [
     id: "03",
     title: "Data Analysis",
     desc: "Mengubah data mentah menjadi wawasan bisnis yang tajam.",
+    descEn: "Turning raw data into actionable business insights.",
     cursorText: "Clean your data",
     skills: ["Python", "Kaggle", "Pandas", "Looker Studio", "Excel"]
   },
@@ -30,6 +34,7 @@ const skillsData = [
     id: "04",
     title: "Graphic Design",
     desc: "Bercerita melalui visual, branding, dan desain UI/UX.",
+    descEn: "Telling stories through visual branding and UI/UX.",
     cursorText: "Lets Create Magic",
     skills: ["Figma", "Canva", "Colorhunt", "Branding"]
   },
@@ -37,12 +42,13 @@ const skillsData = [
     id: "05",
     title: "Human Resource",
     desc: "Menemukan dan mengelola talenta terbaik untuk tim.",
+    descEn: "Supporting people and talent management in teams.",
     cursorText: "People First",
     skills: ["CV Screening", "Interview", "Talent Management"]
   }
 ];
 
-const SkillRow = ({ data, setCursorData }: { data: any, setCursorData: any }) => {
+const SkillRow = ({ data, setCursorData, lang }: { data: any, setCursorData: any, lang: 'id' | 'en' }) => {
   const rowRef = useRef(null);
   const isInView = useInView(rowRef, { margin: "-30% 0px -30% 0px" });
 
@@ -76,7 +82,7 @@ const SkillRow = ({ data, setCursorData }: { data: any, setCursorData: any }) =>
         }}
         transition={{ type: "tween", ease: "easeInOut", duration: 0.4 }}
       >
-        <p className="row-desc">{data.desc}</p>
+        <p className="row-desc">{lang === "id" ? data.desc : data.descEn}</p>
         <div className="row-skills-pills">
           {data.skills.map((skill: string, i: number) => (
             <span key={i} className="awwwards-pill">{skill}</span>
@@ -88,6 +94,7 @@ const SkillRow = ({ data, setCursorData }: { data: any, setCursorData: any }) =>
 };
 
 export default function Skills({ t }: { t: any }) {
+  const { lang } = useLanguage();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [cursorData, setCursorData] = useState({ show: false, text: "" });
 
@@ -119,12 +126,12 @@ export default function Skills({ t }: { t: any }) {
       <div className="awwwards-skills-container">
         <div className="skills-section-header">
           <p className="section-subtitle">Expertise</p>
-          <h2 className="section-maintitle">Spesialisasi & Peran</h2>
+          <h2 className="section-maintitle">{lang === "id" ? "Spesialisasi & Peran" : "Specializations & Roles"}</h2>
         </div>
 
         <div className="awwwards-list-wrapper">
           {skillsData.map((item) => (
-            <SkillRow key={item.id} data={item} setCursorData={setCursorData} />
+            <SkillRow key={item.id} data={item} lang={lang} setCursorData={setCursorData} />
           ))}
         </div>
       </div>

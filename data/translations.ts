@@ -1,10 +1,10 @@
 export const translations = {
   id: {
-    navProfile: "Profile",
-    navSkills: "Skills",
-    navExperience: "Experience",
-    navProjects: "Projects",
-    navContact: "Contact",
+    navProfile: "Profil",
+    navSkills: "Keahlian",
+    navExperience: "Pengalaman",
+    navProjects: "Proyek",
+    navContact: "Kontak",
     greeting: "Hello There!",
     heroDesc: "Menggabungkan keahlian pemrosesan data, perancangan visual intuitif, serta pengembangan antarmuka web modern yang responsif dan interaktif.",
     btnPortfolio: "View My Portfolio",

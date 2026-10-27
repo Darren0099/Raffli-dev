@@ -3,6 +3,7 @@
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import * as THREE from 'three';
+import { useLanguage } from './LanguageProvider';
 
 interface TrailParticle {
   x: number;
@@ -325,6 +326,7 @@ function Dynamic3DShowcase() {
 }
 
 export default function BridgeShowcase() {
+  const { lang } = useLanguage();
   const bridgeContainerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -343,8 +345,9 @@ export default function BridgeShowcase() {
             
             <div className="bridge-text-box">
               <h2 className="bridge-heading-statement">
-                I build experiences that get under your skin — where the visual stops you, 
-                the interaction pulls you in, and the brand stays with you long after you&apos;ve closed the tab.
+                {lang === 'id'
+                  ? 'Saya membangun pengalaman digital yang memikat secara visual, menyenangkan saat digunakan, dan membuat identitas sebuah brand mudah diingat.'
+                  : 'I build digital experiences that capture attention, invite interaction, and leave a memorable brand impression.'}
               </h2>
             </div>
 
