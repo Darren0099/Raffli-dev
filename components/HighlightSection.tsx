@@ -2,12 +2,23 @@
 
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import '../app/styles/highlight.css'; 
+import '../app/styles/highlight.css';
+import { useLanguage } from './LanguageProvider';
+import type { MotionValue } from 'framer-motion'; 
 
-const textPitch = "Building a dynamic web ecosystem and precise data insights to drive your business scalability.";
-const words = textPitch.split(" ");
+function AnimatedWord({ word, index, count, progress }: { word: string; index: number; count: number; progress: MotionValue<number> }) {
+  const start = (index / count) * 0.7;
+  const end = start + (1 / count);
+  const wordColor = useTransform(progress, [start, end], ['#333333', '#ffffff']);
+  return <motion.span style={{ color: wordColor, transition: 'color 0.1s ease-out' }}>{word}{' '}</motion.span>;
+}
 
 export default function HighlightSection() {
+  const { lang } = useLanguage();
+  const textPitch = lang === 'id'
+    ? 'Membangun solusi web yang dinamis dan mengubah data menjadi wawasan tepat guna untuk mendukung pertumbuhan bisnis.'
+    : 'Building a dynamic web ecosystem and precise data insights to drive your business scalability.';
+  const words = textPitch.split(' ');
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const { scrollYProgress } = useScroll({
@@ -52,16 +63,7 @@ export default function HighlightSection() {
         </div>
         <div className="highlight-content">
           <h2 className="highlight-text">
-            {words.map((word, i) => {
-              const start = (i / words.length) * 0.7;
-              const end = start + (1 / words.length);
-              const wordColor = useTransform(scrollYProgress, [start, end], ['#333333', '#ffffff']);
-              return (
-                <motion.span key={i} style={{ color: wordColor, transition: 'color 0.1s ease-out' }}>
-                  {word}{' '}
-                </motion.span>
-              );
-            })}
+            {words.map((word, i) => <AnimatedWord key={i} word={word} index={i} count={words.length} progress={scrollYProgress} />)}
           </h2>
         </div>
         <div className="wavy-line-wrapper">

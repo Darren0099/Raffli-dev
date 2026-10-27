@@ -83,3 +83,36 @@ export function useLocalizedProjectTitles(projects: Project[]) {
   }, [lang, projects]);
   return (slug: string, original: string) => lang === 'en' ? state?.titles[slug] || original : original;
 }
+
+
+// Translate a collection of Indonesian copy without maintaining a second data array.
+// The content signature keeps the effect stable even if the caller maps new arrays on render.
+export function useLocalizedStrings(source: readonly string[]) {
+  const { lang } = useLanguage();
+  const signature = JSON.stringify(source);
+  const [cache, setCache] = useState<{ signature: string; values: string[] } | null>(null);
+
+  useEffect(() => {
+    if (lang !== 'en') return;
+    const controller = new AbortController();
+    const values = JSON.parse(signature) as string[];
+    // Split larger collections to respect the /api/translate request limits.
+    const batches: string[][] = [];
+    let batch: string[] = [];
+    let batchSize = 0;
+    for (const value of values) {
+      if (batch.length >= 40 || batchSize + value.length > 14000) {
+        batches.push(batch); batch = []; batchSize = 0;
+      }
+      batch.push(value); batchSize += value.length;
+    }
+    if (batch.length) batches.push(batch);
+
+    Promise.all(batches.map((b) => translateTexts(b, controller.signal))).then((translatedBatches) => {
+      if (!controller.signal.aborted) setCache({ signature, values: translatedBatches.flat() });
+    }).catch((error) => { if (!controller.signal.aborted) console.error('Portfolio copy translation:', error); });
+    return () => controller.abort();
+  }, [lang, signature]);
+
+  return lang === 'en' && cache?.signature === signature ? cache.values : source;
+}

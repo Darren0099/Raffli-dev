@@ -3,6 +3,8 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import '../app/styles/experience.css';
+import { useLanguage } from './LanguageProvider';
+import { useLocalizedStrings } from '@/hooks/useLocalizedProjects';
 
 const experienceData = [
   {
@@ -120,6 +122,8 @@ const experienceData = [
 ];
 
 export default function Experience() {
+  const { lang } = useLanguage();
+  const localized = useLocalizedStrings(experienceData.flatMap((item) => [item.year, item.category, item.title, item.desc]));
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -139,26 +143,26 @@ export default function Experience() {
         </motion.div>
 
         <div className="exp-fixed-header">
-          <h2 className="exp-title">Perjalanan & Pengalaman</h2>
-          <p className="exp-subtitle">Eksplorasi langkah demi langkah dari awal hingga sekarang.</p>
+          <h2 className="exp-title">{lang === "id" ? "Perjalanan & Pengalaman" : "Journey & Experience"}</h2>
+          <p className="exp-subtitle">{lang === "id" ? "Eksplorasi langkah demi langkah dari awal hingga sekarang." : "A step-by-step journey from the beginning to today."}</p>
         </div>
 
         <motion.div className="exp-horizontal-track" style={{ x: xTransform }}>
           <div className="exp-track-spacer"></div>
 
-          {experienceData.map((item) => (
+          {experienceData.map((item, i) => (
             <div key={item.id} className="exp-card-wrapper">
               <div className="exp-card">
                 <div className="exp-card-header">
-                  <span className="exp-year">{item.year}</span>
+                  <span className="exp-year">{localized[i * 4]}</span>
                   <span className={`exp-badge badge-${item.category.toLowerCase().replace(/[^a-z]/g, '')}`}>
-                    {item.category}
+                    {localized[i * 4 + 1]}
                   </span>
                 </div>
                 
-                <h3 className="exp-role">{item.title}</h3>
+                <h3 className="exp-role">{localized[i * 4 + 2]}</h3>
                 <h4 className="exp-company">{item.company}</h4>
-                <p className="exp-desc">{item.desc}</p>
+                <p className="exp-desc">{localized[i * 4 + 3]}</p>
                 
                 <div className="exp-card-number">{item.id}</div>
               </div>

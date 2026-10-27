@@ -16,7 +16,7 @@ async function translateIndonesianToEnglish(input: string): Promise<string> {
   let translated: string | undefined;
   if (process.env.DEEPL_API_KEY) {
     try {
-      const body = new URLSearchParams({ text, source_lang: 'ID', target_lang: 'EN' });
+      const body = new URLSearchParams({ text, target_lang: 'EN' });
       const response = await fetch(process.env.DEEPL_API_URL || 'https://api-free.deepl.com/v2/translate', {
         method: 'POST',
         headers: { Authorization: `DeepL-Auth-Key ${process.env.DEEPL_API_KEY}`, 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -34,7 +34,7 @@ async function translateIndonesianToEnglish(input: string): Promise<string> {
   if (!translated) {
     try {
       const url = new URL('https://translate.googleapis.com/translate_a/single');
-      url.search = new URLSearchParams({ client: 'gtx', sl: 'id', tl: 'en', dt: 't', q: text }).toString();
+      url.search = new URLSearchParams({ client: 'gtx', sl: 'auto', tl: 'en', dt: 't', q: text }).toString();
       const response = await fetch(url, { signal: AbortSignal.timeout(9000), next: { revalidate: 86400 } });
       if (!response.ok) throw new Error(`Translation service responded ${response.status}`);
       const result = await response.json() as [Array<[string]>];
