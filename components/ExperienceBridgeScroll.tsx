@@ -61,7 +61,7 @@ export default function ExperienceBridgeScroll() {
   const travelScroll = size.travel / 1.55;
   const exploreHold = Math.max(0, size.viewportHeight * 0.72);
   const totalScroll = travelScroll + exploreHold;
-  const arriveAt = totalScroll ? travelScroll / totalScroll : 1;
+  const arriveAt = totalScroll ? Math.min(.999, travelScroll / totalScroll) : .5;
   const x = useTransform(
     scrollYProgress,
     [0, arriveAt, 1],
