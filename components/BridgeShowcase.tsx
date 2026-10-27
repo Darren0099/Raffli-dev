@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import * as THREE from 'three';
 import { useLanguage } from './LanguageProvider';
 
@@ -23,6 +22,8 @@ interface HudNodePoint {
 
 function Dynamic3DShowcase() {
   const mountRef = useRef<HTMLDivElement>(null);
+  const dragZoneRef = useRef<HTMLDivElement>(null);
+  const actionsRef = useRef<{ spin: () => void; reset: () => void }>({ spin: () => undefined, reset: () => undefined });
   const redDotRef = useRef<HTMLDivElement>(null);
   const hudBadgeRef = useRef<HTMLDivElement>(null);
   const svgCanvasRef = useRef<SVGSVGElement>(null);
@@ -31,7 +32,8 @@ function Dynamic3DShowcase() {
 
   useEffect(() => {
     const currentMount = mountRef.current;
-    if (!currentMount) return;
+    const dragZone = dragZoneRef.current;
+    if (!currentMount || !dragZone) return;
 
     let width = currentMount.clientWidth;
     let height = currentMount.clientHeight;
@@ -43,6 +45,10 @@ function Dynamic3DShowcase() {
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.inset = '0';
+    renderer.domElement.style.zIndex = '2';
+    renderer.domElement.style.pointerEvents = 'none';
     currentMount.appendChild(renderer.domElement);
 
     const legoGroup = new THREE.Group();
@@ -79,35 +85,96 @@ function Dynamic3DShowcase() {
       new THREE.Vector3(0, 0.52, 0),
     ];
 
+    const rotation = { x: 0, y: 0, velocity: 0 };
+    const drag = { active: false, pointerId: -1, x: 0, y: 0, total: 0 };
+    let colorIndex = 0;
+    const palette = [0xe0e0e0, 0xf15a24, 0xb8ceff, 0xffd3b2];
+
+    const spin = () => {
+      rotation.velocity += Math.PI / 22;
+      colorIndex = (colorIndex + 1) % palette.length;
+      bodyMat.color.setHex(palette[colorIndex]);
+    };
+    const reset = () => {
+      rotation.x = 0;
+      rotation.y = 0;
+      rotation.velocity = 0;
+      colorIndex = 0;
+      bodyMat.color.setHex(palette[0]);
+    };
+    actionsRef.current = { spin, reset };
+
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     const currentPos = { x: width / 2, y: height / 2 };
     const trailParticles: TrailParticle[] = [];
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handlePointerMove = (e: PointerEvent) => {
       const rect = currentMount.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      if (x < 0 || x > rect.width || y < 0 || y > rect.height) return;
 
-      mouse.targetX = (x / width) * 2 - 1;
-      mouse.targetY = -(y / height) * 2 + 1;
-
+      mouse.targetX = (x / Math.max(width, 1)) * 2 - 1;
+      mouse.targetY = -(y / Math.max(height, 1)) * 2 + 1;
       currentPos.x = x;
       currentPos.y = y;
 
+      if (redDotRef.current) redDotRef.current.style.opacity = '1';
+      if (hudBadgeRef.current) hudBadgeRef.current.style.opacity = '1';
+
       for (let i = 0; i < 2; i++) {
-        const offsetX = (Math.random() - 0.5) * 30;
-        const offsetY = (Math.random() - 0.5) * 30;
         trailParticles.push({
-          x: x + offsetX,
-          y: y + offsetY,
-          char: Math.random() > 0.3 ? '$' : (Math.random() * 9).toFixed(0),
-          opacity: 0.8,
-          life: 1.0
+          x: x + (Math.random() - .5) * 30,
+          y: y + (Math.random() - .5) * 30,
+          char: Math.random() > .3 ? '$' : String(Math.floor(Math.random() * 10)),
+          opacity: .8,
+          life: 1,
         });
+      }
+      if (trailParticles.length > 85) trailParticles.splice(0, trailParticles.length - 85);
+    };
+
+    const onDragStart = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      drag.active = true;
+      drag.pointerId = e.pointerId;
+      drag.x = e.clientX;
+      drag.y = e.clientY;
+      drag.total = 0;
+      dragZone.setPointerCapture(e.pointerId);
+      dragZone.classList.add('is-dragging');
+      handlePointerMove(e);
+    };
+    const onDragMove = (e: PointerEvent) => {
+      if (!drag.active || drag.pointerId !== e.pointerId) return;
+      const dx = e.clientX - drag.x;
+      const dy = e.clientY - drag.y;
+      rotation.y += dx * .013;
+      rotation.x = Math.max(-1.6, Math.min(1.6, rotation.x + dy * .013));
+      drag.total += Math.abs(dx) + Math.abs(dy);
+      drag.x = e.clientX;
+      drag.y = e.clientY;
+    };
+    const onDragEnd = (e: PointerEvent) => {
+      if (!drag.active || e.pointerId !== drag.pointerId) return;
+      if (drag.total < 9 && e.type === 'pointerup') spin();
+      drag.active = false;
+      dragZone.classList.remove('is-dragging');
+      if (dragZone.hasPointerCapture(e.pointerId)) dragZone.releasePointerCapture(e.pointerId);
+    };
+    const onLeave = () => {
+      if (!drag.active) {
+        if (redDotRef.current) redDotRef.current.style.opacity = '0';
+        if (hudBadgeRef.current) hudBadgeRef.current.style.opacity = '0';
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    currentMount.addEventListener('pointermove', handlePointerMove);
+    currentMount.addEventListener('pointerleave', onLeave);
+    dragZone.addEventListener('pointerdown', onDragStart);
+    dragZone.addEventListener('pointermove', onDragMove);
+    dragZone.addEventListener('pointerup', onDragEnd);
+    dragZone.addEventListener('pointercancel', onDragEnd);
 
     const isPointInTriangle = (
       px: number, py: number,
@@ -124,16 +191,24 @@ function Dynamic3DShowcase() {
 
     let reqId: number;
     let frameCount = 0;
+    let visible = true;
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      visible = entries[0]?.isIntersecting ?? false;
+    }, { threshold: .01 });
+    visibilityObserver.observe(currentMount);
 
     const animate = () => {
       reqId = requestAnimationFrame(animate);
+      if (!visible || document.hidden) return;
       frameCount++;
 
       mouse.x += (mouse.targetX - mouse.x) * 0.06;
       mouse.y += (mouse.targetY - mouse.y) * 0.06;
 
-      legoGroup.rotation.y = mouse.x * 1.1;
-      legoGroup.rotation.x = -mouse.y * 0.7;
+      rotation.y += rotation.velocity;
+      rotation.velocity *= .963;
+      legoGroup.rotation.y = mouse.x * .42 + rotation.y;
+      legoGroup.rotation.x = -mouse.y * .25 + rotation.x;
 
   
       if (redDotRef.current) {
@@ -292,6 +367,8 @@ function Dynamic3DShowcase() {
       if (!currentMount) return;
       width = currentMount.clientWidth;
       height = currentMount.clientHeight;
+      currentPos.x = Math.min(currentPos.x, width);
+      currentPos.y = Math.min(currentPos.y, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
@@ -301,7 +378,19 @@ function Dynamic3DShowcase() {
 
     return () => {
       cancelAnimationFrame(reqId);
-      window.removeEventListener('mousemove', handleMouseMove);
+      visibilityObserver.disconnect();
+      currentMount.removeEventListener('pointermove', handlePointerMove);
+      currentMount.removeEventListener('pointerleave', onLeave);
+      dragZone.removeEventListener('pointerdown', onDragStart);
+      dragZone.removeEventListener('pointermove', onDragMove);
+      dragZone.removeEventListener('pointerup', onDragEnd);
+      dragZone.removeEventListener('pointercancel', onDragEnd);
+      actionsRef.current = { spin: () => undefined, reset: () => undefined };
+      bodyGeo.dispose();
+      studGeo.dispose();
+      wireGeo.dispose();
+      bodyMat.dispose();
+      wireMat.dispose();
       window.removeEventListener('resize', handleResize);
       if (currentMount.contains(renderer.domElement)) {
         currentMount.removeChild(renderer.domElement);
@@ -313,53 +402,44 @@ function Dynamic3DShowcase() {
   return (
     <div ref={mountRef} className="bridge-3d-canvas-container">
       <div ref={redDotRef} className="hud-red-dot" />
+      <div ref={dragZoneRef} className="bridge-drag-zone" role="img" aria-label="Interactive 3D block: drag to rotate, tap to spin and change color" />
 
       <div ref={brushSplashOverlayRef} className="hud-brush-splash-layer" />
 
-      <div ref={hudBadgeRef} className="hud-scroll-badge">Scroll</div>
+      <div ref={hudBadgeRef} className="hud-scroll-badge">DRAG</div>
 
       <svg ref={svgCanvasRef} className="hud-svg-canvas" />
 
       <div ref={nodesOverlayRef} className="hud-3d-object-nodes-layer" />
+      <div className="bridge-interaction-hint">DRAG TO ROTATE <span>·</span> TAP TO REMIX</div>
+      <div className="bridge-interaction-controls">
+        <button type="button" onClick={() => actionsRef.current.spin()} aria-label="Spin and recolor the 3D object">SPIN ↗</button>
+        <button type="button" onClick={() => actionsRef.current.reset()} aria-label="Reset the 3D object rotation and color">RESET ↺</button>
+      </div>
     </div>
   );
 }
 
 export default function BridgeShowcase() {
   const { lang } = useLanguage();
-  const bridgeContainerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: bridgeContainerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const xTransformBridge = useTransform(scrollYProgress, [0, 0.4, 1], ["100%", "0%", "0%"]);
 
   return (
-    <section ref={bridgeContainerRef} className="bridge-scroll-container">
-      <div className="bridge-sticky-viewport">
-        
-        <motion.div className="bridge-slide-horizontal-wrapper" style={{ x: xTransformBridge }}>
-          <div className="bridge-slide-content">
-            
-            <div className="bridge-text-box">
-              <h2 className="bridge-heading-statement">
-                {lang === 'id'
-                  ? 'Saya membangun pengalaman digital yang memikat secara visual, menyenangkan saat digunakan, dan membuat identitas sebuah brand mudah diingat.'
-                  : 'I build digital experiences that capture attention, invite interaction, and leave a memorable brand impression.'}
-              </h2>
-            </div>
+    <section className="bridge-scroll-container" aria-label={lang === 'id' ? 'Showcase digital interaktif' : 'Interactive digital showcase'}>
+      <div className="bridge-slide-content">
+        <div className="bridge-text-box">
+          <h2 className="bridge-heading-statement">
+            {lang === 'id'
+              ? 'Saya membangun pengalaman digital yang memikat secara visual, menyenangkan saat digunakan, dan membuat identitas sebuah brand mudah diingat.'
+              : 'I build digital experiences that capture attention, invite interaction, and leave a memorable brand impression.'}
+          </h2>
+        </div>
 
-            <Dynamic3DShowcase />
-            <div className="bridge-brand-bottom">
-              <span className="brand-name-orange">Raffli</span>
-              <span className="brand-code-orange"> (.79)</span>
-            </div>
+        <Dynamic3DShowcase />
 
-          </div>
-        </motion.div>
-
+        <div className="bridge-brand-bottom" aria-label="Raffli">
+          <span className="brand-name-orange">Raffli</span>
+          <span className="brand-code-orange"> (.79)</span>
+        </div>
       </div>
     </section>
   );
