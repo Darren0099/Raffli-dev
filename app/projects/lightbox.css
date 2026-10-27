@@ -10,3 +10,17 @@
 .lightbox-arrow{width:46px;height:46px;font-size:1.5rem}
 .lightbox-arrow:hover,.lightbox-close:hover{background:#f15a24}
 @media(max-width:600px){.project-lightbox{padding:1rem .35rem;gap:.25rem}.lightbox-arrow{width:36px;height:36px;font-size:1.2rem}.lightbox-figure img{max-height:76vh}}
+
+.case-outcome-section{padding-top:3rem;border-top:1px solid rgba(0,0,0,.12)}
+.case-outcome-description{max-width:850px;line-height:1.8;color:#4a4a4a}
+.case-outcome-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin:2rem 0}
+.case-stat{display:flex;flex-direction:column;gap:.4rem;background:white;padding:1.4rem;border-radius:16px}
+.case-stat strong{font-size:clamp(1.1rem,2vw,1.8rem);line-height:1.2;color:#111}
+.case-stat span{font-size:.85rem;color:#666}
+.case-tools-heading{font-size:1.1rem;margin:2rem 0 1rem}
+.case-tools-list{display:flex;flex-wrap:wrap;gap:.6rem}
+.case-source-links{display:flex;gap:.75rem;flex-wrap:wrap;margin:2rem 0}
+.case-source-links a{background:#111;color:white;padding:.8rem 1.2rem;border-radius:40px;text-decoration:none}
+.case-source-links a:hover{background:#f15a24}
+.case-outcome-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.case-outcome-gallery .clickable-project-image{aspect-ratio:16/10;border-radius:16px;overflow:hidden}

@@ -5,8 +5,13 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { projectsData } from '@/data/projectsData';
 import Footer from '@/components/footer';
+import LanguageToggle from '@/components/LanguageToggle';
+import { useLanguage } from '@/components/LanguageProvider';
+import { useLocalizedProject } from '@/hooks/useLocalizedProjects';
+import ProjectLightbox from '@/components/ProjectLightbox';
 import RelatedProjects from '@/components/Projects';
 import '../page2.css';
+import '../lightbox.css';
 
 interface PageProps {
   params: Promise<{
@@ -22,15 +27,17 @@ export default function ProjectDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const [lang, setLang] = useState<'id' | 'en'>('en');
+  const { lang } = useLanguage();
+  const p = useLocalizedProject(project);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [activeNav, setActiveNav] = useState<string>('overview');
   const [galleryIndex, setGalleryIndex] = useState(0);
 
-  const bottomGallery = project.bottomGalleryImages || [
-    project.image,
-    project.heroImage || project.image,
-    project.largeBannerImage || project.image,
-    ...(project.gridThumbnails || [])
+  const bottomGallery = p.bottomGalleryImages || [
+    p.image,
+    p.heroImage || p.image,
+    p.largeBannerImage || p.image,
+    ...(p.gridThumbnails || [])
   ];
 
   const maxGalleryIndex = Math.max(0, bottomGallery.length - 1);
@@ -43,20 +50,35 @@ export default function ProjectDetailPage({ params }: PageProps) {
     if (galleryIndex > 0) setGalleryIndex((prev) => prev - 1);
   };
 
-  const [leadParagraph, para1, para2, para3] = project.descriptionParagraphs || [
-    "In today's fast-paced creative industry, becoming a top-tier designer, videographer, or animator requires more than just talent—it demands innovative education.",
-    "Understanding the target audience and business objectives was central to our strategy. We prioritized creating a seamless user journey.",
-    "By leveraging modern development stacks and clean design systems, we delivered a robust solution tailored for scalability.",
-    "The resulting platform bridges the gap between functional performance and captivating visual aesthetics."
-  ];
-
-  const defaultServicePills = project.services?.pills || ["Design", "Build", "Automate"];
-  const defaultServiceList = project.services?.list || [
+  const defaultServicePills = p.services?.pills || ["Design", "Build", "Automate"];
+  const defaultServiceList = p.services?.list || [
     "Digital Design",
     "Webflow development",
     "User Experience Design",
     "User Interface Design"
   ];
+
+  const imageSources = Array.from(new Set([
+    p.image,
+    p.heroImage || p.image,
+    ...(p.galleryImages || []),
+    p.largeBannerImage || p.image,
+    ...(p.gridThumbnails || []),
+    ...(p.bottomGalleryImages || []),
+    ...(p.outcomeGallery || [])
+  ]));
+  const openImage = (src: string) => setLightboxIndex(imageSources.indexOf(src));
+  const ui = lang === 'id' ? {
+    home: 'Beranda', overview: 'Ringkasan', showcase: 'Proses', collaboration: 'Implementasi',
+    gallery: 'Galeri', services: 'Layanan', client: 'Klien', source: 'Website / Demo',
+    technologies: 'Teknologi yang Digunakan', github: 'Kode Sumber',
+    enlarge: 'Klik untuk memperbesar gambar'
+  } : {
+    home: 'Home', overview: 'Overview', showcase: 'Process', collaboration: 'Implementation',
+    gallery: 'Gallery', services: 'Services', client: 'Client', source: 'Website / Demo',
+    technologies: 'Technology Used', github: 'Source Code',
+    enlarge: 'Click to enlarge the image'
+  };
 
   return (
     <main className="detail-page-container">
@@ -74,7 +96,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               href="/" 
               className="nav-item"
             >
-              <span className="dot"></span> Home
+              <span className="dot"></span> {ui.home}
             </Link>
             
             <a 
@@ -82,7 +104,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               className={`nav-item ${activeNav === 'overview' ? 'active' : ''}`}
               onClick={() => setActiveNav('overview')}
             >
-              <span className="dot"></span> Overview
+              <span className="dot"></span> {ui.overview}
             </a>
 
             <a 
@@ -90,7 +112,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               className={`nav-item ${activeNav === 'showcase' ? 'active' : ''}`}
               onClick={() => setActiveNav('showcase')}
             >
-              <span className="dot"></span> Showcase
+              <span className="dot"></span> {ui.showcase}
             </a>
 
             <a 
@@ -98,7 +120,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               className={`nav-item ${activeNav === 'collaboration' ? 'active' : ''}`}
               onClick={() => setActiveNav('collaboration')}
             >
-              <span className="dot"></span> Collaboration
+              <span className="dot"></span> {ui.collaboration}
             </a>
 
             <a 
@@ -106,20 +128,13 @@ export default function ProjectDetailPage({ params }: PageProps) {
               className={`nav-item ${activeNav === 'gallery' ? 'active' : ''}`}
               onClick={() => setActiveNav('gallery')}
             >
-              <span className="dot"></span> Gallery
+              <span className="dot"></span> {ui.gallery}
             </a>
           </nav>
         </div>
 
         <div className="header-right">
-          <div 
-            className={`lang-toggle ${lang === 'en' ? 'en' : ''}`}
-            onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
-          >
-            <div className="toggle-pill"></div>
-            <span className={`lang-opt opt-en ${lang === 'en' ? 'active' : ''}`}>EN</span>
-            <span className={`lang-opt opt-id ${lang === 'id' ? 'active' : ''}`}>ID</span>
-          </div>
+          <LanguageToggle />
 
           <a 
             href="https://wa.me/6282183945815" 
@@ -140,17 +155,17 @@ export default function ProjectDetailPage({ params }: PageProps) {
         <header className="detail-header-section">
           <div className="detail-category-badge">
             <span className="dot"></span>
-            <span>{project.category || 'Case'}</span>
+            <span>{p.category || 'Case'}</span>
           </div>
 
-          <h1 className="detail-main-title">{project.title}</h1>
+          <h1 className="detail-main-title">{p.title}</h1>
         </header>
 
         <section className="detail-hero-media-wrapper">
           <div className="hero-top-left-tab">
             <span className="tab-dot"></span>
             <span className="tab-text">
-              {project.buildTime ? `Built in ${project.buildTime}` : 'Built in 7 weeks'}
+              {p.buildTime || p.category}
             </span>
 
             <div className="tab-corner corner-right">
@@ -166,7 +181,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
 
           <div className="detail-hero-media">
-            <img src={project.heroImage || project.image} alt={project.title} />
+            <button type="button" className="clickable-project-image"
+              onClick={() => openImage(p.heroImage || p.image)} aria-label={ui.enlarge}>
+              <img src={p.heroImage || p.image} alt={p.title} />
+            </button>
           </div>
         </section>
 
@@ -175,7 +193,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <div className="service-col-main">
               <div className="meta-label-with-dot">
                 <span className="pink-dot"></span>
-                <span className="font-bold">Services</span>
+                <span className="font-bold">{ui.services}</span>
               </div>
               <div className="services-pill-group">
                 {defaultServicePills.map((pill, idx) => (
@@ -194,37 +212,34 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <div className="info-content-grid">
             <div className="info-sidebar-left">
               <div className="meta-info-block">
-                <span className="meta-info-label">Client</span>
-                <span className="meta-info-value">{project.client}</span>
+                <span className="meta-info-label">{ui.client}</span>
+                <span className="meta-info-value">{p.client}</span>
               </div>
 
               <div className="meta-info-block">
-                <span className="meta-info-label">Website</span>
-                <a href={project.link} target="_blank" rel="noreferrer" className="meta-info-link">
-                  {project.link.replace(/^https?:\/\//, '')}
+                <span className="meta-info-label">{ui.source}</span>
+                <a href={p.link} target="_blank" rel="noreferrer" className="meta-info-link">
+                  {p.link.replace(/^https?:\/\//, '')}
                 </a>
               </div>
             </div>
 
             <div className="info-narrative-right" id="overview">
-              <h2 className="narrative-lead-heading">
-                {leadParagraph}
-              </h2>
-
+              <h2 className="narrative-lead-heading">{p.summaryQuote || p.title}</h2>
               <div className="narrative-body-text">
-                {para1 && <p>{para1}</p>}
-                {para2 && <p>{para2}</p>}
-                {para3 && <p>{para3}</p>}
+                {p.descriptionParagraphs?.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
               </div>
             </div>
           </div>
         </section>
 
-        {project.galleryImages && project.galleryImages.length > 0 && (
+        {p.galleryImages && p.galleryImages.length > 0 && (
           <section className="detail-dual-gallery">
-            {project.galleryImages.slice(0, 2).map((imgUrl, i) => (
+            {p.galleryImages.slice(0, 2).map((imgUrl, i) => (
               <div key={i} className="gallery-card-item">
-                <img src={imgUrl} alt={`${project.title} screenshot ${i + 1}`} />
+                <button type="button" className="clickable-project-image" onClick={() => openImage(imgUrl)} aria-label={ui.enlarge}>
+                  <img src={imgUrl} alt={`${p.title} screenshot ${i + 1}`} />
+                </button>
               </div>
             ))}
           </section>
@@ -232,35 +247,35 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
         <section className="detail-info-block-section" id="showcase">
           <h2 className="block-main-title">
-            {project.section1Title || "Showcasing creative courses in an engaging way"}
+            {p.section1Title || "Showcasing creative courses in an engaging way"}
           </h2>
           <div className="block-two-cols-text">
             <p>
-              {project.section1Text1 || "Our partnership was fueled by a mutual ambition to revolutionize education. Our strategy began with an immersive exploration of core values and goals."}
+              {p.section1Text1 || "Our partnership was fueled by a mutual ambition to revolutionize education. Our strategy began with an immersive exploration of core values and goals."}
             </p>
             <p>
-              {project.section1Text2 || "Recognizing the importance of autonomy in the creative process, we chose modern tools to empower teams visually, fostering flexibility in ongoing evolution."}
+              {p.section1Text2 || "Recognizing the importance of autonomy in the creative process, we chose modern tools to empower teams visually, fostering flexibility in ongoing evolution."}
             </p>
           </div>
         </section>
 
         <section className="detail-banner-image-box">
-          <img 
-            src={project.largeBannerImage || project.heroImage || project.image} 
-            alt={project.title} 
-          />
+          <button type="button" className="clickable-project-image"
+            onClick={() => openImage(p.largeBannerImage || p.heroImage || p.image)} aria-label={ui.enlarge}>
+            <img src={p.largeBannerImage || p.heroImage || p.image} alt={p.title} />
+          </button>
         </section>
 
         <section className="detail-info-block-section" id="collaboration">
           <h2 className="block-main-title">
-            {project.section2Title || "Collaboration fueled by creativity"}
+            {p.section2Title || "Collaboration fueled by creativity"}
           </h2>
           <div className="block-two-cols-text">
             <p>
-              {project.section2Text1 || "Collaboration with the core team was essential. Together, we harnessed the full potential of creative education and scalable digital frameworks."}
+              {p.section2Text1 || "Collaboration with the core team was essential. Together, we harnessed the full potential of creative education and scalable digital frameworks."}
             </p>
             <p>
-              {project.section2Text2 || "Talented creators played a crucial role, building captivating visuals and engaging content that elevated the platform's overall reach."}
+              {p.section2Text2 || "Talented creators played a crucial role, building captivating visuals and engaging content that elevated the platform's overall reach."}
             </p>
           </div>
         </section>
@@ -273,7 +288,9 @@ export default function ProjectDetailPage({ params }: PageProps) {
             >
               {bottomGallery.map((imgUrl, idx) => (
                 <div key={idx} className="slug-gallery-card">
-                  <img src={imgUrl} alt={`Gallery slide ${idx + 1}`} />
+                  <button type="button" className="clickable-project-image" onClick={() => openImage(imgUrl)} aria-label={ui.enlarge}>
+                    <img src={imgUrl} alt={`Gallery slide ${idx + 1}`} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -299,8 +316,37 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
+        <section className="detail-info-block-section case-outcome-section" id="outcome">
+          <h2 className="block-main-title">{p.outcomeTitle || (lang === 'id' ? 'Hasil yang Diperoleh' : 'The Outcome')}</h2>
+          <p className="case-outcome-description">{p.outcomeText}</p>
+          {!!p.outcomeStats?.length && (
+            <div className="case-outcome-stats">
+              {p.outcomeStats.map((stat, i) => (
+                <div className="case-stat" key={i}><strong>{stat.value}</strong><span>{stat.label}</span></div>
+              ))}
+            </div>
+          )}
+          <h3 className="case-tools-heading">{ui.technologies}</h3>
+          <div className="case-tools-list">
+            {p.tools.map((tool) => <span key={tool} className="service-pill">{tool}</span>)}
+          </div>
+          <div className="case-source-links">
+            <a href={p.link} target="_blank" rel="noopener noreferrer">{ui.source} ↗</a>
+            {p.repoUrl && <a href={p.repoUrl} target="_blank" rel="noopener noreferrer">{ui.github} ↗</a>}
+          </div>
+          {!!p.outcomeGallery?.length && (
+            <div className="case-outcome-gallery">
+              {p.outcomeGallery.map((src, i) => (
+                <button key={i} type="button" className="clickable-project-image" onClick={() => openImage(src)} aria-label={ui.enlarge}>
+                  <img src={src} alt={`${p.title} result ${i+1}`} />
+                </button>
+              ))}
+            </div>
+          )}
+        </section>
       </div>
-
+      {lightboxIndex >= 0 && <ProjectLightbox images={imageSources} index={lightboxIndex}
+        onClose={() => setLightboxIndex(-1)} onChange={setLightboxIndex} />}
       <RelatedProjects />
       <Footer />
     </main>
