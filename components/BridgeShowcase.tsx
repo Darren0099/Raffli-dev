@@ -169,6 +169,20 @@ function Dynamic3DShowcase() {
       }
     };
 
+    const onDragKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        rotation.y += event.key === 'ArrowLeft' ? -.22 : .22;
+      } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        rotation.x += event.key === 'ArrowUp' ? -.22 : .22;
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        spin();
+      }
+    };
+
+    dragZone.addEventListener('keydown', onDragKeyDown);
     currentMount.addEventListener('pointermove', handlePointerMove);
     currentMount.addEventListener('pointerleave', onLeave);
     dragZone.addEventListener('pointerdown', onDragStart);
@@ -385,6 +399,7 @@ function Dynamic3DShowcase() {
       dragZone.removeEventListener('pointermove', onDragMove);
       dragZone.removeEventListener('pointerup', onDragEnd);
       dragZone.removeEventListener('pointercancel', onDragEnd);
+      dragZone.removeEventListener('keydown', onDragKeyDown);
       actionsRef.current = { spin: () => undefined, reset: () => undefined };
       bodyGeo.dispose();
       studGeo.dispose();
@@ -402,7 +417,7 @@ function Dynamic3DShowcase() {
   return (
     <div ref={mountRef} className="bridge-3d-canvas-container">
       <div ref={redDotRef} className="hud-red-dot" />
-      <div ref={dragZoneRef} className="bridge-drag-zone" role="img" aria-label="Interactive 3D block: drag to rotate, tap to spin and change color" />
+      <div ref={dragZoneRef} className="bridge-drag-zone" role="button" tabIndex={0} aria-label="Interactive 3D block: drag to rotate, tap or press Enter to spin; arrow keys rotate" />
 
       <div ref={brushSplashOverlayRef} className="hud-brush-splash-layer" />
 
