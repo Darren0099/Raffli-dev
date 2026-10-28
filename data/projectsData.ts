@@ -46,7 +46,7 @@ export const projectsData: Project[] = [
     "category": "Web Development",
     "image": "/img/m (1).png",
     "heroImage": "/img/m (2).png",
-    "link": "https://kleindata-darren-0099s-projects.vercel.app/",
+    "link": "https://dataforge-analytics-neon.vercel.app/",
     "repoUrl": "https://github.com/Darren0099/DataForge",
     "tools": [
       "SvelteKit",
