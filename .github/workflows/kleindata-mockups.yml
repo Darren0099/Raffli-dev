@@ -8,6 +8,10 @@ on:
       - '.github/workflows/kleindata-mockups.yml'
   workflow_dispatch:
 
+concurrency:
+  group: kleindata-portfolio-assets
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -35,5 +39,6 @@ jobs:
           git add public/img/kleindata-landscape-desk.jpg public/img/kleindata-landscape-studio.jpg public/img/kleindata-portrait-phone.jpg public/img/kleindata-portrait-tablet.jpg
           if ! git diff --cached --quiet; then
             git commit -m "assets: publish four KleinData laptop, phone and tablet mockups"
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
