@@ -39,6 +39,80 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    "id": 8,
+    "slug": "kleindata",
+    "title": "KleinData — Smart Insight Studio & Data Analytics Workspace",
+    "client": "Independent Project",
+    "category": "Web Development",
+    "image": "/img/kleindata-landscape-studio.jpg",
+    "heroImage": "/img/kleindata-landscape-desk.jpg",
+    "link": "https://kleindata-darren-0099s-projects.vercel.app/",
+    "repoUrl": "https://github.com/Darren0099/DataForge",
+    "tools": [
+      "SvelteKit",
+      "Svelte 5",
+      "TypeScript",
+      "DuckDB-Wasm",
+      "Chart.js",
+      "GSAP",
+      "Hono",
+      "Vercel"
+    ],
+    "buildTime": "2026 • Independent project",
+    "isExternalLink": true,
+    "services": {
+      "pills": ["Web Development", "Data Analytics", "UI/UX"],
+      "list": [
+        "Dashboard analitik responsif untuk CSV, Excel, JSON, TSV, dan Parquet",
+        "30 pilihan insight berbasis query SQL dan pemetaan kolom otomatis",
+        "SQL Playground, data profiling, dan pembersihan data",
+        "Visualisasi interaktif, ekspor CSV, grafik PNG, dan laporan Markdown"
+      ]
+    },
+    "summaryQuote": "Bukan sekadar menampilkan angka: KleinData membantu menemukan pola, membandingkan performa, dan memahami data melalui 30 jenis analisis yang dapat diperiksa query-nya.",
+    "descriptionParagraphs": [
+      "Banyak dataset penjualan atau operasional masih berupa tabel mentah. Sebelum memberi rekomendasi, kita perlu mengetahui isi data, kolom yang relevan, nilai yang hilang, serta perubahan performa antarperiode.",
+      "Saya membangun KleinData v2 menggunakan SvelteKit, Svelte 5, dan TypeScript. DuckDB-Wasm menjalankan query analitik di browser, sehingga file tidak perlu dikirim ke database server. Antarmuka dirancang minimalis dengan warna putih, hitam, oranye, dan aksen ungu.",
+      "Insight Studio menyediakan 30 analisis deskriptif, mulai dari nilai terendah dan tertinggi, kategori yang paling berkontribusi, estimasi profit, perubahan penjualan bulanan, hingga pemeriksaan duplikat. Pilihan analisis mengikuti kolom yang tersedia; pengguna juga bisa mengubah pemetaan kolom."
+    ],
+    "galleryImages": [
+      "/img/kleindata-portrait-phone.jpg",
+      "/img/kleindata-landscape-studio.jpg"
+    ],
+    "section1Title": "Dari dataset mentah menjadi pertanyaan yang dapat dijawab",
+    "section1Text1": "Setelah file dimuat, aplikasi mendeteksi struktur kolom dan menghitung ringkasan awal. Pengguna memilih kategori insight yang sesuai, lalu melihat hasil utama, perbandingan, tabel pendukung, dan SQL yang digunakan.",
+    "section1Text2": "Sebagai contoh, analisis penurunan penjualan mengelompokkan pendapatan per bulan dan membandingkan periode yang berurutan. Jika dataset tidak memiliki kolom tanggal atau pendapatan yang sesuai, analisis tersebut ditandai membutuhkan pemetaan kolom, bukan menampilkan angka buatan.",
+    "largeBannerImage": "/img/kleindata-landscape-studio.jpg",
+    "section2Title": "Analitik yang transparan dan berjalan di browser",
+    "section2Text1": "DuckDB-Wasm memproses CSV, XLSX, JSON, TSV, dan Parquet secara lokal. Chart.js menyediakan grafik bar, line, dan donut; GSAP menghaluskan transisi tampilan. Hono digunakan pada endpoint API kesehatan aplikasi, sedangkan Vercel menyediakan deployment gratis.",
+    "section2Text2": "Pengguna tetap dapat menulis SQL langsung, memeriksa kelengkapan data, menghapus record duplikat, serta mengunduh hasil. Perhitungan profit adalah estimasi selisih pendapatan dan biaya yang tersedia, bukan klaim laba bersih atau penjelasan kausal.",
+    "gridThumbnails": [
+      "/img/kleindata-landscape-desk.jpg",
+      "/img/kleindata-portrait-phone.jpg",
+      "/img/kleindata-landscape-studio.jpg",
+      "/img/kleindata-portrait-tablet.jpg"
+    ],
+    "bottomGalleryImages": [
+      "/img/kleindata-portrait-tablet.jpg",
+      "/img/kleindata-landscape-studio.jpg",
+      "/img/kleindata-portrait-phone.jpg",
+      "/img/kleindata-landscape-desk.jpg"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "KleinData v2 berhasil dirilis sebagai web analytics studio responsif dengan 30 resep analisis SQL, impor dan pemeriksaan data, grafik interaktif, serta ekspor. Build dan pengujian browser otomatis telah dijalankan; belum ada pengukuran dampak bisnis dari penggunaan aplikasi.",
+    "outcomeStats": [
+      { "label": "Jenis insight", "value": "30" },
+      { "label": "Format impor", "value": "5" },
+      { "label": "Mesin analitik", "value": "DuckDB-Wasm" },
+      { "label": "Pemrosesan data", "value": "Di browser" }
+    ],
+    "outcomeGallery": [
+      "/img/kleindata-landscape-desk.jpg",
+      "/img/kleindata-portrait-tablet.jpg"
+    ]
+  },
+
+  {
     "id": 1,
     "slug": "yri-sumsel",
     "title": "Website Profil dan CMS Berita Youth Ranger Indonesia Sumatera Selatan",
