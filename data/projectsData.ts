@@ -44,8 +44,8 @@ export const projectsData: Project[] = [
     "title": "KleinData — Smart Insight Studio & Data Analytics Workspace",
     "client": "Independent Project",
     "category": "Web Development",
-    "image": "/img/kleindata-landscape-studio.jpg",
-    "heroImage": "/img/kleindata-landscape-desk.jpg",
+    "image": "/img/m (1).png",
+    "heroImage": "/img/m (2).png",
     "link": "https://kleindata-darren-0099s-projects.vercel.app/",
     "repoUrl": "https://github.com/Darren0099/DataForge",
     "tools": [
@@ -76,27 +76,27 @@ export const projectsData: Project[] = [
       "Insight Studio menyediakan 30 analisis deskriptif, mulai dari nilai terendah dan tertinggi, kategori yang paling berkontribusi, estimasi profit, perubahan penjualan bulanan, hingga pemeriksaan duplikat. Pilihan analisis mengikuti kolom yang tersedia; pengguna juga bisa mengubah pemetaan kolom."
     ],
     "galleryImages": [
-      "/img/kleindata-portrait-phone.jpg",
-      "/img/kleindata-landscape-studio.jpg"
+      "/img/mm (1).png",
+      "/img/mm (2).png"
     ],
     "section1Title": "Dari dataset mentah menjadi pertanyaan yang dapat dijawab",
     "section1Text1": "Setelah file dimuat, aplikasi mendeteksi struktur kolom dan menghitung ringkasan awal. Pengguna memilih kategori insight yang sesuai, lalu melihat hasil utama, perbandingan, tabel pendukung, dan SQL yang digunakan.",
     "section1Text2": "Sebagai contoh, analisis penurunan penjualan mengelompokkan pendapatan per bulan dan membandingkan periode yang berurutan. Jika dataset tidak memiliki kolom tanggal atau pendapatan yang sesuai, analisis tersebut ditandai membutuhkan pemetaan kolom, bukan menampilkan angka buatan.",
-    "largeBannerImage": "/img/kleindata-landscape-studio.jpg",
+    "largeBannerImage": "/img/m (2).png",
     "section2Title": "Analitik yang transparan dan berjalan di browser",
     "section2Text1": "DuckDB-Wasm memproses CSV, XLSX, JSON, TSV, dan Parquet secara lokal. Chart.js menyediakan grafik bar, line, dan donut; GSAP menghaluskan transisi tampilan. Hono digunakan pada endpoint API kesehatan aplikasi, sedangkan Vercel menyediakan deployment gratis.",
     "section2Text2": "Pengguna tetap dapat menulis SQL langsung, memeriksa kelengkapan data, menghapus record duplikat, serta mengunduh hasil. Perhitungan profit adalah estimasi selisih pendapatan dan biaya yang tersedia, bukan klaim laba bersih atau penjelasan kausal.",
     "gridThumbnails": [
-      "/img/kleindata-landscape-desk.jpg",
-      "/img/kleindata-portrait-phone.jpg",
-      "/img/kleindata-landscape-studio.jpg",
-      "/img/kleindata-portrait-tablet.jpg"
+      "/img/mm (3).png",
+      "/img/mm (4).png",
+      "/img/mm (5).png",
+      "/img/mm (6).png"
     ],
     "bottomGalleryImages": [
-      "/img/kleindata-portrait-tablet.jpg",
-      "/img/kleindata-landscape-studio.jpg",
-      "/img/kleindata-portrait-phone.jpg",
-      "/img/kleindata-landscape-desk.jpg"
+      "/img/mm (1).png",
+      "/img/mm (2).png",
+      "/img/mm (5).png",
+      "/img/mm (7).png"
     ],
     "outcomeTitle": "Hasil yang Diperoleh",
     "outcomeText": "KleinData v2 berhasil dirilis sebagai web analytics studio responsif dengan 30 resep analisis SQL, impor dan pemeriksaan data, grafik interaktif, serta ekspor. Build dan pengujian browser otomatis telah dijalankan; belum ada pengukuran dampak bisnis dari penggunaan aplikasi.",
@@ -107,8 +107,8 @@ export const projectsData: Project[] = [
       { "label": "Pemrosesan data", "value": "Di browser" }
     ],
     "outcomeGallery": [
-      "/img/kleindata-landscape-desk.jpg",
-      "/img/kleindata-portrait-tablet.jpg"
+      "/img/m (2).png",
+      "/img/m (1).png"
     ]
   },
 
