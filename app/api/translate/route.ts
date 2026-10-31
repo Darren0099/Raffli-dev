@@ -4,6 +4,10 @@ export const runtime = 'nodejs';
 
 const translationCache = new Map<string, string>();
 const MAX_CACHE_SIZE = 600;
+// Public translation endpoints can throttle anonymous serverless traffic.
+// Stop retrying while rate-limited instead of generating repeated 429s.
+const PUBLIC_TRANSLATION_COOLDOWN_MS = 60 * 60 * 1000;
+let publicTranslationPausedUntil = 0;
 
 async function translateIndonesianToEnglish(input: string): Promise<string> {
   const text = input.trim();
@@ -31,12 +35,18 @@ async function translateIndonesianToEnglish(input: string): Promise<string> {
     }
   }
 
-  if (!translated) {
+  if (!translated && Date.now() >= publicTranslationPausedUntil) {
     try {
       const url = new URL('https://translate.googleapis.com/translate_a/single');
       url.search = new URLSearchParams({ client: 'gtx', sl: 'auto', tl: 'en', dt: 't', q: text }).toString();
       const response = await fetch(url, { signal: AbortSignal.timeout(9000), next: { revalidate: 86400 } });
-      if (!response.ok) throw new Error(`Translation service responded ${response.status}`);
+      if (response.status === 429) {
+        publicTranslationPausedUntil = Date.now() + PUBLIC_TRANSLATION_COOLDOWN_MS;
+        console.warn('Public translation rate-limited; using original text during cooldown. Configure DEEPL_API_KEY for reliable translations.');
+      } else if (!response.ok) {
+        throw new Error(`Translation service responded ${response.status}`);
+      }
+      if (!response.ok) return input;
       const result = await response.json() as [Array<[string]>];
       translated = result?.[0]?.map((segment) => segment[0]).join('');
     } catch (error) {
