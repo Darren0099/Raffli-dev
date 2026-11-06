@@ -1,6 +1,7 @@
 'use client';
 
 import '../app/styles/experience.css';
+import Link from 'next/link';
 import { useLanguage } from './LanguageProvider';
 import { useLocalizedStrings } from '@/hooks/useLocalizedProjects';
 
@@ -140,7 +141,7 @@ export default function Experience() {
 
           {experienceData.map((item, i) => (
             <div key={item.id} className="exp-card-wrapper">
-              <div className="exp-card">
+              <div className={"exp-card" + (item.category === "Graphic Design" ? " exp-card--design" : "")}>
                 <div className="exp-card-header">
                   <span className="exp-year">{localized[i * 4]}</span>
                   <span className={`exp-badge badge-${item.category.toLowerCase().replace(/[^a-z]/g, '')}`}>
@@ -151,7 +152,11 @@ export default function Experience() {
                 <h3 className="exp-role">{localized[i * 4 + 2]}</h3>
                 <h4 className="exp-company">{item.company}</h4>
                 <p className="exp-desc">{localized[i * 4 + 3]}</p>
-                
+                {item.category === 'Graphic Design' && (
+                  <Link href="/graphic-design" className="exp-design-link">
+                    {lang === 'id' ? 'Lihat arsip desain' : 'Explore design archive'} <span aria-hidden="true">↗</span>
+                  </Link>
+                )}
                 <div className="exp-card-number">{item.id}</div>
               </div>
             </div>

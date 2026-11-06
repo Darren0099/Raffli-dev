@@ -110,3 +110,9 @@
   .exp-card { min-height: 290px; border-radius: 20px; }
   .exp-track-spacer { flex-basis: 8vw; }
 }
+
+.exp-card--design { min-height: 340px; display: flex; flex-direction: column; }
+.exp-design-link { display: inline-flex; width: max-content; align-items: center; gap: 18px; position: relative; z-index: 2; margin-top: auto; padding-top: 18px; font-size: 12px; font-weight: 850; color: #c54314; text-decoration: none; }
+.exp-design-link span { width: 29px; height: 29px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid #f15a24; transition: background .2s ease, color .2s ease; }
+.exp-design-link:hover span { background: #f15a24; color: white; }
+.exp-design-link:focus-visible { outline: 3px solid #ab350a; outline-offset: 4px; }

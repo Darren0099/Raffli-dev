@@ -159,6 +159,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
 
           <h1 className="detail-main-title">{p.title}</h1>
+          {p.slug === 'youth-visual-identity' && (
+            <Link href="/graphic-design" style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginTop: 22, padding: '12px 19px', borderRadius: 32, background: '#f15a24', color: '#151515', fontWeight: 800, textDecoration: 'none' }}>
+              {lang === 'id' ? 'Jelajahi arsip Graphic Design' : 'Explore Graphic Design Archive'}
+              <span aria-hidden="true">↗</span>
+            </Link>
+          )}
         </header>
 
         <section className="detail-hero-media-wrapper">
