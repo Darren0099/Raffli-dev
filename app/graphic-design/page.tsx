@@ -264,7 +264,7 @@ export default function GraphicDesignPage() {
           </motion.a>
           <motion.a {...motionProps} href="https://www.instagram.com/p/DMom29_yTzQ/" target="_blank" rel="noopener noreferrer" className="gd-origin-card gd-origin-summit">
             <div className="gd-origin-top"><span>02 / EVENT LOGOTYPE</span><span>ORIGINAL CONCEPT</span></div>
-            <div className="gd-origin-art gd-origin-art--real gd-origin-art--summit"><img src="/graphic-design/logos/summit-of-stars-original.png" loading="lazy" width="360" height="232" alt={id ? 'Logo asli Summit of Stars yang saya ciptakan' : 'Original Summit of Stars logo I created'}/><span>SUMMIT OF STARS</span></div>
+            <div className="gd-origin-art gd-origin-art--real gd-origin-art--summit"><img src="/graphic-design/logos/summit-of-stars-original.png?v=20261106b" loading="lazy" width="360" height="232" alt={id ? 'Logo asli Summit of Stars yang saya ciptakan' : 'Original Summit of Stars logo I created'}/><span>SUMMIT OF STARS</span></div>
             <div className="gd-origin-bottom"><div><h3>{id ? 'Logo Summit of Stars' : 'Summit of Stars logo'}</h3><p>{id ? 'Pencetus logo untuk identitas event Summit of Stars.' : 'Created the original identity mark for the Summit of Stars event.'}</p></div><span aria-hidden="true">↗</span></div>
           </motion.a>
         </div>
