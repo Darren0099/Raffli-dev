@@ -1,114 +1,138 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { initialCertificates } from '@/data/certificates';
 import { useLanguage } from './LanguageProvider';
 import { useLocalizedStrings } from '@/hooks/useLocalizedProjects';
 
+const categories = [
+  { value: 'all', id: 'Semua Sertifikat', en: 'All Certificates' },
+  { value: 'webdev', id: 'Web Development', en: 'Web Development' },
+  { value: 'frontend', id: 'Frontend Development', en: 'Frontend Development' },
+  { value: 'data', id: 'Data & Analytics', en: 'Data & Analytics' },
+  { value: 'network', id: 'Networking', en: 'Networking' },
+  { value: 'it', id: 'IT Support', en: 'IT Support' },
+  { value: 'cyber', id: 'Cyber Security', en: 'Cyber Security' },
+  { value: 'cloud', id: 'Cloud Computing', en: 'Cloud Computing' },
+  { value: 'hr', id: 'Human Resource', en: 'Human Resource' },
+  { value: 'design', id: 'Graphic Design', en: 'Graphic Design' },
+] as const;
+
 export default function Certificates() {
   const { lang } = useLanguage();
-  const localized = useLocalizedStrings(initialCertificates.map((cert) => cert.description));
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isHoveredRef = useRef<boolean>(false);
+  const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
+  const localizedDescriptions = useLocalizedStrings(initialCertificates.map((cert) => cert.description));
 
-  const filteredCertificates = initialCertificates.filter((cert) => {
-    if (selectedCategory === 'all') return true;
-    return cert.category.toLowerCase().trim() === selectedCategory.toLowerCase().trim();
-  });
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container || selectedCategory !== 'all') return;
-
-    let intervalId: NodeJS.Timeout;
-
-    const startAutoScroll = () => {
-      intervalId = setInterval(() => {
-        if (!isHoveredRef.current && container) {
-          if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
-            container.scrollLeft = 0;
-          } else {
-            container.scrollLeft += 1.2;
-          }
-        }
-      }, 20);
-    };
-
-    startAutoScroll();
-
-    return () => clearInterval(intervalId);
-  }, [selectedCategory]);
+  const filteredCertificates = initialCertificates.filter(
+    (cert) => selectedCategory === 'all' || cert.category === selectedCategory
+  );
 
   return (
     <section className="certificates-section" id="certificates">
-      <div className="cert-header">
-        <div className="cert-header-left">
-          <div className="small-badge">
-            <i className="fa-solid fa-award"></i> CERTIFICATIONS &amp; CREDENTIALS
+      <div className="cert-section-inner">
+        <div className="cert-header">
+          <div className="cert-header-left">
+            <div className="cert-eyebrow">
+              <i className="fa-solid fa-award" aria-hidden="true"></i>
+              <span>CERTIFICATIONS &amp; CREDENTIALS</span>
+            </div>
+            <h2 className="cert-title">
+              {lang === 'id' ? 'Lisensi & Sertifikasi' : 'Licenses & Certifications'}
+            </h2>
+            <p className="cert-desc">
+              {lang === 'id'
+                ? 'Pembelajaran, sertifikasi, dan pengalaman profesional di bidang pengembangan web, data, jaringan, keamanan, organisasi, dan desain.'
+                : 'Selected learning credentials and professional experience across web development, data, networking, security, leadership, and design.'}
+            </p>
           </div>
-          <h2 className="cert-title">{lang === 'id' ? 'Lisensi & Sertifikasi' : 'Licenses & Certifications'}</h2>
-          <p className="cert-desc">
-            {lang === 'id' ? 'Bukti kompetensi resmi dalam bidang Human Resource, Data Analyst, Web Developer, Frontend Developer, dan Graphic Design.' : 'Verified learning and professional qualifications across HR, data analytics, web development, and design.'}
-          </p>
-        </div>
-
-        <div className="cert-filter-wrapper">
-          <label htmlFor="certFilterSelect" className="filter-label">{lang === "id" ? "Kategori:" : "Category:"}</label>
-          <div className="custom-select-box">
-            <select 
-              id="certFilterSelect" 
-              value={selectedCategory} 
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              <option value="all">{lang === "id" ? "Semua Sertifikat" : "All Certificates"}</option>
-              <option value="hr">Human Resource</option>
-              <option value="data">Data Analyst</option>
-              <option value="webdev">Web Developer</option>
-              <option value="frontend">Frontend Developer</option>
-              <option value="design">Graphic Design</option>
-              <option value="cyber">Cyber Security</option>
-              <option value="cloud">Cloud Computing</option>
-            </select>
-            <i className="fa-solid fa-chevron-down select-arrow"></i>
-          </div>
-        </div>
-      </div>
-
-      <div 
-        className="cert-carousel-container" 
-        ref={containerRef}
-        onMouseEnter={() => { isHoveredRef.current = true; }}
-        onMouseLeave={() => { isHoveredRef.current = false; }}
-      >
-        {filteredCertificates.length > 0 ? (
-          <div className={`cert-bento-track ${selectedCategory !== 'all' ? 'filtered-grid' : 'all-carousel'}`}>
-            {filteredCertificates.map((cert) => (
-              <div 
-                key={cert.id} 
-                className={`cert-card ${selectedCategory === 'all' ? cert.cardType : 'cert-filtered-card'} ${cert.colorClass || ''}`}
+          <div className="cert-filter-wrapper">
+            <label htmlFor="cert-filter-select">
+              {lang === 'id' ? 'Kategori' : 'Category'}
+            </label>
+            <div className="cert-select-container">
+              <select
+                id="cert-filter-select"
+                value={selectedCategory}
+                onChange={(event) => setSelectedCategory(event.target.value)}
               >
-                <span className="cert-pill">{cert.pill}</span>
-                {cert.imageUrl && (
-                  <img src={cert.imageUrl} alt={cert.title} className="cert-bg" />
-                )}
-                <div className="cert-content">
-                  <span className="cert-category">{cert.categoryLabel}</span>
-                  <h3>{cert.title}</h3>
-                  <p>{localized[initialCertificates.findIndex((item) => item.id === cert.id)]}</p>
-                </div>
-                <div className="corner-cutout">
-                  <a href={cert.link} className="arrow-btn" target="_blank" rel="noopener noreferrer">
-                    <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-            ))}
+                {categories.map((category) => (
+                  <option key={category.value} value={category.value}>
+                    {category[lang]}
+                  </option>
+                ))}
+              </select>
+              <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        {filteredCertificates.length ? (
+          <div className="cert-grid">
+            {filteredCertificates.map((cert) => {
+              const originalIndex = initialCertificates.findIndex((item) => item.id === cert.id);
+              const showImage = Boolean(cert.imageUrl && !failedImages[cert.id]);
+              return (
+                <article className="cert-card" key={cert.id}>
+                  <div className="cert-card-top">
+                    <span className="cert-card-number">{String(originalIndex + 1).padStart(2, '0')}</span>
+                    <span className="cert-card-issuer">{cert.pill}</span>
+                  </div>
+
+                  <div className="cert-card-visual">
+                    {showImage ? (
+                      <img
+                        className="cert-card-image"
+                        src={cert.imageUrl}
+                        alt={`Badge atau sertifikat ${cert.title} dari ${cert.pill}`}
+                        loading="lazy"
+                        onError={() => setFailedImages((prev) => ({ ...prev, [cert.id]: true }))}
+                      />
+                    ) : (
+                      <div className="cert-card-placeholder" aria-label={lang === 'id' ? 'Gambar sertifikat belum tersedia' : 'Certificate image unavailable'}>
+                        <i className="fa-regular fa-file-lines" aria-hidden="true"></i>
+                        <span>{cert.pill}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="cert-card-details">
+                    <p className="cert-card-category">{cert.categoryLabel}{cert.issuedAt ? ` · ${new Date(cert.issuedAt + 'T12:00:00').getFullYear()}` : ''}</p>
+                    <h3>{cert.title}</h3>
+                    <p className="cert-card-subtitle">{cert.pill}</p>
+                    <p className="cert-card-description">
+                      {localizedDescriptions[originalIndex] || cert.description}
+                    </p>
+                    {cert.issuedAt && (
+                      <p className="cert-card-date">
+                        {lang === 'id' ? 'Diterbitkan' : 'Issued'}:{' '}
+                        {new Date(cert.issuedAt + 'T12:00:00').toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="cert-card-footer">
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${cert.linkType === 'issuer' ? 'Informasi badge' : 'Detail sertifikat'}: ${cert.title}`}
+                    >
+                      <span>
+                        {cert.linkType === 'issuer'
+                          ? (lang === 'id' ? 'Tentang badge' : 'About badge')
+                          : (lang === 'id' ? 'Lihat detail' : 'View details')}
+                      </span>
+                      <span className="cert-link-icon"><i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                    </a>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         ) : (
-          <div className="no-cert-found">
-            <i className="fa-solid fa-folder-open"></i>
-            <p>{lang === 'id' ? 'Belum ada sertifikat untuk kategori ini.' : 'No certificates in this category.'}</p>
+          <div className="cert-empty-state">
+            {lang === 'id' ? 'Belum ada sertifikat di kategori ini.' : 'No certificates found in this category.'}
           </div>
         )}
       </div>

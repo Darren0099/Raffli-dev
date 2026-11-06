@@ -1,17 +1,71 @@
 export interface Certificate {
   id: number;
   pill: string;
-  category: 'webdev' | 'data' | 'cyber' | 'cloud' | 'design' | 'hr' | 'frontend';
+  category: 'webdev' | 'data' | 'cyber' | 'cloud' | 'design' | 'hr' | 'frontend' | 'it' | 'network';
   categoryLabel: string;
   title: string;
   description: string;
   cardType: string;
   colorClass?: string;
   imageUrl?: string;
+  issuedAt?: string;
+  linkType?: 'credential' | 'issuer';
   link: string;
 }
 
 export const initialCertificates: Certificate[] = [
+  {
+    id: 30,
+    pill: 'Cisco Networking Academy',
+    category: 'webdev',
+    categoryLabel: 'Web Development',
+    title: 'CSS Essentials',
+    description: 'Memahami CSS, Flexbox, Grid, desain responsif, animasi, dan aksesibilitas antarmuka web.',
+    cardType: 'cert-standard',
+    imageUrl: '/certificates/cisco-css-essentials.svg',
+    issuedAt: '2026-10-24',
+    linkType: 'issuer',
+    link: 'https://www.credly.com/org/cisco/badge/css-essentials'
+  },
+  {
+    id: 31,
+    pill: 'Cisco Networking Academy',
+    category: 'data',
+    categoryLabel: 'Data Analytics',
+    title: 'Data Analytics Essentials',
+    description: 'Menerapkan proses analisis data, persiapan dataset, Excel, SQL, dan visualisasi untuk mengambil keputusan berbasis data.',
+    cardType: 'cert-standard',
+    imageUrl: '/certificates/cisco-data-analytics-essentials.svg',
+    issuedAt: '2026-10-24',
+    linkType: 'issuer',
+    link: 'https://www.credly.com/org/cisco/badge/data-analytics-essentials'
+  },
+  {
+    id: 32,
+    pill: 'Cisco Networking Academy',
+    category: 'it',
+    categoryLabel: 'IT Support',
+    title: 'IT Customer Support Basics',
+    description: 'Dasar help desk, komunikasi pelanggan, dokumentasi, pemecahan masalah, dan dukungan teknis jarak jauh.',
+    cardType: 'cert-standard',
+    imageUrl: '/certificates/cisco-it-customer-support-basics.svg',
+    issuedAt: '2026-10-24',
+    linkType: 'issuer',
+    link: 'https://www.credly.com/org/cisco/badge/it-customer-support-basics'
+  },
+  {
+    id: 33,
+    pill: 'Cisco Networking Academy',
+    category: 'network',
+    categoryLabel: 'Networking',
+    title: 'Networking Basics',
+    description: 'Memahami perangkat dan media jaringan, alamat IP, protokol komunikasi, serta konfigurasi jaringan sederhana dengan Cisco Packet Tracer.',
+    cardType: 'cert-standard',
+    imageUrl: '/certificates/cisco-networking-basics.svg',
+    issuedAt: '2026-10-24',
+    linkType: 'issuer',
+    link: 'https://www.credly.com/org/cisco/badge/networking-basics'
+  },
   {
     id: 1,
     pill: 'CredMark',
@@ -242,7 +296,6 @@ export const initialCertificates: Certificate[] = [
     title: 'Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)',
     description: 'Dasar-dasar komputasi awan Amazon Web Services (AWS) dengan Credential ID KEXLYOW40ZG2.',
     cardType: 'cert-standard',
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop',
     link: 'https://www.dicoding.com/certificates/KEXLYOW40ZG2'
   },
   {

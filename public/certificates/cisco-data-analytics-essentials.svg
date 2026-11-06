@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360" role="img" aria-label="Cisco Networking Academy badge: Data Analytics Essentials">
+<defs><clipPath id="cut"><rect x="8" y="8" width="344" height="344" rx="28"/></clipPath></defs>
+<rect x="8" y="8" width="344" height="344" rx="28" fill="#00b4e6"/>
+<g clip-path="url(#cut)">
+<rect x="16" y="15" width="328" height="329" fill="#00b4e6"/>
+<g stroke="white" stroke-width="4.5" stroke-linecap="round">
+<path d="M64 52V61 M76 40V61 M88 33V61 M100 43V61 M112 36V61 M124 48V61 M136 41V61 M148 52V61"/>
+</g>
+<text x="66" y="86" font-size="33" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="white">cisco</text>
+<text x="165" y="55" font-size="23" font-family="Arial,Helvetica,sans-serif" fill="#102d51">Networking</text>
+<text x="165" y="83" font-size="23" font-family="Arial,Helvetica,sans-serif" fill="#102d51">Academy</text>
+<path d="M18 112H345V139C282 131 251 175 180 177S70 147 18 174Z" fill="#0b2043"/>
+<path d="M18 174C85 130 128 174 196 162S294 113 345 138V235H18Z" fill="#0088da"/>
+<path d="M18 184C82 145 118 180 192 167S293 133 345 149V237H18Z" fill="#25bde9"/>
+<path d="M18 206C84 189 130 208 201 190S298 165 345 178V251H18Z" fill="#6ad7f3"/>
+<path d="M18 233C90 213 150 250 205 220S299 192 345 211V269H18Z" fill="#149fe0"/>
+<path d="M18 262C100 222 137 283 206 248S302 223 345 236V279H18Z" fill="#00a8e5"/>
+<path d="M18 279C105 250 167 258 235 266C287 267 317 263 345 261V345H18Z" fill="white"/>
+<text x="41" y="153" font-size="27" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="white">Verified</text>
+<text x="180" y="298" font-size="21" text-anchor="middle" fill="#173251" font-family="Arial,Helvetica,sans-serif">Data Analytics</text><text x="180" y="324" font-size="21" text-anchor="middle" fill="#173251" font-family="Arial,Helvetica,sans-serif">Essentials</text>
+</g></svg>
