@@ -624,7 +624,7 @@ export const projectsData: Project[] = [
     "title": "Palembang Go Vacation — Katalog 94 Destinasi Wisata",
     "client": "KMIPN VI — Politeknik Negeri Sriwijaya",
     "category": "Web Development",
-    "image": "/img/pa (1).png",
+    "image": "/img/palembang-portrait-phone.webp",
     "heroImage": "/img/pa (1).png",
     "link": "https://palembang-go-vacation.vercel.app/",
     "repoUrl": "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT",

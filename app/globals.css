@@ -89,3 +89,10 @@ body {
     transform: translateY(0px);
   }
 }
+/* Keep the complete portrait artwork visible in project cards of different ratios. */
+.card-cover-image[src="/img/palembang-portrait-phone.webp"],
+.project-media-box img[src="/img/palembang-portrait-phone.webp"],
+.more-project-media img[src="/img/palembang-portrait-phone.webp"] {
+  object-fit: contain;
+  background-color: #faeee1;
+}
