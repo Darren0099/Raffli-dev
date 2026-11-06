@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 840" role="img" aria-labelledby="title desc">
+<title id="title">Mobius — Desktop Assistant &amp; File Studio</title>
+<desc id="desc">Geometric playing card-inspired Mobius cover, ivory black and coral-orange with a large infinity ribbon.</desc>
+<defs>
+ <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF7F0"/><stop offset=".40" stop-color="#FFE9DB"/><stop offset=".50" stop-color="#FF7642"/><stop offset="1" stop-color="#FF3C26"/></linearGradient>
+ <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#DDD6D1" stroke-width="1" opacity=".22"/></pattern>
+ <clipPath id="round"><rect width="1440" height="840" rx="32"/></clipPath>
+</defs>
+<g clip-path="url(#round)">
+ <rect width="1440" height="840" fill="#F7F3ED"/>
+ <path d="M840 0H1440V840H720L927 574C1036 434 980 304 840 275Z" fill="#121216"/>
+ <path d="M0 0H1440V840H0Z" fill="url(#grid)"/>
+ <path d="M1440 0V140H1310Z" fill="#FF562B"/>
+ <path d="M790 840H1015L900 696Z" fill="#FF562B"/>
+ <path d="M655 0H665V180H655M681 0H698V136H681M714 0H723V91H714" fill="#FF542C"/>
+ <circle cx="136" cy="128" r="13" fill="#FF582D"/>
+ <text x="167" y="138" font-size="29" font-family="Arial, Helvetica, sans-serif" fill="#18181B" font-weight="700">DESKTOP / APPLICATION</text>
+ <text x="94" y="346" font-size="144" font-weight="800" letter-spacing="-9" font-family="Arial, Helvetica, sans-serif" fill="#161619">MOBIUS</text>
+ <path d="M102 385H566" stroke="#17171A" stroke-width="2"/>
+ <text x="102" y="433" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="29" fill="#27272A">An intelligent desktop companion.</text>
+ <text x="102" y="474" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#4D4A4A">One island. Your tools. Your flow.</text>
+ <g font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#29282A">
+  <rect x="98" y="551" width="170" height="68" rx="18" stroke="#D6CEC8" fill="#FFFDFB"/><text x="126" y="593">FILE STUDIO</text>
+  <rect x="281" y="551" width="128" height="68" rx="18" stroke="#D6CEC8" fill="#FFFDFB"/><text x="307" y="593">VOICE</text>
+  <rect x="423" y="551" width="145" height="68" rx="18" stroke="#D6CEC8" fill="#FFFDFB"/><text x="447" y="593">FOCUS</text>
+ </g>
+ <g>
+ <path d="M814 430 C873 271 1015 275 1115 421 C1219 572 1327 550 1374 431 C1420 311 1337 237 1250 275 C1135 326 1081 545 958 575 C837 610 769 510 814 430" fill="none" stroke="#28272B" stroke-width="98" stroke-linecap="round" stroke-linejoin="round" opacity=".58" transform="translate(13 22)"/>
+ <path d="M814 430 C873 271 1015 275 1115 421 C1219 572 1327 550 1374 431 C1420 311 1337 237 1250 275 C1135 326 1081 545 958 575 C837 610 769 510 814 430" fill="none" stroke="url(#ribbon)" stroke-width="92" stroke-linecap="round" stroke-linejoin="round"/>
+ </g>
+ <path d="M999 146H1302M999 178H1224M999 210H1170" stroke="#EFE6DD" opacity=".28"/>
+ <g fill="#FF5E31"><path d="M1260 119l12 31 31 12-31 12-12 31-12-31-31-12 31-12Z"/><circle cx="778" cy="654" r="10"/></g>
+ <g stroke="#F4F0E9" opacity=".20"><path d="M880 90V760M960 90V760M1040 90V760M1120 90V760M1200 90V760M1280 90V760M1360 90V760"/><path d="M760 130H1440M760 210H1440M760 290H1440M760 370H1440M760 450H1440M760 530H1440M760 610H1440M760 690H1440"/></g>
+ <text x="96" y="735" font-family="Arial, Helvetica, sans-serif" fill="#161619" font-size="25" font-weight="700">PYTHON  /  PYSIDE6  /  WINDOWS</text>
+ <text x="1010" y="758" font-family="Arial, Helvetica, sans-serif" fill="#FAF5ED" font-size="24" letter-spacing="5">MOBIUS / 2026</text>
+ <path d="M96 770H559" stroke="#19191A" stroke-width="2"/><path d="M1050 785H1351" stroke="#F7F1EA" opacity=".6"/>
+</g>
+</svg>
