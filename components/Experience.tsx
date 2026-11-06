@@ -20,7 +20,7 @@ const experienceData = [
     category: "Graphic Design",
     title: "Graphic Designer",
     company: "Youth Ranger Indonesia Regional Sumsel",
-    desc: "Bergabung dan mengelola kebutuhan desain visual serta konten promosi digital organisasi.",
+    desc: "Mencetuskan dan mendesain logo pertama YRI Sumsel, sekaligus mengerjakan identitas visual serta konten promosi digital organisasi.",
   },
   {
     id: "03",
@@ -100,7 +100,7 @@ const experienceData = [
     category: "Graphic Design",
     title: "Graphic Designer",
     company: "Duta Potensi Pemuda Indonesia",
-    desc: "Merancang identitas visual digital dan materi branding organisasi nasional.",
+    desc: "Mengerjakan desain visual Duta Potensi Pemuda Indonesia, termasuk materi event utama Youthopia Symposium.",
   },
   {
     id: "13",

@@ -24,15 +24,15 @@ const campaigns: Campaign[] = [
   {
     id: 'regional', no: '01', organization: 'Youth Ranger Indonesia · Sumatera Selatan',
     title: 'Youth Ranger Sumsel', category: 'identity', type: 'COMMUNITY / BRAND IDENTITY',
-    summaryId: 'Identitas visual, desain feed, dan materi komunikasi untuk kegiatan regional Sumatera Selatan.',
-    summaryEn: 'Visual identity, social posts and creative communication for the South Sumatra regional community.',
+    summaryId: 'Mencetuskan dan merancang logo pertama YRI Sumsel, dilanjutkan dengan desain feed dan komunikasi visual regional.',
+    summaryEn: 'Originated and designed YRI Sumsel’s first logo, along with regional feed designs and visual communication.',
     link: 'https://www.instagram.com/youthranger.sumsel/', sign: 'Y'
   },
   {
     id: 'summit', no: '02', organization: 'Youth Ranger Indonesia · National Event',
     title: 'Summit of Stars I & II', category: 'event', type: 'NATIONAL EVENT / DESIGN LEAD',
-    summaryId: 'Memimpin tim Graphic Design untuk materi visual dua edisi pertama Summit of Stars. Edisi ketiga (Impactify) tidak termasuk karya ini.',
-    summaryEn: 'Led the graphic design team for the first two editions. The third edition (Impactify) is not included in this portfolio.',
+    summaryId: 'Pencetus logo Summit of Stars sekaligus memimpin tim Graphic Design untuk dua edisi awal. Edisi ketiga (Impactify) bukan desain saya.',
+    summaryEn: 'Created the Summit of Stars event logo and led the design team for the first two editions. Edition three (Impactify) is excluded.',
     link: 'https://www.instagram.com/p/DQwJAO7CVAV/', sign: 'S✳S'
   },
   {
@@ -44,9 +44,9 @@ const campaigns: Campaign[] = [
   },
   {
     id: 'kingdom', no: '04', organization: 'International Kingdom Indonesia',
-    title: 'International Kingdom', category: 'social', type: 'SOCIAL MEDIA / 3 FEED DESIGNS',
-    summaryId: 'Tiga desain feed Instagram untuk International Kingdom Indonesia. Satu unggahan referensi tersedia di arsip.',
-    summaryEn: 'Three Instagram feed designs for International Kingdom Indonesia. One referenced post is available in the archive.',
+    title: 'International Kingdom', category: 'event', type: 'INTERNATIONAL EVENT / 3 FEED DESIGNS',
+    summaryId: 'Tiga desain feed Instagram untuk event internasional International Kingdom Indonesia; salah satu unggahannya tersedia di galeri.',
+    summaryEn: 'Three Instagram feed designs for an International Kingdom Indonesia international event; one post is featured in the gallery.',
     link: 'https://www.instagram.com/p/DeHJDk_FKkt/', sign: 'IKI'
   },
   {
@@ -54,17 +54,26 @@ const campaigns: Campaign[] = [
     title: 'Youthopia Symposium', category: 'event', type: 'FLAGSHIP EVENT / VISUAL DESIGN',
     summaryId: 'Materi desain untuk acara utama Duta Potensi Pemuda Indonesia, Youthopia Symposium.',
     summaryEn: 'Visual design work for Duta Potensi Pemuda Indonesia’s flagship event, Youthopia Symposium.',
-    link: 'https://www.instagram.com/p/DPvGQa4E2Pq/', sign: 'Y✳'
+    link: 'https://www.instagram.com/p/DN-IlgoABI3/', sign: 'Y✳'
   }
 ];
 type Post = { code: string; label: string; organizer: string; group: string; link: string };
 const posts: Post[] = [
+  { code: 'DMom29_yTzQ', label: 'Logo Summit of Stars', organizer: 'Youth Ranger Indonesia', group: 'EVENT LOGO / ORIGINAL REFERENCE', link: 'https://www.instagram.com/p/DMom29_yTzQ/' },
   { code: 'DQwJAO7CVAV', label: 'Summit of Stars', organizer: 'Youth Ranger Indonesia', group: 'SUMMIT I & II · REFERENCE', link: 'https://www.instagram.com/p/DQwJAO7CVAV/' },
   { code: 'C9qxES0SP80', label: 'YRI Fest × Expo', organizer: 'YRI Regional Sumsel', group: 'FLAGSHIP EVENT', link: 'https://www.instagram.com/p/C9qxES0SP80/' },
   { code: 'DeHJDk_FKkt', label: 'International Kingdom Indonesia', organizer: 'International Kingdom Indonesia', group: 'FEED 01 / 03', link: 'https://www.instagram.com/p/DeHJDk_FKkt/' },
-  { code: 'DPvGQa4E2Pq', label: 'Youthopia Symposium', organizer: 'Duta Potensi Pemuda Indonesia', group: 'NATIONAL EVENT', link: 'https://www.instagram.com/p/DPvGQa4E2Pq/' },
+  { code: 'DN-IlgoABI3', label: 'Youthopia Symposium', organizer: 'Duta Potensi Pemuda Indonesia', group: 'FLAGSHIP EVENT / PRIMARY REFERENCE', link: 'https://www.instagram.com/p/DN-IlgoABI3/' },
+  { code: 'DPvGQa4E2Pq', label: 'Duta Potensi Indonesia — Selected Post', organizer: 'Duta Potensi Pemuda Indonesia', group: 'ADDITIONAL POST', link: 'https://www.instagram.com/p/DPvGQa4E2Pq/' },
   { code: 'DfHwQoeogar', label: 'Additional Selected Post', organizer: 'Previous portfolio reference', group: 'ORIGINAL PUBLICATION', link: 'https://www.instagram.com/p/DfHwQoeogar/' },
 ];
+const profiles = [
+  { label: '@youthranger.sumsel', href: 'https://www.instagram.com/youthranger.sumsel/', context: '' },
+  { label: '@impactify.yrisumsel', href: 'https://www.instagram.com/impactify.yrisumsel/', context: 'EDITION 03 / REFERENCE ONLY' },
+  { label: '@internationalkingdom.indonesia', href: 'https://www.instagram.com/internationalkingdom.indonesia/', context: '' },
+  { label: '@dutapotensi.id', href: 'https://www.instagram.com/dutapotensi.id/', context: '' },
+  { label: '@youthopiasymposium', href: 'https://www.instagram.com/youthopiasymposium/', context: '' },
+] as const;
 const ease = [0.22, 1, 0.36, 1] as const;
 const reveal = { hidden: { opacity: 0, y: 48 }, visible: { opacity: 1, y: 0 } };
 const scrollViewport = { once: true, amount: 0.1 as const };
@@ -90,6 +99,7 @@ export default function GraphicDesignPage() {
         <nav aria-label={id ? 'Navigasi halaman' : 'Page navigation'}>
           <a href="#gd-work">{id ? 'Karya' : 'Work'}</a>
           <a href="#gd-summit">Summit of Stars</a>
+          <a href="#gd-logos">Logos</a>
           <a href="#gd-posts">Instagram</a>
         </nav>
         <div className="gd-navigation-right"><LanguageToggle /><Link href="/projects">{id ? 'Proyek' : 'Projects'} ↗</Link></div>
@@ -178,12 +188,12 @@ export default function GraphicDesignPage() {
           <span className="gd-section-number">03 / EVENT CAMPAIGN SPOTLIGHT</span>
           <div className="gd-summit-heading">
             <h2 id="gd-summit-title">SUMMIT<br/>OF <em>STARS</em><sup>✳</sup></h2>
-            <div><span>GRAPHIC DESIGN TEAM LEAD</span><p>{id ? 'Saya memimpin tim Graphic Design untuk dua edisi pertama Summit of Stars. Edisi ketiga, Impactify, bukan hasil desain saya dan tidak dimasukkan ke koleksi.' : 'I led the Graphic Design team for the first two Summit of Stars editions. The third edition, Impactify, was not my design work and is excluded.'}</p></div>
+            <div><span>GRAPHIC DESIGN TEAM LEAD</span><p>{id ? 'Saya mencetuskan logo Summit of Stars dan memimpin tim Graphic Design pada dua edisi awal. Edisi ketiga yang bernama Impactify bukan desain saya.' : 'I designed the Summit of Stars logo and led its Graphic Design team for the first two editions. The third edition, Impactify, was not my work.'}</p></div>
           </div>
         </motion.div>
         <div className="gd-summit-pair">
           {[1,2].map((edition) => (
-            <motion.a key={edition} href={edition===1 ? 'https://www.instagram.com/impactify.yrisumsel/' : 'https://www.instagram.com/p/DQwJAO7CVAV/'} target="_blank" rel="noopener noreferrer"
+            <motion.a key={edition} href={edition===1 ? 'https://www.instagram.com/p/DMom29_yTzQ/' : 'https://www.instagram.com/p/DQwJAO7CVAV/'} target="_blank" rel="noopener noreferrer"
               className={'gd-summit-edition '+(edition===1?'gd-summit-first':'gd-summit-second')}
               {...motionProps} transition={{ duration: .8, ease, delay: reduced ? 0 : (edition-1)*.15 }}>
               <span>YRI / SUMMIT OF STARS / ED. {String(edition).padStart(2,'0')}</span><i aria-hidden="true">{edition===1?'✳':'◉'}</i>
@@ -192,30 +202,51 @@ export default function GraphicDesignPage() {
             </motion.a>
           ))}
         </div>
-        <div className="gd-summit-end"><p>{id ? 'Referensi unggahan Summit of Stars tersedia di galeri Instagram. Tampilan kedua kartu ini merupakan artwork editorial baru.' : 'See the original Summit of Stars reference in the Instagram gallery. The cards here are original editorial artworks.'}</p><a href="https://www.instagram.com/p/DQwJAO7CVAV/" target="_blank" rel="noopener noreferrer">VIEW SUMMIT POST ↗</a></div>
+        <div className="gd-summit-end"><p>{id ? 'Logo event dan unggahan Summit of Stars ada di galeri asli. Kedua kartu ini merupakan komposisi editorial, bukan desain poster yang saya unggah.' : 'The event logo and Summit of Stars posts are linked in the original gallery. These two cards are editorial compositions, not uploaded event posters.'}</p><a href="https://www.instagram.com/p/DQwJAO7CVAV/" target="_blank" rel="noopener noreferrer">VIEW SUMMIT POST ↗</a></div>
       </section>
 
       <section className="gd-special" aria-labelledby="gd-special-title">
         <motion.div className="gd-section-header" {...motionProps}>
           <div><span className="gd-section-number">04 / BEYOND THE REGIONAL FEED</span><h2 id="gd-special-title">Beyond <em>YRI.</em></h2></div>
-          <p>{id ? 'Dari tiga feed untuk International Kingdom sampai visual acara utama Youthopia Symposium.' : 'From three International Kingdom posts to visual work for Youthopia Symposium.'}</p>
+          <p>{id ? 'Dari tiga feed event internasional International Kingdom hingga visual event utama Youthopia Symposium.' : 'From three feed designs for an international event to Youthopia Symposium’s flagship visual campaign.'}</p>
         </motion.div>
         <div className="gd-special-grid">
           <motion.a {...motionProps} href="https://www.instagram.com/p/DeHJDk_FKkt/" target="_blank" rel="noopener noreferrer" className="gd-special-card gd-special-kingdom">
-            <div className="gd-special-orbit" aria-hidden="true"><span>IK</span></div><div className="gd-special-top"><span>INTERNATIONAL KINGDOM INDONESIA</span><span>03 FEED DESIGNS</span></div>
+            <div className="gd-special-orbit" aria-hidden="true"><span>IK</span></div><div className="gd-special-top"><span>INTERNATIONAL KINGDOM INDONESIA</span><span>INTERNATIONAL EVENT / 03 FEEDS</span></div>
             <div className="gd-special-bottom"><strong>INTERNATIONAL<br/>KINGDOM.</strong><span>SEE ORIGINAL POST ↗</span></div>
           </motion.a>
-          <motion.a {...motionProps} href="https://www.instagram.com/p/DPvGQa4E2Pq/" target="_blank" rel="noopener noreferrer" className="gd-special-card gd-special-youthopia">
+          <motion.a {...motionProps} href="https://www.instagram.com/p/DN-IlgoABI3/" target="_blank" rel="noopener noreferrer" className="gd-special-card gd-special-youthopia">
             <div className="gd-special-orbit" aria-hidden="true"><span>Y✳</span></div><div className="gd-special-top"><span>DUTA POTENSI PEMUDA INDONESIA</span><span>FLAGSHIP EVENT</span></div>
             <div className="gd-special-bottom"><strong>YOUTHOPIA<br/>SYMPOSIUM.</strong><span>SEE ORIGINAL POST ↗</span></div>
           </motion.a>
         </div>
       </section>
 
+
+      <section className="gd-logo-origins" id="gd-logos" aria-labelledby="gd-logo-title">
+        <motion.header className="gd-section-header" {...motionProps}>
+          <div><span className="gd-section-number">05 / LOGO ORIGINS</span><h2 id="gd-logo-title">The marks <em>I started.</em></h2></div>
+          <p>{id ? 'Dua identitas visual yang pertama kali saya cetuskan: logo regional YRI Sumsel dan logo event Summit of Stars.' : 'Two visual marks I originally created: the first YRI Sumsel regional logo and the Summit of Stars event logo.'}</p>
+        </motion.header>
+        <div className="gd-origin-grid">
+          <motion.a {...motionProps} href="https://www.instagram.com/youthranger.sumsel/" target="_blank" rel="noopener noreferrer" className="gd-origin-card gd-origin-sumsel">
+            <div className="gd-origin-top"><span>01 / COMMUNITY IDENTITY</span><span>ORIGINAL CONCEPT</span></div>
+            <div className="gd-origin-art" aria-hidden="true"><span className="gd-origin-orbit"/><strong>YRI<br/>S✳</strong><span>REGIONAL / SUMSEL</span></div>
+            <div className="gd-origin-bottom"><div><h3>{id ? 'Logo pertama YRI Sumsel' : 'YRI Sumsel’s first logo'}</h3><p>{id ? 'Konsep awal dan desain logo regional Sumatera Selatan.' : 'Original logo concept and design for the South Sumatra region.'}</p></div><span aria-hidden="true">↗</span></div>
+          </motion.a>
+          <motion.a {...motionProps} href="https://www.instagram.com/p/DMom29_yTzQ/" target="_blank" rel="noopener noreferrer" className="gd-origin-card gd-origin-summit">
+            <div className="gd-origin-top"><span>02 / EVENT LOGOTYPE</span><span>ORIGINAL CONCEPT</span></div>
+            <div className="gd-origin-art" aria-hidden="true"><span className="gd-origin-orbit"/><strong>S✳S</strong><span>SUMMIT OF STARS</span></div>
+            <div className="gd-origin-bottom"><div><h3>{id ? 'Logo Summit of Stars' : 'Summit of Stars logo'}</h3><p>{id ? 'Pencetus logo untuk identitas event Summit of Stars.' : 'Created the original identity mark for the Summit of Stars event.'}</p></div><span aria-hidden="true">↗</span></div>
+          </motion.a>
+        </div>
+        <p className="gd-origin-note">{id ? 'Grafis di atas adalah ilustrasi editorial baru, bukan file logo asli. Untuk melihat identitas yang dipublikasikan, buka tautan profil YRI Sumsel atau unggahan logo Summit of Stars.' : 'The artwork here is an editorial illustration, not the actual logo files. Open YRI Sumsel’s profile or the Summit of Stars logo post to view the published identity.'}</p>
+      </section>
+
       <section className="gd-posts" id="gd-posts" aria-labelledby="gd-post-title">
         <motion.header className="gd-section-header" {...motionProps}>
-          <div><span className="gd-section-number">05 / INSTAGRAM ORIGINALS</span><h2 id="gd-post-title">The real <em>posts.</em></h2></div>
-          <p>{id ? 'Galeri postingan Instagram yang kamu kirim, beserta nama organisasi dan acara. Klik “Tampilkan unggahan” untuk memuat pratinjau asli.' : 'The original Instagram references you supplied, labeled by organization and event. Open previews to load the posts.'}</p>
+          <div><span className="gd-section-number">06 / INSTAGRAM ORIGINALS</span><h2 id="gd-post-title">The real <em>posts.</em></h2></div>
+          <p>{id ? 'Galeri referensi asli, termasuk logo Summit of Stars, YRI Fest, event internasional Kingdom, Youthopia, dan Duta Potensi.' : 'Original post gallery: Summit of Stars logo, YRI Fest, International Kingdom, Youthopia, and Duta Potensi.'}</p>
         </motion.header>
         <div className="gd-post-grid">
           {posts.map((post,index) => (
@@ -238,20 +269,22 @@ export default function GraphicDesignPage() {
             </motion.article>
           ))}
         </div>
-        <p className="gd-post-note">{id ? 'Instagram membatasi embed pada sebagian akun atau browser. Semua tautan asli tetap tersedia; hanya satu dari tiga feed International Kingdom yang sudah diberikan sebagai referensi.' : 'Instagram may restrict embeds in some browsers. All original links remain available; one of the three International Kingdom posts was supplied as a reference.'}</p>
+        <p className="gd-post-note">{id ? 'Instagram dapat membatasi embed. Tautan unggahan tetap tersedia, dan baru satu dari tiga feed International Kingdom yang mempunyai tautan referensi.' : 'Instagram can restrict embeds. Original post links remain accessible, and one of three International Kingdom feeds currently has a supplied URL.'}</p>
       </section>
 
       <footer className="gd-finale">
         <strong className="gd-finale-star" aria-hidden="true">✳</strong>
         <motion.div {...motionProps}>
-          <span className="gd-section-number">06 / NEXT CREATIVE CHAPTER</span>
+          <span className="gd-section-number">07 / NEXT CREATIVE CHAPTER</span>
           <h2>MORE THAN<br/><em>JUST A POST.</em></h2>
         </motion.div>
-        <div className="gd-social-links">
-          <a href="https://www.instagram.com/youthranger.sumsel/" target="_blank" rel="noopener noreferrer">@YOUTHRANGER.SUMSEL ↗</a>
-          <a href="https://www.instagram.com/impactify.yrisumsel/" target="_blank" rel="noopener noreferrer">@IMPACTIFY.YRISUMSEL ↗</a>
-          <a href="https://www.instagram.com/p/DeHJDk_FKkt/" target="_blank" rel="noopener noreferrer">INTERNATIONAL KINGDOM ↗</a>
-          <a href="https://www.instagram.com/p/DPvGQa4E2Pq/" target="_blank" rel="noopener noreferrer">YOUTHOPIA ↗</a>
+        <div className="gd-social-links" aria-label={id ? 'Lima akun Instagram resmi' : 'Five official Instagram profiles'}>
+          {profiles.map((profile) => (
+            <a key={profile.href} href={profile.href} target="_blank" rel="noopener noreferrer">
+              <span>{profile.label} ↗</span>
+              {profile.context && <small>{id ? 'Edisi ketiga / bukan karya saya' : profile.context}</small>}
+            </a>
+          ))}
         </div>
         <div className="gd-footer-line"><Link href="/#experience">← {id?'Pengalaman':'Experience'}</Link><span>RAFFLI © 2026 / DESIGN ARCHIVE</span><Link href="/projects">{id?'Semua proyek':'All projects'} ↗</Link></div>
       </footer>
