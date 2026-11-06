@@ -18,9 +18,9 @@ const experienceData = [
     id: "02",
     year: "Oktober 2023",
     category: "Graphic Design",
-    title: "Graphic Designer",
+    title: "Ketua Divisi Graphic Design · Angkatan Pertama",
     company: "Youth Ranger Indonesia Regional Sumsel",
-    desc: "Mencetuskan dan mendesain logo pertama YRI Sumsel, sekaligus mengerjakan identitas visual serta konten promosi digital organisasi.",
+    desc: "Angkatan pertama YRI Sumsel, langsung menjadi ketua divisi, mencetuskan logo regional yang masih digunakan, dan mengerjakan desain komunikasi visual.",
   },
   {
     id: "03",
@@ -108,7 +108,7 @@ const experienceData = [
     category: "Graphic Design",
     title: "Graphic Designer",
     company: "Youth Ranger Indonesia Pusat",
-    desc: "Bertanggung jawab merancang media publikasi visual tingkat nasional di YRI Pusat.",
+    desc: "Menangani konten dan desain Instagram Kawan YRI untuk Divisi Operation di YRI Pusat.",
   },
   {
     id: "14",
