@@ -70,7 +70,7 @@ export default function AllProjectsPage() {
                       View Detail
                     </Link>
                     <a href={project.link} target={project.isExternalLink ? "_blank" : "_self"} rel={project.isExternalLink ? "noopener noreferrer" : undefined} className="btn-live-link">
-                      Live Link ↗
+                      {project.repoUrl === project.link && project.link.includes('github.com/') ? (lang === 'id' ? 'Kode Sumber ↗' : 'Source Code ↗') : 'Live Link ↗'}
                     </a>
                   </div>
                 </div>
