@@ -79,6 +79,7 @@ export default function Certificates() {
   const { lang } = useLanguage();
   const [selectedIssuer, setSelectedIssuer] = useState<IssuerKey | 'all'>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const certificates = useMemo(() => {
     return initialCertificates
@@ -95,9 +96,8 @@ export default function Certificates() {
   );
 
   const availableIssuers = issuerOrder.filter((issuer) => certificates.some((item) => item.issuer === issuer));
-  const [isPaused, setIsPaused] = useState(false);
-  // Two identical sequences make the CSS translation loop continuous.
-  const movingCards = filtered.length > 1 ? [...filtered, ...filtered] : filtered;
+  const visibleCards = filtered.slice(0, visibleCount);
+  const remainingCount = Math.max(0, filtered.length - visibleCards.length);
 
   return (
     <section className="credentials-section" id="certificates">
@@ -130,7 +130,10 @@ export default function Certificates() {
               <span>{lang === 'id' ? 'Penerbit' : 'Issuer'}</span>
               <select
                 value={selectedIssuer}
-                onChange={(event) => setSelectedIssuer(event.target.value as IssuerKey | 'all')}
+                onChange={(event) => {
+                  setSelectedIssuer(event.target.value as IssuerKey | 'all');
+                  setVisibleCount(6);
+                }}
               >
                 <option value="all">{lang === 'id' ? 'Semua penerbit' : 'All issuers'}</option>
                 {availableIssuers.map((issuer) => (
@@ -141,7 +144,10 @@ export default function Certificates() {
             </label>
             <label className="credentials-filter">
               <span>{lang === 'id' ? 'Bidang' : 'Field'}</span>
-              <select value={selectedCategory} onChange={(event) => setSelectedCategory(event.target.value)}>
+              <select value={selectedCategory} onChange={(event) => {
+                setSelectedCategory(event.target.value);
+                setVisibleCount(6);
+              }}>
                 {categories.map((category) => (
                   <option key={category.value} value={category.value}>{category[lang]}</option>
                 ))}
@@ -149,38 +155,21 @@ export default function Certificates() {
               <span className="credentials-filter-chevron" aria-hidden="true">⌄</span>
             </label>
           </div>
-          <button
-            type="button"
-            className="credentials-motion-toggle"
-            onClick={() => setIsPaused((paused) => !paused)}
-            aria-pressed={isPaused}
-          >
-            <span aria-hidden="true">{isPaused ? '▶' : 'Ⅱ'}</span>
-            {isPaused ? (lang === 'id' ? 'Putar' : 'Play') : (lang === 'id' ? 'Jeda' : 'Pause')}
-          </button>
         </div>
 
         {filtered.length ? (
-          <div className="credentials-carousel-shell">
-            <div
-              className={filtered.length > 1 ? 'credentials-marquee is-animated' : 'credentials-marquee'}
-              style={{
-                animationDuration: Math.max(22, filtered.length * 5) + 's',
-                animationPlayState: isPaused ? 'paused' : 'running'
-              }}
-            >
-            {movingCards.map(({ cert, issuer, originalIndex }, displayIndex) => {
+          <>
+            <div className="credentials-grid">
+              {visibleCards.map(({ cert, issuer, originalIndex }, displayIndex) => {
               const info = issuerInfo[issuer];
-              const paddedNumber = String((displayIndex % filtered.length) + 1).padStart(2, '0');
+              const paddedNumber = String(displayIndex + 1).padStart(2, '0');
               const compactTitle = cert.title.length > 58
                 ? 'credentials-card-title--compact'
                 : cert.title.length > 34 ? 'credentials-card-title--long' : '';
 
               return (
                 <a
-                  key={String(cert.id) + '-' + displayIndex}
-                  aria-hidden={displayIndex >= filtered.length}
-                  tabIndex={displayIndex >= filtered.length ? -1 : undefined}
+                  key={cert.id}
                   className={`credentials-card credentials-card--${issuer}`}
                   href={cert.link}
                   target="_blank"
@@ -222,9 +211,36 @@ export default function Certificates() {
                   </div>
                 </a>
               );
-            })}
+              })}
             </div>
-          </div>
+            {filtered.length > 6 && (
+              <div className="credentials-pagination">
+                <p aria-live="polite">
+                  {lang === 'id' ? 'Menampilkan' : 'Showing'}{' '}
+                  <strong>{visibleCards.length}</strong> {lang === 'id' ? 'dari' : 'of'}{' '}
+                  <strong>{filtered.length}</strong> {lang === 'id' ? 'sertifikat' : 'credentials'}
+                </p>
+                {remainingCount > 0 ? (
+                  <button
+                    type="button"
+                    className="credentials-show-more"
+                    onClick={() => setVisibleCount((count) => count + 6)}
+                  >
+                    <span>
+                      {lang === 'id' ? 'Tampilkan' : 'Show'} {Math.min(6, remainingCount)} {lang === 'id' ? 'lagi' : 'more'}
+                      <small>{remainingCount} {lang === 'id' ? 'tersisa' : 'remaining'}</small>
+                    </span>
+                    <span className="credentials-show-more-icon" aria-hidden="true">+</span>
+                  </button>
+                ) : (
+                  <button type="button" className="credentials-show-more" onClick={() => setVisibleCount(6)}>
+                    <span>{lang === 'id' ? 'Tampilkan lebih sedikit' : 'Show fewer'}</span>
+                    <span className="credentials-show-more-icon" aria-hidden="true">−</span>
+                  </button>
+                )}
+              </div>
+            )}
+          </>
         ) : (
           <div className="credentials-empty">
             <span aria-hidden="true">∅</span>
