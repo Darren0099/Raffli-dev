@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-label="Graphic Design creative archive editorial cover">
+<rect width="1200" height="780" fill="#f15a24"/>
+<g opacity=".24" stroke="#191919" fill="none"><path d="M0 130H1200M0 260H1200M0 390H1200M0 520H1200M0 650H1200M150 0V780M300 0V780M450 0V780M600 0V780M750 0V780M900 0V780M1050 0V780"/></g>
+<g transform="translate(120 68) rotate(-10 240 320)">
+<rect width="425" height="605" rx="24" fill="#0b2c40"/>
+<circle cx="300" cy="420" r="145" fill="none" stroke="#1eb8e5" stroke-width="58"/>
+<text x="45" y="88" fill="#fff" font-size="26" font-family="Arial,sans-serif" font-weight="bold">RFL / 001</text>
+<text x="35" y="310" fill="#f6fbff" font-family="Arial,sans-serif" font-size="116" font-weight="900" letter-spacing="-12">BE</text>
+<text x="35" y="415" fill="#f6fbff" font-family="Arial,sans-serif" font-size="110" font-weight="900" letter-spacing="-11">BOLD.</text>
+</g>
+<g transform="translate(640 55) rotate(10 210 310)">
+<rect width="425" height="605" rx="24" fill="#e3fa94"/>
+<circle cx="210" cy="315" r="145" fill="none" stroke="#f15a24" stroke-width="65"/>
+<text x="35" y="70" fill="#111" font-size="24" font-family="Arial,sans-serif" font-weight="bold">DESIGN ARCHIVE / 2026</text>
+<text x="37" y="330" fill="#151515" font-size="153" font-family="Arial,sans-serif" font-weight="900" letter-spacing="-16">RFL</text>
+<path d="M30 540H395" stroke="#111" stroke-width="3"/>
+<text x="35" y="576" font-size="28" fill="#111" font-family="Arial,sans-serif" font-weight="bold">GRAPHIC DESIGN</text>
+</g><text x="90" y="732" font-family="Arial,sans-serif" fill="#fff8ef" font-weight="900" font-size="48" letter-spacing="-2">VISUALS THAT MOVE.</text></svg>

@@ -34,7 +34,7 @@ export default function AllProjectsPage() {
           {projectsData.map((project) => (
             <article key={project.slug} className="project-card-item group">
               <div className="project-media-box">
-                <a href={project.link} target="_blank" rel="noreferrer" className="block w-full h-full">
+                <a href={project.link} target={project.isExternalLink ? "_blank" : "_self"} rel={project.isExternalLink ? "noopener noreferrer" : undefined} className="block w-full h-full">
                   <img src={project.image} alt={titleFor(project.slug, project.title)} />
                 </a>
 
@@ -66,10 +66,10 @@ export default function AllProjectsPage() {
                   </div>
 
                   <div className="glass-actions">
-                    <Link href={`/projects/${project.slug}`} className="btn-view-detail">
+                    <Link href={project.slug === 'youth-visual-identity' ? '/graphic-design' : `/projects/${project.slug}`} className="btn-view-detail">
                       View Detail
                     </Link>
-                    <a href={project.link} target="_blank" rel="noreferrer" className="btn-live-link">
+                    <a href={project.link} target={project.isExternalLink ? "_blank" : "_self"} rel={project.isExternalLink ? "noopener noreferrer" : undefined} className="btn-live-link">
                       Live Link ↗
                     </a>
                   </div>
@@ -77,7 +77,7 @@ export default function AllProjectsPage() {
               </div>
 
               <div className="project-info-box">
-                <Link href={`/projects/${project.slug}`} className="project-item-title">
+                <Link href={project.slug === 'youth-visual-identity' ? '/graphic-design' : `/projects/${project.slug}`} className="project-item-title">
                   <h3>{titleFor(project.slug, project.title)}</h3>
                 </Link>
                 <p className="project-item-client">{project.client}</p>
@@ -119,7 +119,7 @@ export default function AllProjectsPage() {
                 <div key={project.slug} className="more-project-card">
                   <div className="more-project-media">
                     <img src={project.image} alt={titleFor(project.slug, project.title)} />
-                    <Link href={`/projects/${project.slug}`} className="more-project-overlay">
+                    <Link href={project.slug === 'youth-visual-identity' ? '/graphic-design' : `/projects/${project.slug}`} className="more-project-overlay">
                       View Project ↗
                     </Link>
                   </div>

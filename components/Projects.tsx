@@ -130,7 +130,7 @@ export default function RelatedProjects() {
                             <div className="hover-action-wrap">
                               {/* 1. KANAN: Action Button Orange -> Detail Project Internal (/projects/slug) */}
                               <Link
-                                href={`/projects/${project.slug}`}
+                                href={project.slug === 'youth-visual-identity' ? '/graphic-design' : `/projects/${project.slug}`}
                                 className="action-btn orange-btn"
                                 onClick={handleLinkClick}
                               >

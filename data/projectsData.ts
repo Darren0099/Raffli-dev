@@ -409,20 +409,20 @@ export const projectsData: Project[] = [
   {
     "id": 5,
     "slug": "youth-visual-identity",
-    "title": "Identitas Visual dan Konten Media Sosial Youth Ranger Sumsel",
-    "client": "Youth Ranger Indonesia Sumsel",
+    "title": "Graphic Design — Creative Archive & Visual Campaigns",
+    "client": "YRI · International Kingdom · Duta Potensi",
     "category": "Graphic Design",
-    "image": "/img/ca1.png",
-    "heroImage": "/img/ca1.png",
-    "link": "https://www.instagram.com/youthranger.sumsel",
+    "image": "/graphic-design/cover.svg",
+    "heroImage": "/graphic-design/cover.svg",
+    "link": "/graphic-design",
     "tools": [
       "Canva",
       "Graphic Design",
       "Branding",
       "Social Media Design"
     ],
-    "buildTime": "Desain komunikasi organisasi",
-    "isExternalLink": true,
+    "buildTime": "Visual identity, social media & event campaigns",
+    "isExternalLink": false,
     "services": {
       "pills": [
         "Branding",
@@ -436,7 +436,7 @@ export const projectsData: Project[] = [
         "Konsistensi identitas organisasi"
       ]
     },
-    "summaryQuote": "Menyatukan tampilan informasi kegiatan agar identitas organisasi mudah dikenali di berbagai materi publikasi.",
+    "summaryQuote": "Arsip desain YRI Sumsel, Summit of Stars I–II, YRI Fest x Expo, International Kingdom Indonesia, dan Youthopia Symposium.",
     "descriptionParagraphs": [
       "Organisasi yang menjalankan banyak program membutuhkan cara menyajikan informasi yang tetap konsisten meski tema kegiatan berbeda.",
       "Pekerjaan desain mencakup pengaturan warna, tipografi, hirarki informasi, dan format visual untuk poster serta materi media sosial YRI Sumsel.",
