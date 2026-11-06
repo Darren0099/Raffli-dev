@@ -39,6 +39,67 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    "id": 9,
+    "slug": "mobius",
+    "title": "Mobius — Desktop Island Assistant & File Studio",
+    "client": "Independent Project",
+    "category": "Desktop Application",
+    "image": "/img/mobius-cover.svg",
+    "heroImage": "/img/mobius-cover.svg",
+    "link": "https://github.com/Darren0099/Mobius",
+    "repoUrl": "https://github.com/Darren0099/Mobius",
+    "tools": [
+      "Python",
+      "PySide6",
+      "Qt Widgets",
+      "PyMuPDF",
+      "Pillow",
+      "Windows API",
+      "faster-whisper"
+    ],
+    "buildTime": "2026 • In development (source only)",
+    "isExternalLink": true,
+    "services": {
+      "pills": ["Desktop App", "Productivity", "UI/UX"],
+      "list": [
+        "Dynamic island desktop dengan animasi mata robot dan indikator status",
+        "File Studio radial dengan sembilan opsi konversi dokumen dan gambar",
+        "Perintah suara lokal serta kontrol media Windows",
+        "Pomodoro, lirik tersinkron, dan pengingat minum"
+      ]
+    },
+    "summaryQuote": "Satu asisten kecil di tepi layar yang menyatukan utilitas harian, konversi file, dan kontrol desktop tanpa memenuhi ruang kerja.",
+    "descriptionParagraphs": [
+      "Mobius adalah proyek aplikasi produktivitas Windows berbasis Python dan PySide6. Konsep utamanya adalah dynamic island minimalis di bagian atas layar: ringkas saat tidak digunakan, responsif terhadap interaksi, dan tidak menghalangi aplikasi lain.",
+      "Antarmuka utamanya menampilkan mata robot ekspresif, indikator waktu atau baterai, serta akses cepat ke musik, lirik, fokus, hidrasi, dan asisten suara. File Studio menggunakan menu radial terpisah yang dapat dipanggil melalui drag-and-drop untuk mengonversi gambar, PDF, dan dokumen Word.",
+      "Pengembangan saat ini berfokus pada penyempurnaan animasi, stabilitas tampilan overlay, dan alur perintah suara di Windows. Repository berisi kode sumber dan pengujian, tetapi versi EXE final sengaja belum dirilis. Cover dan logo yang ditampilkan merupakan konsep identitas visual, bukan tangkapan layar aplikasi yang sudah selesai."
+    ],
+    "section1Title": "Dari dynamic island menjadi ruang kerja mini",
+    "section1Text1": "Mobius ditempatkan di tepi atas layar. Ketika desktop aktif, island dapat menampilkan mata robot animatif; saat aplikasi lain aktif, tampilan menyusut menjadi indikator tipis. Pengguna dapat mengarahkan kursor ke tepi layar untuk memanggilnya kembali.",
+    "section1Text2": "Panel utilitas menyediakan kontrol media yang terhubung ke sesi media Windows, lirik dari berkas LRC atau pencarian opsional, timer Pomodoro, pengingat hidrasi, serta perintah suara lokal. Dukungan fitur media bergantung pada sesi pemutar yang tersedia.",
+    "largeBannerImage": "/img/mobius-portrait.svg",
+    "section2Title": "File Studio radial dan pemrosesan lokal",
+    "section2Text1": "File Studio mengumpulkan operasi Image to PDF, PDF to Image, Word to PDF, PDF to Word, Merge, Split, Compress dan Rotate PDF, serta konversi format gambar dalam sebuah menu radial. Opsi yang tidak kompatibel dengan file dinonaktifkan.",
+    "section2Text2": "Konversi dokumen ditangani oleh pustaka lokal seperti PyMuPDF, Pillow, python-docx, dan ReportLab. Aplikasi ditujukan untuk penggunaan offline; fitur opsional seperti pencarian lirik online atau instalasi model suara tetap membutuhkan jaringan. Pengujian akhir pada perangkat Windows masih berjalan.",
+    "bottomGalleryImages": [
+      "/img/mobius-cover.svg",
+      "/img/mobius-portrait.svg",
+      "/img/mobius-logo.svg"
+    ],
+    "outcomeTitle": "Status dan Hasil Pengembangan",
+    "outcomeText": "Kode sumber Mobius memuat prototipe dynamic island, mata robot, File Studio radial, kontrol media, utilitas fokus dan hidrasi, serta komponen suara. Aset visual portofolio merupakan rancangan branding; screenshot aplikasi, dokumentasi galeri, dan rilis EXE final akan dilengkapi setelah tahap validasi UI dan pengujian di perangkat Windows selesai.",
+    "outcomeStats": [
+      { "label": "Operasi File Studio", "value": "9" },
+      { "label": "Platform", "value": "Windows" },
+      { "label": "Framework antarmuka", "value": "PySide6" },
+      { "label": "Tahap", "value": "Source / Prototype" }
+    ],
+    "outcomeGallery": [
+      "/img/mobius-logo.svg"
+    ]
+  },
+
+  {
     "id": 8,
     "slug": "kleindata",
     "title": "KleinData — Smart Insight Studio & Data Analytics Workspace",
