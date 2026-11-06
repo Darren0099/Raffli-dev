@@ -18,6 +18,7 @@ export interface Project {
   
   services?: ProjectService;
 
+  logo?: string;
   heroImage?: string;
   summaryQuote?: string;
   descriptionParagraphs?: string[];
@@ -45,6 +46,7 @@ export const projectsData: Project[] = [
     "client": "Independent Project",
     "category": "Desktop Application",
     "image": "/img/mobius-cover.svg",
+    "logo": "/img/mobius-logo.svg",
     "heroImage": "/img/mobius-cover.svg",
     "link": "https://github.com/Darren0099/Mobius",
     "repoUrl": "https://github.com/Darren0099/Mobius",
