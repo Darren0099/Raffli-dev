@@ -45,7 +45,7 @@ export const projectsData: Project[] = [
     "title": "Mobius — Desktop Island Assistant & File Studio",
     "client": "Independent Project",
     "category": "Desktop Application",
-    "image": "/img/mobius-cover.svg",
+    "image": "/img/mobius-portrait.svg",
     "logo": "/img/mobius-logo.svg",
     "heroImage": "/img/mobius-cover.svg",
     "link": "https://github.com/Darren0099/Mobius",
