@@ -171,6 +171,26 @@ export default function RelatedProjects() {
                         </a>
                       </div>
 
+                      {project.logo && (
+                        <img
+                          src={project.logo}
+                          alt=""
+                          aria-hidden="true"
+                          draggable={false}
+                          style={{
+                            position: "absolute",
+                            top: 16,
+                            right: 16,
+                            zIndex: 4,
+                            width: 48,
+                            height: 48,
+                            borderRadius: 14,
+                            boxShadow: "0 7px 22px rgba(0,0,0,0.24)",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      )}
+
                       {project.category && (
                         <div className="card-category-tag">
                           <span className="category-badge">
