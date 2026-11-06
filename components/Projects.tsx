@@ -180,7 +180,7 @@ export default function RelatedProjects() {
                           style={{
                             position: "absolute",
                             top: 16,
-                            right: 16,
+                            left: 16,
                             zIndex: 4,
                             width: 48,
                             height: 48,
