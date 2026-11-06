@@ -332,7 +332,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
           <div className="case-source-links">
             <a href={p.link} target="_blank" rel="noopener noreferrer">{ui.source} ↗</a>
-            {p.repoUrl && <a href={p.repoUrl} target="_blank" rel="noopener noreferrer">{ui.github} ↗</a>}
+            {p.repoUrl && p.repoUrl !== p.link && <a href={p.repoUrl} target="_blank" rel="noopener noreferrer">{ui.github} ↗</a>}
           </div>
           {!!p.outcomeGallery?.length && (
             <div className="case-outcome-gallery">
