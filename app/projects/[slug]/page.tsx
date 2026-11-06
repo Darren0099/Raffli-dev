@@ -217,7 +217,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               </div>
 
               <div className="meta-info-block">
-                <span className="meta-info-label">{ui.source}</span>
+                <span className="meta-info-label">{p.repoUrl === p.link && p.link.includes('github.com/') ? ui.github : ui.source}</span>
                 <a href={p.link} target="_blank" rel="noreferrer" className="meta-info-link">
                   {p.link.replace(/^https?:\/\//, '')}
                 </a>
