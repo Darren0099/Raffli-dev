@@ -38,6 +38,25 @@ export default function AllProjectsPage() {
                   <img src={project.image} alt={titleFor(project.slug, project.title)} />
                 </a>
 
+                {project.logo && (
+                  <img
+                    src={project.logo}
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      top: 14,
+                      right: 14,
+                      zIndex: 4,
+                      width: 48,
+                      height: 48,
+                      borderRadius: 14,
+                      boxShadow: "0 7px 22px rgba(0,0,0,0.24)",
+                      pointerEvents: "none",
+                    }}
+                  />
+                )}
+
                 {project.category && (
                   <div className="card-category-tag">
                     <div className="category-corner top-left">
