@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">Mobius app icon</title>
+<desc id="desc">Black geometric square icon with warm orange and cream infinity ribbon.</desc>
+<defs>
+ <linearGradient id="m" x1=".05" y1=".2" x2=".95" y2=".8" objectBoundingBox="true"><stop stop-color="#F9F1E9"/><stop offset=".43" stop-color="#FFF1E5"/><stop offset=".56" stop-color="#FF713D"/><stop offset="1" stop-color="#FF4827"/></linearGradient>
+ <clipPath id="c"><rect width="512" height="512" rx="99"/></clipPath>
+</defs>
+<g clip-path="url(#c)">
+ <rect width="512" height="512" fill="#111115"/>
+ <g stroke="#79747A" stroke-width="1" opacity=".22">
+  <path d="M64 0V512M128 0V512M192 0V512M256 0V512M320 0V512M384 0V512M448 0V512"/>
+  <path d="M0 64H512M0 128H512M0 192H512M0 256H512M0 320H512M0 384H512M0 448H512"/>
+ </g>
+ <path d="M-36 472A154 154 0 0 0 118 318H-36Z" fill="#FF5C2F"/>
+ <path d="M92 264 C127 166 207 170 256 256 C304 344 384 344 420 264 C455 177 376 137 317 191 C253 250 237 333 183 351 C105 377 59 319 92 264" fill="none" stroke="#020203" stroke-width="65" stroke-linecap="round" transform="translate(6 10)" opacity=".45"/>
+ <path d="M92 264 C127 166 207 170 256 256 C304 344 384 344 420 264 C455 177 376 137 317 191 C253 250 237 333 183 351 C105 377 59 319 92 264" fill="none" stroke="url(#m)" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M429 76L439 104L467 114L439 124L429 152L419 124L391 114L419 104Z" fill="#FF6438"/>
+ <path d="M81 69H192" stroke="#F4EFEA" opacity=".5" stroke-width="2"/><path d="M81 81H145" stroke="#F4EFEA" opacity=".35" stroke-width="2"/>
+ <path d="M320 423H443" stroke="#F4EFEA" opacity=".5" stroke-width="2"/>
+ <text x="80" y="432" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="4" fill="#FFF8F1">MOBIUS</text>
+</g>
+</svg>
