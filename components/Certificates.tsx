@@ -95,6 +95,9 @@ export default function Certificates() {
   );
 
   const availableIssuers = issuerOrder.filter((issuer) => certificates.some((item) => item.issuer === issuer));
+  const [isPaused, setIsPaused] = useState(false);
+  // Two identical sequences make the CSS translation loop continuous.
+  const movingCards = filtered.length > 1 ? [...filtered, ...filtered] : filtered;
 
   return (
     <section className="credentials-section" id="certificates">
@@ -146,20 +149,38 @@ export default function Certificates() {
               <span className="credentials-filter-chevron" aria-hidden="true">⌄</span>
             </label>
           </div>
+          <button
+            type="button"
+            className="credentials-motion-toggle"
+            onClick={() => setIsPaused((paused) => !paused)}
+            aria-pressed={isPaused}
+          >
+            <span aria-hidden="true">{isPaused ? '▶' : 'Ⅱ'}</span>
+            {isPaused ? (lang === 'id' ? 'Putar' : 'Play') : (lang === 'id' ? 'Jeda' : 'Pause')}
+          </button>
         </div>
 
         {filtered.length ? (
-          <div className="credentials-grid">
-            {filtered.map(({ cert, issuer, originalIndex }, displayIndex) => {
+          <div className="credentials-carousel-shell">
+            <div
+              className={filtered.length > 1 ? 'credentials-marquee is-animated' : 'credentials-marquee'}
+              style={{
+                animationDuration: Math.max(22, filtered.length * 5) + 's',
+                animationPlayState: isPaused ? 'paused' : 'running'
+              }}
+            >
+            {movingCards.map(({ cert, issuer, originalIndex }, displayIndex) => {
               const info = issuerInfo[issuer];
-              const paddedNumber = String(displayIndex + 1).padStart(2, '0');
+              const paddedNumber = String((displayIndex % filtered.length) + 1).padStart(2, '0');
               const compactTitle = cert.title.length > 58
                 ? 'credentials-card-title--compact'
                 : cert.title.length > 34 ? 'credentials-card-title--long' : '';
 
               return (
                 <a
-                  key={cert.id}
+                  key={String(cert.id) + '-' + displayIndex}
+                  aria-hidden={displayIndex >= filtered.length}
+                  tabIndex={displayIndex >= filtered.length ? -1 : undefined}
                   className={`credentials-card credentials-card--${issuer}`}
                   href={cert.link}
                   target="_blank"
@@ -202,6 +223,7 @@ export default function Certificates() {
                 </a>
               );
             })}
+            </div>
           </div>
         ) : (
           <div className="credentials-empty">
