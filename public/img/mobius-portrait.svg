@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1040" role="img" aria-labelledby="title desc">
+<title id="title">Mobius — vertical project card</title><desc id="desc">Premium Mobius portrait poster: black top, pale bottom, infinity ribbon and orange diamond detail.</desc>
+<defs>
+ <linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF9F3"/><stop offset=".43" stop-color="#FDF2EA"/><stop offset=".50" stop-color="#FF8750"/><stop offset="1" stop-color="#FF4B29"/></linearGradient>
+ <pattern id="g" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M70 0H0V70" fill="none" stroke="#F4EDE6" stroke-width="1" opacity=".19"/></pattern>
+ <clipPath id="clip"><rect width="700" height="1040" rx="36"/></clipPath>
+</defs>
+<g clip-path="url(#clip)">
+ <rect width="700" height="1040" fill="#F7F1EA"/><rect width="700" height="680" fill="#121216"/><rect width="700" height="680" fill="url(#g)"/>
+ <path d="M0 0H268L0 268Z" fill="#F8F1E9"/><path d="M700 676L700 561L587 676Z" fill="#FF5A2D"/><circle cx="104" cy="160" r="17" fill="#FF5A2D"/>
+ <text x="139" y="169" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#F8F1EB">DESKTOP APP</text>
+ <text x="546" y="99" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#F7F0EA">V. 0.8</text>
+ <g opacity=".35" stroke="#F7EDE5"><path d="M60 230H640M60 320H640M60 410H640M60 500H640M60 590H640"/><path d="M120 185V646M210 185V646M300 185V646M390 185V646M480 185V646M570 185V646"/></g>
+ <path d="M126 390 C160 290 253 291 350 410 C444 536 527 540 582 425 C637 302 538 259 464 329 C389 401 345 552 251 556 C164 561 96 474 126 390" fill="none" stroke="#020203" stroke-width="78" stroke-linecap="round" transform="translate(7 14)" opacity=".55"/>
+ <path d="M126 390 C160 290 253 291 350 410 C444 536 527 540 582 425 C637 302 538 259 464 329 C389 401 345 552 251 556 C164 561 96 474 126 390" fill="none" stroke="url(#m)" stroke-width="74" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M538 213l14 34 34 14-34 14-14 34-14-34-34-14 34-14Z" fill="#FF5B30"/>
+ <text x="74" y="782" font-family="Arial,Helvetica,sans-serif" font-size="94" font-weight="800" letter-spacing="-5" fill="#141418">MOBIUS</text>
+ <path d="M78 817H622" stroke="#171719" stroke-width="2"/>
+ <text x="78" y="865" font-family="Arial,Helvetica,sans-serif" font-size="29" fill="#27272A">Desktop assistant &amp; file studio.</text>
+ <text x="78" y="914" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#5A5756">VOICE  /  CONVERT  /  FOCUS</text>
+ <path d="M76 977H545" stroke="#171719" stroke-width="2"/><path d="M580 973h26l13 13-13 13h-26l-13-13z" fill="#FF5A2D"/>
+</g>
+</svg>
