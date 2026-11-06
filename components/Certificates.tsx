@@ -1,12 +1,45 @@
 'use client';
 
-import { useState } from 'react';
-import { initialCertificates } from '@/data/certificates';
+import { useMemo, useState } from 'react';
+import { initialCertificates, type Certificate } from '@/data/certificates';
 import { useLanguage } from './LanguageProvider';
-import { useLocalizedStrings } from '@/hooks/useLocalizedProjects';
+
+type IssuerKey =
+  | 'cisco' | 'dicoding' | 'myskill' | 'dqlab' | 'yri' | 'csu'
+  | 'credmark' | 'karirnex' | 'revou' | 'maryland' | 'pnj'
+  | 'polsri' | 'gdsc';
+
+type IssuerInfo = {
+  name: string;
+  signature: string;
+  edition: string;
+  monogram: string;
+  motif: string;
+};
+
+const issuerInfo: Record<IssuerKey, IssuerInfo> = {
+  cisco: { name: 'Cisco Networking Academy', signature: 'NETWORK / LEARN', edition: 'SIGNAL SERIES', monogram: 'C', motif: 'wave' },
+  dicoding: { name: 'Dicoding Indonesia', signature: 'BUILD / CODE', edition: 'MODULE SERIES', monogram: 'D', motif: 'module' },
+  myskill: { name: 'MySkill', signature: 'GROW / EXPLORE', edition: 'ORBIT SERIES', monogram: 'M', motif: 'orbit' },
+  dqlab: { name: 'DQLab', signature: 'EXPLORE / DATA', edition: 'DATA SERIES', monogram: 'Q', motif: 'data' },
+  yri: { name: 'Youth Ranger Indonesia', signature: 'PEOPLE / IMPACT', edition: 'IMPACT SERIES', monogram: 'Y', motif: 'rays' },
+  csu: { name: 'Charles Sturt University', signature: 'SECURE / SYSTEM', edition: 'SYSTEM SERIES', monogram: 'S', motif: 'circuit' },
+  credmark: { name: 'CredMark', signature: 'SKILL / PROOF', edition: 'SEAL SERIES', monogram: 'C', motif: 'seal' },
+  karirnex: { name: 'KarirNex', signature: 'LEARN / APPLY', edition: 'GROWTH SERIES', monogram: 'K', motif: 'steps' },
+  revou: { name: 'RevoU', signature: 'SHIFT / GROW', edition: 'SHIFT SERIES', monogram: 'R', motif: 'slice' },
+  maryland: { name: 'University of Maryland', signature: 'THINK / CREATE', edition: 'ACADEMIC SERIES', monogram: 'U', motif: 'seal' },
+  pnj: { name: 'Politeknik Negeri Jakarta', signature: 'MAKE / IMPACT', edition: 'ACHIEVEMENT SERIES', monogram: 'P', motif: 'module' },
+  polsri: { name: 'HMJ Teknik Komputer Polsri', signature: 'BUILD / TOGETHER', edition: 'COMMUNITY SERIES', monogram: 'H', motif: 'steps' },
+  gdsc: { name: 'Google Developer Student Clubs', signature: 'LEARN / BUILD', edition: 'DEVELOPER SERIES', monogram: 'G', motif: 'orbit' },
+};
+
+const issuerOrder: IssuerKey[] = [
+  'cisco', 'dicoding', 'myskill', 'dqlab', 'yri', 'csu', 'credmark',
+  'karirnex', 'revou', 'maryland', 'pnj', 'polsri', 'gdsc',
+];
 
 const categories = [
-  { value: 'all', id: 'Semua Sertifikat', en: 'All Certificates' },
+  { value: 'all', id: 'Semua bidang', en: 'All fields' },
   { value: 'webdev', id: 'Web Development', en: 'Web Development' },
   { value: 'frontend', id: 'Frontend Development', en: 'Frontend Development' },
   { value: 'data', id: 'Data & Analytics', en: 'Data & Analytics' },
@@ -18,123 +51,172 @@ const categories = [
   { value: 'design', id: 'Graphic Design', en: 'Graphic Design' },
 ] as const;
 
+function getIssuerKey(cert: Certificate): IssuerKey {
+  const name = cert.pill.toLowerCase();
+  if (name.includes('cisco')) return 'cisco';
+  if (name.includes('dicoding')) return 'dicoding';
+  if (name.includes('myskill')) return 'myskill';
+  if (name.includes('dqlab')) return 'dqlab';
+  if (name.includes('youth ranger')) return 'yri';
+  if (name.includes('charles sturt') || name.includes('it masters')) return 'csu';
+  if (name.includes('credmark')) return 'credmark';
+  if (name.includes('karirnex')) return 'karirnex';
+  if (name.includes('revou')) return 'revou';
+  if (name.includes('maryland')) return 'maryland';
+  if (name.includes('negeri jakarta')) return 'pnj';
+  if (name.includes('polsri')) return 'polsri';
+  return 'gdsc';
+}
+
+function readableDate(date: string, lang: 'id' | 'en') {
+  return new Date(date + 'T12:00:00').toLocaleDateString(
+    lang === 'id' ? 'id-ID' : 'en-US',
+    { year: 'numeric', month: 'short' }
+  );
+}
+
 export default function Certificates() {
   const { lang } = useLanguage();
+  const [selectedIssuer, setSelectedIssuer] = useState<IssuerKey | 'all'>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
-  const localizedDescriptions = useLocalizedStrings(initialCertificates.map((cert) => cert.description));
 
-  const filteredCertificates = initialCertificates.filter(
-    (cert) => selectedCategory === 'all' || cert.category === selectedCategory
+  const certificates = useMemo(() => {
+    return initialCertificates
+      .map((cert, originalIndex) => ({ cert, originalIndex, issuer: getIssuerKey(cert) }))
+      .sort((left, right) => {
+        const difference = issuerOrder.indexOf(left.issuer) - issuerOrder.indexOf(right.issuer);
+        return difference || left.originalIndex - right.originalIndex;
+      });
+  }, []);
+
+  const filtered = certificates.filter(({ cert, issuer }) =>
+    (selectedIssuer === 'all' || issuer === selectedIssuer) &&
+    (selectedCategory === 'all' || cert.category === selectedCategory)
   );
 
+  const availableIssuers = issuerOrder.filter((issuer) => certificates.some((item) => item.issuer === issuer));
+
   return (
-    <section className="certificates-section" id="certificates">
-      <div className="cert-section-inner">
-        <div className="cert-header">
-          <div className="cert-header-left">
-            <div className="cert-eyebrow">
-              <i className="fa-solid fa-award" aria-hidden="true"></i>
-              <span>CERTIFICATIONS &amp; CREDENTIALS</span>
-            </div>
-            <h2 className="cert-title">
-              {lang === 'id' ? 'Lisensi & Sertifikasi' : 'Licenses & Certifications'}
-            </h2>
-            <p className="cert-desc">
-              {lang === 'id'
-                ? 'Pembelajaran, sertifikasi, dan pengalaman profesional di bidang pengembangan web, data, jaringan, keamanan, organisasi, dan desain.'
-                : 'Selected learning credentials and professional experience across web development, data, networking, security, leadership, and design.'}
+    <section className="credentials-section" id="certificates">
+      <div className="credentials-inner">
+        <header className="credentials-heading">
+          <div className="credentials-heading-copy">
+            <p className="credentials-overline">
+              <span className="credentials-overline-mark" aria-hidden="true">✳</span>
+              {lang === 'id' ? 'ARSIP KREDENSIAL / 001—033' : 'CREDENTIAL ARCHIVE / 001—033'}
+            </p>
+            <h2>{lang === 'id' ? 'Beyond the' : 'Beyond the'} <em>certificate.</em></h2>
+            <p className="credentials-heading-caption">
+              {lang === 'id' ? 'Satu koleksi. Banyak perjalanan belajar.' : 'One collection. Many learning journeys.'}
             </p>
           </div>
-          <div className="cert-filter-wrapper">
-            <label htmlFor="cert-filter-select">
-              {lang === 'id' ? 'Kategori' : 'Category'}
-            </label>
-            <div className="cert-select-container">
+          <div className="credentials-total" aria-label={lang === 'id' ? 'Jumlah karya dan sertifikat' : 'Total credentials and recognitions'}>
+            <strong>{String(initialCertificates.length).padStart(2, '0')}</strong>
+            <span>{lang === 'id' ? 'KREDENSIAL &\nPENGHARGAAN' : 'CREDENTIALS &\nRECOGNITIONS'}</span>
+          </div>
+        </header>
+
+        <div className="credentials-toolbar">
+          <div className="credentials-toolbar-index">
+            <span className="credentials-index-dot" aria-hidden="true"></span>
+            {lang === 'id' ? 'KOLEKSI TERPILIH' : 'THE COLLECTION'}
+            <span className="credentials-toolbar-count">({filtered.length.toString().padStart(2, '0')})</span>
+          </div>
+          <div className="credentials-filters">
+            <label className="credentials-filter">
+              <span>{lang === 'id' ? 'Penerbit' : 'Issuer'}</span>
               <select
-                id="cert-filter-select"
-                value={selectedCategory}
-                onChange={(event) => setSelectedCategory(event.target.value)}
+                value={selectedIssuer}
+                onChange={(event) => setSelectedIssuer(event.target.value as IssuerKey | 'all')}
               >
-                {categories.map((category) => (
-                  <option key={category.value} value={category.value}>
-                    {category[lang]}
-                  </option>
+                <option value="all">{lang === 'id' ? 'Semua penerbit' : 'All issuers'}</option>
+                {availableIssuers.map((issuer) => (
+                  <option key={issuer} value={issuer}>{issuerInfo[issuer].name}</option>
                 ))}
               </select>
-              <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
-            </div>
+              <span className="credentials-filter-chevron" aria-hidden="true">⌄</span>
+            </label>
+            <label className="credentials-filter">
+              <span>{lang === 'id' ? 'Bidang' : 'Field'}</span>
+              <select value={selectedCategory} onChange={(event) => setSelectedCategory(event.target.value)}>
+                {categories.map((category) => (
+                  <option key={category.value} value={category.value}>{category[lang]}</option>
+                ))}
+              </select>
+              <span className="credentials-filter-chevron" aria-hidden="true">⌄</span>
+            </label>
           </div>
         </div>
 
-        {filteredCertificates.length ? (
-          <div className="cert-grid">
-            {filteredCertificates.map((cert) => {
-              const originalIndex = initialCertificates.findIndex((item) => item.id === cert.id);
-              const showImage = Boolean(cert.imageUrl && !failedImages[cert.id]);
+        {filtered.length ? (
+          <div className="credentials-grid">
+            {filtered.map(({ cert, issuer, originalIndex }, displayIndex) => {
+              const info = issuerInfo[issuer];
+              const paddedNumber = String(displayIndex + 1).padStart(2, '0');
+              const compactTitle = cert.title.length > 58
+                ? 'credentials-card-title--compact'
+                : cert.title.length > 34 ? 'credentials-card-title--long' : '';
+
               return (
-                <article className="cert-card" key={cert.id}>
-                  <div className="cert-card-top">
-                    <span className="cert-card-number">{String(originalIndex + 1).padStart(2, '0')}</span>
-                    <span className="cert-card-issuer">{cert.pill}</span>
+                <a
+                  key={cert.id}
+                  className={`credentials-card credentials-card--${issuer}`}
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-motif={info.motif}
+                  aria-label={`${cert.title} — ${cert.pill}. ${cert.linkType === 'issuer'
+                    ? (lang === 'id' ? 'Info badge dari penerbit' : 'Issuer badge information')
+                    : (lang === 'id' ? 'Lihat sertifikat' : 'View credential')}`}
+                >
+                  <div className="credentials-card-top">
+                    <span className="credentials-card-issuer">{info.name}</span>
+                    <span className="credentials-card-no">{paddedNumber} / {String(initialCertificates.length).padStart(2, '0')}</span>
                   </div>
 
-                  <div className="cert-card-visual">
-                    {showImage ? (
-                      <img
-                        className="cert-card-image"
-                        src={cert.imageUrl}
-                        alt={`Badge atau sertifikat ${cert.title} dari ${cert.pill}`}
-                        loading="lazy"
-                        onError={() => setFailedImages((prev) => ({ ...prev, [cert.id]: true }))}
-                      />
-                    ) : (
-                      <div className="cert-card-placeholder" aria-label={lang === 'id' ? 'Gambar sertifikat belum tersedia' : 'Certificate image unavailable'}>
-                        <i className="fa-regular fa-file-lines" aria-hidden="true"></i>
-                        <span>{cert.pill}</span>
-                      </div>
-                    )}
+                  <div className="credentials-art" aria-hidden="true">
+                    <span className="credentials-art-grid"></span>
+                    <span className="credentials-art-shape credentials-art-shape--one"></span>
+                    <span className="credentials-art-shape credentials-art-shape--two"></span>
+                    <span className="credentials-art-shape credentials-art-shape--three"></span>
+                    <span className="credentials-art-monogram">{info.monogram}</span>
+                    <span className="credentials-art-mini">{info.signature}</span>
                   </div>
 
-                  <div className="cert-card-details">
-                    <p className="cert-card-category">{cert.categoryLabel}{cert.issuedAt ? ` · ${new Date(cert.issuedAt + 'T12:00:00').getFullYear()}` : ''}</p>
-                    <h3>{cert.title}</h3>
-                    <p className="cert-card-subtitle">{cert.pill}</p>
-                    <p className="cert-card-description">
-                      {localizedDescriptions[originalIndex] || cert.description}
-                    </p>
-                    {cert.issuedAt && (
-                      <p className="cert-card-date">
-                        {lang === 'id' ? 'Diterbitkan' : 'Issued'}:{' '}
-                        {new Date(cert.issuedAt + 'T12:00:00').toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </p>
-                    )}
+                  <div className="credentials-card-body">
+                    <span className="credentials-card-edition">{info.edition}<span className="credentials-card-edition-line"></span>{cert.issuedAt ? readableDate(cert.issuedAt, lang) : 'PORTFOLIO'}</span>
+                    <h3 className={`credentials-card-title ${compactTitle}`}>{cert.title}</h3>
                   </div>
 
-                  <div className="cert-card-footer">
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${cert.linkType === 'issuer' ? 'Informasi badge' : 'Detail sertifikat'}: ${cert.title}`}
-                    >
-                      <span>
-                        {cert.linkType === 'issuer'
-                          ? (lang === 'id' ? 'Tentang badge' : 'About badge')
-                          : (lang === 'id' ? 'Lihat detail' : 'View details')}
-                      </span>
-                      <span className="cert-link-icon"><i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-                    </a>
+                  <div className="credentials-card-bottom">
+                    <div>
+                      <span className="credentials-card-category">{cert.categoryLabel}</span>
+                      <span className="credentials-card-code">RFL / {String(originalIndex + 1).padStart(3, '0')}</span>
+                    </div>
+                    <span className="credentials-card-action" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 19 19 5M8 5h11v11"/>
+                      </svg>
+                    </span>
                   </div>
-                </article>
+                </a>
               );
             })}
           </div>
         ) : (
-          <div className="cert-empty-state">
-            {lang === 'id' ? 'Belum ada sertifikat di kategori ini.' : 'No certificates found in this category.'}
+          <div className="credentials-empty">
+            <span aria-hidden="true">∅</span>
+            <p>{lang === 'id' ? 'Tidak ada sertifikat untuk kombinasi filter ini.' : 'No credentials match these filters.'}</p>
+            <button type="button" onClick={() => { setSelectedIssuer('all'); setSelectedCategory('all'); }}>
+              {lang === 'id' ? 'Atur ulang filter' : 'Reset filters'}
+            </button>
           </div>
         )}
+
+        <footer className="credentials-outro">
+          <span>RAFFLI / CREDENTIAL ARCHIVE</span>
+          <span>{lang === 'id' ? 'TERUS BELAJAR. TERUS MEMBUAT.' : 'KEEP LEARNING. KEEP BUILDING.'}</span>
+        </footer>
       </div>
     </section>
   );
