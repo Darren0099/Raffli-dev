@@ -46,7 +46,7 @@ export default function AllProjectsPage() {
                     style={{
                       position: "absolute",
                       top: 14,
-                      right: 14,
+                      left: 14,
                       zIndex: 4,
                       width: 48,
                       height: 48,
