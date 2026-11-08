@@ -15,14 +15,14 @@ const cvTemplates: { id: CVTemplate; idLabel: string; enLabel: string }[] = [
 const local = (s: DualText, lang: CVLang) => s[lang];
 const labels = {
   id:{
-    preview:'Curriculum Vitae — Pilih posisi & format',
+    preview:'Curriculum Vitae',
     choose:'POSISI CV',
-    templates:'TEMPLATE',
+    templates:'VERSI',
     pages:'PANJANG CV',
     lang:'BAHASA',
     page1:'1 halaman',
     page2:'2 halaman',
-    print:'Cetak / Simpan PDF',
+    print:'Simpan PDF / Unduh CV',
     back:'Kembali ke portofolio',
     about:'PROFIL PROFESIONAL',
     education:'PENDIDIKAN',
@@ -35,19 +35,17 @@ const labels = {
     course:'Mata kuliah relevan',
     repo:'Repository',
     page:'HALAMAN',
-    sourceNote:'Angka dalam CV menunjukkan cakupan proyek atau data yang terdokumentasi, bukan persentase dampak bisnis yang belum diukur.',
-    tip:'Template Harvard satu kolom direkomendasikan untuk seleksi ATS. Tampilan awal menggunakan 2 halaman; pilih 1 halaman untuk versi ringkas.',
     foot:'CURRICULUM VITAE · 2026',
   },
   en:{
-    preview:'Curriculum Vitae — Choose role & format',
+    preview:'Curriculum Vitae',
     choose:'TARGET ROLE',
-    templates:'TEMPLATE',
+    templates:'VERSION',
     pages:'RESUME LENGTH',
     lang:'LANGUAGE',
     page1:'1 page',
     page2:'2 pages',
-    print:'Print / Save PDF',
+    print:'Save PDF / Download CV',
     back:'Back to portfolio',
     about:'PROFESSIONAL PROFILE',
     education:'EDUCATION',
@@ -60,8 +58,6 @@ const labels = {
     course:'Relevant coursework',
     repo:'Repository',
     page:'PAGE',
-    sourceNote:'Numbers reflect documented project scope or dataset size, not unverified business impact percentages.',
-    tip:'The single-column Harvard template is recommended for ATS screening. The default is 2 pages; select 1 page for a concise version.',
     foot:'CURRICULUM VITAE · 2026'
   }
 };
@@ -173,19 +169,49 @@ export default function CVPage(){
   },[initialized,role,lang,template,pages]);
   const s=labels[lang];
   return <main className="cvr-app">
-    <div className="cvr-controls" aria-label={s.preview}>
-      <div className="cvr-topline"><a href="/" className="cvr-back">← {s.back}</a><span>AL-MAN RAFFLI SAPUTRA / CV STUDIO</span></div>
-      <div className="cvr-title-row"><div><h2>{s.preview}</h2><p>{s.tip}</p></div><button type="button" className="cvr-print" onClick={()=>window.print()}><span aria-hidden="true">↓</span> {s.print}</button></div>
-      <div className="cvr-control-group">
-        <div className="cvr-picker"><strong>{s.choose}</strong><div className="cvr-option-row">{cvRoles.map(r=><button key={r} type="button" aria-pressed={role===r} className={role===r?'active':''} onClick={()=>setRole(r)}>{local(cvProfiles[r].label,lang)}</button>)}</div></div>
-        <div className="cvr-options-layout">
-          <div className="cvr-picker"><strong>{s.templates}</strong><div className="cvr-option-row">{cvTemplates.map(v=><button key={v.id} type="button" aria-pressed={template===v.id} className={template===v.id?'active':''} onClick={()=>setTemplate(v.id)}>{lang==='id'?v.idLabel:v.enLabel}</button>)}</div></div>
-          <div className="cvr-picker"><strong>{s.pages}</strong><div className="cvr-option-row"><button type="button" aria-pressed={pages===1} className={pages===1?'active':''} onClick={()=>setPages(1)}>{s.page1}</button><button type="button" aria-pressed={pages===2} className={pages===2?'active':''} onClick={()=>setPages(2)}>{s.page2}</button></div></div>
-          <div className="cvr-picker"><strong>{s.lang}</strong><div className="cvr-option-row"><button type="button" aria-pressed={lang==='id'} className={lang==='id'?'active':''} onClick={()=>setLang('id')}>ID</button><button type="button" aria-pressed={lang==='en'} className={lang==='en'?'active':''} onClick={()=>setLang('en')}>EN</button></div></div>
-        </div>
+    <aside className="cvr-controls" aria-label={s.preview}>
+      <div className="cvr-topline">
+        <a href="/" className="cvr-back">← {s.back}</a>
       </div>
-      <p className="cvr-source-note">{s.sourceNote}</p>
-    </div>
-    <Resume role={role} lang={lang} template={template} pages={pages}/>
+      <div className="cvr-title-row">
+        <h2>{s.preview}</h2>
+      </div>
+      <div className="cvr-control-group">
+        <div className="cvr-picker">
+          <strong>{s.choose}</strong>
+          <div className="cvr-option-row">
+            {cvRoles.map(r=><button key={r} type="button" aria-pressed={role===r} className={role===r?'active':''} onClick={()=>setRole(r)}>{local(cvProfiles[r].label,lang)}</button>)}
+          </div>
+        </div>
+        <div className="cvr-options-layout">
+          <div className="cvr-picker">
+            <strong>{s.templates}</strong>
+            <div className="cvr-option-row">
+              {cvTemplates.map(v=><button key={v.id} type="button" aria-pressed={template===v.id} className={template===v.id?'active':''} onClick={()=>setTemplate(v.id)}>{lang==='id'?v.idLabel:v.enLabel}</button>)}
+            </div>
+          </div>
+          <div className="cvr-picker">
+            <strong>{s.pages}</strong>
+            <div className="cvr-option-row">
+              <button type="button" aria-pressed={pages===1} className={pages===1?'active':''} onClick={()=>setPages(1)}>{s.page1}</button>
+              <button type="button" aria-pressed={pages===2} className={pages===2?'active':''} onClick={()=>setPages(2)}>{s.page2}</button>
+            </div>
+          </div>
+          <div className="cvr-picker">
+            <strong>{s.lang}</strong>
+            <div className="cvr-option-row">
+              <button type="button" aria-pressed={lang==='id'} className={lang==='id'?'active':''} onClick={()=>setLang('id')}>ID</button>
+              <button type="button" aria-pressed={lang==='en'} className={lang==='en'?'active':''} onClick={()=>setLang('en')}>EN</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" className="cvr-print" onClick={()=>window.print()}>
+          <span aria-hidden="true">↓</span> {s.print}
+        </button>
+      </div>
+    </aside>
+    <section className="cvr-preview" aria-label="CV Preview">
+      <Resume role={role} lang={lang} template={template} pages={pages}/>
+    </section>
   </main>;
 }
