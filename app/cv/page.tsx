@@ -29,8 +29,7 @@ const labels = {
     experience:'PENGALAMAN RELEVAN',
     projects:'PROYEK TERPILIH',
     skills:'KETERAMPILAN',
-    certifications:'SERTIFIKASI TERPILIH',
-    achievements:'PENCAPAIAN',
+    certifications:'SERTIFIKAT',
     graduation:'Lulusan 2026',
     gpa:'IPK',
     course:'Mata kuliah relevan',
@@ -55,8 +54,7 @@ const labels = {
     experience:'RELEVANT EXPERIENCE',
     projects:'SELECTED PROJECTS',
     skills:'SKILLS',
-    certifications:'SELECTED CERTIFICATIONS',
-    achievements:'ACHIEVEMENTS',
+    certifications:'CERTIFICATES',
     graduation:'Graduated 2026',
     gpa:'GPA',
     course:'Relevant coursework',
@@ -78,7 +76,7 @@ function EntryCard({ value, lang, showLink=false }:{value:CVEntry;lang:CVLang;sh
       <time>{value.period}</time>
     </div>
     <p className="cvr-entry-org">{value.organization}</p>
-    <ul className="cvr-bullets">{value.bullets.slice(0,3).map((line,i)=><li key={i}>{local(line,lang)}</li>)}</ul>
+    <ul className="cvr-bullets">{value.bullets.slice(0,4).map((line,i)=><li key={i}>{local(line,lang)}</li>)}</ul>
     {showLink&&value.url&&<a className="cvr-entry-link" href={value.url} target="_blank" rel="noreferrer">{value.url.replace('https://','')}</a>}
   </div>;
 }
@@ -96,11 +94,6 @@ function Skills({role,lang}:{role:CVRole;lang:CVLang}){
 function Certifications({role,lang,limit=3}:{role:CVRole;lang:CVLang;limit?:number}){
   return <Section title={labels[lang].certifications} className="cvr-certifications">
     {cvProfiles[role].certificates.slice(0,limit).map((v,i)=><p key={i}>{v}</p>)}
-  </Section>;
-}
-function Achievements({role,lang}:{role:CVRole;lang:CVLang}){
-  return <Section title={labels[lang].achievements} className="cvr-achievements">
-    <ul>{cvProfiles[role].highlights.map((v,i)=><li key={i}>{local(v,lang)}</li>)}</ul>
   </Section>;
 }
 function Profile({role,lang}:{role:CVRole;lang:CVLang}){
@@ -154,7 +147,6 @@ function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVT
       <Header role={role} lang={lang} compact/>
       {isIT?<>{projects(3)}<Skills role={role} lang={lang}/></>:<><Skills role={role} lang={lang}/>{projects(3)}</>}
       <Certifications role={role} lang={lang}/>
-      <Achievements role={role} lang={lang}/>
     </PageCard>
   </div>;
 }
