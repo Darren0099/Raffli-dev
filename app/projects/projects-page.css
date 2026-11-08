@@ -956,3 +956,25 @@
   margin-top: 4rem;
   background-color: #111111;
 }
+/* Ensure the project listing's Home link remains visible and clickable. */
+.projects-home-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 12px;
+  margin-left: -12px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color .2s ease, background-color .2s ease;
+}
+.projects-home-link:hover,
+.projects-home-link:focus-visible {
+  background: rgba(255,255,255,.1);
+  color: #fe5000;
+}
+.projects-home-link:focus-visible { outline: 2px solid #fe5000; outline-offset: 2px; }
