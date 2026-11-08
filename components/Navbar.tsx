@@ -101,9 +101,9 @@ export default function Navbar({ t }: NavbarProps) {
 
   return (
     <header className="navbar">
-      <div className="logo">
-        <h2>Porto</h2>
-      </div>
+      <a href="/" className="logo brand-mark-link" aria-label="Raffli — kembali ke beranda">
+        <img src="/brand/raffli-logo.svg" alt="Raffli" width={77} height={60} />
+      </a>
 
       <div className={`nav-wrapper ${isOpen ? 'active' : ''}`}>
         <nav className="nav-links">
