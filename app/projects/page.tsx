@@ -27,7 +27,10 @@ export default function AllProjectsPage() {
     <main className="all-projects-container font-sans">
       
       <div className="all-projects-wrapper">
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"1rem"}}><a href="/" className="projects-home-link">← {lang === "id" ? "Beranda" : "Home"}</a><LanguageToggle /></div>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"1rem"}}><a href="/" className="projects-home-link">
+          <span className="projects-home-logo"><img src="/brand/raffli-logo.svg" alt="" aria-hidden="true" width={77} height={60} /></span>
+          ← {lang === "id" ? "Beranda" : "Home"}
+        </a><LanguageToggle /></div>
         <h1 className="all-projects-title">{lang === "id" ? "Semua Proyek" : "All Projects"}</h1>
 
         <div className="projects-main-grid">
