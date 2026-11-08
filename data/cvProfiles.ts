@@ -20,7 +20,6 @@ export type CVProfile = {
   projects: CVEntry[];
   skills: CVSkill[];
   certificates: string[];
-  highlights: DualText[];
 };
 export const cvText = (id: string, en: string): DualText => ({ id, en });
 const t = cvText;
@@ -58,7 +57,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       ]),
     ],
     projects: [
-      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript (repo terbaru)", "Jul 2024", [
+      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript (current repository version)", "Jul 2024", [
         t("Memimpin kontribusi pengembangan portal e-tourism bersama tim Politeknik Negeri Sriwijaya untuk ajang final KMIPN VI di Politeknik Negeri Jakarta.", "Led development contributions to an e-tourism portal with the Sriwijaya State Polytechnic team for the KMIPN VI finals hosted by Politeknik Negeri Jakarta."),
         t("Menyusun katalog 94 destinasi dalam 4 kategori wisata, lengkap dengan halaman detail dinamis dan navigasi berbasis kategori.", "Organized 94 destinations into 4 categories, with dynamic detail pages and category-based navigation."),
         t("Mengintegrasikan galeri, tautan peta, dan 14 sumber tur virtual 3D/360° yang tersedia untuk membantu eksplorasi informasi wisata.", "Integrated galleries, map links, and 14 available 3D/360° virtual-tour resources for destination exploration."),
@@ -114,7 +113,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       ], "https://github.com/Darren0099/DapurUmmikyanaPalembang"),
     ],
     projects: [
-      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript (repo terbaru)", "Jul 2024", [
+      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript (current repository version)", "Jul 2024", [
         t("Memimpin kontribusi pengembangan portal e-tourism bersama tim Politeknik Negeri Sriwijaya untuk ajang final KMIPN VI di Politeknik Negeri Jakarta.", "Led development contributions to an e-tourism portal with the Sriwijaya State Polytechnic team for the KMIPN VI finals hosted by Politeknik Negeri Jakarta."),
         t("Menyusun katalog 94 destinasi dalam 4 kategori wisata, lengkap dengan halaman detail dinamis dan navigasi berbasis kategori.", "Organized 94 destinations into 4 categories, with dynamic detail pages and category-based navigation."),
         t("Mengintegrasikan galeri, tautan peta, dan 14 sumber tur virtual 3D/360° yang tersedia untuk membantu eksplorasi informasi wisata.", "Integrated galleries, map links, and 14 available 3D/360° virtual-tour resources for destination exploration."),
@@ -139,11 +138,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       skill(t('Peralatan','Tools'),'Git, GitHub, Vercel, VS Code, Figma'),
       skill(t('Praktik','Practices'),'Responsive Design, CMS, UI/UX, Web Accessibility')
     ],
-    certificates:['CSS Essentials — Cisco Networking Academy','Belajar Back-End Pemula dengan JavaScript — Dicoding','Belajar Dasar Pemrograman JavaScript — Dicoding'],
-    highlights:[
-      t('Finalis IT Fest — Web Design (2024).','IT Fest Web Design Finalist (2024).'),
-      t('Finalis KMIPN VI — e-Government (2024).','KMIPN VI e-Government Finalist (2024).')
-    ]
+    certificates:['CSS Essentials — Cisco Networking Academy','Belajar Back-End Pemula dengan JavaScript — Dicoding','Belajar Dasar Pemrograman JavaScript — Dicoding']
   },
   data: {
     label: t('Data Analyst', 'Data Analyst'),
@@ -195,11 +190,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       skill(t('Analisis','Analysis'),'Data Cleaning, EDA, RFM, Time Series, Data Quality'),
       skill(t('Visualisasi','Visualization'),'Excel, Google Sheets, Chart.js, matplotlib')
     ],
-    certificates:['Data Analytics Essentials — Cisco Networking Academy','Bootcamp Data Analyst — KarirNex (2026)','Data Science in Marketing: Customer Segmentation — DQLab'],
-    highlights:[
-      t('Analisis Walmart mencakup 45 toko dan 6.435 catatan mingguan historis.','Walmart project covers 45 stores and 6,435 historical weekly records.'),
-      t('KleinData memiliki 30 resep analisis SQL dan 5 format impor.','KleinData supports 30 SQL analysis recipes and 5 import formats.')
-    ]
+    certificates:['Data Analytics Essentials — Cisco Networking Academy','Bootcamp Data Analyst — KarirNex (2026)','Data Science in Marketing: Customer Segmentation — DQLab']
   },
   design: {
     label: t('Graphic Designer','Graphic Designer'),
@@ -230,7 +221,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
         t("Merancang antarmuka pembelajaran responsif untuk dashboard 6 modul edukasi yang ditujukan bagi penggunaan desktop maupun mobile.", "Designed responsive interfaces for a 6-module learning dashboard on desktop and mobile."),
         t("Mengembangkan interaksi kuis, progres, kartu misi, lencana, dan sertifikat untuk membentuk pengalaman belajar yang bertahap.", "Developed quiz, progress, mission-card, badge, and certificate interactions for a staged learning experience."),
         t("Mengimplementasikan kontrol aksesibilitas seperti ukuran teks, kontras tinggi, font ramah disleksia, dan pengurangan animasi.", "Implemented accessibility controls including text sizing, high contrast, dyslexia-friendly fonts, and reduced motion."),
-        t("Menerapkan navigasi yang jelas ke sumber bantuan eksternal; aplikasi merupakan prototipe edukasi, bukan layanan darurat atau konseling produksi.", "Designed clear paths to external support sources; the app is an educational prototype, not a production emergency or counseling service.")
+        t("Menyusun halaman akses bantuan berisi kontak instansi resmi, tautan peta, kontrol aksesibilitas, dan tombol keluar cepat untuk menjaga keamanan pengguna.", "Designed support-access pages with official service contacts, map links, accessibility controls, and a quick-exit feature for user safety.")
       ], "https://github.com/Darren0099/KM7"),
       entry(t("YRI Sumsel — Sistem Visual Publikasi Komunitas", "YRI South Sumatra — Community Publication Visuals"), "Media Sosial / Acara / Identitas Komunitas", "2023 – 2025", [
         t("Membuat seri materi visual regional berupa poster, banner, sertifikat, konten edukasi, serta sampul proposal untuk kegiatan organisasi.", "Created regional event posters, banners, certificates, educational social posts, and proposal-cover assets."),
@@ -251,11 +242,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       skill(t('Produksi aset','Asset production'),'Event Collateral, Posters, Certificates, Proposals'),
       skill(t('Antarmuka','Interface design'),'Wireframing, UI/UX, Responsive Design, HTML, CSS')
     ],
-    certificates:['Graphic Design: Brand Identity — MySkill','UI/UX Design: Design System & Wireframing — MySkill','CSS Essentials — Cisco Networking Academy'],
-    highlights:[
-      t('Pengalaman sebagai koordinator desain regional Youth Ranger Indonesia.','Led regional graphic design coordination at Youth Ranger Indonesia.'),
-      t('Finalis IT Fest Web Design (2024).','IT Fest Web Design Finalist (2024).')
-    ]
+    certificates:['Graphic Design: Brand Identity — MySkill','UI/UX Design: Design System & Wireframing — MySkill','CSS Essentials — Cisco Networking Academy']
   },
   hr: {
     label: t('Human Resources','Human Resources'),
@@ -286,7 +273,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
         t("Menyusun antarmuka pencatatan data kandidat dan formulir penilaian wawancara yang terpusat sebagai studi kasus digitalisasi proses rekrutmen.", "Built central candidate record and interview-scoring interfaces as a recruitment-digitization case study."),
         t("Mengembangkan penilaian 5 aspek: komunikasi, kepemimpinan, komitmen, motivasi, dan kerja sama tim.", "Implemented 5 assessment dimensions: communication, leadership, commitment, motivation, and teamwork."),
         t("Membuat ringkasan pemeringkatan kandidat berdasarkan regional/divisi serta kemampuan ekspor hasil evaluasi ke Excel dan PDF.", "Created regional/division ranking summaries and Excel/PDF assessment exports."),
-        t("Mengelompokkan konfigurasi kuota dan bobot pada prototipe; parameter tersebut belum dianggap sebagai kebijakan rekrutmen resmi.", "Separated quota and weighting settings in the prototype; these parameters are not asserted as official recruitment policy.")
+        t("Menyusun konfigurasi kuota dan bobot penilaian dalam modul terpisah agar parameter seleksi dapat ditinjau serta diperbarui sesuai kebutuhan.", "Organized quotas and assessment weights into separate configuration modules to support review and future adjustments.")
       ], "https://github.com/Darren0099/YRIHRD"),
       entry(t("HR Connect & Talent System — Pengembangan SDM", "HR Connect & Talent System — People Development"), "Youth Ranger Indonesia · Human Resources", "Jun 2025 – Jan 2026", [
         t("Mengkoordinasikan HR Connect sebagai forum komunikasi lintas tim untuk menyelaraskan kebutuhan operasional serta tindak lanjut anggota.", "Coordinated HR Connect as a cross-team forum for operational alignment and member follow-up."),
@@ -307,11 +294,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       skill(t('Koordinasi','Coordination'),'Team Leadership, Stakeholder Communication, Planning'),
       skill(t('Tools','Tools'),'Excel, Google Sheets, Next.js, HR Dashboard')
     ],
-    certificates:['Human Resource at YRI District 2 Batch II — YRI','HR Value Chain — MySkill x Deloitte','IT Customer Support Basics — Cisco Networking Academy'],
-    highlights:[
-      t('Mengoordinasikan 7 program HR Distrik Sumatera 2.','Coordinated 7 HR programs across Sumatera 2 District.'),
-      t('Mengembangkan prototipe sistem evaluasi dengan 5 dimensi penilaian.','Built a prototype evaluation system with 5 assessment dimensions.')
-    ]
+    certificates:['Human Resource at YRI District 2 Batch II — YRI','HR Value Chain — MySkill x Deloitte','IT Customer Support Basics — Cisco Networking Academy']
   }
 };
 
