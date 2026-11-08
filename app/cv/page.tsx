@@ -65,14 +65,14 @@ const labels = {
 function Section({ title, children, className='' }:{ title:string; children:ReactNode; className?:string }){
   return <section className={'cvr-section '+className}><h2>{title}</h2>{children}</section>;
 }
-function EntryCard({ value, lang, showLink=false }:{value:CVEntry;lang:CVLang;showLink?:boolean}){
+function EntryCard({ value, lang, showLink=false, bulletLimit=3 }:{value:CVEntry;lang:CVLang;showLink?:boolean;bulletLimit?:number}){
   return <div className="cvr-entry">
     <div className="cvr-entry-heading">
       <strong>{local(value.title, lang)}</strong>
       <time>{value.period}</time>
     </div>
     <p className="cvr-entry-org">{value.organization}</p>
-    <ul className="cvr-bullets">{value.bullets.slice(0,3).map((line,i)=><li key={i}>{local(line,lang)}</li>)}</ul>
+    <ul className="cvr-bullets">{value.bullets.slice(0,bulletLimit).map((line,i)=><li key={i}>{local(line,lang)}</li>)}</ul>
     {showLink&&value.url&&<a className="cvr-entry-link" href={value.url} target="_blank" rel="noreferrer">{value.url.replace('https://','')}</a>}
   </div>;
 }
@@ -149,14 +149,30 @@ function PageCard({children,page,pages,lang,styleClass}:{children:ReactNode;page
 function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVTemplate;pages:CVPages}){
   const s=labels[lang],d=cvProfiles[role],isModern=template.startsWith('modern'),isIT=template.endsWith('it');
   const styleClass=(isModern?'cvr-modern':'cvr-harvard')+' '+(pages===1?'cvr-compact':'cvr-expanded');
-  const experience=(count:number)=><Section title={s.experience} className="cvr-experience">
-    {d.experience.slice(0,count).map((v,i)=><EntryCard key={i} value={v} lang={lang}/>)}
+  // A4 editorial rule: never start a project on page one if its complete
+  // bullet group cannot fit. Keep the full project section on page two.
+  // The one-page edition is an intentional shorter selection, not shrunken
+  // two-page content, so it stays readable with normal ATS typography.
+  const experience=(count:number,bulletLimit=3)=><Section title={s.experience} className="cvr-experience">
+    {d.experience.slice(0,count).map((v,i)=><EntryCard key={i} value={v} lang={lang} bulletLimit={bulletLimit}/>)}
   </Section>;
-  const projects=(start:number,count:number)=><Section title={s.projects} className="cvr-projects">
-    {d.projects.slice(start,start+count).map((v,i)=><EntryCard key={start+i} value={v} lang={lang} showLink={pages===2}/>)}
+  const projects=(start:number,count:number,bulletLimit=3)=><Section title={s.projects} className="cvr-projects">
+    {d.projects.slice(start,start+count).map((v,i)=><EntryCard key={start+i} value={v} lang={lang} bulletLimit={bulletLimit} showLink={pages===2}/>)}
   </Section>;
   if(pages===1){
     return <div className="cvr-sheets">
+      <PageCard page={1} pages={1} lang={lang} styleClass={styleClass}>
+        <Header role={role} lang={lang}/>
+        <Profile role={role} lang={lang}/>
+        <Education lang={lang}/>
+        {experience(2,2)}
+        {projects(0,1,2)}
+        <Skills role={role} lang={lang}/>
+        <Certifications role={role} lang={lang} limit={2}/>
+      </PageCard>
+    </div>;
+  }
+  return <div className="cvr-sheets">
       <PageCard page={1} pages={1} lang={lang} styleClass={styleClass}>
         <Header role={role} lang={lang}/>
         <Profile role={role} lang={lang}/>
@@ -174,10 +190,9 @@ function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVT
       <Profile role={role} lang={lang}/>
       <Education lang={lang}/>
       {experience(3)}
-      {projects(0,1)}
     </PageCard>
     <PageCard page={2} pages={2} lang={lang} styleClass={styleClass}>
-      {isIT?<>{projects(1,2)}<Skills role={role} lang={lang}/></>:<><Skills role={role} lang={lang}/>{projects(1,2)}</>}
+      {isIT?<>{projects(0,2)}<Skills role={role} lang={lang}/></>:<><Skills role={role} lang={lang}/>{projects(0,2)}</>}
       <Certifications role={role} lang={lang} limit={role==='design'?4:3}/>
     </PageCard>
   </div>;
