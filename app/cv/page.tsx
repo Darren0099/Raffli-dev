@@ -91,7 +91,7 @@ function Education({lang}:{lang:CVLang}){
   </Section>;
 }
 function Skills({role,lang}:{role:CVRole;lang:CVLang}){
-  return <Section title={labels[lang].skills} className="cvr-skills">{cvProfiles[role].skills.map((v,i)=><p key={i}><strong>{local(v.label,lang)}:</strong> {v.value}</p>)}</Section>;
+  return <Section title={labels[lang].skills} className="cvr-skills">{cvProfiles[role].skills.map((v,i)=><p key={i}><strong>{local(v.label,lang)}:</strong> {typeof v.value==='string'?v.value:local(v.value,lang)}</p>)}</Section>;
 }
 function Certifications({role,lang,limit=3}:{role:CVRole;lang:CVLang;limit?:number}){
   return <Section title={labels[lang].certifications} className="cvr-certifications">
