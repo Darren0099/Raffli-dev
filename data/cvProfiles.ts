@@ -38,38 +38,44 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       'Diploma III Computer Engineering graduate from Sriwijaya State Polytechnic (GPA 3.66/4.00) with cross-functional experience in web development, corporate content administration, HR leadership, and data analysis. Experienced in team coordination, structured documentation, and converting operational needs into usable digital solutions.'
     ),
     experience: [
-      entry(t('Ketua Human Resources — Distrik Sumatera 2', 'Head of Human Resources — Sumatera 2 District'),'Youth Ranger Indonesia','Jun 2025 – Jan 2026',[
-        t('Mengoordinasikan 7 program HR, termasuk Talent System, HR Connect, Cultural Check-In, Weekly Pulse, Individual Log, RDC, dan HR Reward.','Coordinated 7 HR programs, including Talent System, HR Connect, Cultural Check-In, Weekly Pulse, Individual Log, RDC, and HR Reward.'),
-        t('Mengelola dokumentasi evaluasi anggota, pemetaan talenta, dan laporan kinerja individu untuk mendukung tindak lanjut pengembangan tim.','Maintained member evaluation records, talent mapping, and individual performance logs to support team-development follow-up.'),
-        t('Menjembatani komunikasi lintas regional antara pengurus distrik, pimpinan regional, dan tim HR agar kegiatan berjalan terkoordinasi.','Facilitated communication across district leaders, regional representatives, and HR members to coordinate people programs.')
+      entry(t("Ketua Human Resources — Distrik Sumatera 2", "Head of Human Resources — Sumatera 2 District"), "Youth Ranger Indonesia", "Jun 2025 – Jan 2026", [
+        t("Mengoordinasikan 7 program kerja SDM, antara lain Talent System, HR Connect, Cultural Check-In, Weekly Division Pulse, Individual Performance Log, Regional Development Camp, dan HR Reward.", "Coordinated 7 people-development programs, including Talent System, HR Connect, Cultural Check-In, Weekly Division Pulse, Individual Performance Log, Regional Development Camp, and HR Reward."),
+        t("Menangani alur rekrutmen dari penyusunan proses dan seleksi kandidat hingga koordinasi lintas divisi bersama pengurus regional dan distrik.", "Supported end-to-end recruitment workflows, from process design and candidate screening to cross-division coordination with regional and district leads."),
+        t("Mengembangkan praktik pemetaan talenta, pencatatan kinerja, dan evaluasi anggota untuk menindaklanjuti pengembangan individu secara terstruktur.", "Structured talent mapping, performance tracking, and member evaluations to inform organized development follow-ups."),
+        t("Menyusun jadwal kerja lintas tim selama 1 bulan dengan unsur project management, media, dan public relations sebagai bagian dari program organisasi.", "Coordinated a one-month cross-functional work plan spanning project management, media, and public relations.")
       ]),
-      entry(t('Magang Humas & Pengembangan Website', 'Public Relations & Web Development Intern'),'PLN Icon Plus SBU Sumbagsel','2025',[
-        t('Mengembangkan portal publikasi artikel wilayah Bangka Belitung menggunakan PHP, MySQL, HTML, CSS, dan JavaScript.','Developed a Bangka Belitung article-publishing portal using PHP, MySQL, HTML, CSS, and JavaScript.'),
-        t('Menyusun alur pengelolaan konten melalui dashboard admin untuk pembuatan, pembaruan, penghapusan artikel, dan penanganan media.','Implemented admin content workflows for creating, updating, and deleting articles and managing media.'),
-        t('Mendukung kebutuhan komunikasi digital melalui pengelompokan artikel, fitur pencarian, dan tampilan responsif.','Supported digital communications through article categorization, search, and responsive public-facing pages.')
-      ],'https://github.com/Darren0099/plniconnetbangkabelitung'),
-      entry(t('Koordinator Desain & Komunikasi Visual', 'Graphic Design & Visual Communications Coordinator'),'Youth Ranger Indonesia Sumatera Selatan','2023 – 2024',[
-        t('Mengoordinasikan produksi materi visual dan kebutuhan publikasi kegiatan komunitas secara kolaboratif.','Coordinated production of visual materials and event publications with community teams.'),
-        t('Membuat poster, banner, sertifikat, konten edukasi Instagram, dan sampul proposal sesuai identitas organisasi.','Produced posters, banners, certificates, Instagram educational content, and proposal covers aligned with organizational identity.'),
-        t('Membantu menjaga konsistensi identitas visual serta menyelaraskan kebutuhan tim desain, publikasi, dan dokumentasi.','Helped maintain visual consistency while coordinating design, publication, and documentation requirements.')
-      ])
+      entry(t("Web Developer Intern — Divisi Humas", "Web Developer Intern — Corporate Communications"), "PLN Icon Plus SBU Sumbagsel", "Jul – Sep 2025", [
+        t("Mengembangkan portal artikel wilayah Bangka Belitung berbasis PHP/MySQL untuk mendukung publikasi informasi, berita kegiatan, dan kebutuhan komunikasi digital perusahaan.", "Built a PHP/MySQL article portal for the Bangka Belitung region to support information publishing, activity news, and digital communications."),
+        t("Menerapkan pengelolaan artikel melalui panel CMS admin, termasuk penambahan, pembaruan, penghapusan konten, serta pengelolaan gambar pendukung.", "Implemented article administration through a CMS with create, update, delete, and media management workflows."),
+        t("Menyusun navigasi kategori, pencarian, filter, dan halaman responsif untuk memperjelas akses pembaca terhadap konten yang tersedia.", "Created categories, search, filters, and responsive pages to improve content discovery for readers."),
+        t("Mendukung penulisan dan publikasi artikel, serta pengelolaan platform web sebagai bagian dari aktivitas humas dan branding digital.", "Supported article drafting and publishing, and managed website content as part of corporate communications and digital branding.")
+      ], "https://github.com/Darren0099/plniconnetbangkabelitung"),
+      entry(t("Graphic Designer & Koordinasi Acara", "Graphic Designer & Event Coordination"), "Duta Potensi Pemuda Indonesia — Youthopia Symposium", "Apr 2025 – Mar 2026", [
+        t("Menyusun materi komunikasi visual dan identitas acara untuk kebutuhan publikasi, promosi, serta penyampaian informasi kepada peserta dan pemangku kepentingan.", "Produced visual communications and event identity assets for promotion and information delivery to participants and stakeholders."),
+        t("Menjaga konsistensi tipografi, elemen grafis, serta tata letak agar materi acara terlihat selaras pada berbagai kanal komunikasi.", "Maintained consistent typography, visual elements, and layouts across event communication channels."),
+        t("Berkolaborasi dengan tim acara dan komunikasi serta membantu koordinasi peserta sebagai Liaison Officer sementara dalam rangkaian kunjungan kelembagaan.", "Collaborated with event and communications teams, including temporary liaison coordination during institutional visits."),
+        t("Mengelola penyesuaian desain terhadap brief dan kebutuhan publikasi yang berubah selama persiapan pelaksanaan acara.", "Adapted creative materials to evolving briefs and communication needs during event preparation.")
+      ]),
     ],
     projects: [
-      entry(t('YRI HRD — Sistem Penilaian Kandidat', 'YRI HRD — Candidate Evaluation Dashboard'),'Next.js · React · PostgreSQL · Drizzle ORM','2026',[
-        t('Mengembangkan prototipe dashboard data kandidat dan pencatatan hasil wawancara dalam satu sistem.','Developed a prototype dashboard that centralizes candidate records and interview evaluations.'),
-        t('Menyediakan 5 aspek penilaian, pemeringkatan kandidat, dan tampilan hasil per regional/divisi pada versi Next.js.','Implemented 5 scoring dimensions, candidate ranking, and regional/division views in the Next.js version.'),
-        t('Membuat alur pelaporan Excel dan PDF untuk memudahkan peninjauan data seleksi; aturan penilaian versi prototipe belum menjadi kebijakan resmi.','Added Excel and PDF reporting; prototype scoring policies have not been validated as official HR policy.')
-      ],'https://github.com/Darren0099/YRIHRD'),
-      entry(t('Palembang Go Vacation — Portal Pariwisata', 'Palembang Go Vacation — Tourism Portal'),'KMIPN VI · Next.js · TypeScript','2024',[
-        t('Berkontribusi membangun portal informasi yang mencakup 94 entri destinasi dalam 4 kategori wisata.','Contributed to a tourism portal cataloguing 94 destination entries across 4 categories.'),
-        t('Menyajikan filter kategori, halaman detail dinamis, galeri, serta tautan lokasi Google Maps.','Implemented category filtering, dynamic destination pages, galleries, and Google Maps links.'),
-        t('Menghubungkan 14 destinasi yang didukung ke sumber tur virtual 3D/360° untuk eksplorasi pengguna.','Connected 14 supported destinations to external 3D/360° virtual-tour resources.')
-      ],'https://github.com/Darren0099/KMIPN6-EGOVERNEMNT'),
-      entry(t('KleinData — Workspace Analitik Mandiri', 'KleinData — Self-service Analytics Workspace'),'SvelteKit · DuckDB-Wasm · Chart.js','2026',[
-        t('Mengembangkan aplikasi impor dan eksplorasi data yang mendukung 5 format: CSV, TSV, JSON, XLSX, dan Parquet.','Built a data exploration application supporting 5 import formats: CSV, TSV, JSON, XLSX, and Parquet.'),
-        t('Menyediakan 30 resep analisis SQL deskriptif beserta grafik dan tabel pendukung yang dapat diperiksa.','Implemented 30 descriptive SQL analysis recipes with traceable charts and supporting tables.'),
-        t('Membuat fitur pemetaan kolom, pemeriksaan kualitas data, dan ekspor untuk membantu pengguna memahami dataset mentah.','Built column mapping, data-quality inspection, and export workflows to help users understand raw datasets.')
-      ],'https://github.com/Darren0099/DataForge')
+      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript", "Jul 2024", [
+        t("Memimpin kontribusi pengembangan portal e-tourism bersama tim Politeknik Negeri Sriwijaya untuk ajang final KMIPN VI di Politeknik Negeri Jakarta.", "Led development contributions to an e-tourism portal with the Sriwijaya State Polytechnic team for the KMIPN VI finals hosted by Politeknik Negeri Jakarta."),
+        t("Menyusun katalog 94 destinasi dalam 4 kategori wisata, lengkap dengan halaman detail dinamis dan navigasi berbasis kategori.", "Organized 94 destinations into 4 categories, with dynamic detail pages and category-based navigation."),
+        t("Mengintegrasikan galeri, tautan peta, dan 14 sumber tur virtual 3D/360° yang tersedia untuk membantu eksplorasi informasi wisata.", "Integrated galleries, map links, and 14 available 3D/360° virtual-tour resources for destination exploration."),
+        t("Membangun tampilan informasi yang menyatukan sejarah kota, rekomendasi wisata, serta konten destinasi dari sumber yang disediakan tim.", "Created unified pages for city history, tourism recommendations, and destination content curated by the team.")
+      ], "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT"),
+      entry(t("AsaKita — Proyek KMIPN VII, Platform Edukasi Interaktif", "AsaKita — KMIPN VII Interactive Learning Platform"), "KMIPN VII · Politeknik Negeri Padang · Next.js / React", "Feb – Sep 2025", [
+        t("Berkontribusi sebagai lead frontend pada proyek edukasi pencegahan pernikahan dini dan kekerasan terhadap perempuan, yang dikembangkan untuk KMIPN VII (tanpa klaim finalis).", "Contributed as lead frontend developer to an early-marriage and violence-prevention learning project developed for KMIPN VII (no finalist claim)."),
+        t("Membangun dashboard 6 modul progresif dengan kuis, XP, level, lencana, dan sertifikat PDF yang dapat dicetak dari browser.", "Built a 6-module learning dashboard with quizzes, XP, levels, badges, and browser-printable certificates."),
+        t("Mengimplementasikan fitur aksesibilitas seperti pengaturan teks, kontras, font, pengurangan animasi, dan pembacaan halaman.", "Implemented accessibility controls for text size, contrast, fonts, reduced motion, and page reading."),
+        t("Menyediakan direktori bantuan dan navigasi peta ke lembaga terkait; prototipe memakai penyimpanan lokal dan tautan bantuan eksternal, bukan pelaporan backend langsung.", "Added help directories and mapping to support organizations; the prototype uses local storage and external help links, not direct backend case reporting.")
+      ], "https://github.com/Darren0099/KM7"),
+      entry(t("YRI HRD — Dashboard Evaluasi Kandidat", "YRI HRD — Candidate Evaluation Dashboard"), "Next.js / PostgreSQL / Drizzle ORM · Prototipe", "2026", [
+        t("Mengembangkan prototipe dashboard kandidat yang menyatukan data pelamar, catatan wawancara, dan formulir penilaian dalam satu alur.", "Developed a prototype centralizing applicant records, interview notes, and scoring forms."),
+        t("Menerapkan 5 aspek evaluasi, pemeringkatan kandidat, dan tampilan hasil per regional atau divisi sesuai konfigurasi aplikasi.", "Implemented 5 assessment dimensions, candidate rankings, and region/division summaries based on app configuration."),
+        t("Menyusun keluaran laporan Excel dan PDF untuk memudahkan peninjauan serta dokumentasi hasil penilaian.", "Built Excel and PDF report exports for reviewing and documenting assessment results."),
+        t("Memisahkan konfigurasi skor dan kuota pada kode; aturan contoh belum divalidasi sebagai kebijakan rekrutmen resmi.", "Separated scoring and quota configuration in code; example rules are not validated as official recruitment policy.")
+      ], "https://github.com/Darren0099/YRIHRD"),
     ],
     skills: [
       skill(t('Administrasi & operasional', 'Administration & operations'),t('Dokumentasi, koordinasi tim, pelaporan, evaluasi','Documentation, team coordination, reporting, evaluation')),
@@ -88,38 +94,44 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
     headline: t('Frontend / Web Developer', 'Frontend / Web Developer'),
     summary: t('Lulusan D3 Teknik Komputer yang berfokus pada pengembangan website responsif, sistem pengelolaan konten, dan aplikasi web berbasis data. Memiliki pengalaman mengembangkan antarmuka dengan React, Next.js, SvelteKit, serta integrasi PHP/MySQL dan API. Mengutamakan antarmuka yang mudah digunakan dan alur kerja yang terstruktur.','Computer Engineering graduate focused on responsive websites, content management systems, and data-driven web apps. Hands-on with React, Next.js, SvelteKit, PHP/MySQL, and API integrations, prioritizing usable interfaces and reliable workflows.'),
     experience: [
-      entry(t('Magang Humas — Pengembang Website Artikel', 'Corporate Communications Intern — Article Website Developer'),'PLN Icon Plus SBU Sumbagsel','2025',[
-        t('Membangun portal berita dan artikel PLN Iconnet Bangka Belitung menggunakan PHP, MySQL, dan teknologi web dasar.','Built the PLN Iconnet Bangka Belitung news portal using PHP, MySQL, and core web technologies.'),
-        t('Mengembangkan CMS admin untuk membuat, mengedit, menghapus, dan mengelola gambar artikel pada website.','Developed an admin CMS to create, edit, delete, and manage article images.'),
-        t('Mengimplementasikan pencarian, filter kategori, dan antarmuka responsif untuk memudahkan navigasi konten.','Implemented search, category filters, and responsive UI for easier content navigation.')
-      ],'https://github.com/Darren0099/plniconnetbangkabelitung'),
-      entry(t('Pengembang Website Organisasi', 'Organization Website Developer'),'Youth Ranger Indonesia Sumatera Selatan','2024 – 2026',[
-        t('Membangun website dengan Next.js, React, dan TypeScript untuk profil organisasi, program, berita, dan galeri.','Built a Next.js, React, and TypeScript website for organization profile, programs, news, and gallery.'),
-        t('Merancang halaman berita dengan pencarian, filter kategori, halaman detail artikel, dan komponen galeri.','Created searchable news pages, category filters, article detail pages, and gallery components.'),
-        t('Mengintegrasikan alur tambah, edit, dan hapus berita melalui GitHub API; publikasi bergantung izin token server.','Integrated add, edit, and delete news workflows via GitHub API, dependent on server token permissions.')
-      ],'https://github.com/Darren0099/YOUTHRANGERINDONESIASUMATERASELATAN'),
-      entry(t('Pengembang Website UMKM — Pengabdian Masyarakat', 'Community Web Developer — SME Digitalization'),'Politeknik Negeri Sriwijaya','2024 – 2025',[
-        t('Membuat katalog promosi Dapur Ummi Kyana menggunakan HTML, CSS, dan JavaScript untuk memperkenalkan usaha kuliner.','Built a promotional Dapur Ummi Kyana catalog using HTML, CSS, and JavaScript.'),
-        t('Menyusun tampilan menu, produk unggulan, dan informasi usaha dalam landing page yang responsif.','Created responsive sections for menu items, featured products, and business information.'),
-        t('Berkolaborasi dalam kegiatan pengabdian dosen terkait penerapan website dan pemasaran digital pada UMKM.','Collaborated on a lecturer-led community initiative supporting SME website adoption and digital promotion.')
-      ],'https://github.com/Darren0099/PENGABDIAN-MASYARAKAT-UMKM-DAPURUMMIKYANAPALEMBANG')
+      entry(t("Web Developer Intern (Fullstack) — Divisi Humas", "Web Developer Intern (Fullstack) — Corporate Communications"), "PLN Icon Plus SBU Sumbagsel", "Jul – Sep 2025", [
+        t("Membangun portal informasi dan berita PLN Iconnet Bangka Belitung menggunakan PHP, MySQL, HTML, CSS, dan JavaScript, dengan pemisahan halaman publik dan administrasi.", "Developed a PHP, MySQL, HTML, CSS, and JavaScript news portal for PLN Iconnet Bangka Belitung with separate public and admin views."),
+        t("Mengembangkan CMS untuk membuat, mengubah, dan menghapus artikel beserta pengelolaan gambar agar tim pengelola tidak perlu menyunting halaman secara manual.", "Implemented an article CMS with create, edit, delete, and media workflows so editors did not need to modify web pages manually."),
+        t("Menerapkan pencarian artikel, kategori konten, navigasi, dan layout responsif untuk memudahkan pembaca menemukan publikasi.", "Added article search, content categorization, navigation, and responsive layouts to improve discovery."),
+        t("Berkolaborasi dengan Divisi Humas dalam penyusunan dan pengelolaan materi publikasi, sembari memastikan struktur serta tampilan artikel tetap konsisten.", "Worked with the Communications Division on publishing workflows while maintaining consistent content structure and presentation.")
+      ], "https://github.com/Darren0099/plniconnetbangkabelitung"),
+      entry(t("Junior Full Stack Developer — Website Organisasi", "Junior Full Stack Developer — Organization Website"), "Youth Ranger Indonesia Sumatera Selatan", "Jan 2024 – Sep 2025", [
+        t("Mengembangkan website organisasi sebagai pusat informasi visi, misi, program, kegiatan, berita, dan galeri dengan pendekatan antarmuka responsif.", "Built an organization website centralizing its mission, programs, activities, news, and gallery in a responsive UI."),
+        t("Mengembangkan versi aplikasi berbasis Next.js, React, dan TypeScript dengan halaman detail artikel dinamis, pencarian, filter, dan pengalaman navigasi yang konsisten.", "Developed a Next.js, React, and TypeScript iteration with dynamic articles, search, filtering, and consistent navigation."),
+        t("Mengimplementasikan CMS berbasis GitHub API untuk alur penambahan, penyuntingan, penghapusan artikel dan manajemen gambar; operasi publikasi memerlukan izin token.", "Integrated a GitHub API-backed CMS for adding, editing, deleting articles and handling images; publishing depends on token permissions."),
+        t("Menyelaraskan kebutuhan publikasi tim organisasi dengan struktur informasi serta komponen antarmuka yang dapat diperbarui.", "Translated the organization's publishing requirements into maintainable information architecture and interface components.")
+      ], "https://github.com/Darren0099/YOUTHRANGERINDONESIASUMATERASELATAN"),
+      entry(t("Research Assistant — Pengembangan E-Commerce UMKM", "Research Assistant — SME E-Commerce Development"), "Politeknik Negeri Sriwijaya", "Mei – Jul 2025", [
+        t("Mengembangkan website e-commerce Dapur Ummi Kyana berbasis PHP/MySQL dengan halaman katalog menu, akun pengguna, keranjang, dan alur pemesanan.", "Contributed to a PHP/MySQL e-commerce website for Dapur Ummi Kyana with menu catalog, user accounts, cart, and ordering workflows."),
+        t("Menyusun modul administrasi pesanan dan transaksi yang menampilkan ringkasan pengguna, pemasukan, pembayaran, serta status pengiriman pada dashboard admin.", "Built order and transaction administration views showing users, revenue summaries, payments, and delivery status in an admin dashboard."),
+        t("Mengerjakan alur pembayaran dan struk pada kode aplikasi; integrasi pembayaran tidak diklaim telah tersertifikasi atau siap transaksi produksi.", "Implemented payment and receipt flows in source code without claiming certified production-ready payment integration."),
+        t("Berkontribusi pada kegiatan pengabdian dosen terkait adopsi platform digital oleh UMKM serta pendampingan penggunaan website.", "Supported a lecturer-led community project to help an SME adopt and use a digital platform.")
+      ], "https://github.com/Darren0099/DapurUmmikyanaPalembang"),
     ],
     projects: [
-      entry(t('Palembang Go Vacation — Portal Wisata', 'Palembang Go Vacation — Tourism Portal'),'Next.js 15 · React 19 · TypeScript','2024',[
-        t('Membangun portal destinasi wisata dengan 94 entri yang dikelompokkan ke dalam 4 kategori.','Built a tourism portal with 94 destinations organized in 4 categories.'),
-        t('Menerapkan routing dinamis /wisata/[slug], filter, galeri lightbox, dan tautan lokasi.','Implemented /wisata/[slug] dynamic routing, filters, lightbox gallery, and location links.'),
-        t('Menghubungkan 14 destinasi ke sumber tur virtual 3D/360°; konten tambahan memakai fallback jika belum lengkap.','Linked 14 supported destinations to 3D/360° virtual tours, with fallbacks for incomplete content.')
-      ],'https://github.com/Darren0099/KMIPN6-EGOVERNEMNT'),
-      entry(t('KleinData — Studio Insight', 'KleinData — Insight Studio'),'SvelteKit · TypeScript · DuckDB-Wasm','2026',[
-        t('Membangun web analytics responsif yang mengolah CSV, TSV, JSON, XLSX, dan Parquet di browser.','Developed a responsive analytics app processing CSV, TSV, JSON, XLSX, and Parquet in the browser.'),
-        t('Mengimplementasikan 30 resep analisis SQL dan visualisasi interaktif untuk kebutuhan eksplorasi.','Implemented 30 SQL analysis recipes and interactive charts for data exploration.'),
-        t('Menyediakan data profiling, pemetaan kolom, SQL Playground, dan fitur ekspor hasil.','Added data profiling, column mapping, SQL Playground, and export features.')
-      ],'https://github.com/Darren0099/DataForge'),
-      entry(t('YRI HRD — Dashboard Evaluasi', 'YRI HRD — Candidate Evaluation Dashboard'),'Next.js · PostgreSQL · Drizzle ORM','2026',[
-        t('Membangun prototipe dashboard kandidat dengan form input, pencatatan wawancara, dan antarmuka responsif.','Built a candidate dashboard prototype with forms, interview logging, and responsive UI.'),
-        t('Mengimplementasikan 5 kriteria evaluasi beserta logika ranking berdasarkan data penilaian.','Implemented 5 assessment criteria and ranking logic based on recorded evaluations.'),
-        t('Mengembangkan laporan Excel/PDF; prototipe belum divalidasi sebagai sistem produksi resmi.','Added Excel/PDF reporting; the prototype has not been validated as an official production system.')
-      ],'https://github.com/Darren0099/YRIHRD')
+      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript", "Jul 2024", [
+        t("Memimpin kontribusi pengembangan portal e-tourism bersama tim Politeknik Negeri Sriwijaya untuk ajang final KMIPN VI di Politeknik Negeri Jakarta.", "Led development contributions to an e-tourism portal with the Sriwijaya State Polytechnic team for the KMIPN VI finals hosted by Politeknik Negeri Jakarta."),
+        t("Menyusun katalog 94 destinasi dalam 4 kategori wisata, lengkap dengan halaman detail dinamis dan navigasi berbasis kategori.", "Organized 94 destinations into 4 categories, with dynamic detail pages and category-based navigation."),
+        t("Mengintegrasikan galeri, tautan peta, dan 14 sumber tur virtual 3D/360° yang tersedia untuk membantu eksplorasi informasi wisata.", "Integrated galleries, map links, and 14 available 3D/360° virtual-tour resources for destination exploration."),
+        t("Membangun tampilan informasi yang menyatukan sejarah kota, rekomendasi wisata, serta konten destinasi dari sumber yang disediakan tim.", "Created unified pages for city history, tourism recommendations, and destination content curated by the team.")
+      ], "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT"),
+      entry(t("AsaKita — Proyek KMIPN VII, Platform Edukasi Interaktif", "AsaKita — KMIPN VII Interactive Learning Platform"), "KMIPN VII · Politeknik Negeri Padang · Next.js / React", "Feb – Sep 2025", [
+        t("Berkontribusi sebagai lead frontend pada proyek edukasi pencegahan pernikahan dini dan kekerasan terhadap perempuan, yang dikembangkan untuk KMIPN VII (tanpa klaim finalis).", "Contributed as lead frontend developer to an early-marriage and violence-prevention learning project developed for KMIPN VII (no finalist claim)."),
+        t("Membangun dashboard 6 modul progresif dengan kuis, XP, level, lencana, dan sertifikat PDF yang dapat dicetak dari browser.", "Built a 6-module learning dashboard with quizzes, XP, levels, badges, and browser-printable certificates."),
+        t("Mengimplementasikan fitur aksesibilitas seperti pengaturan teks, kontras, font, pengurangan animasi, dan pembacaan halaman.", "Implemented accessibility controls for text size, contrast, fonts, reduced motion, and page reading."),
+        t("Menyediakan direktori bantuan dan navigasi peta ke lembaga terkait; prototipe memakai penyimpanan lokal dan tautan bantuan eksternal, bukan pelaporan backend langsung.", "Added help directories and mapping to support organizations; the prototype uses local storage and external help links, not direct backend case reporting.")
+      ], "https://github.com/Darren0099/KM7"),
+      entry(t("Dapur Ummi Kyana — Website E-Commerce UMKM", "Dapur Ummi Kyana — SME E-Commerce Website"), "PHP / MySQL / JavaScript · Pengabdian Masyarakat", "Mei – Jul 2025", [
+        t("Mengembangkan alur e-commerce berbasis PHP/MySQL untuk menampilkan katalog kuliner, registrasi, login, keranjang, dan pembuatan pesanan.", "Implemented PHP/MySQL e-commerce flows for culinary catalog, registration, login, cart, and order creation."),
+        t("Menyusun modul admin dengan ringkasan jumlah pengguna, pesanan, pemasukan, transaksi terkini, dan status pembayaran/pengiriman.", "Built an admin dashboard summarizing users, orders, revenue, recent transactions, and payment/delivery status."),
+        t("Mengembangkan halaman pembayaran dan struk serta struktur pengelolaan data transaksi; implementasi gateway tidak diklaim siap produksi.", "Developed payment and receipt pages and transaction-management structure without claiming production-ready gateway integrations."),
+        t("Berkolaborasi dalam proyek pengabdian dosen untuk mendukung digitalisasi pengelolaan katalog dan pemesanan UMKM lokal.", "Contributed to a lecturer-led community project supporting digital ordering and product management for a local SME.")
+      ], "https://github.com/Darren0099/DapurUmmikyanaPalembang"),
     ],
     skills: [
       skill(t('Bahasa & antarmuka','Languages & frontend'),'HTML, CSS, JavaScript, TypeScript, React, Next.js, SvelteKit'),
@@ -188,38 +200,44 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
     headline: t('Graphic Designer | Visual Communication & Brand Content', 'Graphic Designer | Visual Communication & Brand Content'),
     summary: t('Desainer grafis dengan pengalaman merancang materi publikasi komunitas, komunikasi acara, dan konten editorial media sosial. Terbiasa berkolaborasi lintas divisi, menjaga konsistensi identitas visual, dan menerjemahkan pesan organisasi ke dalam desain yang jelas dan mudah dipahami.','Graphic designer experienced in community publications, event communication, and social-media editorial content. Comfortable working across teams, maintaining visual consistency, and translating organizational messages into clear, usable design.'),
     experience: [
-      entry(t('Desainer Konten — Divisi Operation', 'Content Designer — Operations Division'),'Kawan YRI · Youth Ranger Indonesia Pusat','2026',[
-        t('Membuat konten grafis Instagram untuk mendukung komunikasi kegiatan dan operasi organisasi pusat.','Designed Instagram graphics supporting central organization operations and updates.'),
-        t('Mengubah brief kegiatan menjadi struktur informasi, hierarki visual, dan materi editorial yang mudah dibaca.','Translated activity briefs into clear visual hierarchy and readable editorial assets.'),
-        t('Menyesuaikan layout agar identitas dan gaya konten konsisten di berbagai unggahan.','Adapted layouts to maintain a consistent identity across social posts.')
-      ],'https://www.instagram.com/kawan.yri/'),
-      entry(t('Desainer Grafis — Youthopia Symposium', 'Graphic Designer — Youthopia Symposium'),'Duta Potensi Pemuda Indonesia','2025',[
-        t('Membuat materi visual acara pemuda untuk kebutuhan publikasi digital dan komunikasi promosi.','Created digital promotional and communication materials for a youth event.'),
-        t('Menyusun tipografi, komposisi, serta penggunaan elemen grafis yang konsisten antar materi.','Maintained consistent typography, composition, and graphic elements across assets.'),
-        t('Berkolaborasi dengan tim konten dan publikasi dalam menyesuaikan desain terhadap tema acara.','Worked with content and publication teams to align designs with the event theme.')
+      entry(t("Graphic Designer — Youthopia Symposium", "Graphic Designer — Youthopia Symposium"), "Duta Potensi Pemuda Indonesia", "Apr 2025 – Mar 2026", [
+        t("Merancang materi desain acara nasional Youthopia Symposium, meliputi aset komunikasi, materi branding, dan publikasi digital sesuai kebutuhan penyelenggara.", "Created event communications, branding assets, and digital publications for the national Youthopia Symposium."),
+        t("Menerapkan konsistensi warna, tipografi, komposisi, dan hierarki informasi untuk mempermudah komunikasi panitia kepada peserta serta mitra kegiatan.", "Applied consistent color, typography, composition, and visual hierarchy for committee-to-participant and stakeholder communication."),
+        t("Berkolaborasi dengan tim konten dan acara dalam penyusunan maupun penyesuaian aset visual berdasarkan brief yang diterima.", "Collaborated with content and event teams to create and revise visual deliverables from briefs."),
+        t("Turut mendukung koordinasi peserta sebagai Liaison Officer sementara pada rangkaian agenda kunjungan kelembagaan.", "Also supported event participant coordination as a temporary Liaison Officer during institutional visits.")
       ]),
-      entry(t('Ketua / Koordinator Divisi Graphic Design', 'Head / Coordinator of Graphic Design'),'Youth Ranger Indonesia Sumatera Selatan','2023 – 2024',[
-        t('Mengoordinasikan kebutuhan desain, publikasi, serta dokumentasi kegiatan internal dan eksternal.','Coordinated design, publication, and documentation needs for internal and external activities.'),
-        t('Membuat banner, poster, sertifikat, konten edukasi Instagram, dan materi proposal.','Produced banners, posters, certificates, Instagram educational posts, and proposal materials.'),
-        t('Membantu membentuk dan mempertahankan identitas visual regional pada kanal komunikasi organisasi.','Helped establish and preserve the regional visual identity across communications.')
-      ])
+      entry(t("Head of Design — YRI FEST × EXPO 2024", "Head of Design — YRI FEST × EXPO 2024"), "Youth Ranger Indonesia", "Jul – Agu 2024", [
+        t("Memimpin kebutuhan produksi visual untuk acara kompetisi pemuda, mulai dari perencanaan materi hingga kesiapan publikasi.", "Led event visual production needs from planning through publication readiness."),
+        t("Mengembangkan konten komunikasi bagi peserta dan audiens, termasuk pengemasan informasi lomba ke dalam materi desain yang mudah dipahami.", "Developed audience-facing design materials that presented competition information clearly."),
+        t("Membagi pekerjaan dan mengoordinasikan relawan kreatif serta tim lain untuk menjaga keselarasan publikasi acara.", "Delegated creative work and coordinated volunteers and partner teams to align event communications."),
+        t("Menjaga konsistensi identitas visual dan ketepatan informasi pada kanal digital selama rangkaian kegiatan.", "Maintained visual identity consistency and accuracy across digital channels throughout the event.")
+      ]),
+      entry(t("Graphic Designer — Operasional Konten", "Graphic Designer — Operations Content"), "Kawan YRI · Youth Ranger Indonesia Pusat", "2026", [
+        t("Mengembangkan konten feed Instagram untuk menyampaikan kegiatan dan pesan divisi Operation secara ringkas dan konsisten.", "Developed Instagram feed content conveying Operations Division updates clearly and consistently."),
+        t("Mengolah brief menjadi judul, visual pendukung, hierarki informasi, dan ajakan bertindak yang mudah dipindai audiens.", "Translated briefs into headlines, supporting graphics, information hierarchy, and scannable calls to action."),
+        t("Menerapkan prinsip tata letak dan keterbacaan untuk menyesuaikan desain terhadap kebutuhan publikasi media sosial.", "Applied layout and readability principles to adapt designs for social media publishing."),
+        t("Berkolaborasi dalam proses revisi materi ketika informasi, template, atau kebutuhan komunikasi berubah.", "Collaborated on content revisions as information, templates, and communication needs changed.")
+      ], "https://www.instagram.com/kawan.yri/"),
     ],
     projects: [
-      entry(t('Kawan YRI — Sistem Konten Editorial', 'Kawan YRI — Editorial Social Content'),'Instagram · Visual Storytelling','2026',[
-        t('Mengembangkan layout unggahan yang menekankan judul, isi utama, dan ajakan bertindak secara berjenjang.','Developed social layouts highlighting the headline, core message, and call to action.'),
-        t('Mengemas informasi kegiatan organisasi dalam desain feed yang konsisten untuk keterbacaan.','Adapted operations information into consistent, readable feed designs.'),
-        t('Menyiapkan aset komunikasi yang mudah diperbarui ketika brief atau jadwal berubah.','Prepared communication assets that could be updated as briefs or schedules changed.')
-      ],'https://www.instagram.com/kawan.yri/'),
-      entry(t('YRI Sumsel — Publikasi & Visual Event', 'YRI Sumsel — Event Visual Communications'),'Branding · Publication · Community','2023 – 2025',[
-        t('Menyusun materi visual untuk berbagai acara komunitas, dari pengumuman hingga dokumentasi kegiatan.','Produced community-event assets from announcements to documentation.'),
-        t('Mengembangkan aset lintas format seperti poster, sertifikat, konten Instagram, dan sampul proposal.','Created assets across poster, certificate, Instagram, and proposal-cover formats.'),
-        t('Menjaga kesinambungan gaya visual agar identitas regional tetap dikenali.','Kept visual presentation consistent to maintain regional brand recognition.')
+      entry(t("AsaKita — UI Interaktif & Aksesibilitas (KMIPN VII)", "AsaKita — Interactive UI & Accessibility (KMIPN VII)"), "Frontend UI · Next.js / TypeScript · KMIPN VII", "Feb – Sep 2025", [
+        t("Merancang antarmuka pembelajaran responsif untuk dashboard 6 modul edukasi yang ditujukan bagi penggunaan desktop maupun mobile.", "Designed responsive interfaces for a 6-module learning dashboard on desktop and mobile."),
+        t("Mengembangkan interaksi kuis, progres, kartu misi, lencana, dan sertifikat untuk membentuk pengalaman belajar yang bertahap.", "Developed quiz, progress, mission-card, badge, and certificate interactions for a staged learning experience."),
+        t("Mengimplementasikan kontrol aksesibilitas seperti ukuran teks, kontras tinggi, font ramah disleksia, dan pengurangan animasi.", "Implemented accessibility controls including text sizing, high contrast, dyslexia-friendly fonts, and reduced motion."),
+        t("Menerapkan navigasi yang jelas ke sumber bantuan eksternal; aplikasi merupakan prototipe edukasi, bukan layanan darurat atau konseling produksi.", "Designed clear paths to external support sources; the app is an educational prototype, not a production emergency or counseling service.")
+      ], "https://github.com/Darren0099/KM7"),
+      entry(t("YRI Sumsel — Sistem Visual Publikasi Komunitas", "YRI South Sumatra — Community Publication Visuals"), "Media Sosial / Acara / Identitas Komunitas", "2023 – 2025", [
+        t("Membuat seri materi visual regional berupa poster, banner, sertifikat, konten edukasi, serta sampul proposal untuk kegiatan organisasi.", "Created regional event posters, banners, certificates, educational social posts, and proposal-cover assets."),
+        t("Menyelaraskan tipografi, warna, komposisi, dan elemen identitas agar desain tetap konsisten dalam format cetak maupun digital.", "Aligned typography, colors, composition, and visual identity across print and digital formats."),
+        t("Mengoordinasikan kebutuhan publikasi bersama tim konten, dokumentasi, dan kegiatan untuk menjaga kesesuaian pesan desain.", "Coordinated publication requests across content, documentation, and event teams."),
+        t("Mendukung kampanye acara dan literasi melalui visual yang menekankan keterbacaan serta kemudahan distribusi media sosial.", "Supported event and literacy campaigns with readable, shareable visuals.")
       ]),
-      entry(t('Dapur Ummi Kyana — Desain Web & Branding Digital', 'Dapur Ummi Kyana — Web Visual Design'),'HTML · CSS · Digital Branding','2024 – 2025',[
-        t('Mendesain tampilan katalog web UMKM yang menonjolkan identitas usaha serta produk kuliner.','Designed an SME catalog website highlighting business identity and culinary products.'),
-        t('Mengatur susunan informasi menu, produk unggulan, dan visual pendukung agar mudah dipindai.','Organized menu descriptions, featured products, and supporting visuals for easy scanning.'),
-        t('Mengimplementasikan layout responsif menggunakan HTML, CSS, dan JavaScript.','Implemented responsive layouts using HTML, CSS, and JavaScript.')
-      ],'https://github.com/Darren0099/PENGABDIAN-MASYARAKAT-UMKM-DAPURUMMIKYANAPALEMBANG')
+      entry(t("Kawan YRI — Konten Editorial Divisi Operation", "Kawan YRI — Operations Editorial Content"), "Instagram · Komunikasi Visual / Desain Konten", "2026", [
+        t("Mengembangkan layout feed untuk memperkenalkan kegiatan dan proses kerja divisi Operation dalam bentuk konten yang lebih mudah dipahami.", "Created feed layouts explaining the Operations Division's activities in accessible formats."),
+        t("Mengemas judul, informasi inti, ilustrasi, dan call-to-action menjadi susunan visual yang konsisten dengan identitas organisasi.", "Structured headlines, core information, illustrations, and calls to action in consistent branded layouts."),
+        t("Menyesuaikan materi editorial terhadap kebutuhan brief, termasuk perubahan detail informasi dan struktur narasi unggahan.", "Adapted editorial design to evolving briefs, details, and post narratives."),
+        t("Berkolaborasi dengan tim penyusun konten untuk memastikan pesan dapat dibaca dengan jelas di layar ponsel.", "Worked with content creators to ensure readability on mobile screens.")
+      ], "https://www.instagram.com/kawan.yri/"),
     ],
     skills: [
       skill(t('Desain visual','Visual design'),'Figma, Canva, Layout, Typography'),
@@ -238,38 +256,44 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
     headline: t('Human Resources | Recruitment & People Operations', 'Human Resources | Recruitment & People Operations'),
     summary: t('Berpengalaman memimpin koordinasi sumber daya manusia dan program pengembangan anggota di organisasi pemuda lintas regional. Menguasai administrasi rekrutmen, pemetaan talenta, evaluasi kinerja anggota, dan komunikasi lintas tim; didukung kemampuan membangun aplikasi pencatatan HR.','Experienced in coordinating people programs and member development across a multi-regional youth organization. Skilled in recruitment administration, talent mapping, performance documentation, and cross-team communication, supported by hands-on HR application development.'),
     experience: [
-      entry(t('Ketua Human Resources — Distrik Sumatera 2', 'Head of Human Resources — Sumatera 2 District'),'Youth Ranger Indonesia','Jun 2025 – Jan 2026',[
-        t('Memimpin koordinasi 7 program HR: Talent System, HR Connect, Cultural Check-In, RDC, HR Reward, Weekly Pulse, dan Individual Log.','Coordinated 7 HR programs: Talent System, HR Connect, Cultural Check-In, RDC, HR Reward, Weekly Pulse, and Individual Log.'),
-        t('Mengembangkan praktik pencatatan kinerja dan pemetaan talenta untuk membantu evaluasi serta pengembangan anggota.','Structured performance documentation and talent mapping to support member evaluation and development.'),
-        t('Memfasilitasi komunikasi antara pimpinan distrik, pengurus regional, dan anggota tim HR dalam pelaksanaan program.','Facilitated coordination between district leadership, regional managers, and the HR team.')
+      entry(t("Ketua Human Resources — Distrik Sumatera 2", "Head of Human Resources — Sumatera 2 District"), "Youth Ranger Indonesia", "Jun 2025 – Jan 2026", [
+        t("Memimpin koordinasi 7 program HR, mencakup HR Connect, Talent System, Cultural Check-In, Weekly Pulse, Individual Performance Log, Regional Development Camp, dan HR Reward.", "Led coordination of 7 HR initiatives, including HR Connect, Talent System, Cultural Check-In, Weekly Pulse, Individual Performance Log, Regional Development Camp, and HR Reward."),
+        t("Mengelola alur open recruitment, penyaringan kandidat, dan komunikasi kebutuhan antar divisi dengan pimpinan distrik dan regional.", "Coordinated open recruitment, applicant screening, and cross-division needs with district and regional leadership."),
+        t("Mengembangkan pencatatan evaluasi individu, pemetaan talenta, serta rencana rotasi untuk membantu tindak lanjut pengembangan anggota.", "Organized individual evaluations, talent mapping, and rotation planning to support member development decisions."),
+        t("Menyusun rencana kerja terpadu selama 1 bulan bersama tim Project Management, Media, dan Public Relations; berkoordinasi pada 2 regional yang tercantum di LinkedIn.", "Planned a one-month integrated work calendar with Project Management, Media, and Public Relations across 2 regions documented on LinkedIn.")
       ]),
-      entry(t('Koordinasi Rekrutmen Volunteer — Summit of Stars', 'Volunteer Recruitment Coordination — Summit of Stars'),'Youth Ranger Indonesia','2025',[
-        t('Mendukung administrasi kandidat dan persiapan alur wawancara volunteer pada kegiatan organisasi.','Supported candidate administration and volunteer interview workflows.'),
-        t('Membuat halaman jadwal wawancara yang mengelompokkan narasumber dan agenda berdasarkan hari.','Built an interview scheduling reference page organizing interviewers and sessions by day.'),
-        t('Menyajikan informasi wawancara melalui antarmuka responsif agar mudah diakses panitia dan peserta.','Published responsive interview information for committee members and applicants.')
-      ],'https://github.com/Darren0099/VOLUNTEERSUMMITSTAR'),
-      entry(t('Koordinator Divisi Desain — Kepemimpinan Tim', 'Design Division Coordinator — Team Leadership'),'Youth Ranger Indonesia Sumatera Selatan','2023 – 2024',[
-        t('Membagi dan mengoordinasikan kebutuhan publikasi serta dokumentasi kegiatan kepada tim.','Coordinated team assignments for publication and documentation needs.'),
-        t('Berkomunikasi dengan divisi terkait untuk menyelaraskan materi dan kebutuhan acara.','Worked with other divisions to align materials with event requirements.'),
-        t('Menjaga konsistensi pelaksanaan pekerjaan melalui koordinasi dan pemeriksaan materi sebelum publikasi.','Supported consistent work delivery through coordination and publication checks.')
-      ])
+      entry(t("Ketua Divisi Pengembangan Diri & Desain — YRI FEST × EXPO", "Head of Self-Development & Design — YRI FEST × EXPO"), "Youth Ranger Indonesia", "Jul – Agu 2024", [
+        t("Mengkoordinasikan tim desain dan pengembangan diri dalam penyelenggaraan acara kompetisi serta kegiatan pemuda YRI FEST × EXPO.", "Coordinated design and self-development teams for the YRI FEST × EXPO youth competition event."),
+        t("Membagi kebutuhan materi informasi dan konten agar pesan acara tersampaikan secara konsisten kepada peserta dan audiens.", "Distributed communication deliverables to ensure consistent event information reached participants and audiences."),
+        t("Bekerja sama dengan relawan dan divisi kegiatan untuk menyesuaikan materi promosi dengan kebutuhan pelaksanaan acara.", "Worked with volunteers and event divisions to align promotional materials with program requirements."),
+        t("Mengawasi konsistensi materi visual serta menyatukan masukan beberapa tim sebelum konten dipublikasikan.", "Reviewed visual consistency and reconciled feedback from different teams before publication.")
+      ]),
+      entry(t("Koordinator Graphic Design — YRI Sumatera Selatan", "Graphic Design Coordinator — YRI South Sumatra"), "Youth Ranger Indonesia Sumatera Selatan", "Jan 2023 – Jan 2024", [
+        t("Mengoordinasikan produksi konten dan dokumentasi, membagi kebutuhan desain kepada anggota, dan mengelola tenggat publikasi kegiatan.", "Coordinated content and documentation production, distributed design requests, and managed publication deadlines."),
+        t("Membuat poster acara, banner, sertifikat, konten edukasi Instagram, dan sampul proposal sesuai kebutuhan internal dan eksternal.", "Designed event posters, banners, certificates, Instagram content, and proposal covers for internal and external needs."),
+        t("Berkolaborasi dengan divisi publikasi serta panitia kegiatan agar visual mendukung pesan, tujuan, dan audiens acara.", "Partnered with publications teams and event organizers to align visual assets with event objectives and audiences."),
+        t("Membantu menjaga identitas visual regional tetap seragam pada materi digital maupun cetak.", "Maintained consistent regional visual identity across digital and print materials.")
+      ]),
     ],
     projects: [
-      entry(t('YRI HRD — Prototipe Dashboard Rekrutmen', 'YRI HRD — Recruitment Dashboard Prototype'),'Next.js · PostgreSQL · Drizzle ORM','2026',[
-        t('Mengembangkan pencatatan data kandidat dan formulir penilaian wawancara dalam dashboard terpusat.','Built a central dashboard for candidate records and interview scoring forms.'),
-        t('Mengimplementasikan 5 dimensi evaluasi serta tampilan peringkat kandidat per regional dan divisi.','Implemented 5 evaluation dimensions and candidate rankings by region and division.'),
-        t('Menyediakan ekspor laporan Excel dan PDF; logika penilaian masih berupa prototipe yang perlu validasi.','Implemented Excel/PDF reporting; scoring policies remain a prototype requiring validation.')
-      ],'https://github.com/Darren0099/YRIHRD'),
-      entry(t('HR Connect & Talent System — Program Tim', 'HR Connect & Talent System — Team Programs'),'People Operations · Talent Development','2025',[
-        t('Mengoordinasikan kegiatan komunikasi HR dan pemetaan talenta lintas wilayah operasional.','Coordinated HR communication and talent mapping across operational regions.'),
-        t('Menggunakan Individual Performance Log dan Weekly Pulse untuk dokumentasi pemantauan anggota.','Used Individual Performance Log and Weekly Pulse to document member activity.'),
-        t('Menghubungkan hasil pencatatan dengan percakapan tindak lanjut bersama tim HR regional.','Linked recorded observations with follow-up conversations across regional HR teams.')
+      entry(t("YRI HRD — Dashboard Penilaian Rekrutmen", "YRI HRD — Recruitment Assessment Dashboard"), "Next.js / PostgreSQL / Drizzle ORM · Prototipe", "2026", [
+        t("Menyusun antarmuka pencatatan data kandidat dan formulir penilaian wawancara yang terpusat sebagai studi kasus digitalisasi proses rekrutmen.", "Built central candidate record and interview-scoring interfaces as a recruitment-digitization case study."),
+        t("Mengembangkan penilaian 5 aspek: komunikasi, kepemimpinan, komitmen, motivasi, dan kerja sama tim.", "Implemented 5 assessment dimensions: communication, leadership, commitment, motivation, and teamwork."),
+        t("Membuat ringkasan pemeringkatan kandidat berdasarkan regional/divisi serta kemampuan ekspor hasil evaluasi ke Excel dan PDF.", "Created regional/division ranking summaries and Excel/PDF assessment exports."),
+        t("Mengelompokkan konfigurasi kuota dan bobot pada prototipe; parameter tersebut belum dianggap sebagai kebijakan rekrutmen resmi.", "Separated quota and weighting settings in the prototype; these parameters are not asserted as official recruitment policy.")
+      ], "https://github.com/Darren0099/YRIHRD"),
+      entry(t("HR Connect & Talent System — Pengembangan SDM", "HR Connect & Talent System — People Development"), "Youth Ranger Indonesia · Human Resources", "Jun 2025 – Jan 2026", [
+        t("Mengkoordinasikan HR Connect sebagai forum komunikasi lintas tim untuk menyelaraskan kebutuhan operasional serta tindak lanjut anggota.", "Coordinated HR Connect as a cross-team forum for operational alignment and member follow-up."),
+        t("Menggunakan Talent System untuk pemetaan potensi dan kebutuhan pengembangan individu sesuai konteks organisasi.", "Used Talent System workflows to map member potential and development needs."),
+        t("Mengorganisasi Weekly Division Pulse serta Individual Performance Log untuk mencatat kegiatan, evaluasi, dan informasi perkembangan.", "Organized Weekly Division Pulse and Individual Performance Log for activity recording, evaluation, and progress tracking."),
+        t("Mendukung Cultural Check-In dan HR Reward sebagai bagian dari upaya menjaga komunikasi serta apresiasi terhadap anggota.", "Supported Cultural Check-In and HR Reward as part of member communication and recognition.")
       ]),
-      entry(t('Summit of Stars — Portal Jadwal Wawancara', 'Summit of Stars — Interview Schedule Portal'),'HTML · CSS · JavaScript','2025',[
-        t('Membangun portal informasi jadwal wawancara yang disusun berdasarkan hari pelaksanaan.','Built an interview schedule portal organized by day.'),
-        t('Membuat kartu pewawancara dan kelompok jadwal interaktif untuk memudahkan penelusuran.','Created interviewer cards and expandable schedule groups for easy navigation.'),
-        t('Merancang tampilan adaptif desktop dan mobile; portal ini adalah referensi jadwal, bukan sistem booking.','Designed mobile and desktop layouts; the portal is a schedule reference, not a booking system.')
-      ],'https://github.com/Darren0099/VOLUNTEERSUMMITSTAR')
+      entry(t("YRI Sumsel — Website Informasi & CMS Organisasi", "YRI South Sumatra — Organization Website & CMS"), "Next.js / React / TypeScript · Administrasi Konten", "Jan 2024 – Sep 2025", [
+        t("Mengembangkan website organisasi yang memusatkan profil, program, berita, dan galeri sehingga informasi dapat diakses dari satu platform.", "Developed an organization website centralizing its profile, programs, news, and gallery in one platform."),
+        t("Membuat halaman informasi publik dengan navigasi, pencarian berita, filter kategori, serta detail artikel untuk kebutuhan komunikasi organisasi.", "Built public pages with navigation, news search, category filtering, and article details for organizational communications."),
+        t("Menyediakan CMS admin untuk menambah, mengedit, dan menghapus berita menggunakan GitHub API sebagai penyimpanan konten.", "Created a CMS admin workflow to add, edit, and delete news via GitHub API-backed storage."),
+        t("Menghubungkan kebutuhan publikasi pengurus dengan struktur dan alur kerja digital yang dapat diperbarui tanpa mengubah halaman manual.", "Translated publication requirements into editable digital workflows rather than manually maintained pages.")
+      ], "https://github.com/Darren0099/YOUTHRANGERINDONESIASUMATERASELATAN"),
     ],
     skills: [
       skill(t('Administrasi HR','HR administration'),'Recruitment, Candidate Evaluation, Performance Reporting'),
