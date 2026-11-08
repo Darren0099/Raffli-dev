@@ -17,7 +17,6 @@ type Story = {
   proof: string;
   photo: string | null;
   logo?: string;
-  tile?: number;
   caption?: Copy;
   milestones?: { year: string; role: Copy }[];
 };
@@ -71,8 +70,7 @@ const stories: Story[] = [
       {year:'2026',role:copy('YRI Pusat — Graphic Design, Divisi Operation','National YRI — Graphic Design, Operations Division')}
     ],
     proof:'https://www.instagram.com/youthranger.sumsel/',
-    photo:'/aboutme/activity-atlas.webp',
-    tile:0,
+    photo:'/aboutme/yri-festival.png',
     caption:copy('Sumsel Community Festival II · Dispora Palembang','Sumsel Community Festival II · Dispora Palembang'),
     logo:'/graphic-design/logos/yri-sumsel-original.png'
   },
@@ -84,8 +82,7 @@ const stories: Story[] = [
       'I represented the POLSRI team in the KMIPN VI e-Government finals with Palembang Go Vacation at Jakarta State Polytechnic. For KMIPN VII in Padang, our team developed AsaKita but did not advance to the finals. Both were meaningful learning experiences.'
     ),
     proof:'https://github.com/Darren0099/KMIPN6-EGOVERNEMNT',
-    photo:'/aboutme/activity-atlas.webp',
-    tile:1,
+    photo:'/aboutme/kmipn-vi.jpg',
     caption:copy('Dokumentasi final KMIPN VI · Politeknik Negeri Jakarta','KMIPN VI final documentation · Jakarta State Polytechnic')
   },
   {
@@ -96,8 +93,7 @@ const stories: Story[] = [
       'During my internship at PLN Icon Plus SBU Sumbagsel in Palembang, I supported corporate communications and developed a PHP/MySQL article management system. This photo was taken with fellow interns at an ICONNET event.'
     ),
     proof:'https://github.com/Darren0099/plniconnetbangkabelitung',
-    photo:'/aboutme/activity-atlas.webp',
-    tile:2,
+    photo:'/aboutme/pln-iconplus.jpg',
     caption:copy('Bersama rekan magang · ICONNET Sumbagsel','With fellow interns · ICONNET Sumbagsel')
   },
   {
@@ -108,8 +104,7 @@ const stories: Story[] = [
       'I worked on visual communications for Youthopia Symposium with Duta Potensi Pemuda Indonesia. This photo in front of the Constitutional Court in Jakarta documents an activity and institutional visit with the team.'
     ),
     proof:'https://www.instagram.com/p/DN-IlgoABI3/',
-    photo:'/aboutme/activity-atlas.webp',
-    tile:3,
+    photo:'/aboutme/dppi-youthopia.png',
     caption:copy('Kegiatan Youthopia Symposium · Jakarta','Youthopia Symposium activity · Jakarta')
   },
   {
@@ -254,7 +249,7 @@ export default function AboutMePage() {
           </motion.div>
           <motion.div {...appear} className="am-school-card">
             <div className="am-school-card-head">
-              <span className="am-school-crest" role="img" aria-label="Logo Politeknik Negeri Sriwijaya" />
+              <img src="/aboutme/polsri-logo.png" alt="Logo Politeknik Negeri Sriwijaya" loading="lazy" />
               <span>POLITEKNIK NEGERI SRIWIJAYA<br/><small>PALEMBANG, INDONESIA</small></span>
             </div>
             <div className="am-school-card-body">
@@ -303,10 +298,11 @@ export default function AboutMePage() {
             <motion.article className="am-story-card" key={story.index}
               {...appear} transition={reduced?undefined:{duration:.72,delay:(i%2)*.08,ease}}>
               <div className={'am-story-media am-story-media-'+(i%4+1)}>
-                {story.photo && typeof story.tile === 'number' ? (
-                  <div className={`am-activity-photo am-activity-tile-${story.tile}`} role="img" aria-label={story.name+' — '+(story.caption?tx(story.caption):'dokumentasi kegiatan')} style={{backgroundImage:`url("${story.photo}")`}}>
-                    {story.caption&&<span className="am-activity-caption">{tx(story.caption)}</span>}
-                  </div>
+                {story.photo ? (
+                  <figure className="am-activity-photo">
+                    <img src={story.photo} loading="lazy" alt={story.name+' — '+(story.caption?tx(story.caption):'dokumentasi kegiatan')} />
+                    {story.caption&&<figcaption className="am-activity-caption">{tx(story.caption)}</figcaption>}
+                  </figure>
                 ) : (
                   <div className="am-photo-placeholder">
                     <span className="am-photo-placeholder-top">{story.index} / DOCUMENTATION</span>
