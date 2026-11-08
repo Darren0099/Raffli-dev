@@ -25,6 +25,17 @@ jobs:
           curl --retry 3 --fail --location --silent --show-error "$URL_KMIPN" --output public/aboutme/kmipn-vi.jpg
           curl --retry 3 --fail --location --silent --show-error "$URL_PLN" --output public/aboutme/pln-iconplus.jpg
           curl --retry 3 --fail --location --silent --show-error "$URL_DPPI" --output public/aboutme/dppi-youthopia.png
+          # Test whether signed source URLs permit a higher-resolution resize.
+          TRY_BIG_YRI="${URL_YRI/height:200/height:900}"
+          TRY_BIG_YRI="${TRY_BIG_YRI/width:185/width:833}"
+          if curl --max-time 20 --fail --location --silent --show-error "$TRY_BIG_YRI" -o /tmp/yri-big.png; then
+            if [[ $(file --mime-type -b /tmp/yri-big.png) == image/* ]]; then
+              cp /tmp/yri-big.png public/aboutme/yri-festival.png
+              echo "YRI expanded to $(wc -c < public/aboutme/yri-festival.png) bytes"
+            fi
+          else
+            echo "Signed URL did not allow higher resolution; retaining available original import."
+          fi
           file public/aboutme/*
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
