@@ -31,7 +31,7 @@ export const cvRoles: CVRole[] = ['general', 'web', 'data', 'design', 'hr'];
 export const cvProfiles: Record<CVRole, CVProfile> = {
   general: {
     label: t('Umum / General', 'General / All-round'),
-    headline: t('Lulusan D3 Teknik Komputer | Administrasi, Operasional & Digital', 'Computer Engineering Graduate | Operations, Administration & Digital'),
+    headline: t('Lulusan D3 Teknik Komputer', 'Diploma III Computer Engineering Graduate'),
     summary: t(
       'Lulusan D3 Teknik Komputer Politeknik Negeri Sriwijaya (IPK 3,66) dengan pengalaman lintas bidang: pengembangan aplikasi web, pengelolaan konten dan komunikasi perusahaan, kepemimpinan HR, serta analisis data. Terbiasa bekerja dengan tim lintas fungsi, mengelola dokumentasi dan alur kerja, serta menerjemahkan kebutuhan menjadi solusi digital yang dapat digunakan.',
       'Diploma III Computer Engineering graduate from Sriwijaya State Polytechnic (GPA 3.66/4.00) with cross-functional experience in web development, corporate content administration, HR leadership, and data analysis. Experienced in team coordination, structured documentation, and converting operational needs into usable digital solutions.'
