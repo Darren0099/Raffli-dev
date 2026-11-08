@@ -1,93 +1,199 @@
 'use client';
+
 import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import { cvEducation, cvProfiles, cvRoles, type CVEntry, type CVLang, type CVPages, type CVRole, type DualText } from '@/data/cvProfiles';
 import './cv.css';
 
-type Lang = 'en'|'id';
-type Role = 'web'|'data'|'design'|'hr';
-type Template = 'modern-it'|'modern-general'|'harvard-it'|'harvard-general';
-type B = [string,string];
-type Entry = {title:B;org:string;date:string;bullets:B[];link?:string};
-type Profile = {name:string;summary:B;experience:Entry[];projects:Entry[];skills:string[];certs:string[];course:B};
-const b=(en:string,id:string):B=>[en,id];
-const e=(title:B,org:string,date:string,bullets:B[],link?:string):Entry=>({title,org,date,bullets,link});
-const P:Record<Role,Profile>={
- web:{name:'Full Stack Developer',summary:b('Computer Engineering graduate focused on responsive web development, content management systems, and data-backed applications. Experienced in creating usable frontends with practical backend workflows.','Lulusan Teknik Komputer dengan fokus pada pengembangan web responsif, CMS, dan aplikasi berbasis data. Berpengalaman membangun antarmuka yang mudah digunakan dengan dukungan backend.'),
- experience:[
- e(b('Web Developer Intern','Magang Web Developer'),'PLN Icon Plus SBU Sumbagsel','Oct–Dec 2025',[b('Built a PHP/MySQL article management website with public pages and an administration CMS.','Membangun website pengelolaan artikel PHP/MySQL dengan halaman publik dan CMS admin.'),b('Implemented article search, categories, media management, and responsive layouts.','Mengimplementasikan pencarian artikel, kategori, pengelolaan media, dan layout responsif.')],'https://github.com/Darren0099/plniconnetbangkabelitung'),
- e(b('Website Developer — Organization Platform','Pengembang Website — Platform Organisasi'),'Youth Ranger Indonesia Sumsel','2024–2026',[b('Developed a Next.js, React, and TypeScript organization website with programs, news, and gallery sections.','Mengembangkan website organisasi Next.js, React, dan TypeScript berisi program, berita, dan galeri.'),b('Implemented article administration and GitHub API-based content workflows.','Mengimplementasikan administrasi artikel dan alur konten berbasis GitHub API.')],'https://github.com/Darren0099/YOUTHRANGERINDONESIASUMATERASELATAN'),
- e(b('Web Contributor — Community Project','Kontributor Web — Pengabdian Masyarakat'),'Politeknik Negeri Sriwijaya','2025',[b('Developed a responsive digital catalog for a local culinary SME using HTML, CSS, and JavaScript.','Mengembangkan katalog digital responsif untuk UMKM kuliner dengan HTML, CSS, dan JavaScript.')],'https://github.com/Darren0099/PENGABDIAN-MASYARAKAT-UMKM-DAPURUMMIKYANAPALEMBANG')],
- projects:[
- e(b('Palembang Go Vacation — Tourism Portal','Palembang Go Vacation — Portal Wisata'),'KMIPN VI · Next.js / TypeScript','2024',[b('Created a tourism portal featuring 94 destinations, category filters, galleries, and mapping links.','Membuat portal wisata dengan 94 destinasi, filter kategori, galeri, dan tautan peta.')],'https://github.com/Darren0099/KMIPN6-EGOVERNEMNT'),
- e(b('KleinData — Smart Insight Studio','KleinData — Smart Insight Studio'),'SvelteKit / DuckDB-Wasm','2026',[b('Implemented a browser-based analytics workspace with 30 SQL insight recipes and charts.','Mengembangkan workspace analitik berbasis browser dengan 30 resep insight SQL dan grafik.')],'https://github.com/Darren0099/DataForge'),
- e(b('Mobius — Desktop Productivity Prototype','Mobius — Prototipe Produktivitas Desktop'),'Python / PySide6 · In development','2026',[b('Prototyped a Windows desktop island with offline document conversion tools.','Membuat prototipe desktop island Windows dengan fitur konversi dokumen offline.')],'https://github.com/Darren0099/Mobius')],
- skills:['HTML · CSS · JavaScript · TypeScript','React · Next.js · SvelteKit','PHP · MySQL · PostgreSQL','REST APIs · GitHub API · Git · Vercel'],
- certs:['CSS Essentials — Cisco Networking Academy','Belajar Back-End Pemula dengan JavaScript — Dicoding','Belajar Dasar Pemrograman JavaScript — Dicoding','Frontend Development — MySkill'],
- course:b('Web Programming · Databases · Computer Networks','Pemrograman Web · Basis Data · Jaringan Komputer')},
- data:{name:'Data Analyst',summary:b('Computer Engineering graduate with practical experience in data cleaning, exploratory analysis, SQL analytics, and visualization. Creates reproducible analytical projects that clearly state methods and limitations.','Lulusan Teknik Komputer dengan pengalaman praktik dalam pembersihan data, analisis eksploratif, SQL, dan visualisasi. Mengembangkan proyek analitik yang dapat diulang dengan metode dan batasan yang jelas.'),
- experience:[
- e(b('Independent Analytics Developer','Pengembang Analitik Independen'),'KleinData · Personal Project','2026',[b('Built a SvelteKit and DuckDB-Wasm data workspace supporting five import formats.','Membangun workspace data SvelteKit dan DuckDB-Wasm dengan dukungan lima format impor.'),b('Implemented 30 SQL analysis recipes, data profiling, charts, and CSV exports.','Mengimplementasikan 30 resep analisis SQL, profiling data, grafik, dan ekspor CSV.')],'https://github.com/Darren0099/DataForge'),
- e(b('Data Analysis Portfolio Research','Riset Portofolio Analisis Data'),'Independent Projects','2026',[b('Used pandas for data cleaning, multi-table joins, trend analysis, and customer segmentation.','Menggunakan pandas untuk data cleaning, penggabungan multi-tabel, analisis tren, dan segmentasi pelanggan.'),b('Documented data assumptions, statistical limitations, and repeatable analytical workflows.','Mendokumentasikan asumsi data, batasan statistik, dan alur analisis yang dapat diulang.')],'https://github.com/Darren0099/global-electronics-retailer-analysis'),
- e(b('People Analytics & HR Reporting','Analitik SDM & Pelaporan HR'),'Youth Ranger Indonesia District Sumatera 2','Jun 2025–Jan 2026',[b('Coordinated talent mapping, individual performance logs, and structured member evaluations.','Mengoordinasikan talent mapping, log kinerja individu, dan evaluasi anggota terstruktur.')])],
- projects:[
- e(b('Global Electronics Retailer Analysis','Analisis Retailer Elektronik Global'),'Python · pandas · RFM','2026',[b('Merged multi-table data and conducted gross-profit analysis and RFM segmentation for 11,887 customers.','Menggabungkan data multi-tabel serta menganalisis laba kotor dan segmentasi RFM untuk 11.887 pelanggan.')],'https://github.com/Darren0099/global-electronics-retailer-analysis'),
- e(b('Walmart Weekly Sales Analysis','Analisis Penjualan Mingguan Walmart'),'Jupyter · Python · Google Sheets','2026',[b('Analyzed 6,435 weekly records from 45 stores, including trends and data-quality checks.','Menganalisis 6.435 data mingguan dari 45 toko, termasuk tren dan pemeriksaan kualitas data.')],'https://github.com/Darren0099/Analisis-Dataset-Walmart'),
- e(b('Annyeongbap Restaurant Sales Analysis','Analisis Penjualan Restoran Annyeongbap'),'Python · Excel · Data Validation','2026',[b('Verified transaction calculations and examined menu categories and monthly sales patterns.','Memvalidasi perhitungan transaksi serta menganalisis kategori menu dan pola penjualan bulanan.')],'https://github.com/Darren0099/annyeongbap-sales-analysis')],
- skills:['Python · pandas · numpy','SQL · DuckDB · Jupyter','Excel · Google Sheets · Chart.js','EDA · RFM · Data Cleaning · Visualization'],
- certs:['Data Analytics Essentials — Cisco','Bootcamp Data Analyst — KarirNex','Customer Segmentation — DQLab','Excel: Pivot Table, Index Match — MySkill'],
- course:b('Statistics · Databases · Programming','Statistika · Basis Data · Pemrograman')},
- design:{name:'Graphic Designer',summary:b('Graphic designer experienced in community branding, editorial layouts, event collateral, and social media content. Combines visual storytelling with practical responsive interface design.','Desainer grafis berpengalaman dalam branding komunitas, layout editorial, materi acara, dan konten media sosial. Menggabungkan komunikasi visual dengan desain antarmuka responsif.'),
- experience:[
- e(b('Graphic Designer — Operations Content','Graphic Designer — Konten Operation'),'Kawan YRI · Youth Ranger Indonesia Pusat','2026',[b('Created Instagram editorial assets for central Operations communications.','Membuat aset editorial Instagram untuk komunikasi divisi Operation pusat.'),b('Translated organization updates into clear, consistent social media layouts.','Mengubah informasi organisasi menjadi layout media sosial yang jelas dan konsisten.')]),
- e(b('Event Graphic Designer','Desainer Grafis Acara'),'Duta Potensi Pemuda Indonesia · Youthopia Symposium','2025',[b('Produced visual communication and coordinated event campaign assets.','Membuat komunikasi visual dan aset kampanye acara yang terkoordinasi.')]),
- e(b('Head of Graphic Design','Ketua Divisi Graphic Design'),'Youth Ranger Indonesia Sumatera Selatan','2023–2024',[b('Led regional design coordination and helped establish its visual identity.','Memimpin koordinasi desain regional dan membantu membentuk identitas visualnya.'),b('Created social media graphics and community event materials.','Membuat grafis media sosial dan materi kegiatan komunitas.')])],
- projects:[
- e(b('Kawan YRI — Editorial Design','Kawan YRI — Desain Editorial'),'Social Media · Instagram','2026',[b('Developed content layouts supporting regional operations and member engagement.','Mengembangkan layout konten seputar operasional regional dan keterlibatan anggota.')],'https://www.instagram.com/kawan.yri/'),
- e(b('Youthopia Symposium — Event Visuals','Youthopia Symposium — Visual Acara'),'Digital Campaign','2025',[b('Designed coordinated digital event materials with consistent typography and branding.','Mendesain materi digital acara dengan tipografi dan branding konsisten.')]),
- e(b('Dapur Ummi Kyana — Brand Website','Dapur Ummi Kyana — Website Brand'),'UI & Digital Branding','2025',[b('Created a responsive visual catalog highlighting the local business identity and menus.','Membuat katalog visual responsif yang memperkenalkan identitas usaha dan menu.')],'https://github.com/Darren0099/PENGABDIAN-MASYARAKAT-UMKM-DAPURUMMIKYANAPALEMBANG')],
- skills:['Figma · Canva · Photoshop','Typography · Layout · Brand Identity','Social Media · Event Collateral','UI/UX · Wireframing · Web UI'],
- certs:['Graphic Design: Brand Identity — MySkill','UI/UX Design: Design System & Wireframing — MySkill','CSS Essentials — Cisco'],
- course:b('Multimedia · User Interface Design · Web Programming','Multimedia · Desain Antarmuka · Pemrograman Web')},
- hr:{name:'Human Resources',summary:b('People-operations leader with experience coordinating regional talent development, recruitment, HR programs, and structured member evaluations. Uses simple digital systems to support organizational decisions.','Pemimpin operasional SDM dengan pengalaman mengoordinasikan pengembangan talenta regional, rekrutmen, program HR, serta evaluasi anggota terstruktur. Memanfaatkan sistem digital untuk mendukung keputusan organisasi.'),
- experience:[
- e(b('Head of Human Resources — District Sumatera 2','Ketua Human Resources — Distrik Sumatera 2'),'Youth Ranger Indonesia','Jun 2025–Jan 2026',[b('Coordinated seven HR programs including Talent System, HR Connect, and Cultural Check-In.','Mengoordinasikan tujuh program HR termasuk Talent System, HR Connect, dan Cultural Check-In.'),b('Facilitated cross-regional team communication and individual performance reporting.','Memfasilitasi komunikasi tim lintas regional dan pelaporan kinerja individu.')]),
- e(b('Volunteer Recruitment & Interviews','Rekrutmen & Wawancara Volunteer'),'Summit of Stars · Youth Ranger Indonesia','2025',[b('Supported candidate assessment workflows and volunteer interview coordination.','Mendukung alur penilaian kandidat dan koordinasi wawancara volunteer.'),b('Built a mobile-friendly interview schedule reference page.','Membangun halaman referensi jadwal wawancara ramah mobile.')],'https://github.com/Darren0099/VOLUNTEERSUMMITSTAR'),
- e(b('Division Leadership — Graphic Design','Kepemimpinan Divisi — Graphic Design'),'Youth Ranger Indonesia Sumatera Selatan','2023–2024',[b('Led cross-divisional communication and creative team coordination.','Memimpin komunikasi lintas divisi dan koordinasi tim kreatif.')])],
- projects:[
- e(b('YRI HRD — Interview Scoring Dashboard','YRI HRD — Dashboard Penilaian Wawancara'),'Next.js · PostgreSQL · Drizzle','2026',[b('Created a prototype featuring candidate records, five evaluation aspects, rankings, and PDF/Excel reports.','Membuat prototipe data kandidat, lima aspek penilaian, ranking, dan laporan PDF/Excel.')],'https://github.com/Darren0099/YRIHRD'),
- e(b('Summit of Stars — Interview Schedule','Summit of Stars — Jadwal Wawancara'),'HTML · CSS · JavaScript','2025',[b('Built organized daily interview information to simplify volunteer recruitment coordination.','Membangun informasi wawancara harian untuk menyederhanakan koordinasi rekrutmen volunteer.')],'https://github.com/Darren0099/VOLUNTEERSUMMITSTAR'),
- e(b('HR Connect & Talent System','HR Connect & Talent System'),'Regional HR Operations','2025',[b('Coordinated member engagement, check-ins, talent monitoring, and team performance documentation.','Mengoordinasikan keterlibatan anggota, check-in, pemantauan talenta, dan dokumentasi kinerja tim.')])],
- skills:['Recruitment · Candidate Assessment','Talent Mapping · Performance Review','Team Leadership · Stakeholder Relations','Excel · Reporting · HR Dashboards'],
- certs:['HR Value Chain — MySkill x Deloitte','Human Resource at YRI District 2 Batch II — YRI','IT Customer Support Basics — Cisco'],
- course:b('Project Management · Communication · Databases','Manajemen Proyek · Komunikasi · Basis Data')}
-};
-const roles:Role[]=['web','data','design','hr'];
-const templates:{id:Template;en:string;idn:string}[]=[
- {id:'modern-it',en:'Modern – IT',idn:'Modern – IT'},
- {id:'modern-general',en:'Modern – General',idn:'Modern – Umum'},
- {id:'harvard-it',en:'Harvard – IT',idn:'Harvard – IT'},
- {id:'harvard-general',en:'Harvard – General',idn:'Harvard – Umum'}
+type CVTemplate = 'modern-it' | 'modern-general' | 'harvard-it' | 'harvard-general';
+const cvTemplates: { id: CVTemplate; idLabel: string; enLabel: string }[] = [
+  { id:'modern-it', idLabel:'Modern – IT', enLabel:'Modern – IT' },
+  { id:'modern-general', idLabel:'Modern – Umum', enLabel:'Modern – General' },
+  { id:'harvard-it', idLabel:'Harvard – IT', enLabel:'Harvard – IT' },
+  { id:'harvard-general', idLabel:'Harvard – Umum', enLabel:'Harvard – General' }
 ];
-const word=(v:B,l:Lang)=>v[l==='en'?0:1];
-const labels={en:{education:'EDUCATION',experience:'EXPERIENCE',projects:'PROJECTS',skills:'TECHNICAL SKILLS',general:'SKILLS & COMPETENCIES',certs:'CERTIFICATIONS',profile:'PROFILE',college:'Sriwijaya State Polytechnic',degree:'Diploma III in Computer Engineering',grade:'GPA: 3.66 / 4.00',course:'Relevant Coursework',print:'Print PDF',role:'Choose position',back:'Back to portfolio',tip:'Harvard ATS — IT is suitable for technical, engineering, and software roles.'},id:{education:'PENDIDIKAN',experience:'PENGALAMAN',projects:'PROYEK',skills:'KETERAMPILAN TEKNIS',general:'KEAHLIAN & KOMPETENSI',certs:'SERTIFIKASI',profile:'PROFIL',college:'Politeknik Negeri Sriwijaya',degree:'Diploma III Teknik Komputer',grade:'IPK: 3,66 / 4,00',course:'Mata Kuliah Relevan',print:'Cetak PDF',role:'Pilih posisi',back:'Kembali ke portofolio',tip:'Harvard ATS — IT cocok untuk lowongan teknologi, engineering, dan software.'}};
-function Section({title,children}:{title:string;children:React.ReactNode}){return <section className="cvr-section"><h2>{title}</h2>{children}</section>;}
-function Entry({value,lang,modern}:{value:Entry;lang:Lang;modern:boolean}){return <div className="cvr-entry"><div className="cvr-entry-top"><strong>{word(value.title,lang)}</strong><span>{value.date}</span></div><div className="cvr-org">{value.org}</div><ul>{value.bullets.map((v,i)=><li key={i}>{word(v,lang)}</li>)}</ul>{modern&&value.link&&<a href={value.link} target="_blank" rel="noreferrer" className="cvr-project-link">{value.link.replace('https://','')}</a>}</div>;}
-function Resume({role,template,lang}:{role:Role;template:Template;lang:Lang}){
- const d=P[role],s=labels[lang],modern=template.startsWith('modern'),isIt=template.endsWith('-it');
- const education=<Section title={s.education}><div className="cvr-entry cvr-education"><div className="cvr-entry-top"><strong>{s.college}</strong><span>2023 – 2026</span></div><div>{s.degree}</div><div><strong>{s.grade}</strong></div><div><strong>{s.course}:</strong> {word(d.course,lang)}</div></div></Section>;
- const profile=<Section title={s.profile}><p className="cvr-summary">{word(d.summary,lang)}</p></Section>;
- const experience=<Section title={s.experience}>{d.experience.map((v,i)=><Entry key={i} value={v} lang={lang} modern={modern}/>)}</Section>;
- const projects=<Section title={s.projects}>{d.projects.slice(0,isIt?3:2).map((v,i)=><Entry key={i} value={v} lang={lang} modern={modern}/>)}</Section>;
- const skills=<Section title={isIt?s.skills:s.general}><div className="cvr-skills">{d.skills.map((v,i)=><div key={i}>{v}</div>)}</div></Section>;
- const certs=<Section title={s.certs}>{d.certs.slice(0,isIt?4:3).map((v,i)=><div className="cvr-cert" key={i}><strong>{v}</strong><span>2026</span></div>)}</Section>;
- return <article className={'cvr-paper '+(modern?'cvr-modern':'cvr-harvard')}>
-  <header className="cvr-header">{modern&&<div className="cvr-eyebrow">AL-MAN / CURRICULUM VITAE</div>}<h1>{modern?'Al-man Raffli Saputra':'AL-MAN RAFFLI SAPUTRA'}</h1>{modern&&<h3>{d.name}</h3>}<div className="cvr-contacts"><a href="mailto:almanraffli1@gmail.com">almanraffli1@gmail.com</a><span>•</span><span>Palembang, Indonesia</span><span>•</span><a href="https://www.linkedin.com/in/al-man-raffli" target="_blank" rel="noreferrer">linkedin.com/in/al-man-raffli</a><span>•</span><a href="https://github.com/Darren0099" target="_blank" rel="noreferrer">github.com/Darren0099</a></div></header>
-  {modern?<div className="cvr-grid"><div>{profile}{experience}{projects}</div><aside>{education}{skills}{certs}</aside></div>:<>{education}{template==='harvard-general'&&profile}{experience}{projects}{skills}{certs}</>}
- </article>;
+const local = (s: DualText, lang: CVLang) => s[lang];
+const labels = {
+  id:{
+    preview:'Curriculum Vitae — Pilih posisi & format',
+    choose:'POSISI CV',
+    templates:'TEMPLATE',
+    pages:'PANJANG CV',
+    lang:'BAHASA',
+    page1:'1 halaman',
+    page2:'2 halaman',
+    print:'Cetak / Simpan PDF',
+    back:'Kembali ke portofolio',
+    about:'PROFIL PROFESIONAL',
+    education:'PENDIDIKAN',
+    experience:'PENGALAMAN RELEVAN',
+    projects:'PROYEK TERPILIH',
+    skills:'KETERAMPILAN',
+    certifications:'SERTIFIKASI TERPILIH',
+    achievements:'PENCAPAIAN',
+    graduation:'Lulusan 2026',
+    gpa:'IPK',
+    course:'Mata kuliah relevan',
+    repo:'Repository',
+    page:'HALAMAN',
+    sourceNote:'Angka dalam CV menunjukkan cakupan proyek atau data yang terdokumentasi, bukan persentase dampak bisnis yang belum diukur.',
+    tip:'Template Harvard satu kolom direkomendasikan untuk seleksi ATS. Tampilan awal menggunakan 2 halaman; pilih 1 halaman untuk versi ringkas.',
+    foot:'CURRICULUM VITAE · 2026',
+  },
+  en:{
+    preview:'Curriculum Vitae — Choose role & format',
+    choose:'TARGET ROLE',
+    templates:'TEMPLATE',
+    pages:'RESUME LENGTH',
+    lang:'LANGUAGE',
+    page1:'1 page',
+    page2:'2 pages',
+    print:'Print / Save PDF',
+    back:'Back to portfolio',
+    about:'PROFESSIONAL PROFILE',
+    education:'EDUCATION',
+    experience:'RELEVANT EXPERIENCE',
+    projects:'SELECTED PROJECTS',
+    skills:'SKILLS',
+    certifications:'SELECTED CERTIFICATIONS',
+    achievements:'ACHIEVEMENTS',
+    graduation:'Graduated 2026',
+    gpa:'GPA',
+    course:'Relevant coursework',
+    repo:'Repository',
+    page:'PAGE',
+    sourceNote:'Numbers reflect documented project scope or dataset size, not unverified business impact percentages.',
+    tip:'The single-column Harvard template is recommended for ATS screening. The default is 2 pages; select 1 page for a concise version.',
+    foot:'CURRICULUM VITAE · 2026'
+  }
+};
+
+function Section({ title, children, className='' }:{ title:string; children:ReactNode; className?:string }){
+  return <section className={'cvr-section '+className}><h2>{title}</h2>{children}</section>;
+}
+function EntryCard({ value, lang, showLink=false }:{value:CVEntry;lang:CVLang;showLink?:boolean}){
+  return <div className="cvr-entry">
+    <div className="cvr-entry-heading">
+      <strong>{local(value.title, lang)}</strong>
+      <time>{value.period}</time>
+    </div>
+    <p className="cvr-entry-org">{value.organization}</p>
+    <ul className="cvr-bullets">{value.bullets.slice(0,3).map((line,i)=><li key={i}>{local(line,lang)}</li>)}</ul>
+    {showLink&&value.url&&<a className="cvr-entry-link" href={value.url} target="_blank" rel="noreferrer">{value.url.replace('https://','')}</a>}
+  </div>;
+}
+function Education({lang}:{lang:CVLang}){
+  const s=labels[lang];
+  return <Section title={s.education} className="cvr-education">
+    <div className="cvr-entry-heading"><strong>{local(cvEducation.institution,lang)}</strong><time>{cvEducation.period}</time></div>
+    <p>{local(cvEducation.degree,lang)} · {s.gpa} {lang==='id'?'3,66 / 4,00':'3.66 / 4.00'} · {s.graduation}</p>
+    <p className="cvr-subtle"><strong>{s.course}: </strong>{local(cvEducation.courses,lang)}</p>
+  </Section>;
+}
+function Skills({role,lang}:{role:CVRole;lang:CVLang}){
+  return <Section title={labels[lang].skills} className="cvr-skills">{cvProfiles[role].skills.map((v,i)=><p key={i}><strong>{local(v.label,lang)}:</strong> {v.value}</p>)}</Section>;
+}
+function Certifications({role,lang,limit=3}:{role:CVRole;lang:CVLang;limit?:number}){
+  return <Section title={labels[lang].certifications} className="cvr-certifications">
+    {cvProfiles[role].certificates.slice(0,limit).map((v,i)=><p key={i}>{v}</p>)}
+  </Section>;
+}
+function Achievements({role,lang}:{role:CVRole;lang:CVLang}){
+  return <Section title={labels[lang].achievements} className="cvr-achievements">
+    <ul>{cvProfiles[role].highlights.map((v,i)=><li key={i}>{local(v,lang)}</li>)}</ul>
+  </Section>;
+}
+function Profile({role,lang}:{role:CVRole;lang:CVLang}){
+  return <Section title={labels[lang].about} className="cvr-summary"><p>{local(cvProfiles[role].summary,lang)}</p></Section>;
+}
+function Header({role,lang,compact=false}:{role:CVRole;lang:CVLang;compact?:boolean}){
+  return <header className={'cvr-resume-header '+(compact?'cvr-resume-header-small':'')}>
+    <h1>AL-MAN RAFFLI SAPUTRA</h1>
+    <p className="cvr-resume-role">{local(cvProfiles[role].headline,lang)}</p>
+    {!compact&&<p className="cvr-contacts">
+      <span>Palembang, Sumatera Selatan</span><span>·</span>
+      <a href="mailto:almanraffli1@gmail.com">almanraffli1@gmail.com</a><span>·</span>
+      <a href="tel:+6282183945815">+62 821-8394-5815</a><span>·</span>
+      <a href="https://www.linkedin.com/in/al-man-raffli" target="_blank" rel="noreferrer">linkedin.com/in/al-man-raffli</a><span>·</span>
+      <a href="https://github.com/Darren0099" target="_blank" rel="noreferrer">github.com/Darren0099</a>
+    </p>}
+  </header>;
+}
+function PageCard({children,page,pages,lang,styleClass}:{children:ReactNode;page:number;pages:CVPages;lang:CVLang;styleClass:string}){
+  return <article className={'cvr-paper '+styleClass} aria-label={(lang==='id'?'Halaman ':'Page ')+page}>
+    {children}
+    <footer className="cvr-page-footer"><span>{labels[lang].foot}</span><span>{labels[lang].page} {page} / {pages}</span></footer>
+  </article>;
+}
+function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVTemplate;pages:CVPages}){
+  const s=labels[lang],d=cvProfiles[role],isModern=template.startsWith('modern'),isIT=template.endsWith('it');
+  const styleClass=(isModern?'cvr-modern':'cvr-harvard')+' '+(pages===1?'cvr-compact':'cvr-expanded');
+  const experience=(count:number)=><Section title={s.experience} className="cvr-experience">{d.experience.slice(0,count).map((v,i)=><EntryCard key={i} value={v} lang={lang}/>)}</Section>;
+  const projects=(count:number)=><Section title={s.projects} className="cvr-projects">{d.projects.slice(0,count).map((v,i)=><EntryCard key={i} value={v} lang={lang} showLink={pages===2}/>)}</Section>;
+  if(pages===1){
+    return <div className="cvr-sheets">
+      <PageCard page={1} pages={1} lang={lang} styleClass={styleClass}>
+        <Header role={role} lang={lang}/>
+        <Profile role={role} lang={lang}/>
+        <Education lang={lang}/>
+        {experience(2)}
+        {projects(1)}
+        <Skills role={role} lang={lang}/>
+        <Certifications role={role} lang={lang} limit={2}/>
+      </PageCard>
+    </div>;
+  }
+  return <div className="cvr-sheets">
+    <PageCard page={1} pages={2} lang={lang} styleClass={styleClass}>
+      <Header role={role} lang={lang}/>
+      <Profile role={role} lang={lang}/>
+      <Education lang={lang}/>
+      {experience(3)}
+    </PageCard>
+    <PageCard page={2} pages={2} lang={lang} styleClass={styleClass}>
+      <Header role={role} lang={lang} compact/>
+      {isIT?<>{projects(3)}<Skills role={role} lang={lang}/></>:<><Skills role={role} lang={lang}/>{projects(3)}</>}
+      <Certifications role={role} lang={lang}/>
+      <Achievements role={role} lang={lang}/>
+    </PageCard>
+  </div>;
 }
 export default function CVPage(){
- const [role,setRole]=useState<Role>('web'),[template,setTemplate]=useState<Template>('harvard-it'),[lang,setLang]=useState<Lang>('en'),[ready,setReady]=useState(false);
- useEffect(()=>{const q=new URLSearchParams(window.location.search);const r=q.get('role'),t=q.get('template'),l=q.get('lang');if(r&&roles.includes(r as Role))setRole(r as Role);if(t&&templates.some(v=>v.id===t))setTemplate(t as Template);if(l==='en'||l==='id')setLang(l);setReady(true);},[]);
- useEffect(()=>{if(!ready)return;window.history.replaceState(null,'','/cv?'+new URLSearchParams({role,template,lang}).toString());document.title='CV '+P[role].name+' | Al-man Raffli Saputra';},[role,template,lang,ready]);
- const s=labels[lang];
- return <main className="cvr-app"><div className="cvr-controls"><div className="cvr-toolbar"><a className="cvr-back" href="/" aria-label={s.back}>‹</a><div className="cvr-tabs">{templates.map(v=><button key={v.id} type="button" aria-pressed={template===v.id} className={template===v.id?'active':''} onClick={()=>setTemplate(v.id)}><span aria-hidden="true">▤</span> {lang==='en'?v.en:v.idn}</button>)}</div><div className="cvr-tabs cvr-languages"><button type="button" aria-pressed={lang==='en'} className={lang==='en'?'active':''} onClick={()=>setLang('en')}>◎ EN</button><button type="button" aria-pressed={lang==='id'} className={lang==='id'?'active':''} onClick={()=>setLang('id')}>ID</button></div><button className="cvr-print" type="button" onClick={()=>window.print()}>⇩ {s.print}</button></div><p className="cvr-helper">{s.tip}</p><div className="cvr-role-picker"><span>{s.role}</span><div>{roles.map(r=><button key={r} type="button" className={role===r?'active':''} aria-pressed={role===r} onClick={()=>setRole(r)}>{P[r].name}</button>)}</div></div></div><Resume role={role} template={template} lang={lang}/><div className="cvr-footer"><span>Portfolio & GitHub project-based resume · 2026</span><a href="/">{s.back} ↗</a></div></main>;
+  const [role,setRole]=useState<CVRole>('general');
+  const [lang,setLang]=useState<CVLang>('id');
+  const [template,setTemplate]=useState<CVTemplate>('harvard-it');
+  const [pages,setPages]=useState<CVPages>(2);
+  const [initialized,setInitialized]=useState(false);
+  useEffect(()=>{
+    const p=new URLSearchParams(window.location.search);
+    const r=p.get('role'),l=p.get('lang'),temp=p.get('template'),count=p.get('pages');
+    if(r&&cvRoles.includes(r as CVRole))setRole(r as CVRole);
+    if(l==='id'||l==='en')setLang(l);
+    if(temp&&cvTemplates.some(v=>v.id===temp))setTemplate(temp as CVTemplate);
+    if(count==='1'||count==='2')setPages(Number(count) as CVPages);
+    setInitialized(true);
+  },[]);
+  useEffect(()=>{
+    if(!initialized)return;
+    const p=new URLSearchParams({role,template,pages:String(pages),lang});
+    window.history.replaceState(null,'','/cv?'+p.toString());
+    document.title='CV '+cvProfiles[role].label[lang]+' | Al-Man Raffli Saputra';
+  },[initialized,role,lang,template,pages]);
+  const s=labels[lang];
+  return <main className="cvr-app">
+    <div className="cvr-controls" aria-label={s.preview}>
+      <div className="cvr-topline"><a href="/" className="cvr-back">← {s.back}</a><span>AL-MAN RAFFLI SAPUTRA / CV STUDIO</span></div>
+      <div className="cvr-title-row"><div><h2>{s.preview}</h2><p>{s.tip}</p></div><button type="button" className="cvr-print" onClick={()=>window.print()}><span aria-hidden="true">↓</span> {s.print}</button></div>
+      <div className="cvr-control-group">
+        <div className="cvr-picker"><strong>{s.choose}</strong><div className="cvr-option-row">{cvRoles.map(r=><button key={r} type="button" aria-pressed={role===r} className={role===r?'active':''} onClick={()=>setRole(r)}>{local(cvProfiles[r].label,lang)}</button>)}</div></div>
+        <div className="cvr-options-layout">
+          <div className="cvr-picker"><strong>{s.templates}</strong><div className="cvr-option-row">{cvTemplates.map(v=><button key={v.id} type="button" aria-pressed={template===v.id} className={template===v.id?'active':''} onClick={()=>setTemplate(v.id)}>{lang==='id'?v.idLabel:v.enLabel}</button>)}</div></div>
+          <div className="cvr-picker"><strong>{s.pages}</strong><div className="cvr-option-row"><button type="button" aria-pressed={pages===1} className={pages===1?'active':''} onClick={()=>setPages(1)}>{s.page1}</button><button type="button" aria-pressed={pages===2} className={pages===2?'active':''} onClick={()=>setPages(2)}>{s.page2}</button></div></div>
+          <div className="cvr-picker"><strong>{s.lang}</strong><div className="cvr-option-row"><button type="button" aria-pressed={lang==='id'} className={lang==='id'?'active':''} onClick={()=>setLang('id')}>ID</button><button type="button" aria-pressed={lang==='en'} className={lang==='en'?'active':''} onClick={()=>setLang('en')}>EN</button></div></div>
+        </div>
+      </div>
+      <p className="cvr-source-note">{s.sourceNote}</p>
+    </div>
+    <Resume role={role} lang={lang} template={template} pages={pages}/>
+  </main>;
 }
