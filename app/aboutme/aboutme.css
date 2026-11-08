@@ -349,3 +349,10 @@
     object-position: center 70%;
   }
 }
+
+
+/* Shared Raffli identity: exact lettermark proportions used across the site. */
+.am-logo img { display:block; width:71px; height:55px; object-fit:contain; flex:none; }
+@media(max-width:600px) {
+  .am-logo img { width:59px; height:47px; }
+}
