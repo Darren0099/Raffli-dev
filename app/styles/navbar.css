@@ -210,3 +210,10 @@
     gap: 8px;
   }
 }
+/* Six section links: keep navbar usable on intermediate screens. */
+@media (min-width: 769px) and (max-width: 1190px) {
+  .navbar { padding-left: 3%; padding-right: 3%; }
+  .nav-links { gap: 2px; }
+  .nav-item { font-size: 12px; padding: 6px 9px; }
+  .header-right { gap: 8px; }
+}
