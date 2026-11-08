@@ -229,3 +229,44 @@
     height: 300px;
   }
 }
+/* Paired hero calls-to-action: contact and role-specific CV */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.see-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 30px;
+  min-height: 50px;
+  border-radius: 30px;
+  border: 1.5px solid #171717;
+  color: #171717;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .25s ease, color .25s ease, transform .25s ease;
+}
+
+.see-cv-btn:hover {
+  background: #171717;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.see-cv-btn:focus-visible,
+.get-in-touch-btn:focus-visible {
+  outline: 3px solid #FE5000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .hero-cta-group { gap: 10px; }
+  .see-cv-btn, .get-in-touch-btn { padding: 13px 19px; font-size: .86rem; }
+}
