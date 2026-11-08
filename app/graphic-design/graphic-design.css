@@ -460,3 +460,10 @@
  .gd-origin-art--real img,.gd-operation-poster { transition:none; }
  .gd-origin-card:hover .gd-origin-art--real img,.gd-operation-poster:hover { transform:none; }
 }
+
+
+/* Shared brand mark, replacing the previously typeset R. */
+.gd-brand img { display:block; width:71px; height:55px; object-fit:contain; flex:none; }
+@media(max-width:600px) {
+  .gd-brand img { width:59px; height:47px; }
+}
