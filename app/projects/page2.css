@@ -461,3 +461,17 @@
   background-color: #111111;
 }
 
+
+
+/* Project detail shares the same original Raffli logo as the homepage. */
+.detail-page-container .navbar { padding-top: 13px; padding-bottom: 13px; }
+.detail-page-container .brand-mark-link { display: inline-flex; align-items: center; line-height: 0; }
+.detail-page-container .brand-mark-link img {
+  width: 69px;
+  height: 50px;
+  display: block;
+  object-fit: contain;
+}
+@media(max-width:768px) {
+  .detail-page-container .brand-mark-link img { width: 61px; height: 44px; }
+}
