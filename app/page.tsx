@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '@/components/LanguageProvider';
 import { translations } from '@/data/translations';
 
@@ -21,6 +21,44 @@ export default function Home() {
   const { lang, setLang } = useLanguage();
   const [loading, setLoading] = useState(true);
   const t = translations[lang];
+
+  // Re-align URL deep links once the preloader and measured horizontal
+  // Experience section have settled. This also covers /#contact links
+  // opened from another page or an external website.
+  useEffect(() => {
+    if (loading) return;
+
+    const sectionId = decodeURIComponent(window.location.hash.slice(1));
+    if (!['about', 'skills', 'experience', 'contact'].includes(sectionId)) return;
+
+    const alignToSection = () => {
+      const target = document.getElementById(sectionId);
+      if (!target || window.location.hash !== '#' + sectionId) return;
+      const top = Math.max(
+        0,
+        window.scrollY + target.getBoundingClientRect().top - 16
+      );
+      window.scrollTo({ top, behavior: 'instant' });
+    };
+
+    let nextFrame = 0;
+    const firstFrame = window.requestAnimationFrame(() => {
+      nextFrame = window.requestAnimationFrame(alignToSection);
+    });
+    const resync = window.setTimeout(alignToSection, 400);
+
+    const stopResync = () => window.clearTimeout(resync);
+    window.addEventListener('wheel', stopResync, { passive: true });
+    window.addEventListener('touchstart', stopResync, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(firstFrame);
+      window.cancelAnimationFrame(nextFrame);
+      window.clearTimeout(resync);
+      window.removeEventListener('wheel', stopResync);
+      window.removeEventListener('touchstart', stopResync);
+    };
+  }, [loading]);
 
   return (
     <>
