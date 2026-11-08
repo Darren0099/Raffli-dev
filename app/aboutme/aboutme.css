@@ -240,3 +240,92 @@
   .am-running-line>div{animation:none}
   .am-page *, .am-page *::before,.am-page *::after{scroll-behavior:auto!important;transition:none!important}
 }
+
+/* Verified documentation — one authentic activity photo per story. */
+.am-activity-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 340px;
+  min-height: 310px;
+  margin: 0;
+  overflow: hidden;
+  background: #222;
+}
+.am-activity-photo::after {
+  content: "";
+  position: absolute;
+  inset: 30% 0 0;
+  background: linear-gradient(to bottom, transparent 10%, rgba(0,0,0,.6) 100%);
+  pointer-events: none;
+}
+.am-activity-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+}
+.am-story-card:hover .am-activity-photo img { transform: scale(1.05); }
+.am-story-card:nth-child(1) .am-activity-photo img { object-position: center 35%; }
+.am-story-card:nth-child(2) .am-activity-photo img { object-position: center 42%; }
+.am-story-card:nth-child(3) .am-activity-photo img { object-position: center 48%; }
+.am-story-card:nth-child(4) .am-activity-photo img { object-position: center 47%; }
+.am-activity-caption {
+  position: absolute;
+  bottom: 17px;
+  left: 18px;
+  right: 18px;
+  z-index: 3;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .02em;
+  line-height: 1.4;
+  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+}
+.am-yri-milestones {
+  display: grid;
+  gap: 0;
+  margin: 4px 0 26px;
+  border: 1px solid #d5c9b6;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f9f0dc;
+}
+.am-yri-milestone {
+  display: grid;
+  grid-template-columns: 58px minmax(0,1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #dfd5c5;
+}
+.am-yri-milestone:last-child { border-bottom: none; }
+.am-yri-milestone strong {
+  display: inline-flex;
+  justify-content: center;
+  background: #171715;
+  color: #fff9f0;
+  border-radius: 20px;
+  padding: 5px 7px;
+  font-size: 11px;
+  font-weight: 900;
+}
+.am-yri-milestone span {
+  font-size: 11px;
+  font-weight: 760;
+  line-height: 1.45;
+  color: #39312b;
+}
+.am-story-card:first-child .am-story-info {
+  background: linear-gradient(140deg, #fffaf2 60%, #fff1df 100%);
+}
+@media (max-width:760px) {
+  .am-activity-photo { height: 295px; min-height: 295px; }
+  .am-activity-photo img { height: 100%; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .am-story-card:hover .am-activity-photo img { transform: none; }
+}
