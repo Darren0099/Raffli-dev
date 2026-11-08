@@ -29,7 +29,7 @@ export default function Home() {
     if (loading) return;
 
     const sectionId = decodeURIComponent(window.location.hash.slice(1));
-    if (!['about', 'skills', 'experience', 'contact'].includes(sectionId)) return;
+    if (!['about', 'skills', 'experience', 'certificates', 'contact'].includes(sectionId)) return;
 
     const alignToSection = () => {
       const target = document.getElementById(sectionId);
