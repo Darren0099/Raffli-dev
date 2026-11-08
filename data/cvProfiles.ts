@@ -83,10 +83,6 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       skill(t('Komunikasi & desain', 'Communications & design'),t('Figma, Canva, konten digital, komunikasi organisasi','Figma, Canva, digital content, organizational communication'))
     ],
     certificates: ['Data Analytics Essentials — Cisco Networking Academy','CSS Essentials — Cisco Networking Academy','IT Customer Support Basics — Cisco Networking Academy'],
-    highlights: [
-      t('IPK 3,66/4,00 — D3 Teknik Komputer, Politeknik Negeri Sriwijaya.', 'GPA 3.66/4.00 — Diploma III Computer Engineering, Sriwijaya State Polytechnic.'),
-      t('Finalis KMIPN VI kategori e-Government (2024).','Finalist, KMIPN VI e-Government category (2024).')
-    ]
   },
   web: {
     label: t('Frontend / Web Developer','Frontend / Web Developer'),
