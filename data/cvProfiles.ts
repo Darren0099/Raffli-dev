@@ -238,7 +238,7 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       skill(t('Produksi aset','Asset production'),'Event Collateral, Posters, Certificates, Proposals'),
       skill(t('Antarmuka','Interface design'),'Wireframing, UI/UX, Responsive Design, HTML, CSS')
     ],
-    certificates:['Graphic Design: Brand Identity — MySkill','UI/UX Design: Design System & Wireframing — MySkill','CSS Essentials — Cisco Networking Academy']
+    certificates:['Graphic Design: Brand Identity — MySkill','UI/UX Design: Design System in UI Design — MySkill','UI/UX Design: Wireframing in UI/UX Design — MySkill','CSS Essentials — Cisco Networking Academy']
   },
   hr: {
     label: t('Human Resources','Human Resources'),
