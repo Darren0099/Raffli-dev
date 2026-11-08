@@ -58,23 +58,23 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       ]),
     ],
     projects: [
-      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript", "Jul 2024", [
+      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript (repo terbaru)", "Jul 2024", [
         t("Memimpin kontribusi pengembangan portal e-tourism bersama tim Politeknik Negeri Sriwijaya untuk ajang final KMIPN VI di Politeknik Negeri Jakarta.", "Led development contributions to an e-tourism portal with the Sriwijaya State Polytechnic team for the KMIPN VI finals hosted by Politeknik Negeri Jakarta."),
         t("Menyusun katalog 94 destinasi dalam 4 kategori wisata, lengkap dengan halaman detail dinamis dan navigasi berbasis kategori.", "Organized 94 destinations into 4 categories, with dynamic detail pages and category-based navigation."),
         t("Mengintegrasikan galeri, tautan peta, dan 14 sumber tur virtual 3D/360° yang tersedia untuk membantu eksplorasi informasi wisata.", "Integrated galleries, map links, and 14 available 3D/360° virtual-tour resources for destination exploration."),
         t("Membangun tampilan informasi yang menyatukan sejarah kota, rekomendasi wisata, serta konten destinasi dari sumber yang disediakan tim.", "Created unified pages for city history, tourism recommendations, and destination content curated by the team.")
       ], "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT"),
       entry(t("AsaKita — Proyek KMIPN VII, Platform Edukasi Interaktif", "AsaKita — KMIPN VII Interactive Learning Platform"), "KMIPN VII · Politeknik Negeri Padang · Next.js / React", "Feb – Sep 2025", [
-        t("Berkontribusi sebagai lead frontend pada proyek edukasi pencegahan pernikahan dini dan kekerasan terhadap perempuan, yang dikembangkan untuk KMIPN VII (tanpa klaim finalis).", "Contributed as lead frontend developer to an early-marriage and violence-prevention learning project developed for KMIPN VII (no finalist claim)."),
+        t("Berkontribusi sebagai lead frontend pada proyek edukasi pencegahan pernikahan dini dan kekerasan terhadap perempuan, yang dikembangkan untuk KMIPN VII.", "Contributed as lead frontend developer to an early-marriage and violence-prevention learning project developed for KMIPN VII."),
         t("Membangun dashboard 6 modul progresif dengan kuis, XP, level, lencana, dan sertifikat PDF yang dapat dicetak dari browser.", "Built a 6-module learning dashboard with quizzes, XP, levels, badges, and browser-printable certificates."),
         t("Mengimplementasikan fitur aksesibilitas seperti pengaturan teks, kontras, font, pengurangan animasi, dan pembacaan halaman.", "Implemented accessibility controls for text size, contrast, fonts, reduced motion, and page reading."),
-        t("Menyediakan direktori bantuan dan navigasi peta ke lembaga terkait; prototipe memakai penyimpanan lokal dan tautan bantuan eksternal, bukan pelaporan backend langsung.", "Added help directories and mapping to support organizations; the prototype uses local storage and external help links, not direct backend case reporting.")
+        t("Menyediakan direktori bantuan dan navigasi peta ke lembaga terkait; progres pembelajaran tersimpan lokal dan fitur bantuan menyediakan tautan kontak lembaga terkait.", "Added help directories and mapping to support organizations; learning progress is stored locally while help features link to relevant support services.")
       ], "https://github.com/Darren0099/KM7"),
       entry(t("YRI HRD — Dashboard Evaluasi Kandidat", "YRI HRD — Candidate Evaluation Dashboard"), "Next.js / PostgreSQL / Drizzle ORM · Prototipe", "2026", [
         t("Mengembangkan prototipe dashboard kandidat yang menyatukan data pelamar, catatan wawancara, dan formulir penilaian dalam satu alur.", "Developed a prototype centralizing applicant records, interview notes, and scoring forms."),
         t("Menerapkan 5 aspek evaluasi, pemeringkatan kandidat, dan tampilan hasil per regional atau divisi sesuai konfigurasi aplikasi.", "Implemented 5 assessment dimensions, candidate rankings, and region/division summaries based on app configuration."),
         t("Menyusun keluaran laporan Excel dan PDF untuk memudahkan peninjauan serta dokumentasi hasil penilaian.", "Built Excel and PDF report exports for reviewing and documenting assessment results."),
-        t("Memisahkan konfigurasi skor dan kuota pada kode; aturan contoh belum divalidasi sebagai kebijakan rekrutmen resmi.", "Separated scoring and quota configuration in code; example rules are not validated as official recruitment policy.")
+        t("Memisahkan konfigurasi skor dan kuota pada kode dan pengaturan penilaian yang dapat disesuaikan.", "Separated scoring and quota configuration in code with configurable scoring rules.")
       ], "https://github.com/Darren0099/YRIHRD"),
     ],
     skills: [
@@ -103,33 +103,33 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       entry(t("Junior Full Stack Developer — Website Organisasi", "Junior Full Stack Developer — Organization Website"), "Youth Ranger Indonesia Sumatera Selatan", "Jan 2024 – Sep 2025", [
         t("Mengembangkan website organisasi sebagai pusat informasi visi, misi, program, kegiatan, berita, dan galeri dengan pendekatan antarmuka responsif.", "Built an organization website centralizing its mission, programs, activities, news, and gallery in a responsive UI."),
         t("Mengembangkan versi aplikasi berbasis Next.js, React, dan TypeScript dengan halaman detail artikel dinamis, pencarian, filter, dan pengalaman navigasi yang konsisten.", "Developed a Next.js, React, and TypeScript iteration with dynamic articles, search, filtering, and consistent navigation."),
-        t("Mengimplementasikan CMS berbasis GitHub API untuk alur penambahan, penyuntingan, penghapusan artikel dan manajemen gambar; operasi publikasi memerlukan izin token.", "Integrated a GitHub API-backed CMS for adding, editing, deleting articles and handling images; publishing depends on token permissions."),
+        t("Mengimplementasikan CMS berbasis GitHub API untuk alur penambahan, penyuntingan, penghapusan artikel dan manajemen gambar; operasi publikasi memerlukan izin token.", "Integrated a GitHub API-backed CMS for adding, editing, deleting articles and handling images using configured service-token permissions."),
         t("Menyelaraskan kebutuhan publikasi tim organisasi dengan struktur informasi serta komponen antarmuka yang dapat diperbarui.", "Translated the organization's publishing requirements into maintainable information architecture and interface components.")
       ], "https://github.com/Darren0099/YOUTHRANGERINDONESIASUMATERASELATAN"),
       entry(t("Research Assistant — Pengembangan E-Commerce UMKM", "Research Assistant — SME E-Commerce Development"), "Politeknik Negeri Sriwijaya", "Mei – Jul 2025", [
         t("Mengembangkan website e-commerce Dapur Ummi Kyana berbasis PHP/MySQL dengan halaman katalog menu, akun pengguna, keranjang, dan alur pemesanan.", "Contributed to a PHP/MySQL e-commerce website for Dapur Ummi Kyana with menu catalog, user accounts, cart, and ordering workflows."),
         t("Menyusun modul administrasi pesanan dan transaksi yang menampilkan ringkasan pengguna, pemasukan, pembayaran, serta status pengiriman pada dashboard admin.", "Built order and transaction administration views showing users, revenue summaries, payments, and delivery status in an admin dashboard."),
-        t("Mengerjakan alur pembayaran dan struk pada kode aplikasi; integrasi pembayaran tidak diklaim telah tersertifikasi atau siap transaksi produksi.", "Implemented payment and receipt flows in source code without claiming certified production-ready payment integration."),
+        t("Mengerjakan alur pembayaran dan struk pada kode aplikasi; integrasi pembayaran tidak diklaim telah tersertifikasi atau siap transaksi produksi.", "Implemented payment and receipt flows in source code as part of the community project's transaction workflow."),
         t("Berkontribusi pada kegiatan pengabdian dosen terkait adopsi platform digital oleh UMKM serta pendampingan penggunaan website.", "Supported a lecturer-led community project to help an SME adopt and use a digital platform.")
       ], "https://github.com/Darren0099/DapurUmmikyanaPalembang"),
     ],
     projects: [
-      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript", "Jul 2024", [
+      entry(t("Palembang Go Vacation — Finalis KMIPN VI, E-Government", "Palembang Go Vacation — KMIPN VI E-Government Finalist"), "KMIPN VI · Politeknik Negeri Jakarta (Depok) · Next.js / TypeScript (repo terbaru)", "Jul 2024", [
         t("Memimpin kontribusi pengembangan portal e-tourism bersama tim Politeknik Negeri Sriwijaya untuk ajang final KMIPN VI di Politeknik Negeri Jakarta.", "Led development contributions to an e-tourism portal with the Sriwijaya State Polytechnic team for the KMIPN VI finals hosted by Politeknik Negeri Jakarta."),
         t("Menyusun katalog 94 destinasi dalam 4 kategori wisata, lengkap dengan halaman detail dinamis dan navigasi berbasis kategori.", "Organized 94 destinations into 4 categories, with dynamic detail pages and category-based navigation."),
         t("Mengintegrasikan galeri, tautan peta, dan 14 sumber tur virtual 3D/360° yang tersedia untuk membantu eksplorasi informasi wisata.", "Integrated galleries, map links, and 14 available 3D/360° virtual-tour resources for destination exploration."),
         t("Membangun tampilan informasi yang menyatukan sejarah kota, rekomendasi wisata, serta konten destinasi dari sumber yang disediakan tim.", "Created unified pages for city history, tourism recommendations, and destination content curated by the team.")
       ], "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT"),
       entry(t("AsaKita — Proyek KMIPN VII, Platform Edukasi Interaktif", "AsaKita — KMIPN VII Interactive Learning Platform"), "KMIPN VII · Politeknik Negeri Padang · Next.js / React", "Feb – Sep 2025", [
-        t("Berkontribusi sebagai lead frontend pada proyek edukasi pencegahan pernikahan dini dan kekerasan terhadap perempuan, yang dikembangkan untuk KMIPN VII (tanpa klaim finalis).", "Contributed as lead frontend developer to an early-marriage and violence-prevention learning project developed for KMIPN VII (no finalist claim)."),
+        t("Berkontribusi sebagai lead frontend pada proyek edukasi pencegahan pernikahan dini dan kekerasan terhadap perempuan, yang dikembangkan untuk KMIPN VII.", "Contributed as lead frontend developer to an early-marriage and violence-prevention learning project developed for KMIPN VII."),
         t("Membangun dashboard 6 modul progresif dengan kuis, XP, level, lencana, dan sertifikat PDF yang dapat dicetak dari browser.", "Built a 6-module learning dashboard with quizzes, XP, levels, badges, and browser-printable certificates."),
         t("Mengimplementasikan fitur aksesibilitas seperti pengaturan teks, kontras, font, pengurangan animasi, dan pembacaan halaman.", "Implemented accessibility controls for text size, contrast, fonts, reduced motion, and page reading."),
-        t("Menyediakan direktori bantuan dan navigasi peta ke lembaga terkait; prototipe memakai penyimpanan lokal dan tautan bantuan eksternal, bukan pelaporan backend langsung.", "Added help directories and mapping to support organizations; the prototype uses local storage and external help links, not direct backend case reporting.")
+        t("Menyediakan direktori bantuan dan navigasi peta ke lembaga terkait; progres pembelajaran tersimpan lokal dan fitur bantuan menyediakan tautan kontak lembaga terkait.", "Added help directories and mapping to support organizations; learning progress is stored locally while help features link to relevant support services.")
       ], "https://github.com/Darren0099/KM7"),
       entry(t("Dapur Ummi Kyana — Website E-Commerce UMKM", "Dapur Ummi Kyana — SME E-Commerce Website"), "PHP / MySQL / JavaScript · Pengabdian Masyarakat", "Mei – Jul 2025", [
         t("Mengembangkan alur e-commerce berbasis PHP/MySQL untuk menampilkan katalog kuliner, registrasi, login, keranjang, dan pembuatan pesanan.", "Implemented PHP/MySQL e-commerce flows for culinary catalog, registration, login, cart, and order creation."),
         t("Menyusun modul admin dengan ringkasan jumlah pengguna, pesanan, pemasukan, transaksi terkini, dan status pembayaran/pengiriman.", "Built an admin dashboard summarizing users, orders, revenue, recent transactions, and payment/delivery status."),
-        t("Mengembangkan halaman pembayaran dan struk serta struktur pengelolaan data transaksi; implementasi gateway tidak diklaim siap produksi.", "Developed payment and receipt pages and transaction-management structure without claiming production-ready gateway integrations."),
+        t("Mengembangkan halaman pembayaran dan struk serta struktur pengelolaan data transaksi melalui struktur modul PHP yang terpisah.", "Developed payment and receipt pages and transaction-management structure using modular PHP components."),
         t("Berkolaborasi dalam proyek pengabdian dosen untuk mendukung digitalisasi pengelolaan katalog dan pemesanan UMKM lokal.", "Contributed to a lecturer-led community project supporting digital ordering and product management for a local SME.")
       ], "https://github.com/Darren0099/DapurUmmikyanaPalembang"),
     ],
@@ -153,34 +153,40 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       entry(t('Pengembang Analitik Independen — KleinData', 'Independent Analytics Developer — KleinData'),'KleinData · Proyek mandiri','2026',[
         t('Membangun workspace analitik dengan SvelteKit dan DuckDB-Wasm yang mendukung 5 format impor dataset.','Developed a SvelteKit and DuckDB-Wasm analytics workspace supporting 5 dataset import formats.'),
         t('Mengembangkan 30 resep insight SQL untuk ringkasan, segmen, penjualan, tren, pelanggan, dan kualitas data.','Built 30 SQL insight recipes covering summaries, segments, sales, trends, customers, and data quality.'),
-        t('Menerapkan pemetaan kolom otomatis, pemeriksaan data kosong/duplikat, dan ekspor hasil yang dapat diverifikasi.','Added column mapping, missing-value and duplicate checks, and traceable exports.')
+        t('Menerapkan pemetaan kolom otomatis, pemeriksaan data kosong/duplikat, dan ekspor hasil yang dapat diverifikasi.','Added column mapping, missing-value and duplicate checks, and traceable exports.'),
+        t('Menyediakan SQL Playground dan visualisasi interaktif sehingga pengguna dapat memeriksa query di balik setiap temuan.','Added SQL Playground and interactive visuals so users can inspect queries behind analytical results.')
       ],'https://github.com/Darren0099/DataForge'),
       entry(t('Analis Data — Proyek Portofolio', 'Data Analyst — Independent Portfolio Projects'),'GitHub · Python / Pandas / Jupyter','2026',[
         t('Melakukan pembersihan data dan penggabungan multi-tabel untuk analisis penjualan, laba kotor, dan pelanggan.','Cleaned and joined multi-table datasets to analyze sales, gross profit, and customers.'),
         t('Menetapkan definisi metrik dan batasan data, seperti perbedaan laba kotor dengan laba bersih.','Defined metrics and documented caveats such as gross profit versus net profit.'),
-        t('Menyusun notebook, visualisasi, dan laporan sehingga perhitungan dapat diulangi dari dataset sumber.','Prepared notebooks, visualizations, and reports for reproducible source-to-result analysis.')
+        t('Menyusun notebook, visualisasi, dan laporan sehingga perhitungan dapat diulangi dari dataset sumber.','Prepared notebooks, visualizations, and reports for reproducible source-to-result analysis.'),
+        t('Mengkaji segmen pelanggan dan perbandingan kategori produk untuk menunjukkan interpretasi metrik secara terstruktur.','Examined customer segments and product category comparisons to communicate metrics in a structured format.')
       ],'https://github.com/Darren0099/global-electronics-retailer-analysis'),
       entry(t('Koordinator Pelaporan Kinerja Anggota', 'Member Performance Reporting Coordinator'),'Youth Ranger Indonesia · Human Resources','Jun 2025 – Jan 2026',[
         t('Mengorganisasi pencatatan evaluasi anggota melalui Individual Performance Log dan Weekly Division Pulse.','Organized individual evaluation records through Individual Performance Log and Weekly Division Pulse.'),
         t('Mendukung pemetaan talenta dan laporan perkembangan anggota sebagai bagian dari 7 program HR.','Supported talent mapping and member development reports within 7 HR programs.'),
-        t('Menyusun informasi terstruktur agar tim lintas regional dapat meninjau tindak lanjut pengembangan.','Structured records so cross-regional teams could review development follow-up.')
+        t('Menyusun informasi terstruktur agar tim lintas regional dapat meninjau tindak lanjut pengembangan.','Structured records so cross-regional teams could review development follow-up.'),
+        t('Mengaitkan hasil dokumentasi dengan koordinasi tindak lanjut bersama pengurus sebagai bagian dari program SDM.','Connected reporting outputs with follow-up coordination as part of regional people-development activities.')
       ])
     ],
     projects: [
       entry(t('Global Electronics Retailer — Analisis Multi-tabel', 'Global Electronics Retailer — Multi-table Analysis'),'Python · Pandas · RFM','2026',[
         t('Menggabungkan transaksi dengan data produk, pelanggan, toko, dan kurs harian sebagai dasar analisis.','Joined sales, product, customer, store, and daily exchange-rate datasets.'),
         t('Menganalisis 11.887 pelanggan dengan segmentasi RFM dan performa pada 67 toko fisik/online.','Analyzed 11,887 customers with RFM segmentation and performance across 67 physical/online stores.'),
-        t('Menghasilkan metrik pendapatan, biaya, laba kotor, dan margin dengan mencatat keterbatasan dataset.','Produced revenue, cost, gross-profit, and margin metrics with explicit dataset limitations.')
+        t('Menghasilkan metrik pendapatan, biaya, laba kotor, dan margin dengan mencatat keterbatasan dataset.','Produced revenue, cost, gross-profit, and margin metrics with explicit dataset limitations.'),
+        t('Membandingkan kinerja kategori, merek, dan toko serta mendokumentasikan asumsi kurs dan definisi profit.','Compared category, brand, and store performance while documenting currency assumptions and gross-profit definitions.')
       ],'https://github.com/Darren0099/global-electronics-retailer-analysis'),
       entry(t('Walmart — Analisis Penjualan Mingguan', 'Walmart — Weekly Sales Analysis'),'Python · Jupyter · Google Sheets','2026',[
         t('Mengaudit 6.435 catatan penjualan mingguan dari 45 toko dan 143 minggu historis.','Audited 6,435 weekly sales records from 45 stores across 143 historical weeks.'),
         t('Membandingkan tren bulanan dan periode setara serta memeriksa data kosong, duplikat, dan tanggal.','Compared monthly trends and like-for-like periods while checking missing records, duplicates, and dates.'),
-        t('Membuat notebook, grafik, dan laporan untuk menunjukkan temuan serta keterbatasan analisis.','Prepared notebooks, charts, and reports communicating findings and analytical limitations.')
+        t('Membuat notebook, grafik, dan laporan untuk menunjukkan temuan serta keterbatasan analisis.','Prepared notebooks, charts, and reports communicating findings and analytical limitations.'),
+        t('Memeriksa pola penjualan sekitar minggu libur dan menyesuaikan perbandingan tahun berdasarkan minggu kalender yang setara.','Examined sales patterns around holidays and aligned year comparisons using comparable calendar weeks.')
       ],'https://github.com/Darren0099/Analisis-Dataset-Walmart'),
       entry(t('Annyeongbap — Analisis Penjualan Restoran', 'Annyeongbap — Restaurant Sales Analysis'),'Python · Excel · Data Validation','2026',[
         t('Mengolah 20.000 baris item pesanan dan memetakan transaksi ke kategori menu serta metode pembayaran.','Processed 20,000 line items and mapped orders to menu categories and payment methods.'),
         t('Memvalidasi 7.184 transaksi unik dan menghitung penjualan setelah diskon, bukan hanya subtotal.','Validated 7,184 unique transactions and calculated post-discount sales instead of subtotals.'),
-        t('Menyajikan kontribusi kategori, Average Order Value, dan tren penjualan bulanan dalam laporan.','Reported category contributions, average order value, and monthly sales trends.')
+        t('Menyajikan kontribusi kategori, Average Order Value, dan tren penjualan bulanan dalam laporan.','Reported category contributions, average order value, and monthly sales trends.'),
+        t('Mengaudit kesalahan perhitungan macro yang memakai subtotal dan memperbaiki metrik agar menggunakan nilai setelah diskon.','Audited a macro calculation based on subtotals and corrected the metric to use post-discount transaction values.')
       ],'https://github.com/Darren0099/annyeongbap-sales-analysis')
     ],
     skills: [
