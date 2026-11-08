@@ -1,0 +1,76 @@
+.cvr-app{min-height:100vh;overflow-x:auto;background:#f8f9fb;padding:36px 14px 60px;color:#101827;font-family:Arial,Helvetica,sans-serif}
+.cvr-app *{font-family:Arial,Helvetica,sans-serif;box-sizing:border-box}
+.cvr-app button{cursor:pointer}
+.cvr-controls{max-width:980px;margin:0 auto 28px}
+.cvr-toolbar{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap}
+.cvr-tabs{display:flex;gap:3px;align-items:center;background:#f0f3f7;padding:3px;border-radius:5px}
+.cvr-tabs button{border:0;background:transparent;padding:9px 11px;border-radius:4px;font-size:11px;font-weight:500;color:#65738c;white-space:nowrap;transition:background .2s,color .2s}
+.cvr-tabs button:hover{color:#111f35}
+.cvr-tabs button.active{background:#fff;color:#1b2b43;box-shadow:0 1px 3px #18273e27}
+.cvr-tabs button span{font-size:12px;color:inherit}
+.cvr-back{display:flex;align-items:center;justify-content:center;background:white;color:#203049;border:1px solid #e1e8f0;border-radius:4px;width:32px;height:32px;text-decoration:none;font-size:22px;font-weight:300}
+.cvr-print{border:0;border-radius:4px;background:#273b54;color:white;font-size:11px;padding:11px 13px;font-weight:700;white-space:nowrap}
+.cvr-print:hover{background:#122640}
+.cvr-helper{max-width:800px;margin:13px auto 18px;color:#8093b0;font-size:11px;text-align:left}
+.cvr-role-picker{display:flex;justify-content:center;align-items:center;gap:12px;border-top:1px solid #e5e9ef;padding-top:15px}
+.cvr-role-picker>span{font-size:11px;color:#586b83;font-weight:700;white-space:nowrap}
+.cvr-role-picker>div{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.cvr-role-picker button{background:#fff;border:1px solid #dae1ea;color:#506078;border-radius:20px;padding:9px 14px;font-size:11px;transition:.2s}
+.cvr-role-picker button:hover{border-color:#fe5000}
+.cvr-role-picker button.active{background:#fe5000;border-color:#fe5000;color:#fff}
+.cvr-paper{width:794px;min-height:1123px;margin:0 auto;padding:52px 52px 60px;background:white;color:#0b0b0b;box-shadow:0 4px 30px #152f4e10;font-size:11px;line-height:1.45}
+.cvr-header{text-align:center;margin-bottom:30px}
+.cvr-header h1{font-size:22px;font-weight:700;line-height:1.25;margin:0 0 7px;letter-spacing:0}
+.cvr-contacts{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0 7px;font-size:10.2px;line-height:1.85}
+.cvr-contacts a{color:inherit;text-decoration:none}
+.cvr-contacts a:hover{text-decoration:underline}
+.cvr-section{margin-bottom:16px}
+.cvr-section h2{font-size:12px;line-height:1.25;font-weight:700;margin:0 0 6px;padding:0 0 4px;border-bottom:1px solid #111;letter-spacing:0}
+.cvr-entry{margin:0 0 12px;break-inside:avoid}
+.cvr-entry-top{display:flex;align-items:baseline;justify-content:space-between;gap:15px;line-height:1.4}
+.cvr-entry-top strong{font-size:11.2px;font-weight:700}
+.cvr-entry-top>span{font-size:10.5px;white-space:nowrap}
+.cvr-org{font-size:10.5px;font-style:italic;margin:2px 0 4px}
+.cvr-entry ul{margin:4px 0 0;padding-left:18px}
+.cvr-entry li{margin-bottom:3px;line-height:1.45}
+.cvr-education>div{margin-bottom:2px}
+.cvr-summary{font-size:11px;line-height:1.5}
+.cvr-skills{display:flex;flex-direction:column;gap:4px}
+.cvr-cert{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px;break-inside:avoid}
+.cvr-cert>span{font-size:10.5px;white-space:nowrap}
+.cvr-project-link{font-size:9px;color:#486586;text-decoration:none;overflow-wrap:anywhere}
+.cvr-footer{max-width:794px;display:flex;justify-content:space-between;gap:15px;margin:18px auto 0;color:#8593a5;font-size:11px}
+.cvr-footer a{color:#516788;text-decoration:none}
+.cvr-modern{border-top:8px solid #fe5000;padding-top:40px}
+.cvr-modern .cvr-header{text-align:left;border-bottom:1px solid #e2e6eb;padding-bottom:19px;margin-bottom:22px}
+.cvr-modern .cvr-eyebrow{letter-spacing:.17em;color:#fe5000;font-size:10px;font-weight:700;margin-bottom:12px}
+.cvr-modern .cvr-header h1{font-size:31px;letter-spacing:-.7px;margin-bottom:5px}
+.cvr-modern .cvr-header h3{font-size:14px;color:#ef4b05;font-weight:700;margin:0 0 10px}
+.cvr-modern .cvr-contacts{justify-content:flex-start;font-size:9.8px}
+.cvr-grid{display:grid;grid-template-columns:minmax(0,1fr) 211px;gap:30px}
+.cvr-grid aside{padding-left:20px;border-left:1px solid #eceff3}
+.cvr-modern .cvr-section{margin-bottom:22px}
+.cvr-modern .cvr-section h2{color:#ed4c09;border-color:#e0e3e8;font-size:11px;letter-spacing:.08em;padding-bottom:8px;margin-bottom:12px}
+.cvr-modern .cvr-entry{margin-bottom:15px}
+.cvr-modern .cvr-entry-top{flex-wrap:wrap;gap:2px 8px}
+.cvr-modern .cvr-entry-top strong{font-size:11.5px}
+.cvr-modern .cvr-org{font-style:normal;color:#646b78}
+.cvr-modern .cvr-entry li{margin-bottom:5px}
+.cvr-grid aside .cvr-entry-top{display:block}
+.cvr-grid aside .cvr-entry-top>span{display:block;margin-top:3px}
+.cvr-grid aside .cvr-skills>div{margin-bottom:10px}
+.cvr-grid aside .cvr-cert{display:block;margin-bottom:12px}
+.cvr-grid aside .cvr-cert span{display:block}
+@media(max-width:820px){.cvr-app{padding:22px 10px 40px}.cvr-controls{max-width:100%}.cvr-role-picker{flex-direction:column}.cvr-helper{text-align:center}.cvr-paper{margin-left:0;margin-right:0}}
+@media(max-width:580px){.cvr-tabs{flex-wrap:wrap;justify-content:center}.cvr-toolbar{gap:5px}.cvr-toolbar .cvr-tabs button{font-size:10px;padding:8px 9px}.cvr-toolbar .cvr-print{padding:9px 11px}}
+@media print{
+ @page{size:A4;margin:12mm 13mm}
+ html,body{margin:0!important;padding:0!important;overflow:visible!important;background:#fff!important}
+ .cvr-app{background:#fff!important;margin:0!important;padding:0!important;overflow:visible!important;min-height:0!important}
+ .cvr-controls,.cvr-footer{display:none!important}
+ .cvr-paper{margin:0!important;padding:0!important;width:100%!important;min-height:0!important;max-width:none!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+ .cvr-entry,.cvr-cert{break-inside:avoid;page-break-inside:avoid}
+ .cvr-section{break-inside:auto}
+ .cvr-modern .cvr-header{margin-bottom:16px}
+ .cvr-contacts a,.cvr-project-link{color:#111!important;text-decoration:none}
+}
