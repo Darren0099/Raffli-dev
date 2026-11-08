@@ -119,6 +119,9 @@ export default function Navbar({ t }: NavbarProps) {
           <Link href="/projects" className="nav-item" onClick={() => setIsOpen(false)}>
             <span className="dot"></span> {t.navProjects}
           </Link>
+          <a href="#certificates" className="nav-item" onClick={(e) => handleScroll(e, 'certificates')}>
+            <span className="dot"></span> {t.navCertificates}
+          </a>
           <a href="#contact" className="nav-item" onClick={(e) => handleScroll(e, 'contact')}>
             <span className="dot"></span> {t.navContact}
           </a>
