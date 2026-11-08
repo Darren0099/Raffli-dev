@@ -5,6 +5,10 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Al-man Raffli Saputra - Portofolio',
   description: 'Portofolio Full Stack Developer & Data Analyst',
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    shortcut: ['/icon.svg'],
+  },
 };
 
 export default function RootLayout({
