@@ -27,7 +27,7 @@ const labels = {
     about:'PROFIL PROFESIONAL',
     education:'PENDIDIKAN',
     experience:'PENGALAMAN RELEVAN',
-    projects:'PROYEK TERPILIH',
+    projects:'PROYEK',
     skills:'KETERAMPILAN',
     certifications:'SERTIFIKAT',
     graduation:'Lulusan 2026',
@@ -52,7 +52,7 @@ const labels = {
     about:'PROFESSIONAL PROFILE',
     education:'EDUCATION',
     experience:'RELEVANT EXPERIENCE',
-    projects:'SELECTED PROJECTS',
+    projects:'PROJECTS',
     skills:'SKILLS',
     certifications:'CERTIFICATES',
     graduation:'Graduated 2026',
@@ -76,7 +76,7 @@ function EntryCard({ value, lang, showLink=false }:{value:CVEntry;lang:CVLang;sh
       <time>{value.period}</time>
     </div>
     <p className="cvr-entry-org">{value.organization}</p>
-    <ul className="cvr-bullets">{value.bullets.slice(0,4).map((line,i)=><li key={i}>{local(line,lang)}</li>)}</ul>
+    <ul className="cvr-bullets">{value.bullets.slice(0,3).map((line,i)=><li key={i}>{local(line,lang)}</li>)}</ul>
     {showLink&&value.url&&<a className="cvr-entry-link" href={value.url} target="_blank" rel="noreferrer">{value.url.replace('https://','')}</a>}
   </div>;
 }
