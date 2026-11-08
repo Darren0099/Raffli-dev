@@ -17,6 +17,9 @@ type Story = {
   proof: string;
   photo: string | null;
   logo?: string;
+  tile?: number;
+  caption?: Copy;
+  milestones?: { year: string; role: Copy }[];
 };
 
 const copy = (id: string, en: string): Copy => ({ id, en });
@@ -57,38 +60,60 @@ const techGroups: { title: Copy; tools: Tech[] }[] = [
 const stories: Story[] = [
   {
     index:'01', year:'2023 — 2026', name:'Youth Ranger Indonesia',
-    role:copy('Koordinator desain · Pengembang web · Ketua HR Distrik Sumatera 2',
-      'Design coordinator · Web developer · District HR lead'),
+    role:copy('3 tingkat kepengurusan — Regional, Distrik, dan Pusat', '3 organizational levels — Regional, District, and National'),
     description:copy(
-      'Di sini aku belajar bahwa ide bagus perlu tim yang solid. Dari membangun identitas visual regional dan website organisasi sampai mengoordinasikan 7 program pengembangan anggota.',
-      'This is where I learned that good ideas need great teamwork. I helped shape a regional visual identity and website, then coordinated 7 people-development programs.'
+      'Mulai aktif di Regional Sumatera Selatan pada 2023, lalu dipercaya memimpin HR Distrik Sumatera 2 pada 2025. Tahun 2026 aku melanjutkan kontribusi sebagai Graphic Designer divisi Operation YRI Pusat. Foto ini adalah dokumentasi saat menghadiri Sumsel Community Festival edisi kedua yang diselenggarakan Dispora Palembang.',
+      'I joined the South Sumatra regional team in 2023, became HR lead for Sumatera 2 District in 2025, and continued as a Graphic Designer in the national Operations division in 2026. This photo documents my participation in the second Sumsel Community Festival organized by Dispora Palembang.'
     ),
-    proof:'https://youthrangerindonesiasumateraselatan.vercel.app/',
-    photo:null,
+    milestones:[
+      {year:'2023',role:copy('Regional Sumatera Selatan — Graphic Design & pengembangan regional','South Sumatra Regional — Graphic Design & regional development')},
+      {year:'2025',role:copy('Ketua HR Distrik Sumatera 2 — koordinasi 7 program HR','Head of HR, Sumatera 2 District — coordinated 7 HR programs')},
+      {year:'2026',role:copy('YRI Pusat — Graphic Design, Divisi Operation','National YRI — Graphic Design, Operations Division')}
+    ],
+    proof:'https://www.instagram.com/youthranger.sumsel/',
+    photo:'/aboutme/activity-atlas.webp',
+    tile:0,
+    caption:copy('Sumsel Community Festival II · Dispora Palembang','Sumsel Community Festival II · Dispora Palembang'),
     logo:'/graphic-design/logos/yri-sumsel-original.png'
   },
   {
-    index:'02', year:'2025', name:'PLN Icon Plus',
-    role:copy('Magang Humas · Pengembangan website', 'Communications intern · Web development'),
+    index:'02', year:'2024 — 2025', name:'KMIPN VI & VII',
+    role:copy('Finalis KMIPN VI di Jakarta · Proyek KMIPN VII di Padang','KMIPN VI finalist in Jakarta · KMIPN VII project in Padang'),
     description:copy(
-      'Terlibat dalam komunikasi digital perusahaan sekaligus mengembangkan website pengelolaan artikel berbasis PHP dan MySQL, lengkap dengan alur administrasi konten.',
-      'Worked on digital communications while building a PHP/MySQL article management website with content administration workflows.'
+      'Aku mewakili tim POLSRI dalam final KMIPN VI kategori e-Government melalui proyek Palembang Go Vacation di Politeknik Negeri Jakarta. Pada KMIPN VII di Padang, tim kami mengembangkan AsaKita, tetapi tidak mencapai babak final. Dua pengalaman yang tetap berarti buatku.',
+      'I represented the POLSRI team in the KMIPN VI e-Government finals with Palembang Go Vacation at Jakarta State Polytechnic. For KMIPN VII in Padang, our team developed AsaKita but did not advance to the finals. Both were meaningful learning experiences.'
+    ),
+    proof:'https://github.com/Darren0099/KMIPN6-EGOVERNEMNT',
+    photo:'/aboutme/activity-atlas.webp',
+    tile:1,
+    caption:copy('Dokumentasi final KMIPN VI · Politeknik Negeri Jakarta','KMIPN VI final documentation · Jakarta State Polytechnic')
+  },
+  {
+    index:'03', year:'2025', name:'PLN Icon Plus',
+    role:copy('Magang Humas & Pengembangan Website · Sumbagsel Palembang','Public Relations & Web Development Intern · Sumbagsel Palembang'),
+    description:copy(
+      'Selama magang di PLN Icon Plus SBU Sumbagsel, Palembang, aku membantu kegiatan komunikasi perusahaan sekaligus mengembangkan sistem pengelolaan artikel berbasis PHP/MySQL. Foto ini diambil bersama rekan-rekan magang dalam kegiatan ICONNET.',
+      'During my internship at PLN Icon Plus SBU Sumbagsel in Palembang, I supported corporate communications and developed a PHP/MySQL article management system. This photo was taken with fellow interns at an ICONNET event.'
     ),
     proof:'https://github.com/Darren0099/plniconnetbangkabelitung',
-    photo:null
+    photo:'/aboutme/activity-atlas.webp',
+    tile:2,
+    caption:copy('Bersama rekan magang · ICONNET Sumbagsel','With fellow interns · ICONNET Sumbagsel')
   },
   {
-    index:'03', year:'2025 — 2026', name:'Duta Potensi Pemuda Indonesia',
-    role:copy('Graphic Designer · Youthopia Symposium', 'Graphic Designer · Youthopia Symposium'),
+    index:'04', year:'2025 — 2026', name:'Duta Potensi Pemuda Indonesia',
+    role:copy('Graphic Designer · Youthopia Symposium, Jakarta','Graphic Designer · Youthopia Symposium, Jakarta'),
     description:copy(
-      'Mengubah brief acara menjadi materi visual yang konsisten. Aku mengerjakan kebutuhan desain dan publikasi untuk kegiatan Youthopia Symposium.',
-      'Turned event briefs into a consistent visual language, creating design and publication materials for Youthopia Symposium.'
+      'Aku terlibat dalam desain komunikasi visual Youthopia Symposium bersama Duta Potensi Pemuda Indonesia. Foto di depan Mahkamah Konstitusi Jakarta ini menjadi bagian dari dokumentasi kegiatan dan kunjungan kelembagaan bersama tim.',
+      'I worked on visual communications for Youthopia Symposium with Duta Potensi Pemuda Indonesia. This photo in front of the Constitutional Court in Jakarta documents an activity and institutional visit with the team.'
     ),
     proof:'https://www.instagram.com/p/DN-IlgoABI3/',
-    photo:null
+    photo:'/aboutme/activity-atlas.webp',
+    tile:3,
+    caption:copy('Kegiatan Youthopia Symposium · Jakarta','Youthopia Symposium activity · Jakarta')
   },
   {
-    index:'04', year:'2024 — 2025', name:'GDSC POLSRI',
+    index:'05', year:'2024 — 2025', name:'GDSC POLSRI',
     role:copy('Frontend community · Study Jam speaker', 'Frontend community · Study Jam speaker'),
     description:copy(
       'Aktif belajar bersama komunitas developer dan berbagi materi Basic CSS Animation dalam sesi Study Jam pada Februari 2025.',
@@ -98,23 +123,13 @@ const stories: Story[] = [
     photo:null
   },
   {
-    index:'05', year:'2025', name:'Pengabdian Masyarakat POLSRI',
+    index:'06', year:'2025', name:'Pengabdian Masyarakat POLSRI',
     role:copy('Kontributor website & digitalisasi UMKM', 'Community web & SME digitalization contributor'),
     description:copy(
       'Berkolaborasi dalam pembuatan website untuk mendukung promosi dan pemesanan produk UMKM lokal, termasuk proyek Dapur Ummi Kyana.',
       'Collaborated on websites supporting local SMEs with online product promotion and ordering, including Dapur Ummi Kyana.'
     ),
     proof:'https://github.com/Darren0099/DapurUmmikyanaPalembang',
-    photo:null
-  },
-  {
-    index:'06', year:'2024 — 2025', name:'KMIPN VI & VII',
-    role:copy('Finalis e-Government VI · Pengembang proyek VII', 'KMIPN VI e-Government finalist · VII project contributor'),
-    description:copy(
-      'Menjadi finalis KMIPN VI melalui Palembang Go Vacation. Tahun berikutnya ikut mengembangkan AsaKita untuk KMIPN VII; proyek VII tidak dinyatakan sebagai finalis.',
-      'Reached the KMIPN VI finals with Palembang Go Vacation. The next year I helped build AsaKita for KMIPN VII, without a finalist claim for that edition.'
-    ),
-    proof:'https://github.com/Darren0099/KMIPN6-EGOVERNEMNT',
     photo:null
   }
 ];
@@ -239,7 +254,7 @@ export default function AboutMePage() {
           </motion.div>
           <motion.div {...appear} className="am-school-card">
             <div className="am-school-card-head">
-              <img src="https://www.polsri.ac.id/files/2011/01/logo-kuning-350.jpg" alt="Lambang resmi Politeknik Negeri Sriwijaya" loading="lazy" />
+              <span className="am-school-crest" role="img" aria-label="Logo Politeknik Negeri Sriwijaya" />
               <span>POLITEKNIK NEGERI SRIWIJAYA<br/><small>PALEMBANG, INDONESIA</small></span>
             </div>
             <div className="am-school-card-body">
@@ -288,7 +303,11 @@ export default function AboutMePage() {
             <motion.article className="am-story-card" key={story.index}
               {...appear} transition={reduced?undefined:{duration:.72,delay:(i%2)*.08,ease}}>
               <div className={'am-story-media am-story-media-'+(i%4+1)}>
-                {story.photo ? <img src={story.photo} loading="lazy" alt={story.name+' — dokumentasi kegiatan'} /> : (
+                {story.photo && typeof story.tile === 'number' ? (
+                  <div className={`am-activity-photo am-activity-tile-${story.tile}`} role="img" aria-label={story.name+' — '+(story.caption?tx(story.caption):'dokumentasi kegiatan')} style={{backgroundImage:`url("${story.photo}")`}}>
+                    {story.caption&&<span className="am-activity-caption">{tx(story.caption)}</span>}
+                  </div>
+                ) : (
                   <div className="am-photo-placeholder">
                     <span className="am-photo-placeholder-top">{story.index} / DOCUMENTATION</span>
                     <strong aria-hidden="true">{story.index}</strong>
@@ -302,14 +321,19 @@ export default function AboutMePage() {
                 <h3>{story.name}</h3>
                 <h4>{tx(story.role)}</h4>
                 <p>{tx(story.description)}</p>
+                {story.milestones&&<div className="am-yri-milestones" aria-label={isId?'Perjalanan 3 tingkatan YRI':'Three stages at YRI'}>
+                  {story.milestones.map((level)=><div className="am-yri-milestone" key={level.year}>
+                    <strong>{level.year}</strong><span>{tx(level.role)}</span>
+                  </div>)}
+                </div>}
                 <a href={story.proof} target="_blank" rel="noopener noreferrer">{isId?'Lihat kegiatan / proyek':'View activity / project'} <span aria-hidden="true">↗</span></a>
               </div>
             </motion.article>
           ))}
         </div>
         <motion.div {...appear} className="am-gallery-note"><span>✳</span><p>{isId
-          ? 'Setiap kartu sudah punya tempat untuk satu foto kegiatan asli. Setelah foto dokumentasi dikirim, visualnya bisa diganti tanpa mengubah susunan halaman.'
-          : 'Every card has a dedicated space for one authentic event photo. Photos can be added later without changing the page layout.'}</p></motion.div>
+          ? 'Foto dokumentasi YRI, KMIPN VI, PLN Icon Plus, dan Youthopia sudah ditambahkan. Foto GDSC dan pengabdian masyarakat akan diisi saat dokumentasinya tersedia.'
+          : 'Real photos now document YRI, KMIPN VI, PLN Icon Plus, and Youthopia. GDSC and community project cards will be updated when documentation is available.'}</p></motion.div>
       </section>
 
       <section className="am-outro" id="am-contact">
