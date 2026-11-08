@@ -329,3 +329,23 @@
 @media (prefers-reduced-motion:reduce) {
   .am-story-card:hover .am-activity-photo img { transform: none; }
 }
+
+/* Photo presentation refresh: retain source pixels and improve the portrait crop. */
+.am-activity-photo img {
+  image-rendering: auto;
+  filter: contrast(1.045) saturate(1.035);
+  backface-visibility: hidden;
+}
+.am-story-card:nth-child(4) .am-activity-photo img {
+  /* Shift the Youthopia photo upward so the group and faces occupy
+     the middle of the frame rather than sitting at the bottom. */
+  object-position: center 72%;
+}
+.am-story-card:nth-child(4):hover .am-activity-photo img {
+  transform: scale(1.025);
+}
+@media (max-width: 760px) {
+  .am-story-card:nth-child(4) .am-activity-photo img {
+    object-position: center 70%;
+  }
+}
