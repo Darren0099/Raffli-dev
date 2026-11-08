@@ -104,7 +104,10 @@ export default function GraphicDesignPage() {
   return (
     <main className="graphic-archive">
       <header className="gd-navigation">
-        <Link href="/" className="gd-brand" aria-label={id ? 'Kembali ke beranda' : 'Back home'}>R<span>.</span><small>DESIGN<br/>ARCHIVE</small></Link>
+        <Link href="/" className="gd-brand" aria-label={id ? 'Kembali ke beranda' : 'Back home'}>
+          <img src="/brand/raffli-logo.svg" alt="" aria-hidden="true" width={77} height={60} />
+          <small>DESIGN<br/>ARCHIVE</small>
+        </Link>
         <nav aria-label={id ? 'Navigasi halaman' : 'Page navigation'}>
           <a href="#gd-work">{id ? 'Karya' : 'Work'}</a>
           <a href="#gd-summit">Summit of Stars</a>
