@@ -173,18 +173,6 @@ function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVT
     </div>;
   }
   return <div className="cvr-sheets">
-      <PageCard page={1} pages={1} lang={lang} styleClass={styleClass}>
-        <Header role={role} lang={lang}/>
-        <Profile role={role} lang={lang}/>
-        <Education lang={lang}/>
-        {experience(2)}
-        {projects(0,2)}
-        <Skills role={role} lang={lang}/>
-        <Certifications role={role} lang={lang}/>
-      </PageCard>
-    </div>;
-  }
-  return <div className="cvr-sheets">
     <PageCard page={1} pages={2} lang={lang} styleClass={styleClass}>
       <Header role={role} lang={lang}/>
       <Profile role={role} lang={lang}/>
