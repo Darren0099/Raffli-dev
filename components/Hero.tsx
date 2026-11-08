@@ -67,7 +67,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             className="hero-cta-group"
           >
             <a href="/aboutme" className="get-in-touch-btn" aria-label={lang === "id" ? "Buka halaman About Me" : "Open the About Me page"}>
-              <span>✦</span> {lang === 'id' ? 'Hubungi saya' : 'Get in touch'}
+              <span>✦</span> Click me here
             </a>
             <a
               href="https://rafflidev.my.id/cv"
