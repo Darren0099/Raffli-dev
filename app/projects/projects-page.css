@@ -978,3 +978,17 @@
   color: #fe5000;
 }
 .projects-home-link:focus-visible { outline: 2px solid #fe5000; outline-offset: 2px; }
+
+
+/* Branded home link on the dark projects index. */
+.projects-home-link { gap: 9px; }
+.projects-home-logo {
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 41px;
+  flex: none;
+  border-radius: 9px;
+  background: #f3efe7;
+}
+.projects-home-logo img { display:block; width:45px; height:37px; object-fit:contain; }
