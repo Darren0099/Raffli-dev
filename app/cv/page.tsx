@@ -101,7 +101,10 @@ const confirmedCertificateYears: [string,string][] = [
   ['IT Customer Support Basics — Cisco Networking Academy','2026'],
   ['Belajar Back-End Pemula dengan JavaScript — Dicoding','2024'],
   ['Belajar Dasar Pemrograman JavaScript — Dicoding','2024'],
-  ['HR Value Chain — MySkill x Deloitte','2023']
+  ['HR Value Chain — MySkill x Deloitte','2023'],
+  ['Graphic Design: Brand Identity — MySkill','2023'],
+  ['UI/UX Design: Design System in UI Design — MySkill','2023'],
+  ['UI/UX Design: Wireframing in UI/UX Design — MySkill','2023']
 ];
 function certificateWithDate(value:string){
   const embeddedYear=value.match(/\((20\d{2})\)$/)?.[1];
@@ -175,7 +178,7 @@ function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVT
     </PageCard>
     <PageCard page={2} pages={2} lang={lang} styleClass={styleClass}>
       {isIT?<>{projects(1,2)}<Skills role={role} lang={lang}/></>:<><Skills role={role} lang={lang}/>{projects(1,2)}</>}
-      <Certifications role={role} lang={lang}/>
+      <Certifications role={role} lang={lang} limit={role==='design'?4:3}/>
     </PageCard>
   </div>;
 }
