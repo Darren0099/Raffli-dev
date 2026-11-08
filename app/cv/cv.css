@@ -443,3 +443,85 @@
   .cvr-compact .cvr-page-footer { display:none !important; }
   .cvr-modern .cvr-page-body { border-top:0; }
 }
+
+
+/* CV layout v4: consistent A4 margins and ATS-readable sizing.
+   Do not stretch one-page sections to the page edge or shrink type
+   merely to include another full project. */
+.cvr-paper {
+  padding: 16mm 16mm 18mm;
+}
+.cvr-compact {
+  padding: 16mm 16mm 18mm;
+}
+.cvr-compact .cvr-page-body {
+  display: block;
+  min-height: 0;
+}
+.cvr-compact .cvr-page-body > .cvr-section {
+  margin-bottom: 15px;
+}
+.cvr-compact .cvr-page-body > .cvr-resume-header {
+  margin-bottom: 19px;
+  padding-bottom: 12px;
+}
+.cvr-compact .cvr-section h2 {
+  font-size: 13px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+.cvr-compact .cvr-summary p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.cvr-compact .cvr-education p,
+.cvr-compact .cvr-education .cvr-subtle {
+  font-size: 12.7px;
+  line-height: 1.45;
+}
+.cvr-compact .cvr-entry {
+  margin-bottom: 12px;
+}
+.cvr-compact .cvr-entry-heading strong {
+  font-size: 13px;
+}
+.cvr-compact .cvr-entry-heading time,
+.cvr-compact .cvr-entry-org {
+  font-size: 12px;
+}
+.cvr-compact .cvr-bullets {
+  margin-top: 5px;
+}
+.cvr-compact .cvr-bullets li {
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 3px;
+}
+.cvr-compact .cvr-skills .cvr-skill-row,
+.cvr-compact .cvr-certifications .cvr-cert-row {
+  font-size: 12.7px;
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+.cvr-compact .cvr-resume-header h1 {
+  font-size: 23px;
+}
+/* Avoid awkward automated mid-word hyphenation in justified CV bullets. */
+.cvr-bullets li,
+.cvr-summary p,
+.cvr-education p {
+  hyphens: none;
+  overflow-wrap: normal;
+}
+@media print {
+  .cvr-paper,
+  .cvr-paper.cvr-compact {
+    padding: 16mm 16mm 18mm !important;
+    width: 210mm !important;
+    height: 297mm !important;
+  }
+  .cvr-compact .cvr-page-body {
+    display: block !important;
+    min-height: 0 !important;
+  }
+}
