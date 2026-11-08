@@ -35,7 +35,7 @@ const labels = {
     course:'Mata kuliah relevan',
     repo:'Repository',
     page:'HALAMAN',
-    foot:'CURRICULUM VITAE · 2026',
+
   },
   en:{
     preview:'Curriculum Vitae',
@@ -58,7 +58,7 @@ const labels = {
     course:'Relevant coursework',
     repo:'Repository',
     page:'PAGE',
-    foot:'CURRICULUM VITAE · 2026'
+
   }
 };
 
@@ -85,11 +85,40 @@ function Education({lang}:{lang:CVLang}){
   </Section>;
 }
 function Skills({role,lang}:{role:CVRole;lang:CVLang}){
-  return <Section title={labels[lang].skills} className="cvr-skills">{cvProfiles[role].skills.map((v,i)=><p key={i}><strong>{local(v.label,lang)}:</strong> {typeof v.value==='string'?v.value:local(v.value,lang)}</p>)}</Section>;
+  return <Section title={labels[lang].skills} className="cvr-skills">
+    {cvProfiles[role].skills.map((v,i)=><div className="cvr-skill-row" key={i}>
+      <strong>{local(v.label,lang)}</strong>
+      <span aria-hidden="true">:</span>
+      <span>{typeof v.value==='string'?v.value:local(v.value,lang)}</span>
+    </div>)}
+  </Section>;
+}
+
+// Only verified issue years are displayed; undated credentials remain undated.
+const confirmedCertificateYears: [string,string][] = [
+  ['CSS Essentials — Cisco Networking Academy','2026'],
+  ['Data Analytics Essentials — Cisco Networking Academy','2026'],
+  ['IT Customer Support Basics — Cisco Networking Academy','2026'],
+  ['Belajar Back-End Pemula dengan JavaScript — Dicoding','2024'],
+  ['Belajar Dasar Pemrograman JavaScript — Dicoding','2024'],
+  ['HR Value Chain — MySkill x Deloitte','2023']
+];
+function certificateWithDate(value:string){
+  const embeddedYear=value.match(/\((20\d{2})\)$/)?.[1];
+  return {
+    name:value.replace(/\s*\(20\d{2}\)$/,''),
+    year:embeddedYear??confirmedCertificateYears.find(([name])=>name===value)?.[1]
+  };
 }
 function Certifications({role,lang,limit=3}:{role:CVRole;lang:CVLang;limit?:number}){
   return <Section title={labels[lang].certifications} className="cvr-certifications">
-    {cvProfiles[role].certificates.slice(0,limit).map((v,i)=><p key={i}>{v}</p>)}
+    {cvProfiles[role].certificates.slice(0,limit).map((v,i)=>{
+      const cert=certificateWithDate(v);
+      return <div className="cvr-cert-row" key={i}>
+        <span>{cert.name}</span>
+        {cert.year&&<time dateTime={cert.year}>{cert.year}</time>}
+      </div>;
+    })}
   </Section>;
 }
 function Profile({role,lang}:{role:CVRole;lang:CVLang}){
@@ -110,15 +139,19 @@ function Header({role,lang,compact=false}:{role:CVRole;lang:CVLang;compact?:bool
 }
 function PageCard({children,page,pages,lang,styleClass}:{children:ReactNode;page:number;pages:CVPages;lang:CVLang;styleClass:string}){
   return <article className={'cvr-paper '+styleClass} aria-label={(lang==='id'?'Halaman ':'Page ')+page}>
-    {children}
-    <footer className="cvr-page-footer"><span>{labels[lang].foot}</span><span>{labels[lang].page} {page} / {pages}</span></footer>
+    <div className="cvr-page-body">{children}</div>
+    {pages===2&&<footer className="cvr-page-footer" aria-label={(lang==='id'?'Halaman ':'Page ')+page+' / '+pages}>{page}/{pages}</footer>}
   </article>;
 }
 function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVTemplate;pages:CVPages}){
   const s=labels[lang],d=cvProfiles[role],isModern=template.startsWith('modern'),isIT=template.endsWith('it');
   const styleClass=(isModern?'cvr-modern':'cvr-harvard')+' '+(pages===1?'cvr-compact':'cvr-expanded');
-  const experience=(count:number)=><Section title={s.experience} className="cvr-experience">{d.experience.slice(0,count).map((v,i)=><EntryCard key={i} value={v} lang={lang}/>)}</Section>;
-  const projects=(count:number)=><Section title={s.projects} className="cvr-projects">{d.projects.slice(0,count).map((v,i)=><EntryCard key={i} value={v} lang={lang} showLink={pages===2}/>)}</Section>;
+  const experience=(count:number)=><Section title={s.experience} className="cvr-experience">
+    {d.experience.slice(0,count).map((v,i)=><EntryCard key={i} value={v} lang={lang}/>)}
+  </Section>;
+  const projects=(start:number,count:number)=><Section title={s.projects} className="cvr-projects">
+    {d.projects.slice(start,start+count).map((v,i)=><EntryCard key={start+i} value={v} lang={lang} showLink={pages===2}/>)}
+  </Section>;
   if(pages===1){
     return <div className="cvr-sheets">
       <PageCard page={1} pages={1} lang={lang} styleClass={styleClass}>
@@ -126,9 +159,9 @@ function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVT
         <Profile role={role} lang={lang}/>
         <Education lang={lang}/>
         {experience(2)}
-        {projects(1)}
+        {projects(0,2)}
         <Skills role={role} lang={lang}/>
-        <Certifications role={role} lang={lang} limit={2}/>
+        <Certifications role={role} lang={lang}/>
       </PageCard>
     </div>;
   }
@@ -138,14 +171,15 @@ function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVT
       <Profile role={role} lang={lang}/>
       <Education lang={lang}/>
       {experience(3)}
+      {projects(0,1)}
     </PageCard>
     <PageCard page={2} pages={2} lang={lang} styleClass={styleClass}>
-      <Header role={role} lang={lang} compact/>
-      {isIT?<>{projects(3)}<Skills role={role} lang={lang}/></>:<><Skills role={role} lang={lang}/>{projects(3)}</>}
+      {isIT?<>{projects(1,2)}<Skills role={role} lang={lang}/></>:<><Skills role={role} lang={lang}/>{projects(1,2)}</>}
       <Certifications role={role} lang={lang}/>
     </PageCard>
   </div>;
 }
+
 export default function CVPage(){
   const [role,setRole]=useState<CVRole>('general');
   const [lang,setLang]=useState<CVLang>('id');
