@@ -11,7 +11,7 @@ export type CVEntry = {
   bullets: DualText[];
   url?: string;
 };
-export type CVSkill = { label: DualText; value: string };
+export type CVSkill = { label: DualText; value: string | DualText };
 export type CVProfile = {
   label: DualText;
   headline: DualText;
@@ -25,7 +25,7 @@ export type CVProfile = {
 export const cvText = (id: string, en: string): DualText => ({ id, en });
 const t = cvText;
 const entry = (title: DualText, organization: string, period: string, bullets: DualText[], url?: string): CVEntry => ({ title, organization, period, bullets, url });
-const skill = (label: DualText, value: string): CVSkill => ({ label, value });
+const skill = (label: DualText, value: string | DualText): CVSkill => ({ label, value });
 
 export const cvRoles: CVRole[] = ['general', 'web', 'data', 'design', 'hr'];
 
@@ -72,10 +72,10 @@ export const cvProfiles: Record<CVRole, CVProfile> = {
       ],'https://github.com/Darren0099/DataForge')
     ],
     skills: [
-      skill(t('Administrasi & operasional', 'Administration & operations'),'Dokumentasi, Koordinasi Tim, Pelaporan, Evaluasi'),
+      skill(t('Administrasi & operasional', 'Administration & operations'),t('Dokumentasi, koordinasi tim, pelaporan, evaluasi','Documentation, team coordination, reporting, evaluation')),
       skill(t('Digital & pengembangan web', 'Digital & web development'),'HTML, CSS, JavaScript, React, Next.js, PHP, MySQL'),
       skill(t('Analisis & pengolahan data', 'Data analysis & processing'),'Excel, Python, SQL, Dashboard, Data Cleaning'),
-      skill(t('Komunikasi & desain', 'Communications & design'),'Figma, Canva, Konten Digital, Komunikasi Organisasi')
+      skill(t('Komunikasi & desain', 'Communications & design'),t('Figma, Canva, konten digital, komunikasi organisasi','Figma, Canva, digital content, organizational communication'))
     ],
     certificates: ['Data Analytics Essentials — Cisco Networking Academy','CSS Essentials — Cisco Networking Academy','IT Customer Support Basics — Cisco Networking Academy'],
     highlights: [
