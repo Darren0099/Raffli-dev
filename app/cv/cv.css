@@ -367,3 +367,79 @@
     box-shadow: none !important;
   }
 }
+
+/* CV layout v3 — balanced, ATS-safe page composition. */
+.cvr-page-body { min-width:0; width:100%; }
+.cvr-compact .cvr-page-body {
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:9px;
+}
+.cvr-compact .cvr-page-body > .cvr-section { margin-bottom:0; }
+.cvr-compact .cvr-page-body > .cvr-resume-header { flex:0 0 auto; }
+
+/* Skills follow a clean label : value table, matching the provided reference. */
+.cvr-skills .cvr-skill-row {
+  display:grid;
+  grid-template-columns:minmax(150px,29%) 10px minmax(0,1fr);
+  align-items:baseline;
+  gap:4px;
+  margin:0 0 6px;
+  font-size:12px;
+  line-height:1.48;
+  text-align:left;
+}
+.cvr-skills .cvr-skill-row:last-child { margin-bottom:0; }
+.cvr-skills .cvr-skill-row strong { font-weight:700; }
+.cvr-skills .cvr-skill-row > span:nth-child(2) { text-align:center; }
+.cvr-skills .cvr-skill-row > span:last-child { min-width:0; overflow-wrap:break-word; }
+.cvr-expanded .cvr-skills .cvr-skill-row { font-size:12.6px; }
+.cvr-compact .cvr-skills .cvr-skill-row { font-size:11.2px; line-height:1.42; margin-bottom:3px; }
+
+/* Credential dates are visually separate but remain accessible ATS text. */
+.cvr-certifications .cvr-cert-row {
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:14px;
+  font-size:12px;
+  line-height:1.48;
+  margin-bottom:5px;
+}
+.cvr-certifications .cvr-cert-row:last-child { margin-bottom:0; }
+.cvr-certifications .cvr-cert-row > span { min-width:0; }
+.cvr-certifications .cvr-cert-row time { flex:0 0 auto; white-space:nowrap; font-weight:500; }
+.cvr-expanded .cvr-certifications .cvr-cert-row { font-size:12.6px; }
+.cvr-compact .cvr-certifications .cvr-cert-row { font-size:11px; line-height:1.38; margin-bottom:3px; }
+
+/* Two-page resumes show only 1/2 or 2/2. One-page resumes have no footer. */
+.cvr-page-footer {
+  display:block;
+  width:auto;
+  border-top:0;
+  padding:0;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.035em;
+}
+.cvr-compact .cvr-page-footer { display:none; }
+
+@media print {
+  .cvr-page-body { width:100%; }
+  .cvr-compact .cvr-page-body { min-height:100%; }
+  .cvr-page-footer {
+    display:block;
+    right:16mm !important;
+    left:auto !important;
+    bottom:7mm !important;
+    width:auto !important;
+    border:0 !important;
+    padding:0 !important;
+  }
+  .cvr-compact .cvr-page-footer { display:none !important; }
+  .cvr-modern .cvr-page-body { border-top:0; }
+}
