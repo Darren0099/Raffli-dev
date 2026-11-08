@@ -70,7 +70,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
               <span>✦</span> {lang === 'id' ? 'Hubungi saya' : 'Get in touch'}
             </a>
             <a
-              href="/cv"
+              href="https://rafflidev.my.id/cv"
               className="see-cv-btn"
               aria-label={lang === 'id' ? 'Lihat CV interaktif' : 'See interactive CV'}
             >
