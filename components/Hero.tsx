@@ -70,11 +70,9 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
               <span>✦</span> {lang === 'id' ? 'Hubungi saya' : 'Get in touch'}
             </a>
             <a
-              href="https://www.figma.com/design/5lMF2OCWkAF4T5FELbKmn3"
+              href="/cv"
               className="see-cv-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={lang === 'id' ? 'Lihat CV di Figma' : 'See CV in Figma'}
+              aria-label={lang === 'id' ? 'Lihat CV interaktif' : 'See interactive CV'}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M8 3h6l5 5v13H8a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
