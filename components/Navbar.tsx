@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import LanguageToggle from './LanguageToggle';
 
@@ -13,20 +13,90 @@ interface NavbarProps {
 export default function Navbar({ t }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollAnimationRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const cancelScroll = () => {
+      if (scrollAnimationRef.current !== null) {
+        window.cancelAnimationFrame(scrollAnimationRef.current);
+        scrollAnimationRef.current = null;
+      }
+    };
+
+    // Allow wheel, keyboard and touch interactions to override navigation.
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) {
+        cancelScroll();
+      }
+    };
+    window.addEventListener('wheel', cancelScroll, { passive: true });
+    window.addEventListener('touchstart', cancelScroll, { passive: true });
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      cancelScroll();
+      window.removeEventListener('wheel', cancelScroll);
+      window.removeEventListener('touchstart', cancelScroll);
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
+
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setIsOpen(false);
 
-    const element = document.getElementById(id);
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - 80;
+    const target = document.getElementById(id);
+    if (!target) {
+      // Preserve direct-link navigation if the section is not on this page.
+      window.location.assign('/#' + id);
+      return;
+    }
+
+    // A real hash makes the destination shareable and back/forward friendly.
+    if (window.location.hash !== '#' + id) {
+      window.history.pushState(null, '', '/#' + id);
+    }
+
+    if (scrollAnimationRef.current !== null) {
+      window.cancelAnimationFrame(scrollAnimationRef.current);
+    }
+
+    const startY = window.scrollY;
+    const targetY = () =>
+      Math.max(0, window.scrollY + target.getBoundingClientRect().top - 16);
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo({ top: targetY(), behavior: 'instant' });
+      scrollAnimationRef.current = null;
+      return;
+    }
+
+    // The Experience showcase and Skills rows resize as they animate.
+    // Recalculate the destination on every frame instead of relying on
+    // one stale offset that can stop far short of Contact.
+    const duration = 750;
+    let startedAt: number | null = null;
+    const step = (now: number) => {
+      if (startedAt === null) startedAt = now;
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const currentDestination = targetY();
 
       window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+        top: startY + (currentDestination - startY) * eased,
+        behavior: 'instant',
       });
-    }
+
+      if (progress < 1) {
+        scrollAnimationRef.current = window.requestAnimationFrame(step);
+      } else {
+        scrollAnimationRef.current = null;
+        // Final alignment after animation-related layout shifts.
+        window.scrollTo({ top: targetY(), behavior: 'instant' });
+      }
+    };
+
+    scrollAnimationRef.current = window.requestAnimationFrame(step);
   };
 
   return (
