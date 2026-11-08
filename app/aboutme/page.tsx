@@ -153,7 +153,10 @@ export default function AboutMePage() {
   return (
     <main className="am-page">
       <header className="am-nav">
-        <Link href="/" className="am-logo" aria-label={isId?'Kembali ke beranda':'Back to home'}>R<span>.</span><small>ABOUT<br/>ME</small></Link>
+        <Link href="/" className="am-logo" aria-label={isId?'Kembali ke beranda':'Back to home'}>
+          <img src="/brand/raffli-logo.svg" alt="" aria-hidden="true" width={77} height={60} />
+          <small>ABOUT<br/>ME</small>
+        </Link>
         <nav aria-label={isId?'Navigasi About Me':'About Me navigation'}>
           <a href="#am-story">{isId?'Cerita':'Story'}</a>
           <a href="#am-school">{isId?'Kuliah':'Education'}</a>
