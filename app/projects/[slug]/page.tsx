@@ -85,19 +85,16 @@ export default function ProjectDetailPage({ params }: PageProps) {
       
       <header className="navbar">
         <div className="logo">
-          <Link href="/" className="logo-link">
+          <a href="/" className="logo-link">
             <h2>Porto</h2>
-          </Link>
+          </a>
         </div>
 
         <div className="nav-wrapper">
           <nav className="nav-links">
-            <Link 
-              href="/" 
-              className="nav-item"
-            >
+            <a href="/" className="nav-item">
               <span className="dot"></span> {ui.home}
-            </Link>
+            </a>
             
             <a 
               href="#overview" 
