@@ -85,8 +85,8 @@ export default function ProjectDetailPage({ params }: PageProps) {
       
       <header className="navbar">
         <div className="logo">
-          <a href="/" className="logo-link">
-            <h2>Porto</h2>
+          <a href="/" className="logo-link brand-mark-link" aria-label="Raffli — kembali ke beranda">
+            <img src="/brand/raffli-logo.svg" alt="Raffli" width={77} height={60} />
           </a>
         </div>
 
