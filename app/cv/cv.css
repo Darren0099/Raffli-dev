@@ -112,3 +112,33 @@
  .cvr-modern .cvr-resume-role{color:#111!important}
  .cvr-entry-link,.cvr-contacts a{color:#111!important}
 }
+/* ATS readability: justified narrative only (not names, dates, contact details). */
+.cvr-summary p,
+.cvr-entry .cvr-bullets li,
+.cvr-education .cvr-subtle,
+.cvr-education > p {
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+.cvr-entry-heading,
+.cvr-entry-org,
+.cvr-resume-header,
+.cvr-skills p,
+.cvr-certifications p {
+  text-align: left;
+}
+.cvr-entry-link {
+  text-align: left;
+}
+.cvr-bullets li { orphans: 2; widows: 2; }
+@media print {
+  .cvr-summary p,
+  .cvr-entry .cvr-bullets li,
+  .cvr-education > p,
+  .cvr-education .cvr-subtle {
+    text-align: justify !important;
+    text-align-last: left !important;
+  }
+}
