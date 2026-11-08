@@ -27,7 +27,7 @@ export default function AllProjectsPage() {
     <main className="all-projects-container font-sans">
       
       <div className="all-projects-wrapper">
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"1rem"}}><Link href="/" style={{color:"inherit",textDecoration:"none"}}>← {lang === "id" ? "Beranda" : "Home"}</Link><LanguageToggle /></div>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"1rem"}}><a href="/" className="projects-home-link">← {lang === "id" ? "Beranda" : "Home"}</a><LanguageToggle /></div>
         <h1 className="all-projects-title">{lang === "id" ? "Semua Proyek" : "All Projects"}</h1>
 
         <div className="projects-main-grid">
