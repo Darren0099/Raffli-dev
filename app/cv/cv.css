@@ -152,3 +152,218 @@
 .cvr-expanded .cvr-certifications p,
 .cvr-expanded .cvr-education p { font-size: 12.6px; }
 .cvr-compact .cvr-bullets li { font-size: 11.7px; line-height: 1.4; }
+
+/* CV Studio sidebar layout — all controls live in the left rail. */
+@media screen {
+  .cvr-app {
+    display: grid;
+    grid-template-columns: 282px minmax(0, 1fr);
+    align-items: start;
+    gap: 28px;
+    width: 100%;
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 26px 24px 68px;
+    background: #f4f5f7;
+  }
+  .cvr-controls {
+    width: 282px;
+    max-width: none;
+    margin: 0;
+    padding: 22px 19px 24px;
+    position: sticky;
+    top: 24px;
+    max-height: calc(100vh - 48px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #e7e9ee;
+    border-radius: 14px;
+    box-shadow: 0 6px 22px rgba(18, 30, 48, 0.045);
+  }
+  .cvr-topline {
+    margin: 0 0 22px;
+    padding-bottom: 17px;
+    justify-content: flex-start;
+    border-bottom: 1px solid #eceef1;
+    letter-spacing: normal;
+  }
+  .cvr-back {
+    font-size: 11.5px;
+    color: #6b7280;
+    transition: color .2s;
+  }
+  .cvr-title-row {
+    display: block;
+    margin: 0 0 25px;
+  }
+  .cvr-title-row h2 {
+    margin: 0;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -.055em;
+    color: #171b24;
+  }
+  .cvr-control-group {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .cvr-picker {
+    margin: 0 0 20px;
+  }
+  .cvr-picker > strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #747c8b;
+    font-size: 10px;
+    letter-spacing: .105em;
+    font-weight: 700;
+  }
+  .cvr-option-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+  .cvr-option-row button {
+    display: block;
+    width: 100%;
+    min-height: 36px;
+    text-align: left;
+    padding: 9px 11px;
+    border-radius: 7px;
+    background: #f8f9fb;
+    border: 1px solid #ecedf1;
+    color: #465164;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .cvr-option-row button.active {
+    background: #1d2634;
+    border-color: #1d2634;
+    color: #fff;
+    box-shadow: none;
+  }
+  .cvr-options-layout {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .cvr-options-layout .cvr-picker:first-child {
+    flex: none;
+  }
+  .cvr-print {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 45px;
+    padding: 12px 11px;
+    margin-top: 11px;
+    border-radius: 8px;
+    background: #fe5000;
+    color: white;
+    font-size: 11.5px;
+    white-space: normal;
+    line-height: 1.3;
+  }
+  .cvr-print:hover {
+    background: #d94700;
+  }
+  .cvr-preview {
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 0 0 6px;
+  }
+  .cvr-preview .cvr-sheets {
+    width: max-content;
+    max-width: none;
+    margin: 0 auto;
+    overflow: visible;
+  }
+  .cvr-preview .cvr-paper {
+    margin: 0 0 19px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .cvr-app {
+    grid-template-columns: 242px minmax(0, 1fr);
+    gap: 17px;
+    padding: 18px 15px 40px;
+  }
+  .cvr-controls {
+    width: 242px;
+    padding: 19px 14px;
+  }
+}
+@media screen and (max-width: 740px) {
+  .cvr-app {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 15px 12px 32px;
+  }
+  .cvr-controls {
+    width: 100%;
+    max-height: none;
+    position: static;
+    overflow: visible;
+    padding: 20px 17px;
+  }
+  .cvr-option-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+  .cvr-option-row button {
+    min-width: 0;
+    font-size: 11px;
+    white-space: normal;
+  }
+  .cvr-preview {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .cvr-preview .cvr-sheets {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media print {
+  .cvr-app {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+  }
+  .cvr-controls {
+    display: none !important;
+  }
+  .cvr-preview {
+    display: block !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .cvr-sheets {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  .cvr-paper {
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}
