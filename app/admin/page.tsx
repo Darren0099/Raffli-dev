@@ -26,7 +26,7 @@ function Lines({label,value,onChange,rows=4}:{label:string;value:string;onChange
 export default function RaffliAdmin(){
  const [authenticated,setAuthenticated]=useState(false);
  const [checking,setChecking]=useState(true);
- const [credentials,setCredentials]=useState({email:'',password:''});
+ const [credentials,setCredentials]=useState({username:'',password:''});
  const [records,setRecords]=useState<DbRow[]>([]);
  const [selected,setSelected]=useState<number|null>(null);
  const [draft,setDraft]=useState<Project>({...blank});
@@ -60,7 +60,7 @@ export default function RaffliAdmin(){
    const r=await fetch('/api/admin/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(credentials)});
    const data=await r.json();
    if(!r.ok)throw Error(data.error||'Login gagal');
-   setAuthenticated(true);setCredentials({email:'',password:''});await load();
+   setAuthenticated(true);setCredentials({username:'',password:''});await load();
   }catch(e){setError(e instanceof Error?e.message:'Login gagal');}finally{setBusy(false);}
  }
  async function logout(){await fetch('/api/admin/session',{method:'DELETE'});setAuthenticated(false);setRecords([]);setSelected(null);setDraft({...blank});}
@@ -72,16 +72,16 @@ export default function RaffliAdmin(){
    const payload={...(selected!==null?{id:selected}:{}),data:{...draft,slug:draft.slug||toSlug(draft.title)},status};
    const r=await fetch('/api/admin/projects',{method:selected===null?'POST':'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
    const data=await r.json();if(!r.ok)throw Error(data.error||'Gagal menyimpan');
-   await load();edit(data.project as DbRow);setNotice('Proyek berhasil disimpan. Untuk tampil di situs publik, status harus Published dan konfigurasi CMS harus diaktifkan.');
+   await load();edit(data.project as DbRow);setNotice('Proyek disimpan sebagai commit GitHub. Agar muncul di publik, pilih Published dan aktifkan CMS setelah konfigurasi.');
   }catch(e){setError(e instanceof Error?e.message:'Gagal menyimpan');}finally{setBusy(false);}
  }
  async function remove(){
-  if(selected===null||!window.confirm('Hapus proyek ini dari database? Tindakan ini tidak dapat dibatalkan.'))return;
+  if(selected===null||!window.confirm('Hapus proyek dari galeri? Riwayat datanya tetap bisa dipulihkan melalui GitHub commits.'))return;
   setBusy(true);setError('');
   try{
    const r=await fetch('/api/admin/projects?id='+selected,{method:'DELETE'});
    if(!r.ok)throw Error('Gagal menghapus proyek');
-   create();await load();setNotice('Proyek dihapus.');
+   create();await load();setNotice('Proyek disembunyikan dari galeri; riwayatnya tetap tersedia di GitHub.');
   }catch(e){setError(e instanceof Error?e.message:'Gagal menghapus');}finally{setBusy(false);}
  }
  async function importLegacy(){
@@ -102,7 +102,7 @@ export default function RaffliAdmin(){
    const r=await fetch('/api/admin/upload',{method:'POST',body:fd});
    const data=await r.json();
    if(!r.ok)throw Error(data.error||'Upload gagal');
-   update(field,data.url);setNotice('Gambar berhasil diunggah. Simpan proyek untuk menerapkan perubahan.');
+   update(field,data.url);setNotice('Gambar berhasil di-commit ke GitHub. Simpan proyek; gambar akan tersedia setelah deployment selesai.');
   }catch(e){setError(e instanceof Error?e.message:'Upload gagal');}finally{setBusy(false);}
  }
  async function uploadGallery(file?:File){
@@ -112,7 +112,7 @@ export default function RaffliAdmin(){
    const fd=new FormData();fd.append('file',file);
    const r=await fetch('/api/admin/upload',{method:'POST',body:fd});
    const data=await r.json();if(!r.ok)throw Error(data.error||'Upload gagal');
-   update('galleryImages',[...(draft.galleryImages||[]),data.url]);setNotice('Gambar galeri ditambahkan. Simpan proyek untuk menerapkan perubahan.');
+   update('galleryImages',[...(draft.galleryImages||[]),data.url]);setNotice('Gambar galeri di-commit ke GitHub. Simpan proyek; gambar akan tersedia setelah deployment selesai.');
   }catch(e){setError(e instanceof Error?e.message:'Upload gagal');}finally{setBusy(false);}
  }
  if(checking)return <main className="rc-root"><div className="rc-login"><strong>RAFFLI / CMS</strong><p>Checking access...</p></div></main>;
@@ -120,7 +120,7 @@ export default function RaffliAdmin(){
   <span>PRIVATE WORKSPACE / OWNER ACCESS</span><h1>Raffli<span>.</span>CMS</h1>
   <p>Panel ini tidak terhubung ke navigasi publik. Hanya pemilik akun admin yang berwenang dapat mengelola proyek.</p>
   <form onSubmit={login}>
-   <Input label="Email admin" type="email" value={credentials.email} onChange={email=>setCredentials(p=>({...p,email}))} />
+   <Input label="Username admin" value={credentials.username} onChange={username=>setCredentials(p=>({...p,username}))} />
    <Input label="Password" type="password" value={credentials.password} onChange={password=>setCredentials(p=>({...p,password}))}/>
    {error&&<p role="alert" className="rc-error">{error}</p>}
    <button type="submit" disabled={busy}>{busy?'Memverifikasi...':'Sign in →'}</button>
@@ -160,7 +160,7 @@ export default function RaffliAdmin(){
      </div>:<>
      <section className="rc-panel"><h3>01 / Project identity</h3>
       <div className="rc-form-grid">
-       <Input label="Project title *" value={draft.title} onChange={v=>{update('title',v);if(!selected&&!draft.slug)update('slug',toSlug(v));}}/>
+       <Input label="Project title *" value={draft.title} onChange={v=>setDraft(old=>({...old,title:v,...(!selected&&!old.slug?{slug:toSlug(v)}:{})}))}/>
        <Input label="Slug * (URL identifier)" value={draft.slug} onChange={v=>update('slug',toSlug(v))}/>
        <Input label="Client / Organization *" value={draft.client} onChange={v=>update('client',v)}/>
        <Input label="Category *" value={draft.category} onChange={v=>update('category',v)}/>
@@ -173,14 +173,14 @@ export default function RaffliAdmin(){
       <Lines label="Technology stack (one per line)" value={list(draft.tools)} onChange={v=>update('tools',splitLines(v))} rows={3}/>
      </section>
      <section className="rc-panel"><h3>02 / Visual assets</h3>
-      <p>Uploaded images are saved to Supabase Storage. Existing <code>/img/...</code> links remain supported.</p>
+      <p>Uploaded images are committed to the GitHub repository. Existing <code>/img/...</code> links remain supported.</p>
       <div className="rc-form-grid">{(Object.keys(fileLabels) as ImageField[]).map(field=><div key={field} className="rc-upload">
        <Input label={fileLabels[field]} value={draft[field]||''} onChange={v=>update(field,v)} placeholder="/img/cover.png or https://..."/>
-       <label><span>Upload {fileLabels[field]}</span><input type="file" accept="image/png,image/jpeg,image/webp,image/avif" disabled={busy} onChange={e=>{void upload(field,e.currentTarget.files?.[0]);e.currentTarget.value='';}}/></label>
+       <label><span>Upload {fileLabels[field]}</span><input type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={e=>{void upload(field,e.currentTarget.files?.[0]);e.currentTarget.value='';}}/></label>
        {draft[field]&&<img src={draft[field]} alt={fileLabels[field]+' preview'}/>}
       </div>)}</div>
       <Lines label="Gallery image URLs (one per line)" value={list(draft.galleryImages)} onChange={v=>update('galleryImages',splitLines(v))}/>
-      <label className="rc-upload-extra">Upload image to gallery<input type="file" accept="image/png,image/jpeg,image/webp,image/avif" disabled={busy} onChange={e=>{void uploadGallery(e.currentTarget.files?.[0]);e.currentTarget.value='';}}/></label>
+      <label className="rc-upload-extra">Upload image to gallery<input type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={e=>{void uploadGallery(e.currentTarget.files?.[0]);e.currentTarget.value='';}}/></label>
       <div className="rc-form-grid">
        <Lines label="Grid thumbnail URLs" value={list(draft.gridThumbnails)} onChange={v=>update('gridThumbnails',splitLines(v))}/>
        <Lines label="Bottom gallery URLs" value={list(draft.bottomGalleryImages)} onChange={v=>update('bottomGalleryImages',splitLines(v))}/>
