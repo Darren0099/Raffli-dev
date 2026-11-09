@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { projectsData } from '@/data/projectsData';
+import { usePortfolioProjects } from '@/hooks/usePortfolioProjects';
+import type {Project} from '@/data/projectsData';
 import Footer from '@/components/footer';
 import LanguageToggle from '@/components/LanguageToggle';
 import { useLanguage } from '@/components/LanguageProvider';
@@ -21,14 +22,15 @@ interface PageProps {
 
 export default function ProjectDetailPage({ params }: PageProps) {
   const resolvedParams = React.use(params);
-  const project = projectsData.find((p) => p.slug === resolvedParams.slug);
-
-  if (!project) {
-    notFound();
-  }
-
+  const {projects,loaded} = usePortfolioProjects();
+  const project = projects.find((item) => item.slug === resolvedParams.slug);
+  // Keep all hooks unconditional while an unsaved/dynamic slug resolves.
+  const placeholder: Project = React.useMemo(() => ({
+    id:0, slug: resolvedParams.slug, title:'Loading project', client:'',
+    category:'',image:'',link:'',tools:[],buildTime:''
+  }), [resolvedParams.slug]);
   const { lang } = useLanguage();
-  const p = useLocalizedProject(project);
+  const p = useLocalizedProject(project ?? placeholder);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [activeNav, setActiveNav] = useState<string>('overview');
   const [galleryIndex, setGalleryIndex] = useState(0);
@@ -79,6 +81,11 @@ export default function ProjectDetailPage({ params }: PageProps) {
     technologies: 'Technology Used', github: 'Source Code',
     enlarge: 'Click to enlarge the image'
   };
+
+  if (!project) {
+    if (!loaded) return <main className="detail-page-container" style={{minHeight:'60vh',display:'grid',placeItems:'center'}}>Loading project...</main>;
+    notFound();
+  }
 
   return (
     <main className="detail-page-container">
