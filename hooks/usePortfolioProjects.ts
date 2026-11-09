@@ -5,7 +5,7 @@ import {projectsData, type Project} from '@/data/projectsData';
 // Legacy data stays available while the CMS is being configured and imported.
 // The server only returns published records once PORTFOLIO_CMS_ENABLED=true.
 export function usePortfolioProjects(){
- const [projects,setProjects]=useState<Project[]>(projectsData);
+ const [projects,setProjects]=useState<Project[]>([]);
  const [loaded,setLoaded]=useState(false);
  useEffect(()=>{
   let alive=true;
