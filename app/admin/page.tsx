@@ -36,6 +36,7 @@ export default function RaffliAdmin(){
  const [error,setError]=useState('');
  const [tab,setTab]=useState<'editor'|'preview'>('editor');
  const [advanced,setAdvanced]=useState(false);
+ const [slugCustomized,setSlugCustomized]=useState(false);
  const update=(field:keyof Project,value:unknown)=>setDraft(old=>({...old,[field]:value}));
  async function load(){
   const r=await fetch('/api/admin/projects',{cache:'no-store'});
@@ -64,8 +65,8 @@ export default function RaffliAdmin(){
   }catch(e){setError(e instanceof Error?e.message:'Login gagal');}finally{setBusy(false);}
  }
  async function logout(){await fetch('/api/admin/session',{method:'DELETE'});setAuthenticated(false);setRecords([]);setSelected(null);setDraft({...blank});}
- function edit(row:DbRow){setSelected(row.id);setDraft({...blank,...row.data,id:row.id});setStatus(row.status);setNotice('');setError('');setTab('editor');window.scrollTo({top:0,behavior:'smooth'});}
- function create(){setSelected(null);setDraft({...blank,services:{pills:[],list:[]}});setStatus('draft');setNotice('');setError('');setTab('editor');}
+ function edit(row:DbRow){setSlugCustomized(true);setSelected(row.id);setDraft({...blank,...row.data,id:row.id});setStatus(row.status);setNotice('');setError('');setTab('editor');window.scrollTo({top:0,behavior:'smooth'});}
+ function create(){setSlugCustomized(false);setSelected(null);setDraft({...blank,services:{pills:[],list:[]}});setStatus('draft');setNotice('');setError('');setTab('editor');}
  async function save(){
   setBusy(true);setError('');setNotice('');
   try{
@@ -160,8 +161,8 @@ export default function RaffliAdmin(){
      </div>:<>
      <section className="rc-panel"><h3>01 / Project identity</h3>
       <div className="rc-form-grid">
-       <Input label="Project title *" value={draft.title} onChange={v=>setDraft(old=>({...old,title:v,...(!selected&&!old.slug?{slug:toSlug(v)}:{})}))}/>
-       <Input label="Slug * (URL identifier)" value={draft.slug} onChange={v=>update('slug',toSlug(v))}/>
+       <Input label="Project title *" value={draft.title} onChange={v=>setDraft(old=>({...old,title:v,...(!slugCustomized?{slug:toSlug(v)}:{})}))}/>
+       <Input label="Slug * (URL identifier)" value={draft.slug} onChange={v=>{setSlugCustomized(true);update('slug',toSlug(v));}}/>
        <Input label="Client / Organization *" value={draft.client} onChange={v=>update('client',v)}/>
        <Input label="Category *" value={draft.category} onChange={v=>update('category',v)}/>
        <Input label="Build time / Year" value={draft.buildTime} onChange={v=>update('buildTime',v)}/>
