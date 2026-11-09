@@ -1,5 +1,5 @@
 import {NextRequest,NextResponse} from 'next/server';
-import {allowedOrigin,authConfigured,clearSession,createSession, isLocked, loginKey,
+import {allowedOrigin,cmsConfigured,clearSession,isLocked,loginKey,
  recordFailure,recordSuccess,requireAdmin,setSession,unauthorized,unavailable,verifyCredentials} from '@/lib/portfolio-cms';
 export const runtime='nodejs';
 export async function GET(req:NextRequest){
@@ -8,7 +8,7 @@ export async function GET(req:NextRequest){
 }
 export async function POST(req:NextRequest){
  if(!allowedOrigin(req))return NextResponse.json({error:'Invalid origin'},{status:403});
- if(!authConfigured())return unavailable();
+ if(!cmsConfigured())return unavailable();
  const key=loginKey(req);
  if(isLocked(key))return NextResponse.json({error:'Too many attempts; try again later'},{status:429});
  let payload:{username?:unknown;password?:unknown};
