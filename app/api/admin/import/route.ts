@@ -1,21 +1,27 @@
 import {NextRequest,NextResponse} from 'next/server';
 import {projectsData} from '@/data/projectsData';
-import {allowedOrigin,baseUrl,requireAdmin,supabaseHeaders,unauthorized,withSession} from '@/lib/portfolio-cms';
-// Manual, authenticated, idempotent import. Never runs automatically on deployments.
+import {mutateCmsProjects} from '@/lib/github-portfolio-store';
+import {allowedOrigin,requireAdmin,unauthorized} from '@/lib/portfolio-cms';
+export const runtime='nodejs';
 export async function POST(req:NextRequest){
  if(!allowedOrigin(req))return NextResponse.json({error:'Invalid origin'},{status:403});
- const s=await requireAdmin(req);if(!s)return unauthorized();
- try {
-  const pre=await fetch(baseUrl()+'/rest/v1/portfolio_projects?select=slug',{headers:supabaseHeaders(s.token),cache:'no-store'});
-  if(!pre.ok)return NextResponse.json({error:'Unable to verify existing projects'},{status:502});
-  const existing=new Set((await pre.json() as {slug:string}[]).map(x=>x.slug));
-  const added=projectsData.filter(p=>!existing.has(p.slug));
-  if(!added.length)return withSession(NextResponse.json({imported:0,total:projectsData.length}),s);
-  const payload=added.map(p=>{const {id,...data}=p;return {slug:p.slug,status:'published',data};});
-  const r=await fetch(baseUrl()+'/rest/v1/portfolio_projects',{
-   method:'POST',headers:{...supabaseHeaders(s.token),'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(payload),cache:'no-store'
-  });
-  if(!r.ok)return NextResponse.json({error:'Import failed'},{status:502});
-  return withSession(NextResponse.json({imported:added.length,total:projectsData.length}),s);
- }catch{return NextResponse.json({error:'Database unavailable'},{status:502});}
+ if(!requireAdmin(req))return unauthorized();
+ try{
+  let imported=0;
+  await mutateCmsProjects(rows=>{
+   imported=0;
+   const used=new Set(rows.map(r=>r.slug));
+   const now=new Date().toISOString();
+   const next=[...rows];
+   for(const p of projectsData){
+    if(used.has(p.slug))continue;
+    // Reuse the old ID; URLs depend on slug, not integer IDs.
+    const id=next.some(r=>r.id===p.id)?Math.max(999,...next.map(r=>r.id))+1:p.id;
+    next.push({id,slug:p.slug,status:'published',data:{...p,id},created_at:now,updated_at:now});
+    used.add(p.slug);imported++;
+   }
+   return next;
+  },'cms(projects): import existing portfolio projects');
+  return NextResponse.json({imported,total:projectsData.length},{headers:{'Cache-Control':'no-store'}});
+ }catch(e){return NextResponse.json({error:e instanceof Error?e.message:'Import failed'},{status:502});}
 }
