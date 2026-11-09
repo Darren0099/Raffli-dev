@@ -31,7 +31,7 @@ export const designCollections: DesignCollection[] = [
     profileUrl: 'https://www.instagram.com/youthranger.sumsel/',
     descriptionId: 'Logo dan unggahan terkait dua edisi awal Summit of Stars. Impactify (edisi ketiga) tidak diklaim sebagai karya.',
     descriptionEn: 'Logo and posts related to the first two Summit of Stars editions. The third edition, Impactify, is not claimed as work.',
-    posts: fromCodes('DMom29_yTzQ DOc5IMiCe97')
+    posts: fromCodes(`DUeeivukjzM DUeeexXklc- DUeeaiIEkYu DUcMpHNEvkN DUcMmsfki7q DUcMjdVEhcX DUZm8QWEo7V DUZm4yFknml DUZm1lwknos DUXFINIkuF5 DUXFFElEi3t DUXFAe_kqZX DUTJytHEnQ9 DUTJv0yEqc8 DUTJszTkgvW DUTJqCCkowQ DUTJnszki32 DUTJkqCkn8v DUKLJpMkvum DUKLG4vEjUP DUKLD1qkupb DUKK_YTkmHt DUKK8mjEpNU DUKK5PnklWO DUE_kTLEnT8 DUE_iJhkopO DUE_e8mkuQD DUE_cKykjNP DUE_ZkvklH- DUE_XGOkrnx DUE_Rt0Et3U DUE_PPzkh0y DUE_MqBEtUr DUE_J4kkgqw DUE_HYvkgof DUE_EerEi2A DUDAu2VEoK0 DUDAkbZEnEQ DUDAhVIEsKy DUDAef9Enyn DUDAb_Lkjuw DUDAYo2EkHj DRn-VyrEndt DRn-RhXksoc DRn-OZIki3t DRn-Lh_kkqt DRn-I_Mkryb DRn-GCYEoh9 DPu4EkXkp9C DPu4AShEuYw DPu31Vxkmu9 DPu3xh6Ejj4 DPu3rQKkvJy DPu3mntkqb2 DPu3hyNkmwf DPu3eFZkq_0 DPu3Sq2kmai DPpq7WqEkRu DPpq46SEu46 DPpq1ZwEoaJ DPpqxSEEmEo DPpqrr_EjmL DPpqoERErPD DPIRUPCEmMY DPIRSCMEgry DPIRPoXEpPk DPIRMOWkr2t DPIRJeiEhyV DPIRGoGErce DPGibT_Eq_f DPGiY4wklkN DPGiWGhktIi DPGiTfykuAN DPGiQTHEg4E DPGiK6sEvp6 DPFkDX1Ej0v DPFkAZXEk3m DPFj8_1kt_H DPFj4QWkgH9 DPFjykxEujU DPFju4Hkj-f DPFji6Ikj1B DPFjcznEqYP DPFjX-LEisW DOc5lhgiVkl DOc5IMiCe97 DMom29_yTzQ`)
   },
   {
     id: 'fest',
