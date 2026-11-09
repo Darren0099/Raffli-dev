@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageProvider';
 import LanguageToggle from '@/components/LanguageToggle';
+import GraphicDesignArchiveGallery from '@/components/GraphicDesignArchiveGallery';
 import './graphic-design.css';
 
 type Filter = 'all' | 'identity' | 'event' | 'social';
@@ -64,17 +65,6 @@ const campaigns: Campaign[] = [
     link: 'https://www.instagram.com/p/DdLFtHrmtml/', sign: 'K✳'
   }
 ];
-type Post = { code: string; label: string; organizer: string; group: string; link: string };
-const posts: Post[] = [
-  { code: 'DMom29_yTzQ', label: 'Logo Summit of Stars', organizer: 'Youth Ranger Indonesia', group: 'EVENT LOGO / ORIGINAL REFERENCE', link: 'https://www.instagram.com/p/DMom29_yTzQ/' },
-  { code: 'DOc5IMiCe97', label: 'Summit of Stars — Selected Design', organizer: 'Youth Ranger Indonesia', group: 'SUMMIT I & II · PREVIEW', link: 'https://www.instagram.com/p/DOc5IMiCe97/' },
-  { code: 'C9qxES0SP80', label: 'YRI Fest × Expo', organizer: 'YRI Regional Sumsel', group: 'FLAGSHIP EVENT', link: 'https://www.instagram.com/p/C9qxES0SP80/' },
-  { code: 'DeHJDk_FKkt', label: 'International Kingdom Indonesia', organizer: 'International Kingdom Indonesia', group: 'FEED 01 / 03', link: 'https://www.instagram.com/p/DeHJDk_FKkt/' },
-  { code: 'DN-IlgoABI3', label: 'Youthopia Symposium', organizer: 'Duta Potensi Pemuda Indonesia', group: 'FLAGSHIP EVENT / PRIMARY REFERENCE', link: 'https://www.instagram.com/p/DN-IlgoABI3/' },
-  { code: 'DPvGQa4E2Pq', label: 'Duta Potensi Indonesia — Selected Post', organizer: 'Duta Potensi Pemuda Indonesia', group: 'ADDITIONAL POST', link: 'https://www.instagram.com/p/DPvGQa4E2Pq/' },
-  { code: 'DdLFtHrmtml', label: 'Kawan YRI — Operation', organizer: 'YRI Pusat · Operation Division', group: 'CENTRAL OPERATION / SOCIAL MEDIA', link: 'https://www.instagram.com/p/DdLFtHrmtml/' },
-  { code: 'DfHwQoeogar', label: 'Additional Selected Post', organizer: 'Previous portfolio reference', group: 'ORIGINAL PUBLICATION', link: 'https://www.instagram.com/p/DfHwQoeogar/' },
-];
 const profiles = [
   { label: '@youthranger.sumsel', href: 'https://www.instagram.com/youthranger.sumsel/', context: '' },
   { label: '@impactify.yrisumsel', href: 'https://www.instagram.com/impactify.yrisumsel/', context: 'EDITION 03 / REFERENCE ONLY' },
@@ -92,7 +82,7 @@ export default function GraphicDesignPage() {
   const id = lang === 'id';
   const reduced = useReducedMotion();
   const [filter, setFilter] = useState<Filter>('all');
-  const [embedEnabled, setEmbedEnabled] = useState<Record<string, boolean>>(() => Object.fromEntries(posts.map((post) => [post.code, true])));
+  const [activeCollection, setActiveCollection] = useState('regional');
   const shown = filter === 'all' ? campaigns : campaigns.filter((item) => item.category === filter);
   const filters: Array<{ key: Filter; labelId: string; labelEn: string }> = [
     { key: 'all', labelId: 'Semua karya', labelEn: 'All work' },
@@ -112,7 +102,7 @@ export default function GraphicDesignPage() {
           <a href="#gd-work">{id ? 'Karya' : 'Work'}</a>
           <a href="#gd-summit">Summit of Stars</a>
           <a href="#gd-logos">Logos</a><a href="#gd-operation">Operation</a>
-          <a href="#gd-posts">Instagram</a>
+          <a href="#gd-posts">{id ? "Arsip desain" : "Design archive"}</a>
         </nav>
         <div className="gd-navigation-right"><LanguageToggle /><Link href="/projects">{id ? 'Proyek' : 'Projects'} ↗</Link></div>
       </header>
@@ -122,7 +112,7 @@ export default function GraphicDesignPage() {
           <span className="gd-eyebrow"><i/> GRAPHIC DESIGN / MULTI-BRAND ARCHIVE</span>
           <h1 id="gd-cover-title">VISUALS<br/><em>THAT</em><br/>MOVE<span>.</span></h1>
           <p>{id ? 'Satu arsip untuk identitas organisasi, desain feed, dan kampanye event nasional—dari Youth Ranger hingga International Kingdom dan Youthopia.' : 'One curated archive of community identity, feed design, and event campaigns—across Youth Ranger, International Kingdom and Youthopia.'}</p>
-          <a className="gd-button-round" href="#gd-work">{id ? 'Lihat koleksi' : 'Explore collection'} <strong aria-hidden="true">↘</strong></a>
+          <a className="gd-button-round" href="#gd-posts">{id ? 'Lihat galeri' : 'Explore gallery'} <strong aria-hidden="true">↘</strong></a>
         </motion.div>
         <motion.div className="gd-cover-collage" initial={reduced ? false : { opacity: 0, rotate: 6, scale: 0.9 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} transition={{ duration: 1.1, delay: 0.15, ease }} aria-hidden="true">
           <div className="gd-cover-poster gd-cover-poster-one"><span>YRI / REGIONAL</span><b>BE<br/>BOLD.</b><i/></div>
@@ -130,7 +120,7 @@ export default function GraphicDesignPage() {
           <div className="gd-cover-poster gd-cover-poster-three"><span>SUMMIT OF STARS</span><div className="gd-modular-art"><i/><i/><i/><i/></div><b>CREATE<br/>IMPACT.</b></div>
           <strong className="gd-cover-spark">✳</strong>
         </motion.div>
-        <div className="gd-cover-bottom"><span>AL-MAN RAFFLI SAPUTRA</span><span>3 ORGANIZATIONS / 6 SELECTED WORKSTREAMS</span><span>SCROLL DOWN ↓</span></div>
+        <div className="gd-cover-bottom"><span>AL-MAN RAFFLI SAPUTRA</span><span>80+ PUBLISHED INSTAGRAM LINKS / MULTI-BRAND ARCHIVE</span><span>SCROLL DOWN ↓</span></div>
       </section>
 
       <section className="gd-manifesto">
@@ -157,7 +147,7 @@ export default function GraphicDesignPage() {
       <section className="gd-works" id="gd-work" aria-labelledby="gd-work-title">
         <motion.header className="gd-section-header" {...motionProps}>
           <div><span className="gd-section-number">02 / GRAPHIC DESIGN COLLECTION</span><h2 id="gd-work-title">Selected <em>work.</em></h2></div>
-          <p>{id ? 'Enam kelompok karya dari regional, pusat, nasional, dan internasional. Klik kartu untuk membuka referensi Instagram asli.' : 'Six selected workstreams across regional, central, national and international initiatives. Open a card for the original Instagram source.'}</p>
+          <p>{id ? 'Enam kelompok karya dari regional, pusat, nasional, dan internasional. Klik kartu untuk membuka seluruh koleksi unggahan terkait di galeri bawah.' : 'Six selected workstreams across regional, central, national and international initiatives. Open a card to browse its complete curated Instagram collection below.'}</p>
         </motion.header>
         <div className="gd-filters" role="group" aria-label={id ? 'Filter karya' : 'Filter work'}>
           {filters.map((item) => (
@@ -176,9 +166,10 @@ export default function GraphicDesignPage() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={reduced ? undefined : { opacity: 0, y: 15, scale: .97 }}
                 transition={{ duration: .45, ease }}
-                href={work.link} target="_blank" rel="noopener noreferrer"
+                href="#gd-posts"
+                onClick={() => setActiveCollection(work.id === 'regional' ? 'regional' : work.id)}
                 className={'gd-work-card gd-work-card-'+work.id}
-                aria-label={work.title + ' / Instagram'}
+                aria-label={work.title + (id ? ' / Buka galeri unggahan' : ' / Browse published posts')}
               >
                 <div className="gd-work-art" aria-hidden="true">
                   <span className="gd-work-gridlines"/><span className="gd-work-circle"/><span className="gd-work-square"/><span className="gd-work-ring"/>
@@ -192,7 +183,7 @@ export default function GraphicDesignPage() {
             ))}
           </AnimatePresence>
         </motion.div>
-        <p className="gd-artwork-disclaimer">{id ? 'Artwork geometris adalah interpretasi visual baru untuk navigasi, bukan reproduksi desain Instagram. Karya asli ada pada unggahan yang ditautkan dan galeri di bawah.' : 'Geometric artworks are newly created navigation visuals, not reproductions of Instagram designs. Original posts are linked and embedded below.'}</p>
+        <p className="gd-artwork-disclaimer">{id ? 'Artwork geometris adalah interpretasi visual baru untuk navigasi, bukan reproduksi desain Instagram. Karya asli dapat dilihat pada tautan dan galeri Instagram di bawah.' : 'Geometric artworks are newly created navigation visuals, not reproductions of Instagram designs. Original posts are linked and embedded below.'}</p>
       </section>
 
       <section className="gd-summit" id="gd-summit" aria-labelledby="gd-summit-title">
@@ -274,34 +265,12 @@ export default function GraphicDesignPage() {
         <p className="gd-origin-note">{id ? 'Dua logo di atas menggunakan gambar asli yang saya unggah. Klik kartu untuk melihat profil YRI Sumsel atau postingan logo Summit of Stars.' : 'Both logos now use my original uploaded image assets. Open each card to see YRI Sumsel’s profile or the Summit of Stars logo publication.'}</p>
       </section>
 
-      <section className="gd-posts" id="gd-posts" aria-labelledby="gd-post-title">
-        <motion.header className="gd-section-header" {...motionProps}>
-          <div><span className="gd-section-number">06 / INSTAGRAM ORIGINALS</span><h2 id="gd-post-title">The real <em>posts.</em></h2></div>
-          <p>{id ? 'Galeri unggahan asli dari Summit of Stars, YRI Fest, International Kingdom, Youthopia, Duta Potensi, dan Kawan YRI.' : 'Original post gallery for Summit of Stars, YRI Fest, International Kingdom, Youthopia, Duta Potensi, and Kawan YRI.'}</p>
-        </motion.header>
-        <div className="gd-post-grid">
-          {posts.map((post,index) => (
-            <motion.article key={post.code} className="gd-post-card" {...motionProps} transition={{ duration: .65, ease, delay: reduced ? 0 : (index % 2) * .12 }}>
-              <div className="gd-post-label"><span>{post.organizer}</span><span>REF / {String(index+1).padStart(2,'0')}</span></div>
-              <div className="gd-post-info"><span>{post.group}</span><h3>{post.label}</h3></div>
-              {embedEnabled[post.code] ? (
-                <iframe title={'Instagram: '+post.label} src={'https://www.instagram.com/p/'+post.code+'/embed/captioned/'} loading="lazy" referrerPolicy="strict-origin-when-cross-origin"/>
-              ) : (
-                <div className={'gd-post-art gd-post-art-'+String(index+1).padStart(2,'0')} aria-label={id ? 'Pratinjau belum dimuat' : 'Preview not loaded'}>
-                  <i aria-hidden="true"/><strong aria-hidden="true">{String(index+1).padStart(2,'0')}</strong><span>INSTAGRAM / ORIGINAL POST</span>
-                </div>
-              )}
-              <div className="gd-post-actions">
-                <button type="button" aria-pressed={!!embedEnabled[post.code]} onClick={() => setEmbedEnabled((previous) => ({...previous,[post.code]:!previous[post.code]}))}>
-                  {embedEnabled[post.code] ? (id?'Tutup pratinjau':'Hide preview') : (id?'Tampilkan unggahan':'Load original post')}
-                </button>
-                <a href={post.link} target="_blank" rel="noopener noreferrer">{id?'Buka Instagram':'Open Instagram'} ↗</a>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-        <p className="gd-post-note">{id ? 'Instagram dapat membatasi embed. Tautan unggahan tetap tersedia, dan baru satu dari tiga feed International Kingdom yang mempunyai tautan referensi.' : 'Instagram can restrict embeds. Original post links remain accessible, and one of three International Kingdom feeds currently has a supplied URL.'}</p>
-      </section>
+      <GraphicDesignArchiveGallery
+        key={activeCollection}
+        id={id}
+        selectedCollection={activeCollection}
+        onSelectCollection={setActiveCollection}
+      />
 
       <footer className="gd-finale">
         <strong className="gd-finale-star" aria-hidden="true">✳</strong>
