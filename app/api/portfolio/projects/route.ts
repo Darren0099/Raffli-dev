@@ -13,7 +13,7 @@ export async function GET(){
     const rows=await r.json() as {id:number;data:Record<string,unknown>}[];
     return NextResponse.json({projects:rows.map(row=>({...row.data,id:row.id})),source:'cms'},{headers:{'Cache-Control':'public, max-age=60'}});
   }catch{
-    // Fail closed for unpublished content; return static public projects until service recovers.
-    return NextResponse.json({projects:projectsData,source:'fallback'},{headers:{'Cache-Control':'no-store'}});
+    // Do not return legacy static records when CMS is active: they could include archived projects.
+    return NextResponse.json({error:'Portfolio projects temporarily unavailable'},{status:503,headers:{'Cache-Control':'no-store'}});
   }
 }
