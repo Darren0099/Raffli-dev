@@ -47,18 +47,19 @@ export async function POST(req:NextRequest){
  let payload:{data?:unknown;status?:unknown};
  try{payload=await req.json();}catch{return reply('Invalid JSON');}
  if(!validProject(payload.data))return reply('Invalid project fields');
+ const input=payload.data;
  const status=getStatus(payload.status);if(!status)return reply('Invalid project status');
  try{
   let inserted:CmsProjectRecord|undefined;
   await mutateCmsProjects(records=>{
-   const slug=payload.data!.slug;
-   if(records.some(r=>r.slug===slug)||projectsData.some(p=>p.slug===slug && !records.some(r=>r.slug===slug)))
+   const slug=input.slug;
+   if(records.some(r=>r.slug===slug)||projectsData.some(p=>p.slug===slug))
     throw Error('Slug already exists; edit the existing project instead');
    const id=Math.max(999,...records.map(r=>r.id),...projectsData.map(p=>p.id))+1;
    const now=new Date().toISOString();
-   inserted={id,slug,status,data:cleanData(payload.data as Project,id),created_at:now,updated_at:now};
+   inserted={id,slug,status,data:cleanData(input,id),created_at:now,updated_at:now};
    return [...records,inserted];
-  },'cms(projects): create '+payload.data.slug);
+  },'cms(projects): create '+input.slug);
   return NextResponse.json({project:inserted},{status:201,headers:adminCache});
  }catch(e){return storageError(e);}
 }
@@ -68,15 +69,17 @@ export async function PATCH(req:NextRequest){
  let payload:{id?:unknown;data?:unknown;status?:unknown};
  try{payload=await req.json();}catch{return reply('Invalid JSON');}
  if(!Number.isSafeInteger(payload.id)||Number(payload.id)<1||!validProject(payload.data))return reply('Invalid project fields');
+ const input=payload.data;
  const status=getStatus(payload.status);if(!status)return reply('Invalid project status');
  try{
   let updated:CmsProjectRecord|undefined;
   await mutateCmsProjects(records=>{
    const original=records.find(r=>r.id===payload.id && r.status!=='deleted');
    if(!original)throw Error('Project not found');
-   if(records.some(r=>r.id!==payload.id && r.slug===payload.data!.slug))throw Error('Slug already exists');
-   if(projectsData.some(p=>p.slug===payload.data!.slug && p.slug!==original.slug))throw Error('Slug already exists in legacy projects');
-   updated={...original,slug:payload.data!.slug,status,data:cleanData(payload.data as Project,original.id),updated_at:new Date().toISOString()};
+   if(records.some(r=>r.id!==payload.id && r.slug===input.slug))throw Error('Slug already exists');
+   if(projectsData.some(p=>p.slug===original.slug) && input.slug!==original.slug)throw Error('The slug of an imported legacy project cannot be changed');
+   if(projectsData.some(p=>p.slug===input.slug && p.slug!==original.slug))throw Error('Slug already exists in legacy projects');
+   updated={...original,slug:input.slug,status,data:cleanData(input,original.id),updated_at:new Date().toISOString()};
    return records.map(r=>r.id===payload.id?updated!:r);
   },'cms(projects): update #'+payload.id);
   return NextResponse.json({project:updated},{headers:adminCache});
