@@ -19,6 +19,13 @@ const mediums: { key: Medium; no: string; titleId: string; titleEn: string; capt
   { key: 'apparel', no: '04', titleId: 'Baju', titleEn: 'Apparel', captionId: 'Desain pakaian', captionEn: 'Wearable design', art: 'A' },
   { key: 'packaging', no: '05', titleId: 'Kemasan', titleEn: 'Packaging', captionId: 'Produk dan kemasan', captionEn: 'Products and packaging', art: 'K' },
 ];
+/** Other categories will gain real counts when their design files are added to the archive. */
+const otherArchivedCounts: Record<Exclude<Medium, 'feed'>, number> = {
+  poster: 0,
+  lanyard: 0,
+  apparel: 0,
+  packaging: 0,
+};
 
 export default function GraphicDesignArchiveGallery({ id, selectedCollection, onSelectCollection }: Props) {
   const [medium, setMedium] = useState<Medium>('feed');
@@ -34,7 +41,13 @@ export default function GraphicDesignArchiveGallery({ id, selectedCollection, on
     setView('preview');
     setHiddenPreviews({});
   };
-  const feedCount = designCollections.reduce((sum, collection) => sum + collection.posts.length, 0);
+  // An Instagram post can appear in more than one collection. Count it only once in global totals.
+  const feedCount = new Set(
+    designCollections.flatMap((collection) => collection.posts.map((post) => getPostUrl(post)))
+  ).size;
+  const collectionEntries = designCollections.reduce((sum, collection) => sum + collection.posts.length, 0);
+  const mediumCounts: Record<Medium, number> = { feed: feedCount, ...otherArchivedCounts };
+  const archiveTotal = Object.values(mediumCounts).reduce((sum, count) => sum + count, 0);
 
   return (
     <section className="gd-archive-browser" id="gd-posts" aria-labelledby="gd-post-title">
@@ -44,6 +57,31 @@ export default function GraphicDesignArchiveGallery({ id, selectedCollection, on
           <h2 id="gd-post-title">{id ? 'Jelajahi ' : 'Explore the '}<em>{id ? 'karya.' : 'archive.'}</em></h2>
         </div>
         <p>{id ? 'Pilih jenis desain, lalu buka koleksi dari akun atau event terkait. Semua unggahan terhubung dengan sumber Instagram aslinya.' : 'Choose a design medium, then browse the related organization or event. Every post links back to its original Instagram publication.'}</p>
+      </div>
+
+      <div className="gd-archive-overview" aria-label={id ? 'Ringkasan jumlah karya yang sudah diarsipkan' : 'Summary of archived work counts'}>
+        <div className="gd-archive-total">
+          <span>{id ? 'TOTAL KARYA YANG SUDAH DIARSIPKAN' : 'TOTAL DOCUMENTED WORK'}</span>
+          <strong>{archiveTotal.toLocaleString(id ? 'id-ID' : 'en-US')}<span aria-hidden="true">.</span></strong>
+          <p>{id
+            ? 'Jumlah karya yang tercatat di galeri saat ini. Untuk Instagram, setiap tautan unggahan dihitung satu kali, walaupun tampil di beberapa koleksi.'
+            : 'The number of items currently documented in the gallery. An Instagram publication is counted once even if listed in multiple collections.'}</p>
+        </div>
+        <div className="gd-archive-breakdown">
+          <div className="gd-archive-breakdown-top">
+            <span>{id ? 'RINCIAN PER JENIS DESAIN' : 'BREAKDOWN BY DESIGN MEDIUM'}</span>
+            <span>01—05 / ARCHIVE</span>
+          </div>
+          {mediums.map((item) => (
+            <div className="gd-archive-breakdown-row" key={item.key}>
+              <span>{id ? item.titleId : item.titleEn}</span>
+              <strong>{mediumCounts[item.key].toLocaleString(id ? 'id-ID' : 'en-US')} <small>{item.key === 'feed' ? (id ? 'unggahan unik' : 'unique posts') : (id ? 'diarsipkan' : 'archived')}</small></strong>
+            </div>
+          ))}
+          <p>{id
+            ? `Ada ${collectionEntries} entri di seluruh koleksi Instagram, dengan ${collectionEntries - feedCount} entri berulang. Untuk Poster, Lanyard, Baju, dan Kemasan, angka 0 berarti file belum ditambahkan ke arsip—bukan belum pernah dibuat.`
+            : `There are ${collectionEntries} entries across Instagram collections, including ${collectionEntries - feedCount} repeat entries. A zero for other media means files have not been added to this archive, not that no work was created.`}</p>
+        </div>
       </div>
 
       <div className="gd-archive-media-grid" role="group" aria-label={id ? 'Pilih jenis desain' : 'Choose a design medium'}>
@@ -58,7 +96,10 @@ export default function GraphicDesignArchiveGallery({ id, selectedCollection, on
             <span className="gd-archive-medium-head"><span>{item.no} / MEDIUM</span><span aria-hidden="true">↗</span></span>
             <span className="gd-archive-medium-art" aria-hidden="true">{item.art}</span>
             <span className="gd-archive-medium-title">{id ? item.titleId : item.titleEn}</span>
-            <span className="gd-archive-medium-foot">{id ? item.captionId : item.captionEn}{item.key === 'feed' && <b>{feedCount} {id ? 'tautan' : 'links'}</b>}</span>
+            <span className="gd-archive-medium-foot">
+              <span>{id ? item.captionId : item.captionEn}</span>
+              <b>{mediumCounts[item.key].toLocaleString(id ? 'id-ID' : 'en-US')} {item.key === 'feed' ? (id ? 'unggahan' : 'posts') : (id ? 'diarsipkan' : 'archived')}</b>
+            </span>
           </button>
         ))}
       </div>
