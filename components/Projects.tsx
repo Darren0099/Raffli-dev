@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { projectsData } from "@/data/projectsData";
+import { usePortfolioProjects } from "@/hooks/usePortfolioProjects";
 import { useLanguage } from "./LanguageProvider";
 import { useLocalizedProjectTitles } from "@/hooks/useLocalizedProjects";
 
 export default function RelatedProjects() {
   const { lang } = useLanguage();
+  const { projects: projectsData } = usePortfolioProjects();
   const titleFor = useLocalizedProjectTitles(projectsData);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMouseDown, setIsMouseDown] = useState(false);
