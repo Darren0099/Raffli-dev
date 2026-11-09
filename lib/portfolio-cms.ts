@@ -1,63 +1,74 @@
-import { NextRequest, NextResponse } from 'next/server';
+import {createHash, createHmac, randomBytes, scryptSync, timingSafeEqual} from 'node:crypto';
+import {NextRequest,NextResponse} from 'next/server';
 
-export const cmsConfigured = () => Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_PUBLISHABLE_KEY && process.env.PORTFOLIO_ADMIN_USER_ID);
-export const baseUrl = () => (process.env.SUPABASE_URL ?? '').replace(/\/$/, '');
-const apiKey = () => process.env.SUPABASE_PUBLISHABLE_KEY ?? '';
-export const accessCookie = 'raffli_admin_access';
-export const refreshCookie = 'raffli_admin_refresh';
-export function supabaseHeaders(jwt?: string): Record<string, string> {
-  return { apikey: apiKey(), Authorization: 'Bearer ' + (jwt || apiKey()) };
+// Credentials exist ONLY in Vercel environment variables. No default admin credentials.
+const COOKIE='raffli_cms_session';
+const SESSION_TTL=4*60*60;
+function hash(s:string){return createHash('sha256').update(s).digest();}
+function constantEqual(a:string,b:string){return timingSafeEqual(hash(a),hash(b));}
+function secret(){return process.env.CMS_SESSION_SECRET||'';}
+function pwdConfig(){return process.env.CMS_ADMIN_PASSWORD_HASH||'';}
+export function authConfigured(){
+ return !!(process.env.CMS_ADMIN_USERNAME && /^[a-f0-9]{32}:[a-f0-9]{128}$/i.test(pwdConfig()) && secret().length>=32);
 }
-export function allowedOrigin(req: NextRequest) {
-  const origin = req.headers.get('origin');
-  if (!origin) return true;
-  try { return new URL(origin).host === req.nextUrl.host; } catch { return false; }
+export function cmsConfigured(){return authConfigured() && Boolean(process.env.GITHUB_TOKEN);}
+export function verifyCredentials(username:string,password:string){
+ if(!authConfigured()||username.length>150||password.length>512||password.length<1)return false;
+ const [salt,expected]=pwdConfig().split(':');
+ const candidate=scryptSync(password,salt,64);
+ const correct=Buffer.from(expected,'hex');
+ return constantEqual(username,process.env.CMS_ADMIN_USERNAME||'') &&
+        candidate.length===correct.length && timingSafeEqual(candidate,correct);
 }
-function cookieSettings(maxAge: number) {
-  return { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict' as const, path: '/', maxAge };
+function sign(exp:string,nonce:string){
+ return createHmac('sha256',secret()).update('raffli-cms-v1:'+exp+':'+nonce+':'+pwdConfig()).digest('hex');
 }
-export function setSessionCookies(res: NextResponse, session: {access_token: string; refresh_token: string; expires_in?: number}) {
-  res.cookies.set(accessCookie, session.access_token, cookieSettings(Math.min(session.expires_in || 3600, 3600)));
-  res.cookies.set(refreshCookie, session.refresh_token, cookieSettings(60 * 60 * 24 * 30));
+export function createSession(){
+ const exp=String(Math.floor(Date.now()/1000)+SESSION_TTL);
+ const nonce=randomBytes(18).toString('hex');
+ return exp+'.'+nonce+'.'+sign(exp,nonce);
 }
-export function clearSessionCookies(res: NextResponse) {
-  res.cookies.set(accessCookie, '', cookieSettings(0));
-  res.cookies.set(refreshCookie, '', cookieSettings(0));
+export function validSession(raw:string|undefined){
+ if(!authConfigured()||!raw||raw.length>256)return false;
+ const parts=raw.split('.');
+ if(parts.length!==3)return false;
+ const [exp,nonce,mac]=parts;
+ if(!/^\d{10,11}$/.test(exp)||!/^[a-f0-9]{36}$/.test(nonce)||!/^[a-f0-9]{64}$/.test(mac))return false;
+ if(Number(exp)<=Date.now()/1000 || Number(exp)>Date.now()/1000+SESSION_TTL+60)return false;
+ return constantEqual(mac,sign(exp,nonce));
 }
-export type AdminIdentity = { id: string; email?: string };
-export async function requireAdmin(req: NextRequest): Promise<{user: AdminIdentity; token: string; rotated?: {access_token:string; refresh_token:string; expires_in?:number}} | null> {
-  if (!cmsConfigured()) return null;
-  let token = req.cookies.get(accessCookie)?.value;
-  let rotated: { access_token:string; refresh_token:string; expires_in?:number } | undefined;
-  async function getUser(jwt: string) {
-    try {
-      const r = await fetch(baseUrl() + '/auth/v1/user', { headers: supabaseHeaders(jwt), cache: 'no-store' });
-      return r.ok ? await r.json() as AdminIdentity : null;
-    } catch { return null; }
-  }
-  let user = token ? await getUser(token) : null;
-  if (!user) {
-    const refresh = req.cookies.get(refreshCookie)?.value;
-    if (!refresh) return null;
-    try {
-      const r = await fetch(baseUrl() + '/auth/v1/token?grant_type=refresh_token', {
-        method:'POST', headers:{...supabaseHeaders(), 'Content-Type':'application/json'},
-        body:JSON.stringify({refresh_token:refresh}), cache:'no-store'
-      });
-      if (!r.ok) return null;
-      rotated = await r.json();
-      token = rotated?.access_token;
-      user = token ? await getUser(token) : null;
-    } catch { return null; }
-  }
-  // Deny by default: a valid Supabase account is not sufficient to administer this portfolio.
-  if (!user || !token || user.id !== process.env.PORTFOLIO_ADMIN_USER_ID) return null;
-  return {user,token,rotated};
+function cookieOpts(maxAge:number){
+ return {httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'strict' as const,path:'/',maxAge};
 }
-export function withSession(res: NextResponse, session: { rotated?: {access_token:string;refresh_token:string;expires_in?:number} }) {
-  if (session.rotated) setSessionCookies(res,session.rotated);
-  res.headers.set('Cache-Control','no-store');
-  return res;
+export function setSession(res:NextResponse){
+ res.cookies.set(COOKIE,createSession(),cookieOpts(SESSION_TTL));
+ res.headers.set('Cache-Control','no-store');
+ return res;
 }
-export const unauthorized = () => NextResponse.json({error:'Unauthorized'}, {status:401,headers:{'Cache-Control':'no-store'}});
-export const cmsUnavailable = () => NextResponse.json({error:'CMS is not configured yet'}, {status:503});
+export function clearSession(res:NextResponse){
+ res.cookies.set(COOKIE,'',cookieOpts(0));
+ res.headers.set('Cache-Control','no-store');
+ return res;
+}
+export function requireAdmin(req:NextRequest){return validSession(req.cookies.get(COOKIE)?.value);}
+export function allowedOrigin(req:NextRequest){
+ // A strict Origin check supplements SameSite cookies for all changing actions.
+ const origin=req.headers.get('origin');
+ if(!origin||origin==='null')return false;
+ try{const u=new URL(origin);return u.protocol===req.nextUrl.protocol && u.host===req.nextUrl.host;}catch{return false;}
+}
+export function unauthorized(){return NextResponse.json({error:'Unauthorized'},{status:401,headers:{'Cache-Control':'no-store'}});}
+export function unavailable(){return NextResponse.json({error:'CMS is not configured. Set credentials and GitHub token in Vercel.'},{status:503,headers:{'Cache-Control':'no-store'}});}
+// Best-effort per-instance delay; use Vercel WAF rate-limiting for distributed protection.
+const attempts=new Map<string,{count:number;until:number}>();
+export function loginKey(req:NextRequest){return req.headers.get('x-real-ip')||req.headers.get('x-forwarded-for')?.split(',')[0]||'unknown';}
+export function isLocked(k:string){
+ const a=attempts.get(k);if(!a)return false;if(a.until<Date.now()){attempts.delete(k);return false;}return a.count>=5;
+}
+export function recordFailure(k:string){
+ const a=attempts.get(k)||{count:0,until:Date.now()+10*60_000};
+ if(a.until<Date.now()){a.count=0;a.until=Date.now()+10*60_000;}
+ a.count++;attempts.set(k,a);
+ if(attempts.size>2500){const oldest=attempts.keys().next().value;if(oldest)attempts.delete(oldest);}
+}
+export function recordSuccess(k:string){attempts.delete(k);}
