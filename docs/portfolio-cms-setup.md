@@ -27,24 +27,17 @@ In your Vercel **raffli-dev** project → Settings → Environment Variables, fo
 | `CMS_SESSION_SECRET` | At least 32 random characters | Keep private; changing it signs every session out. |
 | `PORTFOLIO_CMS_ENABLED` | `false` initially | Set to `true` **only after** successful import/permission tests. |
 
-### Create secure values locally
+### Create your admin password hash locally
 
-Use Node.js in a local terminal. To generate a password hash without putting the password into a command argument:
+A masked-input helper is now included in the repository. Open your Raffli-dev folder in the VS Code terminal after checking out this branch, then run:
 
-```js
-// Save this as a temporary local script OUTSIDE the repository, then run with node.
-const crypto = require('node:crypto');
-const readline = require('node:readline');
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-rl.question('Enter chosen long CMS password: ', (password) => {
-  const salt = crypto.randomBytes(16).toString('hex');
-  console.log('CMS_ADMIN_PASSWORD_HASH=' + salt + ':' + crypto.scryptSync(password, salt, 64).toString('hex'));
-  console.log('CMS_SESSION_SECRET=' + crypto.randomBytes(32).toString('hex'));
-  rl.close();
-});
+```sh
+node scripts/create-cms-password.mjs
 ```
 
-Set the generated **hash** and **secret** in Vercel. Delete the temporary script. Password input is echoed by this basic terminal example, so run it privately; do not paste the password, hash, token, or session secret into ChatGPT.
+The password does not echo to the terminal, and the helper prints only a salted scrypt hash. Paste that output into the Vercel **Secret** environment variable `CMS_ADMIN_PASSWORD_HASH`. Never share the password or hash in chat or commit it.
+
+`CMS_SESSION_SECRET` has already been generated and stored in Vercel by the assistant on 2026-11-10; do not overwrite it unless rotating the secret intentionally.
 
 ### GitHub token permissions
 
