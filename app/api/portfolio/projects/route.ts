@@ -17,7 +17,7 @@ export async function GET(){
   const overridden=new Set(rows.map(r=>r.slug));
   const legacy=projectsData.filter(p=>!overridden.has(p.slug));
   const published:Project[]=rows.filter(r=>r.status==='published').map(r=>({...r.data,id:r.id}));
-  return NextResponse.json({projects:[...published,...legacy],source:'github'},{headers});
+  return NextResponse.json({projects:[...published,...legacy].sort((a,b)=>Number(b.slug==='youth-visual-identity')-Number(a.slug==='youth-visual-identity')),source:'github'},{headers});
  }catch{
   // Fail closed. Never restore legacy entries that an admin has hidden in CMS.
   return NextResponse.json({error:'Portfolio projects temporarily unavailable'},{status:503,headers:{'Cache-Control':'no-store'}});
