@@ -525,3 +525,115 @@
     min-height: 0 !important;
   }
 }
+
+
+/* CV Studio v5 — document-type switch and true role-targeted one-page resume. */
+.cvr-mode-picker {
+  padding: 0 0 18px;
+  margin: 0 0 22px;
+  border-bottom: 1px solid #eceef1;
+}
+.cvr-mode-options {
+  display:grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap:5px;
+  background:#f0f1f3;
+  padding:4px;
+  border-radius:10px;
+}
+.cvr-mode-options button {
+  min-width:0;
+  min-height:41px;
+  padding:10px 8px;
+  border:0;
+  border-radius:7px;
+  background:transparent;
+  color:#647084;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease,box-shadow .18s ease;
+}
+.cvr-mode-options button.active {
+  background:#1b2533;
+  color:#fff;
+  box-shadow:0 3px 9px rgba(14,26,44,.14);
+}
+.cvr-mode-options button:hover:not(.active) { color:#e45a16; }
+.cvr-mode-options button:focus-visible { outline:2px solid #fe5000; outline-offset:2px; }
+.cvr-mode-description {
+  margin:12px 1px 0;
+  color:#6a7382;
+  font-size:11.2px;
+  line-height:1.58;
+}
+.cvr-format-note {
+  display:inline-block;
+  margin-top:12px;
+  padding:6px 9px;
+  border:1px solid #f4d7c7;
+  border-radius:5px;
+  background:#fff6f0;
+  color:#ad4f20;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.01em;
+}
+.cvr-preview-meta {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  width:794px;
+  max-width:100%;
+  margin:0 auto 12px;
+  color:#77808f;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.025em;
+}
+.cvr-preview-doc { color:#374052; font-weight:800; }
+
+/* Resume uses normal A4 margins and readable type; content is selected, never scaled to fit. */
+.cvr-job-resume .cvr-page-body {
+  display:block;
+  min-height:0;
+}
+.cvr-job-resume .cvr-resume-header {
+  margin-bottom:18px;
+  padding-bottom:12px;
+}
+.cvr-job-resume .cvr-summary { margin-bottom:17px; }
+.cvr-job-resume .cvr-summary p {
+  font-size:12.8px;
+  line-height:1.52;
+}
+.cvr-job-resume .cvr-section { margin-bottom:17px; }
+.cvr-job-resume .cvr-section h2 {
+  font-size:12.8px;
+  letter-spacing:.015em;
+  padding-bottom:5px;
+  margin-bottom:9px;
+}
+.cvr-job-resume .cvr-entry { margin-bottom:13px; }
+.cvr-job-resume .cvr-entry:last-child { margin-bottom:0; }
+.cvr-job-resume .cvr-entry-heading strong { font-size:12.8px; }
+.cvr-job-resume .cvr-entry-heading time { font-size:11.4px; }
+.cvr-job-resume .cvr-entry-org { font-size:11.6px; }
+.cvr-job-resume .cvr-bullets li { font-size:12.35px;line-height:1.43; margin-bottom:3px; }
+.cvr-job-resume .cvr-skills .cvr-skill-row { font-size:12px; line-height:1.4; margin-bottom:4px; }
+.cvr-job-resume .cvr-education p,
+.cvr-job-resume .cvr-education .cvr-subtle { font-size:11.8px; line-height:1.4; }
+.cvr-job-resume .cvr-certifications .cvr-cert-row { font-size:11.8px; line-height:1.4; margin-bottom:4px; }
+.cvr-job-resume .cvr-resume-header h1 { font-size:23px; }
+.cvr-job-resume .cvr-contacts { font-size:10.7px; }
+.cvr-job-resume .cvr-section:last-child { margin-bottom:0; }
+
+@media screen and (max-width:740px) {
+  .cvr-preview-meta { min-width:0; width:794px; }
+}
+@media print {
+  .cvr-preview-meta { display:none!important; }
+  .cvr-job-resume { break-after:auto!important; }
+  .cvr-job-resume .cvr-page-footer { display:none!important; }
+}
