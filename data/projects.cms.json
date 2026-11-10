@@ -481,7 +481,8 @@
       "galleryImages": [
         "/uploads/projects/mwaar0yw-a87a82edb5de5450.png",
         "/uploads/projects/mwaara0v-4d6111aa7675230c.png",
-        "/uploads/projects/mwaargbj-c22f966e126affc2.png"
+        "/uploads/projects/mwaargbj-c22f966e126affc2.png",
+        "/uploads/projects/mwaasrzz-661e22b0a2f1ac41.png"
       ],
       "gridThumbnails": [
         "/img/ca4.png"
@@ -489,10 +490,11 @@
       "bottomGalleryImages": [
         "/uploads/projects/mwaar0yw-a87a82edb5de5450.png",
         "/uploads/projects/mwaara0v-4d6111aa7675230c.png",
-        "/uploads/projects/mwaargbj-c22f966e126affc2.png"
+        "/uploads/projects/mwaargbj-c22f966e126affc2.png",
+        "/uploads/projects/mwaasrzz-661e22b0a2f1ac41.png"
       ],
       "outcomeGallery": [
-        "/img/ca4.png"
+        "/uploads/projects/mwaasrzz-661e22b0a2f1ac41.png"
       ],
       "outcomeStats": [],
       "heroImage": "/uploads/projects/mwaaqh2p-9b9e35f8fe6cdbc5.png",
@@ -508,7 +510,7 @@
       "outcomeText": "Portal artikel responsif dengan database dan fungsi administrasi berita (buat, baca, ubah, hapus), serta penelusuran berdasarkan kategori dan pencarian."
     },
     "created_at": "2026-11-10T00:00:00.000Z",
-    "updated_at": "2026-11-10T06:16:55.186Z"
+    "updated_at": "2026-11-10T06:17:42.032Z"
   },
   {
     "id": 5,
