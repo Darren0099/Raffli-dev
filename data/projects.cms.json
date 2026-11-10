@@ -680,8 +680,7 @@
       "title": "Palembang Go Vacation — Katalog 94 Destinasi Wisata",
       "client": "KMIPN VI — Politeknik Negeri Sriwijaya",
       "category": "Web Development",
-      "image": "/img/palembang-portrait-phone.webp",
-      "heroImage": "/img/pa (1).png",
+      "image": "/uploads/projects/mwaakx8v-bc112b40875b6010.png",
       "link": "https://palembang-go-vacation.vercel.app/",
       "repoUrl": "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT",
       "tools": [
@@ -706,7 +705,6 @@
           "Tautan peta dan tur virtual 360°"
         ]
       },
-      "summaryQuote": "Membuat satu pintu untuk mengenal wisata Palembang lewat katalog, detail destinasi, galeri, dan peta.",
       "descriptionParagraphs": [
         "Informasi tempat wisata Palembang tersebar di banyak sumber sehingga pengunjung memerlukan titik awal untuk mengenal destinasi, sejarah, dan lokasi.",
         "Bersama tim, saya membangun portal wisata dengan Next.js App Router, React, TypeScript, dan CSS Modules. Informasi destinasi dikelola pada data terstruktur, bukan halaman HTML terpisah untuk masing-masing tempat.",
@@ -716,13 +714,6 @@
         "/img/pa (2).png",
         "/img/pa (3).png"
       ],
-      "section1Title": "Satu struktur data, banyak halaman destinasi",
-      "section1Text1": "Repository versi sekarang memuat 94 destinasi: 47 wisata sejarah dan budaya, 32 wisata buatan, 4 wisata alam, dan 11 wisata kuliner.",
-      "section1Text2": "Satu template Next.js menangani rute /wisata/[slug]. Pengelola menambah objek data baru tanpa perlu menulis ulang tata letak halaman, dan 14 destinasi memiliki tautan tur virtual.",
-      "largeBannerImage": "/img/pa (1).png",
-      "section2Title": "Cara teknologi mendukung pengalaman wisatawan",
-      "section2Text1": "React membangun antarmuka filter kategori, carousel, dan galeri. TypeScript menjaga tipe konten destinasi, sedangkan CSS Modules mempertahankan gaya komponen secara terpisah.",
-      "section2Text2": "Hasilnya adalah portal informasi yang mudah dijelajahi. Sebagian destinasi masih menggunakan konten fallback, dan form newsletter pada repository belum terhubung ke layanan email.",
       "gridThumbnails": [
         "/img/pa (1).png",
         "/img/pa (2).png",
@@ -735,8 +726,10 @@
         "/img/pa (3).png",
         "/img/pa (4).png"
       ],
-      "outcomeTitle": "Hasil yang Diperoleh",
-      "outcomeText": "Website katalog wisata dengan halaman dinamis, navigasi kategori, galeri, peta, dan opsi tur virtual; total 94 destinasi pada data repository.",
+      "outcomeGallery": [
+        "/img/pa (2).png",
+        "/img/pa (3).png"
+      ],
       "outcomeStats": [
         {
           "label": "Destinasi",
@@ -755,12 +748,19 @@
           "value": "4"
         }
       ],
-      "outcomeGallery": [
-        "/img/pa (2).png",
-        "/img/pa (3).png"
-      ]
+      "heroImage": "/img/pa (1).png",
+      "summaryQuote": "Membuat satu pintu untuk mengenal wisata Palembang lewat katalog, detail destinasi, galeri, dan peta.",
+      "section1Title": "Satu struktur data, banyak halaman destinasi",
+      "section1Text1": "Repository versi sekarang memuat 94 destinasi: 47 wisata sejarah dan budaya, 32 wisata buatan, 4 wisata alam, dan 11 wisata kuliner.",
+      "section1Text2": "Satu template Next.js menangani rute /wisata/[slug]. Pengelola menambah objek data baru tanpa perlu menulis ulang tata letak halaman, dan 14 destinasi memiliki tautan tur virtual.",
+      "largeBannerImage": "/img/pa (1).png",
+      "section2Title": "Cara teknologi mendukung pengalaman wisatawan",
+      "section2Text1": "React membangun antarmuka filter kategori, carousel, dan galeri. TypeScript menjaga tipe konten destinasi, sedangkan CSS Modules mempertahankan gaya komponen secara terpisah.",
+      "section2Text2": "Hasilnya adalah portal informasi yang mudah dijelajahi. Sebagian destinasi masih menggunakan konten fallback, dan form newsletter pada repository belum terhubung ke layanan email.",
+      "outcomeTitle": "Hasil yang Diperoleh",
+      "outcomeText": "Website katalog wisata dengan halaman dinamis, navigasi kategori, galeri, peta, dan opsi tur virtual; total 94 destinasi pada data repository."
     },
     "created_at": "2026-11-10T00:00:00.000Z",
-    "updated_at": "2026-11-10T00:00:00.000Z"
+    "updated_at": "2026-11-10T06:11:25.162Z"
   }
 ]
