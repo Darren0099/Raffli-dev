@@ -40,14 +40,77 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    "id": 5,
+    "slug": "youth-visual-identity",
+    "title": "Graphic Design — Creative Archive & Visual Campaigns",
+    "client": "YRI · International Kingdom · Duta Potensi",
+    "category": "Graphic Design",
+    "image": "/graphic-design/cover.svg",
+    "heroImage": "/graphic-design/cover.svg",
+    "link": "/graphic-design",
+    "tools": [
+      "Canva",
+      "Graphic Design",
+      "Branding",
+      "Social Media Design"
+    ],
+    "buildTime": "Visual identity, social media & event campaigns",
+    "isExternalLink": false,
+    "services": {
+      "pills": [
+        "Branding",
+        "Social Media",
+        "Design"
+      ],
+      "list": [
+        "Template komunikasi visual",
+        "Poster kegiatan dan pengumuman",
+        "Konten feed media sosial",
+        "Konsistensi identitas organisasi"
+      ]
+    },
+    "summaryQuote": "Arsip desain YRI Sumsel, Summit of Stars I–II, YRI Fest x Expo, International Kingdom Indonesia, dan Youthopia Symposium.",
+    "descriptionParagraphs": [
+      "Organisasi yang menjalankan banyak program membutuhkan cara menyajikan informasi yang tetap konsisten meski tema kegiatan berbeda.",
+      "Pekerjaan desain mencakup pengaturan warna, tipografi, hirarki informasi, dan format visual untuk poster serta materi media sosial YRI Sumsel.",
+      "Canva digunakan dalam perancangan materi visual. Hasil desain dipublikasikan atau didokumentasikan melalui kanal organisasi; proyek ini bukan aplikasi yang dibangun dengan framework web."
+    ],
+    "galleryImages": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "section1Title": "Sistem visual yang mudah diterapkan ulang",
+    "section1Text1": "Prinsip konsistensi diterapkan melalui pilihan warna, pasangan font, proporsi judul, dan ruang baca yang cukup agar pesan kegiatan cepat dipahami.",
+    "section1Text2": "Struktur template membantu desainer atau pengelola kanal sosial menyusun konten serupa untuk kebutuhan publikasi berikutnya.",
+    "largeBannerImage": "/img/ca1.png",
+    "section2Title": "Dampak yang dapat ditunjukkan",
+    "section2Text1": "Output utamanya adalah materi visual untuk komunikasi program organisasi: poster, feed, dan aset branding yang lebih seragam.",
+    "section2Text2": "Jumlah impresi, pertumbuhan pengikut, atau total template tidak dicantumkan sebagai hasil kuantitatif karena tidak tersedia bukti analitik yang dapat diverifikasi.",
+    "gridThumbnails": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "bottomGalleryImages": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Rangkaian materi visual organisasi dengan pendekatan branding konsisten dan format yang bisa digunakan kembali untuk publikasi acara berikutnya.",
+    "outcomeStats": [],
+    "outcomeGallery": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ]
+  },
+  {
     "id": 9,
     "slug": "mobius",
     "title": "Mobius — Desktop Island Assistant & File Studio",
     "client": "Independent Project",
     "category": "Desktop Application",
-    "image": "/img/mobius-portrait.svg",
+    "image": "/img/mobius-portrait-approved.png",
     "logo": "/img/mobius-logo.svg",
-    "heroImage": "/img/mobius-cover.svg",
+    "heroImage": "/img/mobius-hero-approved.png",
     "link": "https://github.com/Darren0099/Mobius",
     "repoUrl": "https://github.com/Darren0099/Mobius",
     "tools": [
@@ -62,7 +125,11 @@ export const projectsData: Project[] = [
     "buildTime": "2026 • In development (source only)",
     "isExternalLink": true,
     "services": {
-      "pills": ["Desktop App", "Productivity", "UI/UX"],
+      "pills": [
+        "Desktop App",
+        "Productivity",
+        "UI/UX"
+      ],
       "list": [
         "Dynamic island desktop dengan animasi mata robot dan indikator status",
         "File Studio radial dengan sembilan opsi konversi dokumen dan gambar",
@@ -74,33 +141,60 @@ export const projectsData: Project[] = [
     "descriptionParagraphs": [
       "Mobius adalah proyek aplikasi produktivitas Windows berbasis Python dan PySide6. Konsep utamanya adalah dynamic island minimalis di bagian atas layar: ringkas saat tidak digunakan, responsif terhadap interaksi, dan tidak menghalangi aplikasi lain.",
       "Antarmuka utamanya menampilkan mata robot ekspresif, indikator waktu atau baterai, serta akses cepat ke musik, lirik, fokus, hidrasi, dan asisten suara. File Studio menggunakan menu radial terpisah yang dapat dipanggil melalui drag-and-drop untuk mengonversi gambar, PDF, dan dokumen Word.",
-      "Pengembangan saat ini berfokus pada penyempurnaan animasi, stabilitas tampilan overlay, dan alur perintah suara di Windows. Repository berisi kode sumber dan pengujian, tetapi versi EXE final sengaja belum dirilis. Cover dan logo yang ditampilkan merupakan konsep identitas visual, bukan tangkapan layar aplikasi yang sudah selesai."
+      "Pengembangan saat ini berfokus pada penyempurnaan animasi, stabilitas tampilan overlay, dan alur perintah suara di Windows. Repository berisi kode sumber dan pengujian, tetapi versi EXE final sengaja belum dirilis. Hero dan preview adalah mockup presentasi; galeri memuat tangkapan layar langsung dari aplikasi Windows yang sedang dikembangkan."
     ],
     "section1Title": "Dari dynamic island menjadi ruang kerja mini",
     "section1Text1": "Mobius ditempatkan di tepi atas layar. Ketika desktop aktif, island dapat menampilkan mata robot animatif; saat aplikasi lain aktif, tampilan menyusut menjadi indikator tipis. Pengguna dapat mengarahkan kursor ke tepi layar untuk memanggilnya kembali.",
     "section1Text2": "Panel utilitas menyediakan kontrol media yang terhubung ke sesi media Windows, lirik dari berkas LRC atau pencarian opsional, timer Pomodoro, pengingat hidrasi, serta perintah suara lokal. Dukungan fitur media bergantung pada sesi pemutar yang tersedia.",
-    "largeBannerImage": "/img/mobius-portrait.svg",
+    "largeBannerImage": "/img/mobius-file-studio-real.png",
     "section2Title": "File Studio radial dan pemrosesan lokal",
     "section2Text1": "File Studio mengumpulkan operasi Image to PDF, PDF to Image, Word to PDF, PDF to Word, Merge, Split, Compress dan Rotate PDF, serta konversi format gambar dalam sebuah menu radial. Opsi yang tidak kompatibel dengan file dinonaktifkan.",
     "section2Text2": "Konversi dokumen ditangani oleh pustaka lokal seperti PyMuPDF, Pillow, python-docx, dan ReportLab. Aplikasi ditujukan untuk penggunaan offline; fitur opsional seperti pencarian lirik online atau instalasi model suara tetap membutuhkan jaringan. Pengujian akhir pada perangkat Windows masih berjalan.",
     "bottomGalleryImages": [
-      "/img/mobius-cover.svg",
-      "/img/mobius-portrait.svg",
-      "/img/mobius-logo.svg"
+      "/img/mobius-hero-approved.png",
+      "/img/mobius-portrait-approved.png",
+      "/img/mobius-file-studio-real.png",
+      "/img/mobius-focus-real.png",
+      "/img/mobius-water-real.png",
+      "/img/mobius-assistant-real.png",
+      "/img/mobius-desktop-real.png"
     ],
     "outcomeTitle": "Status dan Hasil Pengembangan",
-    "outcomeText": "Kode sumber Mobius memuat prototipe dynamic island, mata robot, File Studio radial, kontrol media, utilitas fokus dan hidrasi, serta komponen suara. Aset visual portofolio merupakan rancangan branding; screenshot aplikasi, dokumentasi galeri, dan rilis EXE final akan dilengkapi setelah tahap validasi UI dan pengujian di perangkat Windows selesai.",
+    "outcomeText": "Prototipe Mobius telah dijalankan di Windows. Galeri memperlihatkan antarmuka langsung: mata robot, File Studio radial, Assistant, Focus Timer, dan Water Reminder. Hero serta preview menggunakan mockup; kode sumber masih dalam pengembangan dan EXE final belum dirilis.",
     "outcomeStats": [
-      { "label": "Operasi File Studio", "value": "9" },
-      { "label": "Platform", "value": "Windows" },
-      { "label": "Framework antarmuka", "value": "PySide6" },
-      { "label": "Tahap", "value": "Source / Prototype" }
+      {
+        "label": "Operasi File Studio",
+        "value": "9"
+      },
+      {
+        "label": "Platform",
+        "value": "Windows"
+      },
+      {
+        "label": "Framework antarmuka",
+        "value": "PySide6"
+      },
+      {
+        "label": "Tahap",
+        "value": "Source / Prototype"
+      }
     ],
     "outcomeGallery": [
-      "/img/mobius-logo.svg"
+      "/img/mobius-file-studio-real.png",
+      "/img/mobius-assistant-real.png"
+    ],
+    "galleryImages": [
+      "/img/mobius-focus-real.png",
+      "/img/mobius-assistant-real.png",
+      "/img/mobius-water-real.png"
+    ],
+    "gridThumbnails": [
+      "/img/mobius-desktop-real.png",
+      "/img/mobius-focus-real.png",
+      "/img/mobius-assistant-real.png",
+      "/img/mobius-water-real.png"
     ]
   },
-
   {
     "id": 8,
     "slug": "kleindata",
@@ -124,7 +218,11 @@ export const projectsData: Project[] = [
     "buildTime": "2026 • Independent project",
     "isExternalLink": true,
     "services": {
-      "pills": ["Web Development", "Data Analytics", "UI/UX"],
+      "pills": [
+        "Web Development",
+        "Data Analytics",
+        "UI/UX"
+      ],
       "list": [
         "Dashboard analitik responsif untuk CSV, Excel, JSON, TSV, dan Parquet",
         "30 pilihan insight berbasis query SQL dan pemetaan kolom otomatis",
@@ -164,17 +262,28 @@ export const projectsData: Project[] = [
     "outcomeTitle": "Hasil yang Diperoleh",
     "outcomeText": "KleinData v2 berhasil dirilis sebagai web analytics studio responsif dengan 30 resep analisis SQL, impor dan pemeriksaan data, grafik interaktif, serta ekspor. Build dan pengujian browser otomatis telah dijalankan; belum ada pengukuran dampak bisnis dari penggunaan aplikasi.",
     "outcomeStats": [
-      { "label": "Jenis insight", "value": "30" },
-      { "label": "Format impor", "value": "5" },
-      { "label": "Mesin analitik", "value": "DuckDB-Wasm" },
-      { "label": "Pemrosesan data", "value": "Di browser" }
+      {
+        "label": "Jenis insight",
+        "value": "30"
+      },
+      {
+        "label": "Format impor",
+        "value": "5"
+      },
+      {
+        "label": "Mesin analitik",
+        "value": "DuckDB-Wasm"
+      },
+      {
+        "label": "Pemrosesan data",
+        "value": "Di browser"
+      }
     ],
     "outcomeGallery": [
       "/img/m (2).png",
       "/img/m (1).png"
     ]
   },
-
   {
     "id": 1,
     "slug": "yri-sumsel",
@@ -470,69 +579,6 @@ export const projectsData: Project[] = [
     ]
   },
   {
-    "id": 5,
-    "slug": "youth-visual-identity",
-    "title": "Graphic Design — Creative Archive & Visual Campaigns",
-    "client": "YRI · International Kingdom · Duta Potensi",
-    "category": "Graphic Design",
-    "image": "/graphic-design/cover.svg",
-    "heroImage": "/graphic-design/cover.svg",
-    "link": "/graphic-design",
-    "tools": [
-      "Canva",
-      "Graphic Design",
-      "Branding",
-      "Social Media Design"
-    ],
-    "buildTime": "Visual identity, social media & event campaigns",
-    "isExternalLink": false,
-    "services": {
-      "pills": [
-        "Branding",
-        "Social Media",
-        "Design"
-      ],
-      "list": [
-        "Template komunikasi visual",
-        "Poster kegiatan dan pengumuman",
-        "Konten feed media sosial",
-        "Konsistensi identitas organisasi"
-      ]
-    },
-    "summaryQuote": "Arsip desain YRI Sumsel, Summit of Stars I–II, YRI Fest x Expo, International Kingdom Indonesia, dan Youthopia Symposium.",
-    "descriptionParagraphs": [
-      "Organisasi yang menjalankan banyak program membutuhkan cara menyajikan informasi yang tetap konsisten meski tema kegiatan berbeda.",
-      "Pekerjaan desain mencakup pengaturan warna, tipografi, hirarki informasi, dan format visual untuk poster serta materi media sosial YRI Sumsel.",
-      "Canva digunakan dalam perancangan materi visual. Hasil desain dipublikasikan atau didokumentasikan melalui kanal organisasi; proyek ini bukan aplikasi yang dibangun dengan framework web."
-    ],
-    "galleryImages": [
-      "/img/ca1.png",
-      "/img/ca3.png"
-    ],
-    "section1Title": "Sistem visual yang mudah diterapkan ulang",
-    "section1Text1": "Prinsip konsistensi diterapkan melalui pilihan warna, pasangan font, proporsi judul, dan ruang baca yang cukup agar pesan kegiatan cepat dipahami.",
-    "section1Text2": "Struktur template membantu desainer atau pengelola kanal sosial menyusun konten serupa untuk kebutuhan publikasi berikutnya.",
-    "largeBannerImage": "/img/ca1.png",
-    "section2Title": "Dampak yang dapat ditunjukkan",
-    "section2Text1": "Output utamanya adalah materi visual untuk komunikasi program organisasi: poster, feed, dan aset branding yang lebih seragam.",
-    "section2Text2": "Jumlah impresi, pertumbuhan pengikut, atau total template tidak dicantumkan sebagai hasil kuantitatif karena tidak tersedia bukti analitik yang dapat diverifikasi.",
-    "gridThumbnails": [
-      "/img/ca1.png",
-      "/img/ca3.png"
-    ],
-    "bottomGalleryImages": [
-      "/img/ca1.png",
-      "/img/ca3.png"
-    ],
-    "outcomeTitle": "Hasil yang Diperoleh",
-    "outcomeText": "Rangkaian materi visual organisasi dengan pendekatan branding konsisten dan format yang bisa digunakan kembali untuk publikasi acara berikutnya.",
-    "outcomeStats": [],
-    "outcomeGallery": [
-      "/img/ca1.png",
-      "/img/ca3.png"
-    ]
-  },
-  {
     "id": 6,
     "slug": "tokopedia-sentiment-analysis",
     "title": "Tokopedia — Analisis Rating dan Kinerja Kategori Produk",
@@ -624,7 +670,7 @@ export const projectsData: Project[] = [
     "title": "Palembang Go Vacation — Katalog 94 Destinasi Wisata",
     "client": "KMIPN VI — Politeknik Negeri Sriwijaya",
     "category": "Web Development",
-    "image": "/img/palembang-portrait-phone.webp",
+    "image": "/img/palembang-go-vacation-portrait-mockup.png",
     "heroImage": "/img/pa (1).png",
     "link": "https://palembang-go-vacation.vercel.app/",
     "repoUrl": "https://github.com/Darren0099/KMIPN6-EGOVERNEMNT",
