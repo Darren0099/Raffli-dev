@@ -449,7 +449,6 @@
       "client": "PLN Icon Plus Sumbagsel — Wilayah Bangka Belitung",
       "category": "Fullstack CMS",
       "image": "/img/ca4.png",
-      "heroImage": "/img/ca4.png",
       "link": "https://plniconnetbangkabelitung.ct.ws/",
       "repoUrl": "https://github.com/Darren0099/plniconnetbangkabelitung",
       "tools": [
@@ -474,38 +473,42 @@
           "Pengelolaan unggahan media"
         ]
       },
-      "summaryQuote": "Membangun alur publikasi berita daerah melalui portal artikel dan dashboard pengelola konten.",
       "descriptionParagraphs": [
         "Informasi berita, edukasi layanan, dan kegiatan wilayah perlu diperbarui tanpa mengubah file halaman setiap kali artikel baru diterbitkan.",
         "Saya mengembangkan portal artikel berbasis PHP dengan database MySQL/MariaDB, HTML, CSS, dan JavaScript. Aplikasi menampilkan kategori serta pencarian berita dan dilengkapi panel admin untuk pengelolaan konten.",
         "Kegiatan ini berkaitan dengan pekerjaan pengembangan website artikel selama pengalaman magang pada PLN Icon Plus Sumbagsel."
       ],
       "galleryImages": [
-        "/img/ca4.png",
-        "/img/ca5.png"
+        "/uploads/projects/mwaar0yw-a87a82edb5de5450.png",
+        "/uploads/projects/mwaara0v-4d6111aa7675230c.png",
+        "/uploads/projects/mwaargbj-c22f966e126affc2.png"
       ],
-      "section1Title": "Dari input admin menjadi artikel yang dapat dibaca publik",
-      "section1Text1": "Admin dapat menambah, menyunting, dan menghapus data artikel beserta media pendukung, sementara pengunjung menjelajahi konten berdasarkan kategori atau kata kunci.",
-      "section1Text2": "PHP mengolah permintaan server dan interaksi dengan database; frontend HTML, CSS, dan JavaScript menghadirkan tampilan artikel yang mudah diakses di berbagai ukuran layar.",
-      "largeBannerImage": "/img/ca4.png",
-      "section2Title": "Apa manfaat implementasinya?",
-      "section2Text1": "Pemisahan antara panel admin dan tampilan publik membuat proses pembaruan konten lebih terstruktur dibandingkan mengedit kode setiap kali ada berita.",
-      "section2Text2": "Repository dan aplikasi menjadi contoh implementasi CRUD artikel. Belum ada pengukuran terverifikasi atas waktu publikasi, uptime, atau trafik sehingga tidak ditampilkan klaim persentase.",
       "gridThumbnails": [
         "/img/ca4.png"
       ],
       "bottomGalleryImages": [
-        "/img/ca4.png"
+        "/uploads/projects/mwaar0yw-a87a82edb5de5450.png",
+        "/uploads/projects/mwaara0v-4d6111aa7675230c.png",
+        "/uploads/projects/mwaargbj-c22f966e126affc2.png"
       ],
-      "outcomeTitle": "Hasil yang Diperoleh",
-      "outcomeText": "Portal artikel responsif dengan database dan fungsi administrasi berita (buat, baca, ubah, hapus), serta penelusuran berdasarkan kategori dan pencarian.",
-      "outcomeStats": [],
       "outcomeGallery": [
         "/img/ca4.png"
-      ]
+      ],
+      "outcomeStats": [],
+      "heroImage": "/uploads/projects/mwaaqh2p-9b9e35f8fe6cdbc5.png",
+      "summaryQuote": "Membangun alur publikasi berita daerah melalui portal artikel dan dashboard pengelola konten.",
+      "section1Title": "Dari input admin menjadi artikel yang dapat dibaca publik",
+      "section1Text1": "Admin dapat menambah, menyunting, dan menghapus data artikel beserta media pendukung, sementara pengunjung menjelajahi konten berdasarkan kategori atau kata kunci.",
+      "section1Text2": "PHP mengolah permintaan server dan interaksi dengan database; frontend HTML, CSS, dan JavaScript menghadirkan tampilan artikel yang mudah diakses di berbagai ukuran layar.",
+      "largeBannerImage": "/uploads/projects/mwaaqnsf-110fa38047420eff.png",
+      "section2Title": "Apa manfaat implementasinya?",
+      "section2Text1": "Pemisahan antara panel admin dan tampilan publik membuat proses pembaruan konten lebih terstruktur dibandingkan mengedit kode setiap kali ada berita.",
+      "section2Text2": "Repository dan aplikasi menjadi contoh implementasi CRUD artikel. Belum ada pengukuran terverifikasi atas waktu publikasi, uptime, atau trafik sehingga tidak ditampilkan klaim persentase.",
+      "outcomeTitle": "Hasil yang Diperoleh",
+      "outcomeText": "Portal artikel responsif dengan database dan fungsi administrasi berita (buat, baca, ubah, hapus), serta penelusuran berdasarkan kategori dan pencarian."
     },
     "created_at": "2026-11-10T00:00:00.000Z",
-    "updated_at": "2026-11-10T00:00:00.000Z"
+    "updated_at": "2026-11-10T06:16:55.186Z"
   },
   {
     "id": 5,
