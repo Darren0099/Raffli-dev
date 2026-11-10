@@ -30,10 +30,10 @@ const labels = {
     lang:'BAHASA',
     page1:'1 halaman',
     page2:'2 halaman',
-    print:'Cetak / Simpan CV ke PDF',
-    printResume:'Cetak / Simpan Resume ke PDF',
+    print:'Unduh CV (PDF)',
+    printResume:'Unduh Resume (PDF)',
     back:'Kembali ke portofolio',
-    about:'PROFIL PROFESIONAL',
+    about:'PROFIL',
     education:'PENDIDIKAN',
     experience:'PENGALAMAN RELEVAN',
     projects:'PROYEK',
@@ -61,10 +61,10 @@ const labels = {
     lang:'LANGUAGE',
     page1:'1 page',
     page2:'2 pages',
-    print:'Print / Save CV as PDF',
-    printResume:'Print / Save Resume as PDF',
+    print:'Download CV (PDF)',
+    printResume:'Download Resume (PDF)',
     back:'Back to portfolio',
-    about:'PROFESSIONAL PROFILE',
+    about:'PROFILE',
     education:'EDUCATION',
     experience:'RELEVANT EXPERIENCE',
     projects:'PROJECTS',
@@ -256,6 +256,7 @@ export default function CVPage(){
     document.title=(mode==='resume'?'Resume':'CV')+' - '+cvProfiles[role].label[lang]+' - Al-Man Raffli Saputra';
   },[initialized,role,lang,template,pages,mode]);
   const s=labels[lang];
+  const pdfUrl='/api/cv/pdf?'+new URLSearchParams({role,template,pages:String(pages),lang,mode}).toString();
   return <main className="cvr-app">
     <aside className="cvr-controls" aria-label={s.preview}>
       <div className="cvr-topline">
@@ -302,9 +303,9 @@ export default function CVPage(){
             </div>
           </div>
         </div>
-        <button type="button" className="cvr-print" onClick={()=>window.print()}>
+        <a href={pdfUrl} className="cvr-print" download>
           <span aria-hidden="true">↓</span> {mode==='resume'?s.printResume:s.print}
-        </button>
+        </a>
       </div>
     </aside>
     <section className="cvr-preview" aria-label={mode==='resume'?'Resume Preview':'CV Preview'}>
