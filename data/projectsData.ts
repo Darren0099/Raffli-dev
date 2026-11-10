@@ -40,6 +40,69 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    "id": 5,
+    "slug": "youth-visual-identity",
+    "title": "Graphic Design — Creative Archive & Visual Campaigns",
+    "client": "YRI · International Kingdom · Duta Potensi",
+    "category": "Graphic Design",
+    "image": "/graphic-design/cover.svg",
+    "heroImage": "/graphic-design/cover.svg",
+    "link": "/graphic-design",
+    "tools": [
+      "Canva",
+      "Graphic Design",
+      "Branding",
+      "Social Media Design"
+    ],
+    "buildTime": "Visual identity, social media & event campaigns",
+    "isExternalLink": false,
+    "services": {
+      "pills": [
+        "Branding",
+        "Social Media",
+        "Design"
+      ],
+      "list": [
+        "Template komunikasi visual",
+        "Poster kegiatan dan pengumuman",
+        "Konten feed media sosial",
+        "Konsistensi identitas organisasi"
+      ]
+    },
+    "summaryQuote": "Arsip desain YRI Sumsel, Summit of Stars I–II, YRI Fest x Expo, International Kingdom Indonesia, dan Youthopia Symposium.",
+    "descriptionParagraphs": [
+      "Organisasi yang menjalankan banyak program membutuhkan cara menyajikan informasi yang tetap konsisten meski tema kegiatan berbeda.",
+      "Pekerjaan desain mencakup pengaturan warna, tipografi, hirarki informasi, dan format visual untuk poster serta materi media sosial YRI Sumsel.",
+      "Canva digunakan dalam perancangan materi visual. Hasil desain dipublikasikan atau didokumentasikan melalui kanal organisasi; proyek ini bukan aplikasi yang dibangun dengan framework web."
+    ],
+    "galleryImages": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "section1Title": "Sistem visual yang mudah diterapkan ulang",
+    "section1Text1": "Prinsip konsistensi diterapkan melalui pilihan warna, pasangan font, proporsi judul, dan ruang baca yang cukup agar pesan kegiatan cepat dipahami.",
+    "section1Text2": "Struktur template membantu desainer atau pengelola kanal sosial menyusun konten serupa untuk kebutuhan publikasi berikutnya.",
+    "largeBannerImage": "/img/ca1.png",
+    "section2Title": "Dampak yang dapat ditunjukkan",
+    "section2Text1": "Output utamanya adalah materi visual untuk komunikasi program organisasi: poster, feed, dan aset branding yang lebih seragam.",
+    "section2Text2": "Jumlah impresi, pertumbuhan pengikut, atau total template tidak dicantumkan sebagai hasil kuantitatif karena tidak tersedia bukti analitik yang dapat diverifikasi.",
+    "gridThumbnails": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "bottomGalleryImages": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ],
+    "outcomeTitle": "Hasil yang Diperoleh",
+    "outcomeText": "Rangkaian materi visual organisasi dengan pendekatan branding konsisten dan format yang bisa digunakan kembali untuk publikasi acara berikutnya.",
+    "outcomeStats": [],
+    "outcomeGallery": [
+      "/img/ca1.png",
+      "/img/ca3.png"
+    ]
+  },
+  {
     "id": 9,
     "slug": "mobius",
     "title": "Mobius — Desktop Island Assistant & File Studio",
@@ -467,69 +530,6 @@ export const projectsData: Project[] = [
     "outcomeStats": [],
     "outcomeGallery": [
       "/img/ca4.png"
-    ]
-  },
-  {
-    "id": 5,
-    "slug": "youth-visual-identity",
-    "title": "Graphic Design — Creative Archive & Visual Campaigns",
-    "client": "YRI · International Kingdom · Duta Potensi",
-    "category": "Graphic Design",
-    "image": "/graphic-design/cover.svg",
-    "heroImage": "/graphic-design/cover.svg",
-    "link": "/graphic-design",
-    "tools": [
-      "Canva",
-      "Graphic Design",
-      "Branding",
-      "Social Media Design"
-    ],
-    "buildTime": "Visual identity, social media & event campaigns",
-    "isExternalLink": false,
-    "services": {
-      "pills": [
-        "Branding",
-        "Social Media",
-        "Design"
-      ],
-      "list": [
-        "Template komunikasi visual",
-        "Poster kegiatan dan pengumuman",
-        "Konten feed media sosial",
-        "Konsistensi identitas organisasi"
-      ]
-    },
-    "summaryQuote": "Arsip desain YRI Sumsel, Summit of Stars I–II, YRI Fest x Expo, International Kingdom Indonesia, dan Youthopia Symposium.",
-    "descriptionParagraphs": [
-      "Organisasi yang menjalankan banyak program membutuhkan cara menyajikan informasi yang tetap konsisten meski tema kegiatan berbeda.",
-      "Pekerjaan desain mencakup pengaturan warna, tipografi, hirarki informasi, dan format visual untuk poster serta materi media sosial YRI Sumsel.",
-      "Canva digunakan dalam perancangan materi visual. Hasil desain dipublikasikan atau didokumentasikan melalui kanal organisasi; proyek ini bukan aplikasi yang dibangun dengan framework web."
-    ],
-    "galleryImages": [
-      "/img/ca1.png",
-      "/img/ca3.png"
-    ],
-    "section1Title": "Sistem visual yang mudah diterapkan ulang",
-    "section1Text1": "Prinsip konsistensi diterapkan melalui pilihan warna, pasangan font, proporsi judul, dan ruang baca yang cukup agar pesan kegiatan cepat dipahami.",
-    "section1Text2": "Struktur template membantu desainer atau pengelola kanal sosial menyusun konten serupa untuk kebutuhan publikasi berikutnya.",
-    "largeBannerImage": "/img/ca1.png",
-    "section2Title": "Dampak yang dapat ditunjukkan",
-    "section2Text1": "Output utamanya adalah materi visual untuk komunikasi program organisasi: poster, feed, dan aset branding yang lebih seragam.",
-    "section2Text2": "Jumlah impresi, pertumbuhan pengikut, atau total template tidak dicantumkan sebagai hasil kuantitatif karena tidak tersedia bukti analitik yang dapat diverifikasi.",
-    "gridThumbnails": [
-      "/img/ca1.png",
-      "/img/ca3.png"
-    ],
-    "bottomGalleryImages": [
-      "/img/ca1.png",
-      "/img/ca3.png"
-    ],
-    "outcomeTitle": "Hasil yang Diperoleh",
-    "outcomeText": "Rangkaian materi visual organisasi dengan pendekatan branding konsisten dan format yang bisa digunakan kembali untuk publikasi acara berikutnya.",
-    "outcomeStats": [],
-    "outcomeGallery": [
-      "/img/ca1.png",
-      "/img/ca3.png"
     ]
   },
   {
