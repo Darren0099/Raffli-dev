@@ -637,3 +637,7 @@
   .cvr-job-resume { break-after:auto!important; }
   .cvr-job-resume .cvr-page-footer { display:none!important; }
 }
+
+/* Direct file download link: keep existing button appearance without underline. */
+.cvr-print{text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center}
+.cvr-print:visited{color:#fff}
