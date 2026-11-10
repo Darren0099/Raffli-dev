@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { cvEducation, cvProfiles, cvRoles, type CVEntry, type CVLang, type CVPages, type CVRole, type DualText } from '@/data/cvProfiles';
-import { downloadCvPdf } from '@/lib/cvPdf';
 import './cv.css';
 
 type CVTemplate = 'modern-it' | 'modern-general' | 'harvard-it' | 'harvard-general';
@@ -239,7 +238,6 @@ export default function CVPage(){
   const [pages,setPages]=useState<CVPages>(2);
   const [mode,setMode]=useState<DocumentMode>('cv');
   const [initialized,setInitialized]=useState(false);
-  const [pdfError,setPdfError]=useState('');
   useEffect(()=>{
     const p=new URLSearchParams(window.location.search);
     const r=p.get('role'),l=p.get('lang'),temp=p.get('template'),count=p.get('pages'),doc=p.get('mode');
@@ -258,15 +256,7 @@ export default function CVPage(){
     document.title=(mode==='resume'?'Resume':'CV')+' - '+cvProfiles[role].label[lang]+' - Al-Man Raffli Saputra';
   },[initialized,role,lang,template,pages,mode]);
   const s=labels[lang];
-  function handlePdfDownload(){
-    setPdfError('');
-    try {
-      downloadCvPdf({role,lang,template,pages,mode});
-    } catch (error) {
-      setPdfError(error instanceof Error?error.message:
-        (lang==='id'?'Gagal membuat PDF. Coba ulangi.':'Could not generate the PDF. Please try again.'));
-    }
-  }
+  const pdfUrl='/api/cv/pdf?'+new URLSearchParams({role,template,pages:String(pages),lang,mode}).toString();
   return <main className="cvr-app">
     <aside className="cvr-controls" aria-label={s.preview}>
       <div className="cvr-topline">
@@ -313,10 +303,9 @@ export default function CVPage(){
             </div>
           </div>
         </div>
-        <button type="button" className="cvr-print" onClick={handlePdfDownload}>
+        <a href={pdfUrl} className="cvr-print" download>
           <span aria-hidden="true">↓</span> {mode==='resume'?s.printResume:s.print}
-        </button>
-        {pdfError && <p className="cvr-pdf-error" role="alert">{pdfError}</p>}
+        </a>
       </div>
     </aside>
     <section className="cvr-preview" aria-label={mode==='resume'?'Resume Preview':'CV Preview'}>
