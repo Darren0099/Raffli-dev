@@ -13,7 +13,7 @@ export type DesignCollection = {
   posts: PublishedPost[];
 };
 const fromCodes = (codes: string): PublishedPost[] =>
-  codes.trim().split(/\s+/).map((shortcode) => ({ shortcode, kind: shortcode === 'DOQAr5oibN9' ? 'reel' as const : 'p' as const }));
+  codes.trim().split(/\s+/).map((shortcode) => ({ shortcode, kind: ['DOQAr5oibN9', 'DMJkKmgzbmO'].includes(shortcode) ? 'reel' as const : 'p' as const }));
 export const designCollections: DesignCollection[] = [
   {
     id: 'regional',
@@ -58,7 +58,7 @@ export const designCollections: DesignCollection[] = [
     profileUrl: 'https://www.instagram.com/youthopiasymposium/',
     descriptionId: 'Visual event Youthopia Symposium dari tautan unggahan yang sudah didokumentasikan.',
     descriptionEn: 'Published visual work for the Youthopia Symposium event.',
-    posts: fromCodes('DN-IlgoABI3')
+    posts: fromCodes('DQl-z1REmYc DQl-_NzkpOJ DQp4FBDEjBf DQA9bgsE7q1 DNfSe33gSe9 DN-IlgoABI3')
   },
   {
     id: 'duta',
@@ -67,7 +67,7 @@ export const designCollections: DesignCollection[] = [
     profileUrl: 'https://www.instagram.com/dutapotensi.id/',
     descriptionId: 'Referensi desain terpublikasi untuk Duta Potensi Pemuda Indonesia.',
     descriptionEn: 'Published design reference for Duta Potensi Pemuda Indonesia.',
-    posts: fromCodes('DPvGQa4E2Pq')
+    posts: fromCodes('DSpZI6YE3GS DR7Y27uExg- DO7O-ZZkxKZ DNujKH_5tL3 DMJkKmgzbmO DL1t4hATz6Q DPvGQa4E2Pq')
   },
   {
     id: 'kawan',
@@ -76,7 +76,7 @@ export const designCollections: DesignCollection[] = [
     profileUrl: 'https://www.instagram.com/kawan.yri/',
     descriptionId: 'Karya media sosial untuk Divisi Operation di Youth Ranger Indonesia Pusat.',
     descriptionEn: 'Social media design work for Youth Ranger Indonesia central Operation division.',
-    posts: fromCodes('DdLFtHrmtml')
+    posts: fromCodes('Dbx2m1QGou1 Dba1j-Jmjoe DfM1KZuGqqU Degq174Gg3E DeYuGh2Gkek DbSm-dcGrTd DcI82ckGvgb DZjONnTGqnz DdLFtHrmtml')
   }
 ];
 export const getPostUrl = (post: PublishedPost) => `https://www.instagram.com/${post.kind}/${post.shortcode}/`;
