@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { projectsData } from '@/data/projectsData';
+import { usePortfolioProjects } from '@/hooks/usePortfolioProjects';
 import Footer from '@/components/footer';
 import './projects-page.css';
 import LanguageToggle from '@/components/LanguageToggle';
@@ -11,6 +11,7 @@ import { useLocalizedProjectTitles } from '@/hooks/useLocalizedProjects';
 
 export default function AllProjectsPage() {
   const { lang } = useLanguage();
+  const { projects: projectsData } = usePortfolioProjects();
   const titleFor = useLocalizedProjectTitles(projectsData);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const maxCarousel = Math.max(0, projectsData.length - 1);
