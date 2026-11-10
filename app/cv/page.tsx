@@ -6,6 +6,7 @@ import { cvEducation, cvProfiles, cvRoles, type CVEntry, type CVLang, type CVPag
 import './cv.css';
 
 type CVTemplate = 'modern-it' | 'modern-general' | 'harvard-it' | 'harvard-general';
+type DocumentMode = 'cv' | 'resume';
 const cvTemplates: { id: CVTemplate; idLabel: string; enLabel: string }[] = [
   { id:'modern-it', idLabel:'Modern – IT', enLabel:'Modern – IT' },
   { id:'modern-general', idLabel:'Modern – Umum', enLabel:'Modern – General' },
@@ -16,13 +17,21 @@ const local = (s: DualText, lang: CVLang) => s[lang];
 const labels = {
   id:{
     preview:'Curriculum Vitae',
-    choose:'POSISI CV',
+    resumeTitle:'Resume Profesional',
+    documentType:'JENIS DOKUMEN',
+    cvMode:'CV Lengkap',
+    resumeMode:'Resume',
+    cvDescription:'CV untuk menampilkan riwayat pengalaman, pendidikan, proyek, dan sertifikasi secara lebih lengkap. Bisa 1 atau 2 halaman.',
+    resumeDescription:'Resume 1 halaman yang menonjolkan keterampilan, pengalaman, dan proyek paling relevan untuk posisi tujuan.',
+    atsNote:'1 halaman · A4 · ATS-friendly',
+    choose:'TARGET POSISI',
     templates:'VERSI',
     pages:'PANJANG CV',
     lang:'BAHASA',
     page1:'1 halaman',
     page2:'2 halaman',
-    print:'Simpan PDF / Unduh CV',
+    print:'Cetak / Simpan CV ke PDF',
+    printResume:'Cetak / Simpan Resume ke PDF',
     back:'Kembali ke portofolio',
     about:'PROFIL PROFESIONAL',
     education:'PENDIDIKAN',
@@ -39,13 +48,21 @@ const labels = {
   },
   en:{
     preview:'Curriculum Vitae',
+    resumeTitle:'Professional Resume',
+    documentType:'DOCUMENT TYPE',
+    cvMode:'Full CV',
+    resumeMode:'Resume',
+    cvDescription:'A detailed record of experience, education, projects and credentials, available in one or two pages.',
+    resumeDescription:'A targeted one-page resume highlighting the most relevant skills, work experience and projects for the selected role.',
+    atsNote:'1 page · A4 · ATS-friendly',
     choose:'TARGET ROLE',
     templates:'VERSION',
     pages:'RESUME LENGTH',
     lang:'LANGUAGE',
     page1:'1 page',
     page2:'2 pages',
-    print:'Save PDF / Download CV',
+    print:'Print / Save CV as PDF',
+    printResume:'Print / Save Resume as PDF',
     back:'Back to portfolio',
     about:'PROFESSIONAL PROFILE',
     education:'EDUCATION',
@@ -186,27 +203,58 @@ function Resume({role,lang,template,pages}:{role:CVRole;lang:CVLang;template:CVT
   </div>;
 }
 
+/**
+ * Resume mode deliberately differs from the CV edition:
+ * - fixed to one A4 page and one ATS-readable column;
+ * - prioritizes role-relevant experience and the strongest selected project;
+ * - keeps verified source facts rather than inventing quantified outcomes.
+ */
+function JobResume({role,lang,template}:{role:CVRole;lang:CVLang;template:CVTemplate}){
+  const s=labels[lang],d=cvProfiles[role];
+  const styleClass=(template.startsWith('modern')?'cvr-modern':'cvr-harvard')+' cvr-compact cvr-job-resume';
+  const skills=<Skills role={role} lang={lang}/>;
+  const experience=<Section title={s.experience} className="cvr-experience">
+    {d.experience.slice(0,2).map((v,i)=><EntryCard key={i} value={v} lang={lang} bulletLimit={2}/>)}
+  </Section>;
+  const projects=<Section title={s.projects} className="cvr-projects">
+    {d.projects.slice(0,1).map((v,i)=><EntryCard key={i} value={v} lang={lang} bulletLimit={2}/>)}
+  </Section>;
+  const skillsFirst=role==='web'||role==='data';
+  return <div className="cvr-sheets">
+    <PageCard page={1} pages={1} lang={lang} styleClass={styleClass}>
+      <Header role={role} lang={lang}/>
+      <Profile role={role} lang={lang}/>
+      {skillsFirst? <>{skills}{experience}{projects}</> : <>{experience}{skills}{projects}</>}
+      <Education lang={lang}/>
+      <Certifications role={role} lang={lang} limit={2}/>
+    </PageCard>
+  </div>;
+}
+
 export default function CVPage(){
   const [role,setRole]=useState<CVRole>('general');
   const [lang,setLang]=useState<CVLang>('id');
   const [template,setTemplate]=useState<CVTemplate>('harvard-it');
   const [pages,setPages]=useState<CVPages>(2);
+  const [mode,setMode]=useState<DocumentMode>('cv');
   const [initialized,setInitialized]=useState(false);
   useEffect(()=>{
     const p=new URLSearchParams(window.location.search);
-    const r=p.get('role'),l=p.get('lang'),temp=p.get('template'),count=p.get('pages');
+    const r=p.get('role'),l=p.get('lang'),temp=p.get('template'),count=p.get('pages'),doc=p.get('mode');
     if(r&&cvRoles.includes(r as CVRole))setRole(r as CVRole);
     if(l==='id'||l==='en')setLang(l);
     if(temp&&cvTemplates.some(v=>v.id===temp))setTemplate(temp as CVTemplate);
     if(count==='1'||count==='2')setPages(Number(count) as CVPages);
+    if(doc==='cv'||doc==='resume')setMode(doc);
     setInitialized(true);
   },[]);
   useEffect(()=>{
     if(!initialized)return;
     const p=new URLSearchParams({role,template,pages:String(pages),lang});
+    if(mode==='resume')p.set('mode','resume');
     window.history.replaceState(null,'','/cv?'+p.toString());
-    document.title='CV '+cvProfiles[role].label[lang]+' | Al-Man Raffli Saputra';
-  },[initialized,role,lang,template,pages]);
+    document.title=(mode==='resume'?'Resume':'CV')+' - '+cvProfiles[role].label[lang]+' - Al-Man Raffli Saputra';
+  },[initialized,role,lang,template,pages,mode]);
   const s=labels[lang];
   return <main className="cvr-app">
     <aside className="cvr-controls" aria-label={s.preview}>
@@ -214,9 +262,18 @@ export default function CVPage(){
         <a href="/" className="cvr-back">← {s.back}</a>
       </div>
       <div className="cvr-title-row">
-        <h2>{s.preview}</h2>
+        <h2>{mode==='resume'?s.resumeTitle:s.preview}</h2>
       </div>
       <div className="cvr-control-group">
+        <div className="cvr-picker cvr-mode-picker">
+          <strong>{s.documentType}</strong>
+          <div className="cvr-mode-options" role="group" aria-label={s.documentType}>
+            <button type="button" aria-pressed={mode==='cv'} className={mode==='cv'?'active':''} onClick={()=>setMode('cv')}>{s.cvMode}</button>
+            <button type="button" aria-pressed={mode==='resume'} className={mode==='resume'?'active':''} onClick={()=>setMode('resume')}>{s.resumeMode}</button>
+          </div>
+          <p className="cvr-mode-description">{mode==='resume'?s.resumeDescription:s.cvDescription}</p>
+          {mode==='resume'&&<span className="cvr-format-note">{s.atsNote}</span>}
+        </div>
         <div className="cvr-picker">
           <strong>{s.choose}</strong>
           <div className="cvr-option-row">
@@ -230,13 +287,13 @@ export default function CVPage(){
               {cvTemplates.map(v=><button key={v.id} type="button" aria-pressed={template===v.id} className={template===v.id?'active':''} onClick={()=>setTemplate(v.id)}>{lang==='id'?v.idLabel:v.enLabel}</button>)}
             </div>
           </div>
-          <div className="cvr-picker">
+          {mode==='cv'&&<div className="cvr-picker">
             <strong>{s.pages}</strong>
             <div className="cvr-option-row">
               <button type="button" aria-pressed={pages===1} className={pages===1?'active':''} onClick={()=>setPages(1)}>{s.page1}</button>
               <button type="button" aria-pressed={pages===2} className={pages===2?'active':''} onClick={()=>setPages(2)}>{s.page2}</button>
             </div>
-          </div>
+          </div>}
           <div className="cvr-picker">
             <strong>{s.lang}</strong>
             <div className="cvr-option-row">
@@ -246,12 +303,19 @@ export default function CVPage(){
           </div>
         </div>
         <button type="button" className="cvr-print" onClick={()=>window.print()}>
-          <span aria-hidden="true">↓</span> {s.print}
+          <span aria-hidden="true">↓</span> {mode==='resume'?s.printResume:s.print}
         </button>
       </div>
     </aside>
-    <section className="cvr-preview" aria-label="CV Preview">
-      <Resume role={role} lang={lang} template={template} pages={pages}/>
+    <section className="cvr-preview" aria-label={mode==='resume'?'Resume Preview':'CV Preview'}>
+      <div className="cvr-preview-meta">
+        <span className="cvr-preview-doc">{mode==='resume'?s.resumeMode:s.cvMode}</span>
+        <span>{mode==='resume'?s.atsNote:(pages===1?s.page1:s.page2)+' · A4'}</span>
+      </div>
+      {mode==='resume'?
+        <JobResume role={role} lang={lang} template={template}/>:
+        <Resume role={role} lang={lang} template={template} pages={pages}/>
+      }
     </section>
   </main>;
 }
