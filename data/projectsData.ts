@@ -323,6 +323,79 @@ export const projectsData: Project[] = [
     ]
   },
   {
+    "id": 11,
+    "slug": "dapur-ummi-kyana",
+    "title": "Dapur Ummi Kyana — Food E-Commerce & Admin Dashboard",
+    "client": "Dapur Ummi Kyana Palembang",
+    "category": "Web Development",
+    "image": "",
+    "heroImage": "",
+    "link": "https://dapur-ummi-kyana-steel.vercel.app/",
+    "repoUrl": "https://github.com/Darren0099/DapurUmmikyanaPalembang",
+    "tools": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "CSS",
+      "Lucide React",
+      "Vercel",
+      "Supabase (planned)",
+      "PHP/MySQL (legacy)"
+    ],
+    "buildTime": "2025–2026 · Modernisasi e-commerce",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "E-Commerce",
+        "Frontend",
+        "Dashboard Admin"
+      ],
+      "list": [
+        "Redesign katalog kuliner responsif dengan pencarian, kategori, dan keranjang",
+        "Hero carousel, kartu produk, serta animasi CSS ringan",
+        "Empat halaman khusus catering, snack box, tumpeng mini, dan prasmanan",
+        "Panel admin dan API yang disiapkan untuk integrasi database"
+      ]
+    },
+    "summaryQuote": "Modernisasi website UMKM kuliner: pengalaman memilih makanan yang lebih rapi, pemesanan via WhatsApp, dan fondasi dashboard administrasi berbasis API.",
+    "descriptionParagraphs": [
+      "Dapur Ummi Kyana Palembang sebelumnya memakai PHP dan MySQL untuk menampilkan menu makanan, keranjang pelanggan, pembayaran, dan modul admin. Repository lama memuat beragam penawaran kuliner dan fitur operasional, tetapi kode autentikasi dan alur transaksinya perlu diperbarui sebelum digunakan kembali untuk transaksi nyata.",
+      "Saya membangun ulang storefront menggunakan Next.js, React, dan TypeScript dengan tampilan editorial yang responsif. Fitur yang sudah ditampilkan mencakup carousel menu unggulan, pencarian serta filter kategori, keranjang, dan konfirmasi pesanan melalui WhatsApp. Katalog pratinjau mempertahankan 18 nama menu unik dari website lama, dengan harga historis yang perlu divalidasi.",
+      "Empat layanan catering mempunyai halaman detail tersendiri: Daily Catering, Snack Box, Tumpeng Mini, serta Prasmanan & Gubukan. Kode panel admin, API pesanan, autentikasi, dan skema PostgreSQL Supabase telah disiapkan, tetapi database toko dan integrasi pembayaran otomatis Midtrans belum diaktifkan. Website yang berjalan saat ini adalah katalog/pratinjau, bukan checkout online siap transaksi."
+    ],
+    "galleryImages": [],
+    "gridThumbnails": [],
+    "bottomGalleryImages": [],
+    "outcomeGallery": [],
+    "largeBannerImage": "",
+    "section1Title": "Mempertahankan layanan lama dalam pengalaman e-commerce baru",
+    "section1Text1": "Audit repository PHP menemukan dua versi halaman utama, 20 kartu katalog dengan 18 nama produk unik, halaman keranjang, login, status pembayaran, struk, dan modul admin. Konten catering dan paket dipulihkan menjadi section serta halaman layanan yang lebih mudah ditelusuri.",
+    "section1Text2": "Frontend dibangun dengan desain responsif dan animasi CSS yang ringan. Pengguna dapat mencari menu, memilih kategori, menambah produk ke keranjang, lalu mengirimkan daftar pesanan untuk dikonfirmasi melalui WhatsApp. Foto produk asli belum tersedia di repository, sehingga sistem memakai ilustrasi berlabel sebagai tampilan sementara.",
+    "section2Title": "Menyiapkan sistem admin dan pembayaran yang lebih aman",
+    "section2Text1": "Kode baru menyediakan dasar API pesanan dengan perhitungan harga dari sisi server, proteksi akses admin, serta rancangan skema PostgreSQL dan aturan Row Level Security. Sistem belum terhubung ke proyek Supabase khusus toko sehingga login dan penyimpanan transaksi nyata belum aktif.",
+    "section2Text2": "Audit menunjukkan riwayat merchant Midtrans QRIS, tetapi tidak ditemukan integrasi Midtrans aktif dalam source aplikasi baru. Gateway dan webhook harus dihubungkan serta diuji sebelum pembayaran online dapat diaktifkan. Implementasi Laravel/Railway masih berupa rencana pengembangan lanjutan, bukan teknologi yang sudah dijalankan.",
+    "outcomeTitle": "Hasil dan Status Implementasi",
+    "outcomeText": "Versi frontend telah berhasil dibangun dan di-deploy melalui Vercel, mencakup katalog pratinjau 18 menu unik, keranjang, pencarian, empat halaman layanan, animasi ringan, serta dasar dashboard admin. Integrasi database produksi, foto produk asli, dan pembayaran Midtrans masih menjadi tahap berikutnya. Dokumentasi audit source lama tersedia di repository.",
+    "outcomeStats": [
+      {
+        "label": "Menu unik dari katalog lama",
+        "value": "18"
+      },
+      {
+        "label": "Halaman layanan",
+        "value": "4"
+      },
+      {
+        "label": "Status frontend",
+        "value": "Live di Vercel"
+      },
+      {
+        "label": "Pembayaran otomatis",
+        "value": "Belum aktif"
+      }
+    ]
+  },
+  {
     "id": 1,
     "slug": "yri-sumsel",
     "title": "Website Profil dan CMS Berita Youth Ranger Indonesia Sumatera Selatan",

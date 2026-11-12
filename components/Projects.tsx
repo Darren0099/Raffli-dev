@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ProjectMediaPlaceholder from "@/components/ProjectMediaPlaceholder";
 import { usePortfolioProjects } from "@/hooks/usePortfolioProjects";
 import { useLanguage } from "./LanguageProvider";
 import { useLocalizedProjectTitles } from "@/hooks/useLocalizedProjects";
@@ -158,7 +159,8 @@ export default function RelatedProjects() {
                           className="card-media-anchor"
                           onClick={handleLinkClick}
                         >
-                          <Image
+                          {project.image ? (
+                            <Image
                             src={project.image}
                             alt={titleFor(project.slug, project.title)}
                             className="card-cover-image"
@@ -168,6 +170,9 @@ export default function RelatedProjects() {
                             loading="lazy"
                             draggable={false}
                           />
+                          ) : (
+                            <ProjectMediaPlaceholder title={project.title} category={project.category} />
+                          )}
                         </a>
                       </div>
 
