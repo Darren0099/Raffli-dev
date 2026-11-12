@@ -239,6 +239,90 @@ export const projectsData: Project[] = [
   },
 
   {
+    "id": 10,
+    "slug": "savelife",
+    "title": "SaveLife — Simulasi Edukasi Bencana 3D Interaktif",
+    "client": "Independent Project",
+    "category": "Web Development",
+    "image": "/img/savelife-cover.svg",
+    "logo": "/img/savelife-mark.svg",
+    "heroImage": "/img/savelife-hero.svg",
+    "link": "https://savelife-zeta.vercel.app/",
+    "repoUrl": "https://github.com/Darren0099/savelife",
+    "tools": [
+      "Astro",
+      "JavaScript",
+      "WebGL2",
+      "Canvas 2D",
+      "CSS",
+      "Vercel"
+    ],
+    "buildTime": "2026 • Interactive 3D experience",
+    "isExternalLink": true,
+    "services": {
+      "pills": [
+        "Web Development",
+        "Interactive 3D",
+        "Learning Experience"
+      ],
+      "list": [
+        "Lima lingkungan bencana dengan model 3D low-poly yang dapat diputar dan diperbesar",
+        "Tujuh studi kasus berbasis pilihan tindakan beserta perubahan visual",
+        "Simulasi tsunami, banjir, gempa, tanah longsor, dan kebakaran hutan",
+        "Antarmuka map-first dengan panel misi ringkas, progres, dan tautan referensi resmi"
+      ]
+    },
+    "summaryQuote": "Edukasi kesiapsiagaan yang dapat dieksplorasi: lihat kondisi bencana dalam dunia 3D, pilih tindakan, lalu amati konsekuensinya secara visual.",
+    "descriptionParagraphs": [
+      "SaveLife adalah prototipe website edukasi interaktif yang mengubah materi mitigasi bencana menjadi pengalaman berbasis keputusan. Pengguna tidak hanya membaca teori, tetapi mengamati sebuah diorama 3D dan melihat bagaimana lingkungan berubah setelah memilih tindakan.",
+      "Proyek ini menggabungkan lima tema: kebakaran hutan dan lahan gambut, tsunami di kota pesisir, banjir di permukiman tepi sungai, gempa bumi di kawasan bangunan, serta tanah longsor di lereng perbukitan. Tujuh misi menyediakan opsi respons, umpan balik edukatif, dan perubahan kondisi visual sesuai keputusan.",
+      "Setiap lingkungan menggunakan ilustrasi 3D low-poly orisinal dengan kamera yang dapat diputar dan diperbesar. Antarmuka dirancang 3D-first: panel pertanyaan dapat dilipat agar simulasi tetap dominan, lalu mengecil otomatis setelah sebuah pilihan dibuat. Ini merupakan simulasi ilustratif, bukan peta bahaya atau sistem peringatan bencana secara real-time."
+    ],
+    "galleryImages": [
+      "/img/savelife-hero.svg",
+      "/img/savelife-cover.svg"
+    ],
+    "section1Title": "Lima dunia bencana, satu pola belajar interaktif",
+    "section1Text1": "Skenario terdiri dari observasi kondisi, pengambilan keputusan, dan perubahan scene 3D. Pada kasus tsunami, lingkungan memperlihatkan kota pesisir dan jalur menuju area lebih tinggi; pada banjir, muka air naik di sekitar rumah. Skenario gempa memvisualisasikan getaran bangunan, sementara longsor menunjukkan pergerakan material di lereng.",
+    "section1Text2": "Setelah menjawab, panel misi menutup untuk memberi ruang pada efek visual. Pengguna tetap dapat membuka penjelasan, mencoba ulang, atau melanjutkan misi berikutnya. XP dan progres disimpan secara lokal di browser tanpa akun.",
+    "largeBannerImage": "/img/savelife-hero.svg",
+    "section2Title": "Renderer WebGL2 tanpa ketergantungan model 3D eksternal",
+    "section2Text1": "Astro digunakan untuk struktur situs statis, sementara JavaScript dan renderer WebGL2 prosedural membangun geometri pulau, jalan, rumah, vegetasi, air, dan efek simulasi secara langsung. Canvas 2D disediakan sebagai fallback ketika WebGL2 tidak tersedia.",
+    "section2Text2": "Perbaikan antarmuka mencakup kamera adaptif, kontrol drag dan zoom, panel misi responsif, serta navigasi antar-bencana. Website dideploy melalui Vercel. Konten misi menggunakan rujukan BMKG, BNPB/InaRISK, NASA FIRMS, dan WHO; visualisasi tidak mewakili prediksi maupun instruksi darurat operasional.",
+    "gridThumbnails": [
+      "/img/savelife-cover.svg",
+      "/img/savelife-hero.svg"
+    ],
+    "bottomGalleryImages": [
+      "/img/savelife-hero.svg",
+      "/img/savelife-cover.svg"
+    ],
+    "outcomeTitle": "Hasil Pengembangan",
+    "outcomeText": "SaveLife telah dipublikasikan sebagai prototipe pembelajaran berbasis lima dunia 3D dan tujuh misi. Skenario memiliki respons aman/berisiko, perubahan scene, kontrol kamera, penjelasan dan referensi, serta penyimpanan progres lokal. Build dan deployment Vercel berhasil; uji visual lintas-perangkat dan validasi materi bersama pendidik atau praktisi kebencanaan masih menjadi tahap pengembangan berikutnya. Visual cover portofolio merupakan ilustrasi desain, bukan tangkapan layar aplikasi.",
+    "outcomeStats": [
+      {
+        "label": "Lingkungan 3D",
+        "value": "5"
+      },
+      {
+        "label": "Misi edukasi",
+        "value": "7"
+      },
+      {
+        "label": "Grafis",
+        "value": "WebGL2"
+      },
+      {
+        "label": "Deployment",
+        "value": "Vercel"
+      }
+    ],
+    "outcomeGallery": [
+      "/img/savelife-hero.svg",
+      "/img/savelife-cover.svg"
+    ]
+  },
+  {
     "id": 1,
     "slug": "yri-sumsel",
     "title": "Website Profil dan CMS Berita Youth Ranger Indonesia Sumatera Selatan",
