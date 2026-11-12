@@ -195,9 +195,9 @@
       "title": "SaveLife — Simulasi Edukasi Bencana 3D Interaktif",
       "client": "Independent Project",
       "category": "Web Development",
-      "image": "/img/savelife-cover.svg",
+      "image": "/img/savelife-phone-portrait.webp",
       "logo": "/img/savelife-mark.svg",
-      "heroImage": "/img/savelife-hero.svg",
+      "heroImage": "/img/savelife-laptop-studio.webp",
       "link": "https://savelife-zeta.vercel.app/",
       "repoUrl": "https://github.com/Darren0099/savelife",
       "tools": [
@@ -230,26 +230,31 @@
         "Setiap lingkungan menggunakan ilustrasi 3D low-poly orisinal dengan kamera yang dapat diputar dan diperbesar. Antarmuka dirancang 3D-first: panel pertanyaan dapat dilipat agar simulasi tetap dominan, lalu mengecil otomatis setelah sebuah pilihan dibuat. Ini merupakan simulasi ilustratif, bukan peta bahaya atau sistem peringatan bencana secara real-time."
       ],
       "galleryImages": [
-        "/img/savelife-hero.svg",
-        "/img/savelife-cover.svg"
+        "/img/savelife-landslide-case.webp",
+        "/img/savelife-tsunami-case.webp"
       ],
       "section1Title": "Lima dunia bencana, satu pola belajar interaktif",
       "section1Text1": "Skenario terdiri dari observasi kondisi, pengambilan keputusan, dan perubahan scene 3D. Pada kasus tsunami, lingkungan memperlihatkan kota pesisir dan jalur menuju area lebih tinggi; pada banjir, muka air naik di sekitar rumah. Skenario gempa memvisualisasikan getaran bangunan, sementara longsor menunjukkan pergerakan material di lereng.",
       "section1Text2": "Setelah menjawab, panel misi menutup untuk memberi ruang pada efek visual. Pengguna tetap dapat membuka penjelasan, mencoba ulang, atau melanjutkan misi berikutnya. XP dan progres disimpan secara lokal di browser tanpa akun.",
-      "largeBannerImage": "/img/savelife-hero.svg",
+      "largeBannerImage": "/img/savelife-laptop-desk.webp",
       "section2Title": "Renderer WebGL2 tanpa ketergantungan model 3D eksternal",
       "section2Text1": "Astro digunakan untuk struktur situs statis, sementara JavaScript dan renderer WebGL2 prosedural membangun geometri pulau, jalan, rumah, vegetasi, air, dan efek simulasi secara langsung. Canvas 2D disediakan sebagai fallback ketika WebGL2 tidak tersedia.",
       "section2Text2": "Perbaikan antarmuka mencakup kamera adaptif, kontrol drag dan zoom, panel misi responsif, serta navigasi antar-bencana. Website dideploy melalui Vercel. Konten misi menggunakan rujukan BMKG, BNPB/InaRISK, NASA FIRMS, dan WHO; visualisasi tidak mewakili prediksi maupun instruksi darurat operasional.",
       "gridThumbnails": [
-        "/img/savelife-cover.svg",
-        "/img/savelife-hero.svg"
+        "/img/savelife-landslide-case.webp",
+        "/img/savelife-tsunami-case.webp",
+        "/img/savelife-laptop-desk.webp",
+        "/img/savelife-phone-portrait.webp"
       ],
       "bottomGalleryImages": [
-        "/img/savelife-hero.svg",
-        "/img/savelife-cover.svg"
+        "/img/savelife-laptop-studio.webp",
+        "/img/savelife-laptop-desk.webp",
+        "/img/savelife-phone-portrait.webp",
+        "/img/savelife-landslide-case.webp",
+        "/img/savelife-tsunami-case.webp"
       ],
       "outcomeTitle": "Hasil Pengembangan",
-      "outcomeText": "SaveLife telah dipublikasikan sebagai prototipe pembelajaran berbasis lima dunia 3D dan tujuh misi. Skenario memiliki respons aman/berisiko, perubahan scene, kontrol kamera, penjelasan dan referensi, serta penyimpanan progres lokal. Build dan deployment Vercel berhasil; uji visual lintas-perangkat dan validasi materi bersama pendidik atau praktisi kebencanaan masih menjadi tahap pengembangan berikutnya. Visual cover portofolio merupakan ilustrasi desain, bukan tangkapan layar aplikasi.",
+      "outcomeText": "SaveLife telah dipublikasikan sebagai prototipe pembelajaran berbasis lima dunia 3D dan tujuh misi. Setiap skenario memiliki respons aman/berisiko, perubahan scene, kontrol kamera, penjelasan, referensi, serta penyimpanan progres lokal. Tiga mockup laptop/HP memperlihatkan antarmuka aplikasi dari screenshot yang tersedia, sedangkan dua screenshot lainnya ditampilkan tanpa bingkai mockup. Build dan deployment Vercel berhasil; pengujian visual lintas-perangkat dan validasi materi bersama pendidik atau praktisi kebencanaan masih menjadi tahap pengembangan berikutnya.",
       "outcomeStats": [
         {
           "label": "Lingkungan 3D",
@@ -269,12 +274,12 @@
         }
       ],
       "outcomeGallery": [
-        "/img/savelife-hero.svg",
-        "/img/savelife-cover.svg"
+        "/img/savelife-landslide-case.webp",
+        "/img/savelife-tsunami-case.webp"
       ]
     },
     "created_at": "2026-11-12T10:05:48Z",
-    "updated_at": "2026-11-12T10:05:48Z"
+    "updated_at": "2026-11-12T10:22:16Z"
   },
   {
     "id": 11,
