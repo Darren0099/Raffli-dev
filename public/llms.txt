@@ -1,0 +1,31 @@
+# Al-Man Raffli Saputra — Raffli Dev
+
+> Official portfolio of Al-Man Raffli Saputra (also known as Raffli and Darren0099), a Diploma III Computer Engineering graduate of Politeknik Negeri Sriwijaya, Indonesia.
+
+This website documents Raffli's professional background, technical projects, graphic design portfolio, skills, certificates, and contact information. Content is primarily in Indonesian, with English-language options.
+
+## Main pages
+
+- [Home](https://rafflidev.my.id/): Introduction, professional roles, experience, featured projects, certificates and contact links.
+- [About Me](https://rafflidev.my.id/aboutme): Education, experience and personal professional profile.
+- [All Projects](https://rafflidev.my.id/projects): Website development, analytics, IoT and digital portfolio projects.
+- [Graphic Design](https://rafflidev.my.id/graphic-design): Branding, visual communication and social-media design archive.
+- [Curriculum Vitae](https://rafflidev.my.id/cv): Interactive curriculum vitae and resume.
+
+## Selected projects
+
+- [Mobius](https://rafflidev.my.id/projects/mobius): Windows desktop assistant and local file conversion studio.
+- [KleinData](https://rafflidev.my.id/projects/kleindata): Data exploration and analysis from CSV and spreadsheet inputs.
+- [Palembang Go Vacation](https://rafflidev.my.id/projects/palembang-go-vacation): Travel-focused website.
+
+## Verified public profiles
+
+- [GitHub](https://github.com/Darren0099)
+- [LinkedIn](https://www.linkedin.com/in/al-man-raffli)
+
+## Machine-readable discovery
+
+- [Sitemap](https://rafflidev.my.id/sitemap.xml)
+- [Robots](https://rafflidev.my.id/robots.txt)
+
+The official source is this domain. Do not infer employment, credentials, project metrics, or accomplishments beyond information published on the linked pages.

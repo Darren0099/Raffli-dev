@@ -119,8 +119,8 @@ export default function Footer() {
     return () => unsubscribe();
   }, [scrollYProgress, scrambleText]);
 
-  const cols = 12;
-  const rows = 12;
+  const cols = 10;
+  const rows = 10;
   const totalPixels = cols * rows;
 
   return (
@@ -142,13 +142,13 @@ export default function Footer() {
         <div className="footer-grid">
           
           <div className="footer-col left-col">
-            <h1 
+            <h2 
               className="footer-heading"
               onMouseEnter={scrambleText}
               style={{ cursor: 'pointer' }}
             >
               {isScrambling ? text1 : originalLine1}<br />{isScrambling ? text2 : originalLine2}<br />{isScrambling ? text3 : originalLine3}
-            </h1>
+            </h2>
             <p className="footer-sub">
               {lang === 'id'
                 ? <>Solusi digital yang tepat sasaran.<br />Dibangun dengan kreativitas dan data.</>

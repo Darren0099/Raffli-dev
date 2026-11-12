@@ -5,14 +5,14 @@ import {projectsData, type Project} from '@/data/projectsData';
 // Legacy data stays available while the CMS is being configured and imported.
 // The server only returns published records once PORTFOLIO_CMS_ENABLED=true.
 export function usePortfolioProjects(){
- const [projects,setProjects]=useState<Project[]>([]);
+ const [projects,setProjects]=useState<Project[]>(projectsData);
  const [loaded,setLoaded]=useState(false);
  useEffect(()=>{
   let alive=true;
   const controller=new AbortController();
   fetch('/api/portfolio/projects',{signal:controller.signal,cache:'no-store'})
    .then(async r=>{if(!r.ok)throw Error('Portfolio data unavailable');return r.json() as Promise<{projects:Project[]}>;})
-   .then(result=>{if(alive&&Array.isArray(result.projects))setProjects(result.projects);})
+   .then(result=>{if(alive&&Array.isArray(result.projects))setProjects([...result.projects].sort((a,b)=>Number(b.slug === 'youth-visual-identity')-Number(a.slug === 'youth-visual-identity')));})
    .catch(()=>{})
    .finally(()=>{if(alive)setLoaded(true);});
   return()=>{alive=false;controller.abort();};

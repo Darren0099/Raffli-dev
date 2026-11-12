@@ -7,7 +7,7 @@ const roles = ["Full Stack Developer.", "Data Analyst.", "Graphic Designer.", "H
 
 export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState(roles[0]);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             {lang === 'id'
               ? 'Mengembangkan solusi digital dan mengubah kebutuhan yang kompleks menjadi pengalaman yang mudah digunakan. Saya berperan sebagai '
               : 'Empowering digital vision and solving complex growth struggles. I help as a '}
-            <span className="typewriter-text">{displayText}</span>
+            <span className="typewriter-slot"><span className="typewriter-measure" aria-hidden="true">Full Stack Developer.</span><span className="typewriter-text">{displayText}</span></span>
             <span className="typewriter-cursor">|</span>
           </motion.h1>
 
@@ -100,7 +100,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             </div>
 
             <div className="person-content-box desktop-person-info">
-              <h3 className="person-name">Al-man<br />Raffli<br />Saputra</h3>
+              <p className="person-name">Al-man<br />Raffli<br />Saputra</p>
               <p className="person-role">Full Stack Dev</p>
             </div>
 
@@ -147,7 +147,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             ))}
 
             <div className="person-content-box mobile-person-info">
-              <h3 className="person-name">Al-man Raffli Saputra</h3>
+              <p className="person-name">Al-man Raffli Saputra</p>
               <p className="person-role">Full Stack Dev</p>
             </div>
 

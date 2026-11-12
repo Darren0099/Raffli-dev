@@ -270,3 +270,8 @@
   .hero-cta-group { gap: 10px; }
   .see-cv-btn, .get-in-touch-btn { padding: 13px 19px; font-size: .86rem; }
 }
+
+/* Reserve the longest role's width while the typewriter cycles to prevent CLS. */
+.typewriter-slot { display: inline-grid; vertical-align: baseline; max-width: 100%; }
+.typewriter-measure, .typewriter-text { grid-area: 1 / 1; white-space: nowrap; }
+.typewriter-measure { visibility: hidden; pointer-events: none; }

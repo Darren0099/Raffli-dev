@@ -1,9 +1,10 @@
 'use client';
 
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Experience from './Experience';
-import BridgeShowcase from './BridgeShowcase';
+import dynamic from 'next/dynamic';
+const BridgeShowcase = dynamic(() => import('./BridgeShowcase'), { ssr: false });
 import { useLanguage } from './LanguageProvider';
 import '../app/styles/experience-bridge-scroll.css';
 
@@ -16,6 +17,30 @@ export default function ExperienceBridgeScroll() {
   const railRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<Measurements>({ travel: 0, viewportHeight: 0 });
   const reducedMotion = useReducedMotion();
+  const [bridgeVisible, setBridgeVisible] = useState(false);
+
+  // Import Three.js and mount its WebGL canvas only as the user approaches the showcase.
+  // The placeholder has the same flex-basis, so horizontal scroll length remains stable.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    if (!('IntersectionObserver' in window)) {
+      setBridgeVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setBridgeVisible(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: '1200px 0px' });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  const bridgePanel = bridgeVisible
+    ? <BridgeShowcase />
+    : <div className="bridge-scroll-container" aria-hidden="true" />;
 
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
@@ -72,7 +97,7 @@ export default function ExperienceBridgeScroll() {
     return (
       <section ref={sectionRef} id="experience" className="experience-bridge-reduced">
         <Experience />
-        <BridgeShowcase />
+        {bridgePanel}
       </section>
     );
   }
@@ -88,7 +113,7 @@ export default function ExperienceBridgeScroll() {
       <div ref={viewportRef} className="experience-bridge-sticky">
         <motion.div ref={railRef} className="experience-bridge-rail" style={{ x }}>
           <Experience />
-          <BridgeShowcase />
+          {bridgePanel}
         </motion.div>
         <span className="experience-bridge-progress" aria-hidden="true">
           <motion.span style={{ scaleX: scrollYProgress }} />

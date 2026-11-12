@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePortfolioProjects } from "@/hooks/usePortfolioProjects";
 import { useLanguage } from "./LanguageProvider";
 import { useLocalizedProjectTitles } from "@/hooks/useLocalizedProjects";
@@ -15,11 +16,6 @@ export default function RelatedProjects() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const CARD_STEP = 316;
   const maxIndex = projectsData.length - 1;
@@ -72,7 +68,6 @@ export default function RelatedProjects() {
     }
   };
 
-  if (!isMounted) return null;
 
   const translateX = -(currentIndex * CARD_STEP) + dragOffset;
 
@@ -163,17 +158,24 @@ export default function RelatedProjects() {
                           className="card-media-anchor"
                           onClick={handleLinkClick}
                         >
-                          <img
+                          <Image
                             src={project.image}
-                            alt={project.client}
+                            alt={titleFor(project.slug, project.title)}
                             className="card-cover-image"
+                            width={600}
+                            height={500}
+                            sizes="(max-width: 768px) 260px, 300px"
+                            loading="lazy"
                             draggable={false}
                           />
                         </a>
                       </div>
 
                       {project.logo && (
-                        <img
+                        <Image
+                          width={48}
+                          height={48}
+                          sizes="48px"
                           src={project.logo}
                           alt=""
                           aria-hidden="true"
@@ -246,6 +248,7 @@ export default function RelatedProjects() {
                 type="button"
                 className={`nav-arrow prev-arrow ${currentIndex === 0 ? "disabled" : ""}`}
                 onClick={prevSlide}
+                aria-label={lang === "id" ? "Proyek sebelumnya" : "Previous project"}
                 disabled={currentIndex === 0}
               >
                 ←
@@ -254,6 +257,7 @@ export default function RelatedProjects() {
                 type="button"
                 className={`nav-arrow next-arrow ${currentIndex >= maxIndex ? "disabled" : ""}`}
                 onClick={nextSlide}
+                aria-label={lang === "id" ? "Proyek berikutnya" : "Next project"}
                 disabled={currentIndex >= maxIndex}
               >
                 →

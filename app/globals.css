@@ -9,7 +9,6 @@
 @import './styles/certificates.css';
 @import './styles/footer.css';
 @import './styles/Bridge.css';
-@import './styles/preloader.css';
 
 :root {
   --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -19,7 +18,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif, system-ui;
+  font-family: var(--font-main);
 }
 
 html {
@@ -96,3 +95,7 @@ body {
   object-fit: contain;
   background-color: #faeee1;
 }
+
+/* Screen-reader and keyboard navigation aid. */
+.skip-link { position: fixed; left: 12px; top: -72px; z-index: 100001; padding: 12px 18px; background: #111; color: #fff; border: 2px solid #fe5000; border-radius: 8px; }
+.skip-link:focus { top: 12px; }

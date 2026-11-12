@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePortfolioProjects } from '@/hooks/usePortfolioProjects';
 import Footer from '@/components/footer';
 import './projects-page.css';
@@ -39,7 +40,7 @@ export default function AllProjectsPage() {
             <article key={project.slug} className="project-card-item group">
               <div className="project-media-box">
                 <a href={project.link} target={project.isExternalLink ? "_blank" : "_self"} rel={project.isExternalLink ? "noopener noreferrer" : undefined} className="block w-full h-full">
-                  <img src={project.image} alt={titleFor(project.slug, project.title)} />
+                  <Image src={project.image} alt={titleFor(project.slug, project.title)} width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
                 </a>
 
                 {project.logo && (
