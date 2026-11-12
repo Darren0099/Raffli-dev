@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import ProjectMediaPlaceholder from '@/components/ProjectMediaPlaceholder';
 import { usePortfolioProjects } from '@/hooks/usePortfolioProjects';
 import Footer from '@/components/footer';
 import './projects-page.css';
@@ -40,7 +41,7 @@ export default function AllProjectsPage() {
             <article key={project.slug} className="project-card-item group">
               <div className="project-media-box">
                 <a href={project.link} target={project.isExternalLink ? "_blank" : "_self"} rel={project.isExternalLink ? "noopener noreferrer" : undefined} className="block w-full h-full">
-                  <Image src={project.image} alt={titleFor(project.slug, project.title)} width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
+                  {project.image ? <Image src={project.image} alt={titleFor(project.slug, project.title)} width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" /> : <ProjectMediaPlaceholder title={project.title} category={project.category} />}
                 </a>
 
                 {project.logo && (
@@ -142,7 +143,7 @@ export default function AllProjectsPage() {
               {projectsData.map((project) => (
                 <div key={project.slug} className="more-project-card">
                   <div className="more-project-media">
-                    <img src={project.image} alt={titleFor(project.slug, project.title)} />
+                    {project.image ? <img src={project.image} alt={titleFor(project.slug, project.title)} /> : <ProjectMediaPlaceholder title={project.title} category={project.category} />}
                     <Link href={project.slug === 'youth-visual-identity' ? '/graphic-design' : `/projects/${project.slug}`} className="more-project-overlay">
                       View Project ↗
                     </Link>

@@ -416,3 +416,33 @@
 .project-card .action-btn:hover {
   text-decoration: none !important;
 }
+
+/* Text-only portfolio media until the owner supplies real project imagery.
+   Intentionally contains no image / SVG / external asset. */
+.project-media-placeholder{
+ position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+ overflow:hidden;padding:clamp(14px,3vw,34px);
+ background:radial-gradient(circle at 84% 82%,rgba(219,118,62,.14),transparent 38%),#191a19;
+ color:#f3efea;text-align:left;isolation:isolate;
+}
+.project-media-placeholder::before{
+ content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.13);
+ border-radius:8px;pointer-events:none;z-index:-1;
+}
+.project-placeholder-top,.project-placeholder-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;
+ font-size:clamp(8px,.8vw,11px);letter-spacing:.11em;font-weight:650;color:#a9ada8}
+.project-placeholder-top{flex-wrap:wrap}
+.project-placeholder-center{margin:auto 0;display:flex;flex-direction:column;gap:16px}
+.project-placeholder-kicker{font-size:clamp(9px,1vw,13px);letter-spacing:.17em;font-weight:800;color:#e19760}
+.project-placeholder-center strong{font-family:Georgia,serif;font-weight:400;
+ font-size:clamp(26px,3.5vw,69px);line-height:1.02;letter-spacing:-.04em}
+.project-placeholder-dot{color:#dc8b5e}
+.project-placeholder-line{width:44px;height:2px;background:#df9d77;display:block}
+.card-media-inner .project-media-placeholder,.project-media-box .project-media-placeholder,.more-project-media .project-media-placeholder{height:100%;width:100%}
+.detail-hero-media{position:relative}
+.detail-hero-media .project-media-placeholder{border-radius:0}
+@media(max-width:768px){
+ .project-media-placeholder{padding:20px}
+ .project-placeholder-top,.project-placeholder-bottom{font-size:9px}
+ .project-placeholder-center strong{font-size:clamp(31px,6.2vw,55px)}
+}

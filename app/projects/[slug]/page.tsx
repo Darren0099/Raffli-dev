@@ -11,6 +11,7 @@ import { useLanguage } from '@/components/LanguageProvider';
 import { useLocalizedProject } from '@/hooks/useLocalizedProjects';
 import ProjectLightbox from '@/components/ProjectLightbox';
 import RelatedProjects from '@/components/Projects';
+import ProjectMediaPlaceholder from '@/components/ProjectMediaPlaceholder';
 import '../page2.css';
 import '../lightbox.css';
 
@@ -40,7 +41,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
     p.heroImage || p.image,
     p.largeBannerImage || p.image,
     ...(p.gridThumbnails || [])
-  ];
+  ].filter(Boolean);
 
   const maxGalleryIndex = Math.max(0, bottomGallery.length - 1);
 
@@ -68,7 +69,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
     ...(p.gridThumbnails || []),
     ...(p.bottomGalleryImages || []),
     ...(p.outcomeGallery || [])
-  ]));
+  ].filter(Boolean)));
   const openImage = (src: string) => setLightboxIndex(imageSources.indexOf(src));
   const ui = lang === 'id' ? {
     home: 'Beranda', overview: 'Ringkasan', showcase: 'Proses', collaboration: 'Implementasi',
@@ -185,10 +186,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
 
           <div className="detail-hero-media">
-            <button type="button" className="clickable-project-image"
+            {p.heroImage || p.image ? (
+              <button type="button" className="clickable-project-image"
               onClick={() => openImage(p.heroImage || p.image)} aria-label={ui.enlarge}>
               <img src={p.heroImage || p.image} alt={p.title} />
             </button>
+            ) : <ProjectMediaPlaceholder title={p.title} category={p.category} />}
           </div>
         </section>
 
@@ -263,12 +266,14 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
+        {!!(p.largeBannerImage || p.heroImage || p.image) && (
         <section className="detail-banner-image-box">
           <button type="button" className="clickable-project-image"
             onClick={() => openImage(p.largeBannerImage || p.heroImage || p.image)} aria-label={ui.enlarge}>
             <img src={p.largeBannerImage || p.heroImage || p.image} alt={p.title} />
           </button>
         </section>
+        )}
 
         <section className="detail-info-block-section" id="collaboration">
           <h2 className="block-main-title">
@@ -284,6 +289,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
+        {bottomGallery.length > 0 && (
         <section className="slug-bottom-gallery-section" id="gallery">
           <div className="slug-gallery-carousel-wrapper">
             <div 
@@ -319,6 +325,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             </button>
           </div>
         </section>
+        )}
 
         <section className="detail-info-block-section case-outcome-section" id="outcome">
           <h2 className="block-main-title">{p.outcomeTitle || (lang === 'id' ? 'Hasil yang Diperoleh' : 'The Outcome')}</h2>
