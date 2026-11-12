@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '@/components/LanguageProvider';
 import { translations } from '@/data/translations';
 
@@ -15,16 +15,19 @@ import ScrollToTop from '@/components/ScrollToTop';
 import SectionWrapper from '@/components/SectionWrapper';
 import HighlightSection from '@/components/HighlightSection';
 import Footer from '@/components/footer';
+import Preloader from '@/components/Preloader';
 
 
 export default function Home() {
   const { lang, setLang } = useLanguage();
+  const [loading, setLoading] = useState(true);
   const t = translations[lang];
 
   // Re-align URL deep links once the preloader and measured horizontal
   // Experience section have settled. This also covers /#contact links
   // opened from another page or an external website.
   useEffect(() => {
+    if (loading) return;
 
     const sectionId = decodeURIComponent(window.location.hash.slice(1));
     if (!['about', 'skills', 'experience', 'certificates', 'contact'].includes(sectionId)) return;
@@ -56,10 +59,11 @@ export default function Home() {
       window.removeEventListener('wheel', stopResync);
       window.removeEventListener('touchstart', stopResync);
     };
-  }, []);
+  }, [loading]);
 
   return (
     <>
+      {loading && <Preloader onComplete={() => setLoading(false)} />}
       <Navbar lang={lang} setLang={setLang} t={t} />
       <main id="main-content">
       <Hero t={t} lang={lang} />

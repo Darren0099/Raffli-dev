@@ -9,6 +9,7 @@
 @import './styles/certificates.css';
 @import './styles/footer.css';
 @import './styles/Bridge.css';
+@import './styles/preloader.css';
 
 :root {
   --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
