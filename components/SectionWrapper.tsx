@@ -14,11 +14,11 @@ export default function SectionWrapper({ children, bgColor }: SectionWrapperProp
     target: ref,
     offset: ["start end", "start start"]
   });
-  const h1 = useTransform(scrollYProgress, [0, 1], ["0vh", "35vh"]);
-  const h2 = useTransform(scrollYProgress, [0, 1], ["0vh", "75vh"]);
-  const h3 = useTransform(scrollYProgress, [0, 1], ["0vh", "25vh"]);
-  const h4 = useTransform(scrollYProgress, [0, 1], ["0vh", "60vh"]);
-  const h5 = useTransform(scrollYProgress, [0, 1], ["0vh", "40vh"]);
+  const h1 = useTransform(scrollYProgress, [0, 1], [0, 35 / 75]);
+  const h2 = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const h3 = useTransform(scrollYProgress, [0, 1], [0, 25 / 75]);
+  const h4 = useTransform(scrollYProgress, [0, 1], [0, 60 / 75]);
+  const h5 = useTransform(scrollYProgress, [0, 1], [0, 40 / 75]);
 
   return (
     <div ref={ref} style={{ position: 'relative', backgroundColor: bgColor }}>
@@ -34,11 +34,11 @@ export default function SectionWrapper({ children, bgColor }: SectionWrapperProp
           pointerEvents: 'none' 
         }}
       >
-        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: h1, willChange: 'height' }} />
-        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: h2, willChange: 'height' }} />
-        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: h3, willChange: 'height' }} />
-        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: h4, willChange: 'height' }} />
-        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: h5, willChange: 'height' }} />
+        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: '75vh', scaleY: h1, transformOrigin: 'bottom center' }} />
+        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: '75vh', scaleY: h2, transformOrigin: 'bottom center' }} />
+        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: '75vh', scaleY: h3, transformOrigin: 'bottom center' }} />
+        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: '75vh', scaleY: h4, transformOrigin: 'bottom center' }} />
+        <motion.div style={{ flex: 1, backgroundColor: bgColor, height: '75vh', scaleY: h5, transformOrigin: 'bottom center' }} />
       </div>
       {children}
       

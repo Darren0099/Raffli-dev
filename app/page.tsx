@@ -1,84 +1,51 @@
-'use client';
+import type { Metadata } from 'next';
+import HomeClient from '@/components/HomeClient';
 
-import { useEffect, useState } from 'react';
-import { useLanguage } from '@/components/LanguageProvider';
-import { translations } from '@/data/translations';
+export const metadata: Metadata = {
+  title: 'Al-Man Raffli Saputra | Web Developer, Data Analyst & Graphic Designer',
+  description: 'Portofolio resmi Al-Man Raffli Saputra (Raffli), lulusan D3 Teknik Komputer Politeknik Negeri Sriwijaya. Jelajahi proyek pengembangan web, analisis data, desain grafis, dan pengalaman profesional.',
+  alternates: { canonical: '/' },
+};
 
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Ticker from '@/components/Ticker';
-import Skills from '@/components/Skills';
-import ExperienceBridgeScroll from '@/components/ExperienceBridgeScroll';
-import Projects from '@/components/Projects';
-import Certificates from '@/components/Certificates';
-import ScrollToTop from '@/components/ScrollToTop';
-import SectionWrapper from '@/components/SectionWrapper';
-import HighlightSection from '@/components/HighlightSection';
-import Footer from '@/components/footer';
-import Preloader from '@/components/Preloader'; 
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://rafflidev.my.id/#website',
+      name: 'Al-Man Raffli Saputra | Raffli Dev',
+      alternateName: 'Raffli Dev',
+      url: 'https://rafflidev.my.id/',
+      inLanguage: 'id-ID',
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://rafflidev.my.id/#person',
+      name: 'Al-Man Raffli Saputra',
+      alternateName: ['Al-man Raffli', 'Raffli', 'Darren0099'],
+      url: 'https://rafflidev.my.id/',
+      image: 'https://rafflidev.my.id/img/im1.png',
+      jobTitle: ['Web Developer', 'Data Analyst', 'Graphic Designer'],
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Politeknik Negeri Sriwijaya',
+      },
+      sameAs: [
+        'https://github.com/Darren0099',
+        'https://www.linkedin.com/in/al-man-raffli',
+      ],
+    },
+  ],
+};
 
-export default function Home() {
-  const { lang, setLang } = useLanguage();
-  const [loading, setLoading] = useState(true);
-  const t = translations[lang];
-
-  // Re-align URL deep links once the preloader and measured horizontal
-  // Experience section have settled. This also covers /#contact links
-  // opened from another page or an external website.
-  useEffect(() => {
-    if (loading) return;
-
-    const sectionId = decodeURIComponent(window.location.hash.slice(1));
-    if (!['about', 'skills', 'experience', 'certificates', 'contact'].includes(sectionId)) return;
-
-    const alignToSection = () => {
-      const target = document.getElementById(sectionId);
-      if (!target || window.location.hash !== '#' + sectionId) return;
-      const top = Math.max(
-        0,
-        window.scrollY + target.getBoundingClientRect().top - 16
-      );
-      window.scrollTo({ top, behavior: 'instant' });
-    };
-
-    let nextFrame = 0;
-    const firstFrame = window.requestAnimationFrame(() => {
-      nextFrame = window.requestAnimationFrame(alignToSection);
-    });
-    const resync = window.setTimeout(alignToSection, 400);
-
-    const stopResync = () => window.clearTimeout(resync);
-    window.addEventListener('wheel', stopResync, { passive: true });
-    window.addEventListener('touchstart', stopResync, { passive: true });
-
-    return () => {
-      window.cancelAnimationFrame(firstFrame);
-      window.cancelAnimationFrame(nextFrame);
-      window.clearTimeout(resync);
-      window.removeEventListener('wheel', stopResync);
-      window.removeEventListener('touchstart', stopResync);
-    };
-  }, [loading]);
-
+export default function HomePage() {
   return (
     <>
-      {loading && <Preloader onComplete={() => setLoading(false)} />}
-
-      <Navbar lang={lang} setLang={setLang} t={t} />
-      <Hero t={t} lang={lang} />
-      <Ticker />
-      <Skills t={t} />
-      
-      <ExperienceBridgeScroll />
-        <Projects />
-      <Certificates />
-      
-      <SectionWrapper bgColor="#121212">  
-        <HighlightSection />
-      </SectionWrapper>
-      
-      <ScrollToTop />
-      <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+      />
+      <HomeClient />
     </>
   );
 }

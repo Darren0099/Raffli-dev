@@ -101,12 +101,13 @@ export default function Navbar({ t }: NavbarProps) {
 
   return (
     <header className="navbar">
+      <a className="skip-link" href="#main-content">{t.navProfile === "Profile" ? "Skip to content" : "Lewati ke konten"}</a>
       <a href="/" className="logo brand-mark-link" aria-label="Raffli — kembali ke beranda">
         <img src="/brand/raffli-logo.svg" alt="Raffli" width={77} height={60} />
       </a>
 
-      <div className={`nav-wrapper ${isOpen ? 'active' : ''}`}>
-        <nav className="nav-links">
+      <div id="primary-navigation" className={`nav-wrapper ${isOpen ? 'active' : ''}`}>
+        <nav className="nav-links" aria-label="Navigasi utama">
           <a href="#about" className="nav-item active" onClick={(e) => handleScroll(e, 'about')}>
             <span className="dot"></span> {t.navProfile}
           </a>
@@ -131,14 +132,16 @@ export default function Navbar({ t }: NavbarProps) {
       <div className="header-right">
         <LanguageToggle />
 
-        <a href="https://wa.me/6282183945815" className="phone-btn" target="_blank" rel="noopener noreferrer">
-          <i className="fa-solid fa-phone"></i>
+        <a href="https://wa.me/6282183945815" className="phone-btn" target="_blank" rel="noopener noreferrer" aria-label="Hubungi Raffli melalui WhatsApp">
+          <i className="fa-solid fa-phone" aria-hidden="true"></i>
         </a>
 
         <button 
           className={`hamburger ${isOpen ? 'active' : ''}`} 
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle navigation"
+          aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+          aria-expanded={isOpen}
+          aria-controls="primary-navigation"
         >
           <span></span>
           <span></span>
