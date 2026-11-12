@@ -248,6 +248,7 @@ export default function RelatedProjects() {
                 type="button"
                 className={`nav-arrow prev-arrow ${currentIndex === 0 ? "disabled" : ""}`}
                 onClick={prevSlide}
+                aria-label={lang === "id" ? "Proyek sebelumnya" : "Previous project"}
                 disabled={currentIndex === 0}
               >
                 ←
@@ -256,6 +257,7 @@ export default function RelatedProjects() {
                 type="button"
                 className={`nav-arrow next-arrow ${currentIndex >= maxIndex ? "disabled" : ""}`}
                 onClick={nextSlide}
+                aria-label={lang === "id" ? "Proyek berikutnya" : "Next project"}
                 disabled={currentIndex >= maxIndex}
               >
                 →

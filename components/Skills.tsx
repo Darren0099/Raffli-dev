@@ -64,7 +64,7 @@ const SkillRow = ({ data, setCursorData, lang }: { data: any, setCursorData: any
         className="row-header"
         animate={{ 
           x: isInView ? 40 : 0, 
-          color: isInView ? "#121212" : "rgba(18, 18, 18, 0.15)" 
+          color: isInView ? "#121212" : "rgba(18, 18, 18, 0.78)" 
         }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
       >

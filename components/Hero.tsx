@@ -100,7 +100,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             </div>
 
             <div className="person-content-box desktop-person-info">
-              <h3 className="person-name">Al-man<br />Raffli<br />Saputra</h3>
+              <p className="person-name">Al-man<br />Raffli<br />Saputra</p>
               <p className="person-role">Full Stack Dev</p>
             </div>
 
@@ -147,7 +147,7 @@ export default function Hero({ t, lang }: { t: any, lang: 'id' | 'en' }) {
             ))}
 
             <div className="person-content-box mobile-person-info">
-              <h3 className="person-name">Al-man Raffli Saputra</h3>
+              <p className="person-name">Al-man Raffli Saputra</p>
               <p className="person-role">Full Stack Dev</p>
             </div>
 
